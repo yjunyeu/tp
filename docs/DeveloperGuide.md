@@ -261,14 +261,16 @@ _{Explain here how the data archiving feature will be implemented}_
 ### Product scope
 
 **Target user profile**:
+NUS students
 
-* has a need to manage a significant number of contacts
+* has a need to manage a significant number of contacts (e.g. classmates from different modules, CCA mates, etc)
 * prefer desktop apps over other types
 * can type fast
 * prefers typing to mouse interactions
 * is reasonably comfortable using CLI apps
 
-**Value proposition**: manage contacts faster than a typical mouse/GUI driven app
+**Value proposition**: A fast and efficient contact management tool for NUS students.
+NUSConnect helps students quickly add, organise and find contacts with minimal effort.
 
 
 ### User stories
