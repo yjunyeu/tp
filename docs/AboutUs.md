@@ -19,13 +19,24 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 * Role: Project Advisor
 
+
+### Yap Jun Yeu
+
+<img src="images/yjunyeu.png" width="200px">
+
+[github](http://github.com/yjunyeu)
+
+* Role: Developer
+* Responsibilities: Code quality, Git expert
+
 ### Javen Tan Kang Le
 
 <img src="images/javentankangle.png" width="200px">
 
+[github](http://github.com/javentankangle)]
 
-* Role: Team Lead
-* Responsibilities: UI
+* Role: Developer
+* Responsibilities: Team Lead
 
 ### Johnny Doe
 
