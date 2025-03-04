@@ -313,6 +313,32 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case resumes at step 2.
 
+**Use case: Adding a person**
+
+
+**MSS**
+
+1.  User request to add a person
+2.  AddressBook adds the person and shows success message and new entry
+
+    Use case ends.
+
+**Use case: Listing directory**
+
+
+**MSS**
+
+1.  User request to list AddressBook
+2.  AddressBook shows the list of persons
+    
+    Use case ends.
+
+**Extensions**
+
+* 2a. The list is empty.
+
+  Use case ends.
+
 *{More to be added}*
 
 ### Non-Functional Requirements
