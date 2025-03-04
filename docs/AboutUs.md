@@ -5,15 +5,13 @@ title: About Us
 
 We are a team based in the [School of Computing, National University of Singapore](https://www.comp.nus.edu.sg).
 
-You can reach us at the email `seer[at]comp.nus.edu.sg`
-
 ## Project team
 
 ### He Haorui
 
 <img src="images/feconi1024.png" width="200px">
 
-[github](https://github.com/feconi1024)
+[[github](https://github.com/feconi1024)]
 [[portfolio](team/feconi1024.md)]
 
 * Role: Project Advisor
@@ -23,7 +21,7 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 <img src="images/yjunyeu.png" width="200px">
 
-[github](http://github.com/yjunyeu)
+[[github](http://github.com/yjunyeu)]
 
 * Role: Developer
 * Responsibilities: Code quality, Git expert
@@ -33,7 +31,7 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 <img src="images/javentankangle.png" width="200px">
 
-[github](http://github.com/javentankangle)]
+[[github](http://github.com/javentankangle)]
 
 * Role: Developer
 * Responsibilities: Team Lead
@@ -43,7 +41,7 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 <img src="images/hackari.png" width="200px">
 
 [[github](http://github.com/hackari)]
-[[portfolio](team/hackari)]
+[[portfolio](team/hackari.md)]
 
 * Role: Developer
 * Responsibilities: Dev Ops + Threading
