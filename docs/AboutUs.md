@@ -9,36 +9,36 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 ## Project team
 
-### John Doe
+### He Haorui
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/feconi1024.png" width="200px">
 
-[[homepage](http://www.comp.nus.edu.sg/~damithch)]
-[[github](https://github.com/johndoe)]
-[[portfolio](team/hackari)]
+[github](https://github.com/feconi1024)
+[[portfolio](team/feconi1024.md)]
 
 * Role: Project Advisor
 
-### Jane Doe
 
-<img src="images/johndoe.png" width="200px">
+### Yap Jun Yeu
 
-[[github](http://github.com/johndoe)]
-[[portfolio](team/hackari)]
+<img src="images/yjunyeu.png" width="200px">
 
-* Role: Team Lead
-* Responsibilities: UI
-
-### Johnny Doe
-
-<img src="images/johndoe.png" width="200px">
-
-[[github](http://github.com/johndoe)] [[portfolio](team/hackari)]
+[github](http://github.com/yjunyeu)
 
 * Role: Developer
-* Responsibilities: Data
+* Responsibilities: Code quality, Git expert
 
-### Jean Doe
+
+### Javen Tan Kang Le
+
+<img src="images/javentankangle.png" width="200px">
+
+[github](http://github.com/javentankangle)]
+
+* Role: Developer
+* Responsibilities: Team Lead
+
+### Sim Ray En Ryan
 
 <img src="images/hackari.png" width="200px">
 
@@ -48,12 +48,12 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 * Role: Developer
 * Responsibilities: Dev Ops + Threading
 
-### James Doe
+### Lee Jia Wei
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/leejiawei23.png" width="200px">
 
-[[github](http://github.com/johndoe)]
-[[portfolio](team/hackari)]
+[[github](https://github.com/LeeJiaWei23)]
+[[portfolio](team/leejiawei23.md)]
 
 * Role: Developer
-* Responsibilities: UI
+* Responsibilities: Testing, Integration
