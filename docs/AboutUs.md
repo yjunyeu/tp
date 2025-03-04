@@ -57,12 +57,12 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 * Role: Developer
 * Responsibilities: Dev Ops + Threading
 
-### James Doe
+### Lee Jia Wei
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/leejiawei23.png" width="200px">
 
-[[github](http://github.com/johndoe)]
-[[portfolio](team/johndoe.md)]
+[[github](https://github.com/LeeJiaWei23)]
+[[portfolio](team/leejiawei23.md)]
 
 * Role: Developer
-* Responsibilities: UI
+* Responsibilities: Testing, Integration
