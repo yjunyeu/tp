@@ -313,6 +313,32 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case resumes at step 2.
 
+**Use case: Adding a person**
+
+
+**MSS**
+
+1.  User request to add a person
+2.  AddressBook adds the person and shows success message and new entry
+
+    Use case ends.
+
+**Use case: Listing directory**
+
+
+**MSS**
+
+1.  User request to list AddressBook
+2.  AddressBook shows the list of persons
+    
+    Use case ends.
+
+**Extensions**
+
+* 2a. The list is empty.
+
+  Use case ends.
+
 *{More to be added}*
 
 ### Non-Functional Requirements
@@ -320,6 +346,9 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 1.  Should work on any _mainstream OS_ as long as it has Java `17` or above installed.
 2.  Should be able to hold up to 1000 persons without a noticeable sluggishness in performance for typical usage.
 3.  A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
+4.  Should not require additional installation or system modifications beyond Java.
+5.  There should not be loss of data while using the application
+
 
 *{More to be added}*
 
