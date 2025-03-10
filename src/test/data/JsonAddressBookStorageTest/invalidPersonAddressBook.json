@@ -1,8 +1,14 @@
 {
-  "persons": [ {
-    "name": "Person with invalid name field: Ha!ns Mu@ster",
-    "phone": "9482424",
-    "email": "hans@example.com",
-    "address": "4th street"
-  } ]
+  "persons": [
+    {
+      "name": "Person with invalid name field: Ha!ns Mu@ster",
+      "phone": "9482424",
+      "email": "hans@example.com",
+      "alias": "hansM",
+      "course": "Data Science",
+      "note": "Invalid name test case",
+      "telegram": "@hans_muster",
+      "website": "https://hansmuster.com"
+    }
+  ]
 }

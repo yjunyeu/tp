@@ -20,20 +20,30 @@ public class Person {
     private final Name name;
     private final Phone phone;
     private final Email email;
+    private final Alias alias;
 
     // Data fields
-    private final Address address;
+    private final Course course;
+    private final Note note;
+    private final Telegram telegram;
+    private final Website website;
     private final Set<Tag> tags = new HashSet<>();
+
 
     /**
      * Every field must be present and not null.
      */
-    public Person(Name name, Phone phone, Email email, Address address, Set<Tag> tags) {
-        requireAllNonNull(name, phone, email, address, tags);
+    public Person(Name name, Phone phone, Email email, Alias alias, Course course, Note note,
+                  Telegram telegram, Website website, Set<Tag> tags) {
+        requireAllNonNull(name, phone, email, alias, course, note, telegram, website);
         this.name = name;
         this.phone = phone;
         this.email = email;
-        this.address = address;
+        this.alias = alias;
+        this.course = course;
+        this.note = note;
+        this.telegram = telegram;
+        this.website = website;
         this.tags.addAll(tags);
     }
 
@@ -45,13 +55,28 @@ public class Person {
         return phone;
     }
 
-    public Email getEmail() {
-        return email;
+    public Email getEmail() { return email; }
+
+    public Alias getAlias() {
+        return alias;
     }
 
-    public Address getAddress() {
-        return address;
+    public Course getCourse() {
+        return course;
     }
+
+    public Note getNote() {
+        return note;
+    }
+
+    public Telegram getTelegram() {
+        return telegram;
+    }
+
+    public Website getWebsite() {
+        return website;
+    }
+
 
     /**
      * Returns an immutable tag set, which throws {@code UnsupportedOperationException}
@@ -93,14 +118,18 @@ public class Person {
         return name.equals(otherPerson.name)
                 && phone.equals(otherPerson.phone)
                 && email.equals(otherPerson.email)
-                && address.equals(otherPerson.address)
+                && alias.equals(otherPerson.alias)
+                && course.equals(otherPerson.course)
+                && note.equals(otherPerson.note)
+                && telegram.equals(otherPerson.telegram)
+                && website.equals(otherPerson.website)
                 && tags.equals(otherPerson.tags);
     }
 
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(name, phone, email, address, tags);
+        return Objects.hash(name, phone, email, alias, course, note, telegram, website, tags);
     }
 
     @Override
@@ -109,7 +138,11 @@ public class Person {
                 .add("name", name)
                 .add("phone", phone)
                 .add("email", email)
-                .add("address", address)
+                .add("alias", alias)
+                .add("course", course)
+                .add("note", note)
+                .add("telegram", telegram)
+                .add("website", website)
                 .add("tags", tags)
                 .toString();
     }
