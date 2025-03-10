@@ -5,11 +5,15 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.commands.CommandTestUtil.DESC_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.DESC_BOB;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_ADDRESS_BOB;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_ALIAS_BOB;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_COURSE_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_EMAIL_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_BOB;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_NOTE_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_PHONE_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_TELEGRAM_BOB;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_WEBSITE_BOB;
 
 import org.junit.jupiter.api.Test;
 
@@ -48,9 +52,25 @@ public class EditPersonDescriptorTest {
         editedAmy = new EditPersonDescriptorBuilder(DESC_AMY).withEmail(VALID_EMAIL_BOB).build();
         assertFalse(DESC_AMY.equals(editedAmy));
 
-        // different address -> returns false
-        editedAmy = new EditPersonDescriptorBuilder(DESC_AMY).withAddress(VALID_ADDRESS_BOB).build();
+        // different alias -> returns false
+        editedAmy = new EditPersonDescriptorBuilder(DESC_AMY).withAlias(VALID_ALIAS_BOB).build();
         assertFalse(DESC_AMY.equals(editedAmy));
+
+        // different course -> returns false
+                editedAmy = new EditPersonDescriptorBuilder(DESC_AMY).withCourse(VALID_COURSE_BOB).build();
+                assertFalse(DESC_AMY.equals(editedAmy));
+
+        // different note -> returns false
+                editedAmy = new EditPersonDescriptorBuilder(DESC_AMY).withNote(VALID_NOTE_BOB).build();
+                assertFalse(DESC_AMY.equals(editedAmy));
+
+        // different telegram -> returns false
+                editedAmy = new EditPersonDescriptorBuilder(DESC_AMY).withTelegram(VALID_TELEGRAM_BOB).build();
+                assertFalse(DESC_AMY.equals(editedAmy));
+
+        // different website -> returns false
+                editedAmy = new EditPersonDescriptorBuilder(DESC_AMY).withWebsite(VALID_WEBSITE_BOB).build();
+                assertFalse(DESC_AMY.equals(editedAmy));
 
         // different tags -> returns false
         editedAmy = new EditPersonDescriptorBuilder(DESC_AMY).withTags(VALID_TAG_HUSBAND).build();
@@ -63,8 +83,12 @@ public class EditPersonDescriptorTest {
         String expected = EditPersonDescriptor.class.getCanonicalName() + "{name="
                 + editPersonDescriptor.getName().orElse(null) + ", phone="
                 + editPersonDescriptor.getPhone().orElse(null) + ", email="
-                + editPersonDescriptor.getEmail().orElse(null) + ", address="
-                + editPersonDescriptor.getAddress().orElse(null) + ", tags="
+                + editPersonDescriptor.getEmail().orElse(null) + ", alias="
+                + editPersonDescriptor.getAlias().orElse(null) + ", course="
+                + editPersonDescriptor.getCourse().orElse(null) + ", note="
+                + editPersonDescriptor.getNote().orElse(null) + ", telegram="
+                + editPersonDescriptor.getTelegram().orElse(null) + ", website="
+                + editPersonDescriptor.getWebsite().orElse(null) + ", tags="
                 + editPersonDescriptor.getTags().orElse(null) + "}";
         assertEquals(expected, editPersonDescriptor.toString());
     }

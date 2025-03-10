@@ -1,11 +1,15 @@
 package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_ADDRESS;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_ALIAS;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_COURSE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_NOTE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_TELEGRAM;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_WEBSITE;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
 
 import java.util.Collections;
@@ -21,11 +25,15 @@ import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.logic.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
-import seedu.address.model.person.Address;
+import seedu.address.model.person.Alias;
+import seedu.address.model.person.Course;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
+import seedu.address.model.person.Note;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
+import seedu.address.model.person.Telegram;
+import seedu.address.model.person.Website;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -42,7 +50,11 @@ public class EditCommand extends Command {
             + "[" + PREFIX_NAME + "NAME] "
             + "[" + PREFIX_PHONE + "PHONE] "
             + "[" + PREFIX_EMAIL + "EMAIL] "
-            + "[" + PREFIX_ADDRESS + "ADDRESS] "
+            + "[" + PREFIX_ALIAS + "ALIAS] "
+            + "[" + PREFIX_COURSE + "COURSE] "
+            + "[" + PREFIX_NOTE + "NOTE] "
+            + "[" + PREFIX_TELEGRAM + "TELEGRAM] "
+            + "[" + PREFIX_WEBSITE + "WEBSITE] "
             + "[" + PREFIX_TAG + "TAG]...\n"
             + "Example: " + COMMAND_WORD + " 1 "
             + PREFIX_PHONE + "91234567 "
@@ -95,13 +107,18 @@ public class EditCommand extends Command {
     private static Person createEditedPerson(Person personToEdit, EditPersonDescriptor editPersonDescriptor) {
         assert personToEdit != null;
 
-        Name updatedName = editPersonDescriptor.getName().orElse(personToEdit.getName());
-        Phone updatedPhone = editPersonDescriptor.getPhone().orElse(personToEdit.getPhone());
-        Email updatedEmail = editPersonDescriptor.getEmail().orElse(personToEdit.getEmail());
-        Address updatedAddress = editPersonDescriptor.getAddress().orElse(personToEdit.getAddress());
-        Set<Tag> updatedTags = editPersonDescriptor.getTags().orElse(personToEdit.getTags());
+            Name updatedName = editPersonDescriptor.getName().orElse(personToEdit.getName());
+            Phone updatedPhone = editPersonDescriptor.getPhone().orElse(personToEdit.getPhone());
+            Email updatedEmail = editPersonDescriptor.getEmail().orElse(personToEdit.getEmail());
+            Alias updatedAlias = editPersonDescriptor.getAlias().orElse(personToEdit.getAlias());
+            Course updatedCourse = editPersonDescriptor.getCourse().orElse(personToEdit.getCourse());
+            Note updatedNote = editPersonDescriptor.getNote().orElse(personToEdit.getNote());
+            Telegram updatedTelegram = editPersonDescriptor.getTelegram().orElse(personToEdit.getTelegram());
+            Website updatedWebsite = editPersonDescriptor.getWebsite().orElse(personToEdit.getWebsite());
+            Set<Tag> updatedTags = editPersonDescriptor.getTags().orElse(personToEdit.getTags());
 
-        return new Person(updatedName, updatedPhone, updatedEmail, updatedAddress, updatedTags);
+        return new Person(updatedName, updatedPhone, updatedEmail, updatedAlias, updatedCourse, updatedNote,
+                updatedTelegram, updatedWebsite, updatedTags);
     }
 
     @Override
@@ -136,7 +153,11 @@ public class EditCommand extends Command {
         private Name name;
         private Phone phone;
         private Email email;
-        private Address address;
+        private Alias alias;
+        private Course course;
+        private Note note;
+        private Telegram telegram;
+        private Website website;
         private Set<Tag> tags;
 
         public EditPersonDescriptor() {}
@@ -149,7 +170,11 @@ public class EditCommand extends Command {
             setName(toCopy.name);
             setPhone(toCopy.phone);
             setEmail(toCopy.email);
-            setAddress(toCopy.address);
+            setAlias(toCopy.alias);
+            setCourse(toCopy.course);
+            setNote(toCopy.note);
+            setTelegram(toCopy.telegram);
+            setWebsite(toCopy.website);
             setTags(toCopy.tags);
         }
 
@@ -157,7 +182,8 @@ public class EditCommand extends Command {
          * Returns true if at least one field is edited.
          */
         public boolean isAnyFieldEdited() {
-            return CollectionUtil.isAnyNonNull(name, phone, email, address, tags);
+            return CollectionUtil.isAnyNonNull(name, phone, email, alias, course,
+                    note, telegram, website, tags);
         }
 
         public void setName(Name name) {
@@ -184,13 +210,43 @@ public class EditCommand extends Command {
             return Optional.ofNullable(email);
         }
 
-        public void setAddress(Address address) {
-            this.address = address;
+        public void setAlias(Alias alias) { this.alias = alias; }
+
+        public Optional<Alias> getAlias() { return Optional.ofNullable(alias); }
+
+        public void setCourse(Course course) {
+            this.course = course;
         }
 
-        public Optional<Address> getAddress() {
-            return Optional.ofNullable(address);
+        public Optional<Course> getCourse() {
+            return Optional.ofNullable(course);
         }
+
+        public void setNote(Note note) {
+            this.note = note;
+        }
+
+        public Optional<Note> getNote() {
+            return Optional.ofNullable(note);
+        }
+
+        public void setTelegram(Telegram telegram) {
+            this.telegram = telegram;
+        }
+
+        public Optional<Telegram> getTelegram() {
+            return Optional.ofNullable(telegram);
+        }
+
+        public void setWebsite(Website website) {
+            this.website = website;
+        }
+
+        public Optional<Website> getWebsite() {
+            return Optional.ofNullable(website);
+        }
+
+
 
         /**
          * Sets {@code tags} to this object's {@code tags}.
@@ -224,7 +280,11 @@ public class EditCommand extends Command {
             return Objects.equals(name, otherEditPersonDescriptor.name)
                     && Objects.equals(phone, otherEditPersonDescriptor.phone)
                     && Objects.equals(email, otherEditPersonDescriptor.email)
-                    && Objects.equals(address, otherEditPersonDescriptor.address)
+                    && Objects.equals(alias, otherEditPersonDescriptor.alias)
+                    && Objects.equals(course, otherEditPersonDescriptor.course)
+                    && Objects.equals(note, otherEditPersonDescriptor.note)
+                    && Objects.equals(telegram, otherEditPersonDescriptor.telegram)
+                    && Objects.equals(website, otherEditPersonDescriptor.website)
                     && Objects.equals(tags, otherEditPersonDescriptor.tags);
         }
 
@@ -234,7 +294,11 @@ public class EditCommand extends Command {
                     .add("name", name)
                     .add("phone", phone)
                     .add("email", email)
-                    .add("address", address)
+                    .add("alias", alias)
+                    .add("course", course)
+                    .add("note", note)
+                    .add("telegram", telegram)
+                    .add("website", website)
                     .add("tags", tags)
                     .toString();
         }

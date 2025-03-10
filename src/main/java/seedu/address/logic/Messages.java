@@ -41,8 +41,16 @@ public class Messages {
                 .append(person.getPhone())
                 .append("; Email: ")
                 .append(person.getEmail())
-                .append("; Address: ")
-                .append(person.getAddress())
+                .append("; Alias: ")
+                .append(person.getAlias())
+                .append("; Course: ")
+                .append(person.getCourse())
+                .append("; Note: ")
+                .append(person.getNote())
+                .append("; Telegram: ")
+                .append(person.getTelegram())
+                .append("; Website: ")
+                .append(person.getWebsite())
                 .append("; Tags: ");
         person.getTags().forEach(builder::append);
         return builder.toString();
