@@ -17,12 +17,12 @@ import java.util.stream.Collectors;
 import org.junit.jupiter.api.Test;
 
 import seedu.address.commons.exceptions.IllegalValueException;
-import seedu.address.model.person.Email;
-import seedu.address.model.person.Name;
-import seedu.address.model.person.Phone;
 import seedu.address.model.person.Alias;
 import seedu.address.model.person.Course;
+import seedu.address.model.person.Email;
+import seedu.address.model.person.Name;
 import seedu.address.model.person.Note;
+import seedu.address.model.person.Phone;
 import seedu.address.model.person.Telegram;
 import seedu.address.model.person.Website;
 
@@ -35,7 +35,7 @@ public class JsonAdaptedPersonTest {
     private static final String INVALID_COURSE = " " + PREFIX_COURSE;
     private static final String INVALID_NOTE = " " + PREFIX_NOTE;
     private static final String INVALID_TELEGRAM = " " + PREFIX_TELEGRAM;
-    private static final String INVALID_WEBSITE= " " + PREFIX_WEBSITE;
+    private static final String INVALID_WEBSITE = " " + PREFIX_WEBSITE;
 
     private static final String VALID_NAME = BENSON.getName().toString();
     private static final String VALID_PHONE = BENSON.getPhone().toString();

@@ -195,34 +195,34 @@ public class EditCommandParserTest {
         assertParseSuccess(parser, userInput, expectedCommand);
 
         // alias
-                userInput = targetIndex.getOneBased() + ALIAS_DESC_AMY;
-                descriptor = new EditPersonDescriptorBuilder().withAlias(VALID_ALIAS_AMY).build();
-                expectedCommand = new EditCommand(targetIndex, descriptor);
-                assertParseSuccess(parser, userInput, expectedCommand);
+        userInput = targetIndex.getOneBased() + ALIAS_DESC_AMY;
+        descriptor = new EditPersonDescriptorBuilder().withAlias(VALID_ALIAS_AMY).build();
+        expectedCommand = new EditCommand(targetIndex, descriptor);
+        assertParseSuccess(parser, userInput, expectedCommand);
 
         // course
-                userInput = targetIndex.getOneBased() + COURSE_DESC_AMY;
-                descriptor = new EditPersonDescriptorBuilder().withCourse(VALID_COURSE_AMY).build();
-                expectedCommand = new EditCommand(targetIndex, descriptor);
-                assertParseSuccess(parser, userInput, expectedCommand);
+        userInput = targetIndex.getOneBased() + COURSE_DESC_AMY;
+        descriptor = new EditPersonDescriptorBuilder().withCourse(VALID_COURSE_AMY).build();
+        expectedCommand = new EditCommand(targetIndex, descriptor);
+        assertParseSuccess(parser, userInput, expectedCommand);
 
         // note
-                userInput = targetIndex.getOneBased() + NOTE_DESC_AMY;
-                descriptor = new EditPersonDescriptorBuilder().withNote(VALID_NOTE_AMY).build();
-                expectedCommand = new EditCommand(targetIndex, descriptor);
-                assertParseSuccess(parser, userInput, expectedCommand);
+        userInput = targetIndex.getOneBased() + NOTE_DESC_AMY;
+        descriptor = new EditPersonDescriptorBuilder().withNote(VALID_NOTE_AMY).build();
+        expectedCommand = new EditCommand(targetIndex, descriptor);
+        assertParseSuccess(parser, userInput, expectedCommand);
 
         // telegram
-                userInput = targetIndex.getOneBased() + TELEGRAM_DESC_AMY;
-                descriptor = new EditPersonDescriptorBuilder().withTelegram(VALID_TELEGRAM_AMY).build();
-                expectedCommand = new EditCommand(targetIndex, descriptor);
-                assertParseSuccess(parser, userInput, expectedCommand);
+        userInput = targetIndex.getOneBased() + TELEGRAM_DESC_AMY;
+        descriptor = new EditPersonDescriptorBuilder().withTelegram(VALID_TELEGRAM_AMY).build();
+        expectedCommand = new EditCommand(targetIndex, descriptor);
+        assertParseSuccess(parser, userInput, expectedCommand);
 
         // website
-                userInput = targetIndex.getOneBased() + WEBSITE_DESC_AMY;
-                descriptor = new EditPersonDescriptorBuilder().withWebsite(VALID_WEBSITE_AMY).build();
-                expectedCommand = new EditCommand(targetIndex, descriptor);
-                assertParseSuccess(parser, userInput, expectedCommand);
+        userInput = targetIndex.getOneBased() + WEBSITE_DESC_AMY;
+        descriptor = new EditPersonDescriptorBuilder().withWebsite(VALID_WEBSITE_AMY).build();
+        expectedCommand = new EditCommand(targetIndex, descriptor);
+        assertParseSuccess(parser, userInput, expectedCommand);
 
 
         // tags

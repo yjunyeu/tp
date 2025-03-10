@@ -8,7 +8,6 @@ import static seedu.address.logic.commands.CommandTestUtil.COURSE_DESC_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.EMAIL_DESC_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.NAME_DESC_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.NOTE_DESC_AMY;
-import static seedu.address.logic.commands.CommandTestUtil.NOTE_DESC_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.PHONE_DESC_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.TELEGRAM_DESC_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.WEBSITE_DESC_AMY;

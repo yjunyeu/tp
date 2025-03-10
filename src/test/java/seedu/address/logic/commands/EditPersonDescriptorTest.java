@@ -57,20 +57,20 @@ public class EditPersonDescriptorTest {
         assertFalse(DESC_AMY.equals(editedAmy));
 
         // different course -> returns false
-                editedAmy = new EditPersonDescriptorBuilder(DESC_AMY).withCourse(VALID_COURSE_BOB).build();
-                assertFalse(DESC_AMY.equals(editedAmy));
+        editedAmy = new EditPersonDescriptorBuilder(DESC_AMY).withCourse(VALID_COURSE_BOB).build();
+        assertFalse(DESC_AMY.equals(editedAmy));
 
         // different note -> returns false
-                editedAmy = new EditPersonDescriptorBuilder(DESC_AMY).withNote(VALID_NOTE_BOB).build();
-                assertFalse(DESC_AMY.equals(editedAmy));
+        editedAmy = new EditPersonDescriptorBuilder(DESC_AMY).withNote(VALID_NOTE_BOB).build();
+        assertFalse(DESC_AMY.equals(editedAmy));
 
         // different telegram -> returns false
-                editedAmy = new EditPersonDescriptorBuilder(DESC_AMY).withTelegram(VALID_TELEGRAM_BOB).build();
-                assertFalse(DESC_AMY.equals(editedAmy));
+        editedAmy = new EditPersonDescriptorBuilder(DESC_AMY).withTelegram(VALID_TELEGRAM_BOB).build();
+        assertFalse(DESC_AMY.equals(editedAmy));
 
         // different website -> returns false
-                editedAmy = new EditPersonDescriptorBuilder(DESC_AMY).withWebsite(VALID_WEBSITE_BOB).build();
-                assertFalse(DESC_AMY.equals(editedAmy));
+        editedAmy = new EditPersonDescriptorBuilder(DESC_AMY).withWebsite(VALID_WEBSITE_BOB).build();
+        assertFalse(DESC_AMY.equals(editedAmy));
 
         // different tags -> returns false
         editedAmy = new EditPersonDescriptorBuilder(DESC_AMY).withTags(VALID_TAG_HUSBAND).build();

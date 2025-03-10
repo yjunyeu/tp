@@ -1,17 +1,19 @@
 package seedu.address.logic.parser;
 
 import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+import static seedu.address.logic.commands.CommandTestUtil.ALIAS_DESC_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.ALIAS_DESC_BOB;
+import static seedu.address.logic.commands.CommandTestUtil.COURSE_DESC_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.COURSE_DESC_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.EMAIL_DESC_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.EMAIL_DESC_BOB;
-import static seedu.address.logic.commands.CommandTestUtil.INVALID_EMAIL_DESC;
-import static seedu.address.logic.commands.CommandTestUtil.INVALID_NAME_DESC;
-import static seedu.address.logic.commands.CommandTestUtil.INVALID_PHONE_DESC;
-import static seedu.address.logic.commands.CommandTestUtil.INVALID_TAG_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_ALIAS_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_COURSE_DESC;
+import static seedu.address.logic.commands.CommandTestUtil.INVALID_EMAIL_DESC;
+import static seedu.address.logic.commands.CommandTestUtil.INVALID_NAME_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_NOTE_DESC;
+import static seedu.address.logic.commands.CommandTestUtil.INVALID_PHONE_DESC;
+import static seedu.address.logic.commands.CommandTestUtil.INVALID_TAG_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_TELEGRAM_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_WEBSITE_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.NAME_DESC_AMY;
@@ -24,6 +26,7 @@ import static seedu.address.logic.commands.CommandTestUtil.PREAMBLE_NON_EMPTY;
 import static seedu.address.logic.commands.CommandTestUtil.PREAMBLE_WHITESPACE;
 import static seedu.address.logic.commands.CommandTestUtil.TAG_DESC_FRIEND;
 import static seedu.address.logic.commands.CommandTestUtil.TAG_DESC_HUSBAND;
+import static seedu.address.logic.commands.CommandTestUtil.TELEGRAM_DESC_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.TELEGRAM_DESC_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_ALIAS_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_COURSE_BOB;
@@ -35,18 +38,14 @@ import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_FRIEND;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TELEGRAM_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_WEBSITE_BOB;
-import static seedu.address.logic.commands.CommandTestUtil.WEBSITE_DESC_BOB;
-import static seedu.address.logic.commands.CommandTestUtil.ALIAS_DESC_AMY;
-import static seedu.address.logic.commands.CommandTestUtil.COURSE_DESC_AMY;
-import static seedu.address.logic.commands.CommandTestUtil.TELEGRAM_DESC_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.WEBSITE_DESC_AMY;
+import static seedu.address.logic.commands.CommandTestUtil.WEBSITE_DESC_BOB;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ALIAS;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_COURSE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NOTE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TELEGRAM;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_WEBSITE;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseFailure;
@@ -113,21 +112,21 @@ public class AddCommandParserTest {
         assertParseFailure(parser, ALIAS_DESC_AMY + validExpectedPersonString,
                 Messages.getErrorMessageForDuplicatePrefixes(PREFIX_ALIAS));
 
-    // multiple course
-            assertParseFailure(parser, COURSE_DESC_AMY + validExpectedPersonString,
-                    Messages.getErrorMessageForDuplicatePrefixes(PREFIX_COURSE));
+        // multiple course
+        assertParseFailure(parser, COURSE_DESC_AMY + validExpectedPersonString,
+                Messages.getErrorMessageForDuplicatePrefixes(PREFIX_COURSE));
 
-    // multiple note
-            assertParseFailure(parser, NOTE_DESC_AMY + validExpectedPersonString,
-                    Messages.getErrorMessageForDuplicatePrefixes(PREFIX_NOTE));
+        // multiple note
+        assertParseFailure(parser, NOTE_DESC_AMY + validExpectedPersonString,
+                Messages.getErrorMessageForDuplicatePrefixes(PREFIX_NOTE));
 
-    // multiple telegram
-            assertParseFailure(parser, TELEGRAM_DESC_AMY + validExpectedPersonString,
-                    Messages.getErrorMessageForDuplicatePrefixes(PREFIX_TELEGRAM));
+        // multiple telegram
+        assertParseFailure(parser, TELEGRAM_DESC_AMY + validExpectedPersonString,
+                Messages.getErrorMessageForDuplicatePrefixes(PREFIX_TELEGRAM));
 
-    // multiple website
-            assertParseFailure(parser, WEBSITE_DESC_AMY + validExpectedPersonString,
-                    Messages.getErrorMessageForDuplicatePrefixes(PREFIX_WEBSITE));
+        // multiple website
+        assertParseFailure(parser, WEBSITE_DESC_AMY + validExpectedPersonString,
+                Messages.getErrorMessageForDuplicatePrefixes(PREFIX_WEBSITE));
 
         // multiple fields repeated
         assertParseFailure(parser,
@@ -151,25 +150,25 @@ public class AddCommandParserTest {
         assertParseFailure(parser, INVALID_PHONE_DESC + validExpectedPersonString,
                 Messages.getErrorMessageForDuplicatePrefixes(PREFIX_PHONE));
 
-    // invalid alias
-            assertParseFailure(parser, INVALID_ALIAS_DESC + validExpectedPersonString,
-                    Messages.getErrorMessageForDuplicatePrefixes(PREFIX_ALIAS));
+        // invalid alias
+        assertParseFailure(parser, INVALID_ALIAS_DESC + validExpectedPersonString,
+                Messages.getErrorMessageForDuplicatePrefixes(PREFIX_ALIAS));
 
-    // invalid course
-            assertParseFailure(parser, INVALID_COURSE_DESC + validExpectedPersonString,
-                    Messages.getErrorMessageForDuplicatePrefixes(PREFIX_COURSE));
+        // invalid course
+        assertParseFailure(parser, INVALID_COURSE_DESC + validExpectedPersonString,
+                Messages.getErrorMessageForDuplicatePrefixes(PREFIX_COURSE));
 
-    // invalid note
-            assertParseFailure(parser, INVALID_NOTE_DESC + validExpectedPersonString,
-                    Messages.getErrorMessageForDuplicatePrefixes(PREFIX_NOTE));
+        // invalid note
+        assertParseFailure(parser, INVALID_NOTE_DESC + validExpectedPersonString,
+                Messages.getErrorMessageForDuplicatePrefixes(PREFIX_NOTE));
 
-    // invalid telegram
-            assertParseFailure(parser, INVALID_TELEGRAM_DESC + validExpectedPersonString,
-                    Messages.getErrorMessageForDuplicatePrefixes(PREFIX_TELEGRAM));
+        // invalid telegram
+        assertParseFailure(parser, INVALID_TELEGRAM_DESC + validExpectedPersonString,
+                Messages.getErrorMessageForDuplicatePrefixes(PREFIX_TELEGRAM));
 
-    // invalid website
-            assertParseFailure(parser, INVALID_WEBSITE_DESC + validExpectedPersonString,
-                    Messages.getErrorMessageForDuplicatePrefixes(PREFIX_WEBSITE));
+        // invalid website
+        assertParseFailure(parser, INVALID_WEBSITE_DESC + validExpectedPersonString,
+                Messages.getErrorMessageForDuplicatePrefixes(PREFIX_WEBSITE));
 
         // valid value followed by invalid value
 
@@ -190,20 +189,20 @@ public class AddCommandParserTest {
                 Messages.getErrorMessageForDuplicatePrefixes(PREFIX_ALIAS));
 
         // invalid course
-                assertParseFailure(parser, validExpectedPersonString + INVALID_COURSE_DESC,
-                        Messages.getErrorMessageForDuplicatePrefixes(PREFIX_COURSE));
+        assertParseFailure(parser, validExpectedPersonString + INVALID_COURSE_DESC,
+                Messages.getErrorMessageForDuplicatePrefixes(PREFIX_COURSE));
 
         // invalid note
-                assertParseFailure(parser, validExpectedPersonString + INVALID_NOTE_DESC,
-                        Messages.getErrorMessageForDuplicatePrefixes(PREFIX_NOTE));
+        assertParseFailure(parser, validExpectedPersonString + INVALID_NOTE_DESC,
+                Messages.getErrorMessageForDuplicatePrefixes(PREFIX_NOTE));
 
         // invalid telegram
-                assertParseFailure(parser, validExpectedPersonString + INVALID_TELEGRAM_DESC,
-                        Messages.getErrorMessageForDuplicatePrefixes(PREFIX_TELEGRAM));
+        assertParseFailure(parser, validExpectedPersonString + INVALID_TELEGRAM_DESC,
+                Messages.getErrorMessageForDuplicatePrefixes(PREFIX_TELEGRAM));
 
         // invalid website
-                assertParseFailure(parser, validExpectedPersonString + INVALID_WEBSITE_DESC,
-                        Messages.getErrorMessageForDuplicatePrefixes(PREFIX_WEBSITE));
+        assertParseFailure(parser, validExpectedPersonString + INVALID_WEBSITE_DESC,
+                Messages.getErrorMessageForDuplicatePrefixes(PREFIX_WEBSITE));
     }
 
     @Test
@@ -232,31 +231,31 @@ public class AddCommandParserTest {
                 + COURSE_DESC_BOB + NOTE_DESC_BOB + TELEGRAM_DESC_BOB + WEBSITE_DESC_BOB, expectedMessage);
 
         // missing address prefix
-        assertParseFailure(parser, VALID_NAME_BOB + PHONE_DESC_BOB + EMAIL_DESC_BOB +
-                        ALIAS_DESC_BOB + COURSE_DESC_BOB + NOTE_DESC_BOB + TELEGRAM_DESC_BOB + WEBSITE_DESC_BOB,
+        assertParseFailure(parser, VALID_NAME_BOB + PHONE_DESC_BOB + EMAIL_DESC_BOB
+                        + ALIAS_DESC_BOB + COURSE_DESC_BOB + NOTE_DESC_BOB + TELEGRAM_DESC_BOB + WEBSITE_DESC_BOB,
                 expectedMessage);
 
-// missing alias prefix
+        // missing alias prefix
         assertParseFailure(parser, VALID_NAME_BOB + PHONE_DESC_BOB + EMAIL_DESC_BOB + VALID_ALIAS_BOB
                         + COURSE_DESC_BOB + NOTE_DESC_BOB + TELEGRAM_DESC_BOB + WEBSITE_DESC_BOB,
                 expectedMessage);
 
-// missing course prefix
+        // missing course prefix
         assertParseFailure(parser, VALID_NAME_BOB + PHONE_DESC_BOB + EMAIL_DESC_BOB + ALIAS_DESC_BOB
                         + VALID_COURSE_BOB + NOTE_DESC_BOB + TELEGRAM_DESC_BOB + WEBSITE_DESC_BOB,
                 expectedMessage);
 
-// missing note prefix
+        // missing note prefix
         assertParseFailure(parser, VALID_NAME_BOB + PHONE_DESC_BOB + EMAIL_DESC_BOB + ALIAS_DESC_BOB
                         + COURSE_DESC_BOB + VALID_NOTE_BOB + TELEGRAM_DESC_BOB + WEBSITE_DESC_BOB,
                 expectedMessage);
 
-// missing telegram prefix
+        // missing telegram prefix
         assertParseFailure(parser, VALID_NAME_BOB + PHONE_DESC_BOB + EMAIL_DESC_BOB + ALIAS_DESC_BOB
                         + COURSE_DESC_BOB + NOTE_DESC_BOB + VALID_TELEGRAM_BOB + WEBSITE_DESC_BOB,
                 expectedMessage);
 
-// missing website prefix
+        // missing website prefix
         assertParseFailure(parser, VALID_NAME_BOB + PHONE_DESC_BOB + EMAIL_DESC_BOB + ALIAS_DESC_BOB
                         + COURSE_DESC_BOB + NOTE_DESC_BOB + TELEGRAM_DESC_BOB + VALID_WEBSITE_BOB,
                 expectedMessage);
