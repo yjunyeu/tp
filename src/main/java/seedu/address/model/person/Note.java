@@ -3,8 +3,6 @@ package seedu.address.model.person;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
-import seedu.address.logic.parser.exceptions.ParseException;
-
 /**
  * Represents a Person's note in the note book.
  * Guarantees: immutable; is valid as declared in {@link #isValidNote(String)}

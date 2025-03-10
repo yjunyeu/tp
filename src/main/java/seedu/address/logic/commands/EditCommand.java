@@ -107,15 +107,15 @@ public class EditCommand extends Command {
     private static Person createEditedPerson(Person personToEdit, EditPersonDescriptor editPersonDescriptor) {
         assert personToEdit != null;
 
-            Name updatedName = editPersonDescriptor.getName().orElse(personToEdit.getName());
-            Phone updatedPhone = editPersonDescriptor.getPhone().orElse(personToEdit.getPhone());
-            Email updatedEmail = editPersonDescriptor.getEmail().orElse(personToEdit.getEmail());
-            Alias updatedAlias = editPersonDescriptor.getAlias().orElse(personToEdit.getAlias());
-            Course updatedCourse = editPersonDescriptor.getCourse().orElse(personToEdit.getCourse());
-            Note updatedNote = editPersonDescriptor.getNote().orElse(personToEdit.getNote());
-            Telegram updatedTelegram = editPersonDescriptor.getTelegram().orElse(personToEdit.getTelegram());
-            Website updatedWebsite = editPersonDescriptor.getWebsite().orElse(personToEdit.getWebsite());
-            Set<Tag> updatedTags = editPersonDescriptor.getTags().orElse(personToEdit.getTags());
+        Name updatedName = editPersonDescriptor.getName().orElse(personToEdit.getName());
+        Phone updatedPhone = editPersonDescriptor.getPhone().orElse(personToEdit.getPhone());
+        Email updatedEmail = editPersonDescriptor.getEmail().orElse(personToEdit.getEmail());
+        Alias updatedAlias = editPersonDescriptor.getAlias().orElse(personToEdit.getAlias());
+        Course updatedCourse = editPersonDescriptor.getCourse().orElse(personToEdit.getCourse());
+        Note updatedNote = editPersonDescriptor.getNote().orElse(personToEdit.getNote());
+        Telegram updatedTelegram = editPersonDescriptor.getTelegram().orElse(personToEdit.getTelegram());
+        Website updatedWebsite = editPersonDescriptor.getWebsite().orElse(personToEdit.getWebsite());
+        Set<Tag> updatedTags = editPersonDescriptor.getTags().orElse(personToEdit.getTags());
 
         return new Person(updatedName, updatedPhone, updatedEmail, updatedAlias, updatedCourse, updatedNote,
                 updatedTelegram, updatedWebsite, updatedTags);
