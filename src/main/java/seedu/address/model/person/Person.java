@@ -55,7 +55,7 @@ public class Person {
         return phone;
     }
 
-    public Email getEmail() {return email; }
+    public Email getEmail() { return email; }
 
     public Alias getAlias() {
         return alias;
@@ -73,7 +73,9 @@ public class Person {
         return telegram;
     }
 
-    public Website getWebsite() { return website; }
+    public Website getWebsite() {
+        return website;
+    }
 
 
     /**

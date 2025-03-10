@@ -210,9 +210,13 @@ public class EditCommand extends Command {
             return Optional.ofNullable(email);
         }
 
-        public void setAlias(Alias alias) { this.alias = alias; }
+        public void setAlias(Alias alias) {
+            this.alias = alias;
+        }
 
-        public Optional<Alias> getAlias() { return Optional.ofNullable(alias); }
+        public Optional<Alias> getAlias() {
+            return Optional.ofNullable(alias);
+        }
 
         public void setCourse(Course course) {
             this.course = course;
