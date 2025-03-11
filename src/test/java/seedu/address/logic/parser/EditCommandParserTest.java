@@ -30,13 +30,13 @@ import static seedu.address.logic.commands.CommandTestUtil.VALID_ALIAS_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_COURSE_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_COURSE_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_EMAIL_AMY;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_MODULE_CS2103T;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_MODULE_CS2106;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NOTE_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NOTE_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_PHONE_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_PHONE_BOB;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_FRIEND;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TELEGRAM_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TELEGRAM_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_WEBSITE_AMY;
@@ -45,8 +45,8 @@ import static seedu.address.logic.commands.CommandTestUtil.WEBSITE_DESC_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.WEBSITE_DESC_BOB;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ALIAS;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_MODULE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseFailure;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSuccess;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
@@ -59,6 +59,7 @@ import seedu.address.commons.core.index.Index;
 import seedu.address.logic.Messages;
 import seedu.address.logic.commands.EditCommand;
 import seedu.address.logic.commands.EditCommand.EditPersonDescriptor;
+import seedu.address.model.module.Module;
 import seedu.address.model.person.Alias;
 import seedu.address.model.person.Course;
 import seedu.address.model.person.Email;
@@ -67,7 +68,6 @@ import seedu.address.model.person.Note;
 import seedu.address.model.person.Phone;
 import seedu.address.model.person.Telegram;
 import seedu.address.model.person.Website;
-import seedu.address.model.module.Module;
 import seedu.address.testutil.EditPersonDescriptorBuilder;
 
 public class EditCommandParserTest {
@@ -154,7 +154,7 @@ public class EditCommandParserTest {
                 .withNote(VALID_NOTE_BOB)
                 .withTelegram(VALID_TELEGRAM_BOB)
                 .withWebsite(VALID_WEBSITE_BOB)
-                .withTags(VALID_TAG_HUSBAND, VALID_TAG_FRIEND)
+                .withTags(VALID_MODULE_CS2103T, VALID_MODULE_CS2106)
                 .build();
         EditCommand expectedCommand = new EditCommand(targetIndex, descriptor);
 
@@ -227,7 +227,7 @@ public class EditCommandParserTest {
 
         // tags
         userInput = targetIndex.getOneBased() + TAG_DESC_FRIEND;
-        descriptor = new EditPersonDescriptorBuilder().withTags(VALID_TAG_FRIEND).build();
+        descriptor = new EditPersonDescriptorBuilder().withTags(VALID_MODULE_CS2106).build();
         expectedCommand = new EditCommand(targetIndex, descriptor);
         assertParseSuccess(parser, userInput, expectedCommand);
     }

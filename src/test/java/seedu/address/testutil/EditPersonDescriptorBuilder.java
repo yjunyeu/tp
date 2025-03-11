@@ -5,6 +5,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import seedu.address.logic.commands.EditCommand.EditPersonDescriptor;
+import seedu.address.model.module.Module;
 import seedu.address.model.person.Alias;
 import seedu.address.model.person.Course;
 import seedu.address.model.person.Email;
@@ -14,7 +15,6 @@ import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
 import seedu.address.model.person.Telegram;
 import seedu.address.model.person.Website;
-import seedu.address.model.module.Module;
 
 /**
  * A utility class to help with building EditPersonDescriptor objects.
@@ -117,7 +117,7 @@ public class EditPersonDescriptorBuilder {
      */
     public EditPersonDescriptorBuilder withTags(String... tags) {
         Set<Module> moduleSet = Stream.of(tags).map(Module::new).collect(Collectors.toSet());
-        descriptor.setTags(moduleSet);
+        descriptor.setModules(moduleSet);
         return this;
     }
 

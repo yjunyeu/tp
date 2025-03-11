@@ -65,7 +65,7 @@ public class PersonCard extends UiPart<Region> {
         website.setText(person.getWebsite().value);
         email.setText(person.getEmail().value);
         person.getModules().stream()
-                .sorted(Comparator.comparing(tag -> tag.ModuleName))
-                .forEach(tag -> modules.getChildren().add(new Label(tag.ModuleName)));
+                .sorted(Comparator.comparing(tag -> tag.moduleName))
+                .forEach(module -> modules.getChildren().add(new Label(module.moduleName)));
     }
 }

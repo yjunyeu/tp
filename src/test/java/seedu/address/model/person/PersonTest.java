@@ -6,10 +6,10 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_ALIAS_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_COURSE_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_EMAIL_BOB;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_MODULE_CS2103T;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NOTE_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_PHONE_BOB;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TELEGRAM_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_WEBSITE_BOB;
 import static seedu.address.testutil.Assert.assertThrows;
@@ -45,7 +45,7 @@ public class PersonTest {
                 .withNote(VALID_NOTE_BOB)
                 .withTelegram(VALID_TELEGRAM_BOB)
                 .withWebsite(VALID_WEBSITE_BOB)
-                .withTags(VALID_TAG_HUSBAND)
+                .withTags(VALID_MODULE_CS2103T)
                 .build();
         assertTrue(ALICE.isSamePerson(editedAlice));
 
@@ -114,7 +114,7 @@ public class PersonTest {
         assertFalse(ALICE.equals(editedAlice));
 
         // different tags -> returns false
-        editedAlice = new PersonBuilder(ALICE).withTags(VALID_TAG_HUSBAND).build();
+        editedAlice = new PersonBuilder(ALICE).withTags(VALID_MODULE_CS2103T).build();
         assertFalse(ALICE.equals(editedAlice));
 
     }

@@ -12,17 +12,17 @@ public class Module {
     public static final String MESSAGE_CONSTRAINTS = "Module names should be alphanumeric";
     public static final String VALIDATION_REGEX = "\\p{Alnum}+";
 
-    public final String ModuleName;
+    public final String moduleName;
 
     /**
      * Constructs a {@code Module}.
      *
-     * @param ModuleName A valid module name.
+     * @param moduleName A valid module name.
      */
-    public Module(String ModuleName) {
-        requireNonNull(ModuleName);
-        checkArgument(isValidModuleName(ModuleName), MESSAGE_CONSTRAINTS);
-        this.ModuleName = ModuleName;
+    public Module(String moduleName) {
+        requireNonNull(moduleName);
+        checkArgument(isValidModuleName(moduleName), MESSAGE_CONSTRAINTS);
+        this.moduleName = moduleName;
     }
 
     /**
@@ -44,19 +44,19 @@ public class Module {
         }
 
         Module otherModule = (Module) other;
-        return ModuleName.equals(otherModule.ModuleName);
+        return moduleName.equals(otherModule.moduleName);
     }
 
     @Override
     public int hashCode() {
-        return ModuleName.hashCode();
+        return moduleName.hashCode();
     }
 
     /**
      * Format state as text for viewing.
      */
     public String toString() {
-        return '[' + ModuleName + ']';
+        return '[' + moduleName + ']';
     }
 
 }

@@ -25,7 +25,7 @@ class JsonAdaptedModule {
      * Converts a given {@code Module} into this class for Jackson use.
      */
     public JsonAdaptedModule(Module source) {
-        moduleName = source.ModuleName;
+        moduleName = source.moduleName;
     }
 
     @JsonValue

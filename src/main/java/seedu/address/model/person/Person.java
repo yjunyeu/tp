@@ -55,7 +55,9 @@ public class Person {
         return phone;
     }
 
-    public Email getEmail() { return email; }
+    public Email getEmail() {
+        return email;
+    }
 
     public Alias getAlias() {
         return alias;

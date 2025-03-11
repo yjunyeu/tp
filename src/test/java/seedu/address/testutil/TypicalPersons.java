@@ -6,14 +6,14 @@ import static seedu.address.logic.commands.CommandTestUtil.VALID_COURSE_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_COURSE_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_EMAIL_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_EMAIL_BOB;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_MODULE_CS2103T;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_MODULE_CS2106;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NOTE_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NOTE_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_PHONE_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_PHONE_BOB;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_FRIEND;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TELEGRAM_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TELEGRAM_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_WEBSITE_AMY;
@@ -131,7 +131,7 @@ public class TypicalPersons {
             .withNote(VALID_NOTE_AMY)
             .withTelegram(VALID_TELEGRAM_AMY)
             .withWebsite(VALID_WEBSITE_AMY)
-            .withTags(VALID_TAG_FRIEND)
+            .withTags(VALID_MODULE_CS2106)
             .build();
 
     public static final Person BOB = new PersonBuilder().withName(VALID_NAME_BOB)
@@ -142,7 +142,7 @@ public class TypicalPersons {
             .withNote(VALID_NOTE_BOB)
             .withTelegram(VALID_TELEGRAM_BOB)
             .withWebsite(VALID_WEBSITE_BOB)
-            .withTags(VALID_TAG_HUSBAND, VALID_TAG_FRIEND)
+            .withTags(VALID_MODULE_CS2103T, VALID_MODULE_CS2106)
             .build();
 
     public static final String KEYWORD_MATCHING_MEIER = "Meier"; // A keyword that matches MEIER

@@ -294,7 +294,8 @@ public class ParserUtilTest {
     @Test
     public void parseTags_collectionWithValidModules_returnsModuleSet() throws Exception {
         Set<Module> actualModuleSet = ParserUtil.parseModules(Arrays.asList(VALID_TAG_1, VALID_TAG_2));
-        Set<Module> expectedModuleSet = new HashSet<Module>(Arrays.asList(new Module(VALID_TAG_1), new Module(VALID_TAG_2)));
+        Set<Module> expectedModuleSet = new HashSet<Module>(Arrays.asList(new Module(VALID_TAG_1),
+                new Module(VALID_TAG_2)));
 
         assertEquals(expectedModuleSet, actualModuleSet);
     }
