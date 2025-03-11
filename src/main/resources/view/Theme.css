@@ -42,7 +42,7 @@
 .table-view {
     -fx-base: #1d1d1d;
     -fx-control-inner-background: #e47474;
-    -fx-background-color: #400061;
+    -fx-background-color: #f6f6f6;
     -fx-table-cell-border-color: transparent;
     -fx-table-header-border-color: transparent;
     -fx-padding: 5;
@@ -90,7 +90,7 @@
 .list-view {
     -fx-background-insets: 0;
     -fx-padding: 0;
-    -fx-background-color: derive(#07ff8f, 20%);
+    -fx-background-color: derive(#f6f6f6, 20%);
 }
 
 .list-cell {
@@ -165,7 +165,7 @@
 }
 
 .status-bar-with-border {
-    -fx-background-color: derive(#55ff00, 30%);
+    -fx-background-color: derive(#f6f6f6, 30%);
     -fx-border-color: derive(#ef7c00, 25%);
     -fx-border-width: 1px;
 }
