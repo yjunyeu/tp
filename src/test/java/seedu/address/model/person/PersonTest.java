@@ -7,6 +7,7 @@ import static seedu.address.logic.commands.CommandTestUtil.VALID_ALIAS_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_COURSE_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_EMAIL_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_MODULE_CS2103T;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_MODULE_CS2106;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NOTE_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_PHONE_BOB;
@@ -45,7 +46,7 @@ public class PersonTest {
                 .withNote(VALID_NOTE_BOB)
                 .withTelegram(VALID_TELEGRAM_BOB)
                 .withWebsite(VALID_WEBSITE_BOB)
-                .withTags(VALID_MODULE_CS2103T)
+                .withModules(VALID_MODULE_CS2103T)
                 .build();
         assertTrue(ALICE.isSamePerson(editedAlice));
 
@@ -113,8 +114,8 @@ public class PersonTest {
         editedAlice = new PersonBuilder(ALICE).withWebsite(VALID_WEBSITE_BOB).build();
         assertFalse(ALICE.equals(editedAlice));
 
-        // different tags -> returns false
-        editedAlice = new PersonBuilder(ALICE).withTags(VALID_MODULE_CS2103T).build();
+        // different Modules -> returns false
+        editedAlice = new PersonBuilder(ALICE).withModules(VALID_MODULE_CS2106).build();
         assertFalse(ALICE.equals(editedAlice));
 
     }
@@ -129,7 +130,7 @@ public class PersonTest {
                 + ", note=" + ALICE.getNote()
                 + ", telegram=" + ALICE.getTelegram()
                 + ", website=" + ALICE.getWebsite()
-                + ", tags=" + ALICE.getModules() + "}";
+                + ", modules=" + ALICE.getModules() + "}";
         assertEquals(expected, ALICE.toString());
 
     }

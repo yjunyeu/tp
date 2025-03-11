@@ -72,7 +72,7 @@ public class EditPersonDescriptorTest {
         editedAmy = new EditPersonDescriptorBuilder(DESC_AMY).withWebsite(VALID_WEBSITE_BOB).build();
         assertFalse(DESC_AMY.equals(editedAmy));
 
-        // different tags -> returns false
+        // different Modules -> returns false
         editedAmy = new EditPersonDescriptorBuilder(DESC_AMY).withTags(VALID_MODULE_CS2103T).build();
         assertFalse(DESC_AMY.equals(editedAmy));
     }
@@ -88,7 +88,7 @@ public class EditPersonDescriptorTest {
                 + editPersonDescriptor.getCourse().orElse(null) + ", note="
                 + editPersonDescriptor.getNote().orElse(null) + ", telegram="
                 + editPersonDescriptor.getTelegram().orElse(null) + ", website="
-                + editPersonDescriptor.getWebsite().orElse(null) + ", tags="
+                + editPersonDescriptor.getWebsite().orElse(null) + ", modules="
                 + editPersonDescriptor.getTags().orElse(null) + "}";
         assertEquals(expected, editPersonDescriptor.toString());
     }

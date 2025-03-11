@@ -112,7 +112,7 @@ public class EditPersonDescriptorBuilder {
     }
 
     /**
-     * Parses the {@code tags} into a {@code Set<Module>} and set it to the {@code EditPersonDescriptor}
+     * Parses the {@code Modules} into a {@code Set<Module>} and set it to the {@code EditPersonDescriptor}
      * that we are building.
      */
     public EditPersonDescriptorBuilder withTags(String... tags) {

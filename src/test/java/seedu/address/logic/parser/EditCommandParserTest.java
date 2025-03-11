@@ -122,7 +122,7 @@ public class EditCommandParserTest {
         // invalid phone followed by valid email
         assertParseFailure(parser, "1" + INVALID_PHONE_DESC + EMAIL_DESC_AMY, Phone.MESSAGE_CONSTRAINTS);
 
-        // while parsing {@code PREFIX_MODULE} alone will reset the tags of the {@code Person} being edited,
+        // while parsing {@code PREFIX_MODULE} alone will reset the Modules of the {@code Person} being edited,
         // parsing it together with a valid module results in error
         assertParseFailure(parser, "1" + TAG_DESC_FRIEND + TAG_DESC_HUSBAND + TAG_EMPTY, Module.MESSAGE_CONSTRAINTS);
         assertParseFailure(parser, "1" + TAG_DESC_FRIEND + TAG_EMPTY + TAG_DESC_HUSBAND, Module.MESSAGE_CONSTRAINTS);
@@ -225,7 +225,7 @@ public class EditCommandParserTest {
         assertParseSuccess(parser, userInput, expectedCommand);
 
 
-        // tags
+        // Modules
         userInput = targetIndex.getOneBased() + TAG_DESC_FRIEND;
         descriptor = new EditPersonDescriptorBuilder().withTags(VALID_MODULE_CS2106).build();
         expectedCommand = new EditCommand(targetIndex, descriptor);

@@ -80,8 +80,8 @@ public class PersonBuilder {
     /**
      * Parses the {@code modules} into a {@code Set<Module>} and set it to the {@code Person} that we are building.
      */
-    public PersonBuilder withTags(String ... tags) {
-        this.modules = SampleDataUtil.getModuleSet(tags);
+    public PersonBuilder withModules(String ... modules) {
+        this.modules = SampleDataUtil.getModuleSet(modules);
         return this;
     }
 
