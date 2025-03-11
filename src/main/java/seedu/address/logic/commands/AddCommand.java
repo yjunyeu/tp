@@ -7,7 +7,7 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NOTE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_MODULE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TELEGRAM;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_WEBSITE;
 
@@ -34,7 +34,7 @@ public class AddCommand extends Command {
             + PREFIX_NOTE + "NOTE "
             + PREFIX_TELEGRAM + "TELEGRAM "
             + PREFIX_WEBSITE + "WEBSITE "
-            + "[" + PREFIX_TAG + "TAG]...\n"
+            + "[" + PREFIX_MODULE + "MODULE]...\n"
             + "Example: " + COMMAND_WORD + " "
             + PREFIX_NAME + "John Doe "
             + PREFIX_PHONE + "98765432 "
@@ -44,7 +44,7 @@ public class AddCommand extends Command {
             + PREFIX_NOTE + "Enjoys programming "
             + PREFIX_TELEGRAM + "@johndoe "
             + PREFIX_WEBSITE + "https://johndoe.com "
-            + PREFIX_TAG + "owesMoney";
+            + PREFIX_MODULE + "CS2103T";
 
     public static final String MESSAGE_SUCCESS = "New person added: %1$s";
     public static final String MESSAGE_DUPLICATE_PERSON = "This person already exists in the address book";

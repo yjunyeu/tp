@@ -3,6 +3,7 @@ package seedu.address.testutil;
 import java.util.HashSet;
 import java.util.Set;
 
+import seedu.address.model.module.Module;
 import seedu.address.model.person.Alias;
 import seedu.address.model.person.Course;
 import seedu.address.model.person.Email;
@@ -12,7 +13,6 @@ import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
 import seedu.address.model.person.Telegram;
 import seedu.address.model.person.Website;
-import seedu.address.model.tag.Tag;
 import seedu.address.model.util.SampleDataUtil;
 
 /**
@@ -37,7 +37,7 @@ public class PersonBuilder {
     private Note note;
     private Telegram telegram;
     private Website website;
-    private Set<Tag> tags;
+    private Set<Module> modules;
 
     /**
      * Creates a {@code PersonBuilder} with the default details.
@@ -51,7 +51,7 @@ public class PersonBuilder {
         note = new Note(DEFAULT_NOTE);
         telegram = new Telegram(DEFAULT_TELEGRAM);
         website = new Website(DEFAULT_WEBSITE);
-        tags = new HashSet<>();
+        modules = new HashSet<>();
     }
 
     /**
@@ -66,7 +66,7 @@ public class PersonBuilder {
         note = personToCopy.getNote();
         telegram = personToCopy.getTelegram();
         website = personToCopy.getWebsite();
-        tags = new HashSet<>(personToCopy.getTags());
+        modules = new HashSet<>(personToCopy.getModules());
     }
 
     /**
@@ -78,10 +78,10 @@ public class PersonBuilder {
     }
 
     /**
-     * Parses the {@code tags} into a {@code Set<Tag>} and set it to the {@code Person} that we are building.
+     * Parses the {@code modules} into a {@code Set<Module>} and set it to the {@code Person} that we are building.
      */
     public PersonBuilder withTags(String ... tags) {
-        this.tags = SampleDataUtil.getTagSet(tags);
+        this.modules = SampleDataUtil.getTagSet(tags);
         return this;
     }
 
@@ -142,7 +142,7 @@ public class PersonBuilder {
     }
 
     public Person build() {
-        return new Person(name, phone, email, alias, course, note, telegram, website, tags);
+        return new Person(name, phone, email, alias, course, note, telegram, website, modules);
     }
 
 }

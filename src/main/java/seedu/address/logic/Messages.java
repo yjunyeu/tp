@@ -51,8 +51,8 @@ public class Messages {
                 .append(person.getTelegram())
                 .append("; Website: ")
                 .append(person.getWebsite())
-                .append("; Tags: ");
-        person.getTags().forEach(builder::append);
+                .append("; Modules: ");
+        person.getModules().forEach(builder::append);
         return builder.toString();
     }
 
