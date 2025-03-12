@@ -4,10 +4,10 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ALIAS;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_COURSE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_MODULE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NOTE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TELEGRAM;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_WEBSITE;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
@@ -25,6 +25,7 @@ import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.logic.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
+import seedu.address.model.module.Module;
 import seedu.address.model.person.Alias;
 import seedu.address.model.person.Course;
 import seedu.address.model.person.Email;
@@ -34,7 +35,6 @@ import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
 import seedu.address.model.person.Telegram;
 import seedu.address.model.person.Website;
-import seedu.address.model.tag.Tag;
 
 /**
  * Edits the details of an existing person in the address book.
@@ -55,7 +55,7 @@ public class EditCommand extends Command {
             + "[" + PREFIX_NOTE + "NOTE] "
             + "[" + PREFIX_TELEGRAM + "TELEGRAM] "
             + "[" + PREFIX_WEBSITE + "WEBSITE] "
-            + "[" + PREFIX_TAG + "TAG]...\n"
+            + "[" + PREFIX_MODULE + "MODULE]...\n"
             + "Example: " + COMMAND_WORD + " 1 "
             + PREFIX_PHONE + "91234567 "
             + PREFIX_EMAIL + "johndoe@example.com";
@@ -115,10 +115,10 @@ public class EditCommand extends Command {
         Note updatedNote = editPersonDescriptor.getNote().orElse(personToEdit.getNote());
         Telegram updatedTelegram = editPersonDescriptor.getTelegram().orElse(personToEdit.getTelegram());
         Website updatedWebsite = editPersonDescriptor.getWebsite().orElse(personToEdit.getWebsite());
-        Set<Tag> updatedTags = editPersonDescriptor.getTags().orElse(personToEdit.getTags());
+        Set<Module> updatedModules = editPersonDescriptor.getTags().orElse(personToEdit.getModules());
 
         return new Person(updatedName, updatedPhone, updatedEmail, updatedAlias, updatedCourse, updatedNote,
-                updatedTelegram, updatedWebsite, updatedTags);
+                updatedTelegram, updatedWebsite, updatedModules);
     }
 
     @Override
@@ -158,13 +158,13 @@ public class EditCommand extends Command {
         private Note note;
         private Telegram telegram;
         private Website website;
-        private Set<Tag> tags;
+        private Set<Module> modules;
 
         public EditPersonDescriptor() {}
 
         /**
          * Copy constructor.
-         * A defensive copy of {@code tags} is used internally.
+         * A defensive copy of {@code modules} is used internally.
          */
         public EditPersonDescriptor(EditPersonDescriptor toCopy) {
             setName(toCopy.name);
@@ -175,7 +175,7 @@ public class EditCommand extends Command {
             setNote(toCopy.note);
             setTelegram(toCopy.telegram);
             setWebsite(toCopy.website);
-            setTags(toCopy.tags);
+            setModules(toCopy.modules);
         }
 
         /**
@@ -183,7 +183,7 @@ public class EditCommand extends Command {
          */
         public boolean isAnyFieldEdited() {
             return CollectionUtil.isAnyNonNull(name, phone, email, alias, course,
-                    note, telegram, website, tags);
+                    note, telegram, website, modules);
         }
 
         public void setName(Name name) {
@@ -253,20 +253,20 @@ public class EditCommand extends Command {
 
 
         /**
-         * Sets {@code tags} to this object's {@code tags}.
-         * A defensive copy of {@code tags} is used internally.
+         * Sets {@code modules} to this object's {@code modules}.
+         * A defensive copy of {@code modules} is used internally.
          */
-        public void setTags(Set<Tag> tags) {
-            this.tags = (tags != null) ? new HashSet<>(tags) : null;
+        public void setModules(Set<Module> modules) {
+            this.modules = (modules != null) ? new HashSet<>(modules) : null;
         }
 
         /**
-         * Returns an unmodifiable tag set, which throws {@code UnsupportedOperationException}
+         * Returns an unmodifiable module set, which throws {@code UnsupportedOperationException}
          * if modification is attempted.
-         * Returns {@code Optional#empty()} if {@code tags} is null.
+         * Returns {@code Optional#empty()} if {@code modules} is null.
          */
-        public Optional<Set<Tag>> getTags() {
-            return (tags != null) ? Optional.of(Collections.unmodifiableSet(tags)) : Optional.empty();
+        public Optional<Set<Module>> getTags() {
+            return (modules != null) ? Optional.of(Collections.unmodifiableSet(modules)) : Optional.empty();
         }
 
         @Override
@@ -289,7 +289,7 @@ public class EditCommand extends Command {
                     && Objects.equals(note, otherEditPersonDescriptor.note)
                     && Objects.equals(telegram, otherEditPersonDescriptor.telegram)
                     && Objects.equals(website, otherEditPersonDescriptor.website)
-                    && Objects.equals(tags, otherEditPersonDescriptor.tags);
+                    && Objects.equals(modules, otherEditPersonDescriptor.modules);
         }
 
         @Override
@@ -303,7 +303,7 @@ public class EditCommand extends Command {
                     .add("note", note)
                     .add("telegram", telegram)
                     .add("website", website)
-                    .add("tags", tags)
+                    .add("modules", modules)
                     .toString();
         }
     }

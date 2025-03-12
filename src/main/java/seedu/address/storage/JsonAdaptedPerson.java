@@ -10,6 +10,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import seedu.address.commons.exceptions.IllegalValueException;
+import seedu.address.model.module.Module;
 import seedu.address.model.person.Alias;
 import seedu.address.model.person.Course;
 import seedu.address.model.person.Email;
@@ -19,7 +20,6 @@ import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
 import seedu.address.model.person.Telegram;
 import seedu.address.model.person.Website;
-import seedu.address.model.tag.Tag;
 
 
 /**
@@ -37,7 +37,7 @@ class JsonAdaptedPerson {
     private final String note;
     private final String telegram;
     private final String website;
-    private final List<JsonAdaptedTag> tags = new ArrayList<>();
+    private final List<JsonAdaptedModule> modules = new ArrayList<>();
 
     /**
      * Constructs a {@code JsonAdaptedPerson} with the given person details.
@@ -47,7 +47,7 @@ class JsonAdaptedPerson {
             @JsonProperty("email") String email, @JsonProperty("alias") String alias,
             @JsonProperty("course") String course, @JsonProperty("note") String note,
             @JsonProperty("telegram") String telegram, @JsonProperty("website") String website,
-            @JsonProperty("tags") List<JsonAdaptedTag> tags) {
+            @JsonProperty("modules") List<JsonAdaptedModule> modules) {
         this.name = name;
         this.phone = phone;
         this.email = email;
@@ -56,8 +56,8 @@ class JsonAdaptedPerson {
         this.note = note;
         this.telegram = telegram;
         this.website = website;
-        if (tags != null) {
-            this.tags.addAll(tags);
+        if (modules != null) {
+            this.modules.addAll(modules);
         }
     }
 
@@ -74,8 +74,8 @@ class JsonAdaptedPerson {
         telegram = source.getTelegram().value;
         website = source.getWebsite().value;
 
-        tags.addAll(source.getTags().stream()
-                .map(JsonAdaptedTag::new)
+        modules.addAll(source.getModules().stream()
+                .map(JsonAdaptedModule::new)
                 .collect(Collectors.toList()));
     }
 
@@ -85,9 +85,9 @@ class JsonAdaptedPerson {
      * @throws IllegalValueException if there were any data constraints violated in the adapted person.
      */
     public Person toModelType() throws IllegalValueException {
-        final List<Tag> personTags = new ArrayList<>();
-        for (JsonAdaptedTag tag : tags) {
-            personTags.add(tag.toModelType());
+        final List<Module> personModules = new ArrayList<>();
+        for (JsonAdaptedModule module : modules) {
+            personModules.add(module.toModelType());
         }
 
         if (name == null) {
@@ -155,9 +155,9 @@ class JsonAdaptedPerson {
         }
         final Website modelWebsite = new Website(website);
 
-        final Set<Tag> modelTags = new HashSet<>(personTags);
+        final Set<Module> modelModules = new HashSet<>(personModules);
         return new Person(modelName, modelPhone, modelEmail, modelAlias, modelCourse, modelNote,
-                modelTelegram, modelWebsite, modelTags);
+                modelTelegram, modelWebsite, modelModules);
     }
 
 }

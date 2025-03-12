@@ -6,10 +6,11 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_ALIAS_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_COURSE_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_EMAIL_BOB;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_MODULE_CS2103T;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_MODULE_CS2106;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NOTE_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_PHONE_BOB;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TELEGRAM_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_WEBSITE_BOB;
 import static seedu.address.testutil.Assert.assertThrows;
@@ -25,7 +26,7 @@ public class PersonTest {
     @Test
     public void asObservableList_modifyList_throwsUnsupportedOperationException() {
         Person person = new PersonBuilder().build();
-        assertThrows(UnsupportedOperationException.class, () -> person.getTags().remove(0));
+        assertThrows(UnsupportedOperationException.class, () -> person.getModules().remove(0));
     }
 
     @Test
@@ -45,7 +46,7 @@ public class PersonTest {
                 .withNote(VALID_NOTE_BOB)
                 .withTelegram(VALID_TELEGRAM_BOB)
                 .withWebsite(VALID_WEBSITE_BOB)
-                .withTags(VALID_TAG_HUSBAND)
+                .withModules(VALID_MODULE_CS2103T)
                 .build();
         assertTrue(ALICE.isSamePerson(editedAlice));
 
@@ -113,8 +114,8 @@ public class PersonTest {
         editedAlice = new PersonBuilder(ALICE).withWebsite(VALID_WEBSITE_BOB).build();
         assertFalse(ALICE.equals(editedAlice));
 
-        // different tags -> returns false
-        editedAlice = new PersonBuilder(ALICE).withTags(VALID_TAG_HUSBAND).build();
+        // different Modules -> returns false
+        editedAlice = new PersonBuilder(ALICE).withModules(VALID_MODULE_CS2106).build();
         assertFalse(ALICE.equals(editedAlice));
 
     }
@@ -129,7 +130,7 @@ public class PersonTest {
                 + ", note=" + ALICE.getNote()
                 + ", telegram=" + ALICE.getTelegram()
                 + ", website=" + ALICE.getWebsite()
-                + ", tags=" + ALICE.getTags() + "}";
+                + ", modules=" + ALICE.getModules() + "}";
         assertEquals(expected, ALICE.toString());
 
     }

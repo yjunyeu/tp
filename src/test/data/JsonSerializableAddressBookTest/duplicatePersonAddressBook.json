@@ -3,7 +3,7 @@
     "name": "Alice Pauline",
     "phone": "94351253",
     "email": "alice@example.com",
-    "tags": [ "friends" ],
+    "Modules": [ "friends" ],
     "alias": "Alice",
     "course": "Comp Sci",
     "note": "bestie",

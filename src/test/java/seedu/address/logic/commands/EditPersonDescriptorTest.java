@@ -8,10 +8,10 @@ import static seedu.address.logic.commands.CommandTestUtil.DESC_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_ALIAS_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_COURSE_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_EMAIL_BOB;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_MODULE_CS2103T;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NOTE_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_PHONE_BOB;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TELEGRAM_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_WEBSITE_BOB;
 
@@ -72,8 +72,8 @@ public class EditPersonDescriptorTest {
         editedAmy = new EditPersonDescriptorBuilder(DESC_AMY).withWebsite(VALID_WEBSITE_BOB).build();
         assertFalse(DESC_AMY.equals(editedAmy));
 
-        // different tags -> returns false
-        editedAmy = new EditPersonDescriptorBuilder(DESC_AMY).withTags(VALID_TAG_HUSBAND).build();
+        // different Modules -> returns false
+        editedAmy = new EditPersonDescriptorBuilder(DESC_AMY).withTags(VALID_MODULE_CS2103T).build();
         assertFalse(DESC_AMY.equals(editedAmy));
     }
 
@@ -88,7 +88,7 @@ public class EditPersonDescriptorTest {
                 + editPersonDescriptor.getCourse().orElse(null) + ", note="
                 + editPersonDescriptor.getNote().orElse(null) + ", telegram="
                 + editPersonDescriptor.getTelegram().orElse(null) + ", website="
-                + editPersonDescriptor.getWebsite().orElse(null) + ", tags="
+                + editPersonDescriptor.getWebsite().orElse(null) + ", modules="
                 + editPersonDescriptor.getTags().orElse(null) + "}";
         assertEquals(expected, editPersonDescriptor.toString());
     }

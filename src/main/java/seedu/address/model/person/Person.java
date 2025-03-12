@@ -8,7 +8,7 @@ import java.util.Objects;
 import java.util.Set;
 
 import seedu.address.commons.util.ToStringBuilder;
-import seedu.address.model.tag.Tag;
+import seedu.address.model.module.Module;
 
 /**
  * Represents a Person in the address book.
@@ -27,14 +27,14 @@ public class Person {
     private final Note note;
     private final Telegram telegram;
     private final Website website;
-    private final Set<Tag> tags = new HashSet<>();
+    private final Set<Module> modules = new HashSet<>();
 
 
     /**
      * Every field must be present and not null.
      */
     public Person(Name name, Phone phone, Email email, Alias alias, Course course, Note note,
-                  Telegram telegram, Website website, Set<Tag> tags) {
+                  Telegram telegram, Website website, Set<Module> modules) {
         requireAllNonNull(name, phone, email, alias, course, note, telegram, website);
         this.name = name;
         this.phone = phone;
@@ -44,7 +44,7 @@ public class Person {
         this.note = note;
         this.telegram = telegram;
         this.website = website;
-        this.tags.addAll(tags);
+        this.modules.addAll(modules);
     }
 
     public Name getName() {
@@ -55,7 +55,9 @@ public class Person {
         return phone;
     }
 
-    public Email getEmail() { return email; }
+    public Email getEmail() {
+        return email;
+    }
 
     public Alias getAlias() {
         return alias;
@@ -79,11 +81,11 @@ public class Person {
 
 
     /**
-     * Returns an immutable tag set, which throws {@code UnsupportedOperationException}
+     * Returns an immutable module set, which throws {@code UnsupportedOperationException}
      * if modification is attempted.
      */
-    public Set<Tag> getTags() {
-        return Collections.unmodifiableSet(tags);
+    public Set<Module> getModules() {
+        return Collections.unmodifiableSet(modules);
     }
 
     /**
@@ -123,13 +125,13 @@ public class Person {
                 && note.equals(otherPerson.note)
                 && telegram.equals(otherPerson.telegram)
                 && website.equals(otherPerson.website)
-                && tags.equals(otherPerson.tags);
+                && modules.equals(otherPerson.modules);
     }
 
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(name, phone, email, alias, course, note, telegram, website, tags);
+        return Objects.hash(name, phone, email, alias, course, note, telegram, website, modules);
     }
 
     @Override
@@ -143,7 +145,7 @@ public class Person {
                 .add("note", note)
                 .add("telegram", telegram)
                 .add("website", website)
-                .add("tags", tags)
+                .add("modules", modules)
                 .toString();
     }
 
