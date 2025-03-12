@@ -10,7 +10,7 @@ import seedu.address.commons.util.ToStringBuilder;
  * base the other component is using for its index. However, after receiving the {@code Index}, that component can
  * convert it back to an int if the index will not be passed to a different component again.
  */
-public class Index {
+public class Index implements Comparable<Index> {
     private int zeroBasedIndex;
 
     /**
@@ -65,5 +65,21 @@ public class Index {
     @Override
     public String toString() {
         return new ToStringBuilder(this).add("zeroBasedIndex", zeroBasedIndex).toString();
+    }
+
+    /**
+     * Compares this Index with another Index.
+     * Returns a negative integer, zero, or a positive integer as this Index is less than, equal to, or greater than the
+     * specified Index.
+     */
+    @Override
+    public int compareTo(Index other) {
+        // Compare the zero-based index values
+        return Integer.compare(this.zeroBasedIndex, other.zeroBasedIndex);
+    }
+
+    @Override
+    public int hashCode() {
+        return Integer.hashCode(zeroBasedIndex);
     }
 }
