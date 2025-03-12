@@ -33,7 +33,7 @@ public class DeleteCommandParserTest {
     }
 
     @Test
-    public void parse_validArgs_multiple_returnsDeleteCommand() {
+    public void parse_validArgsMultiple_returnsDeleteCommand() {
         List<Index> targetedIndices = new ArrayList<Index>();
         targetedIndices.add(INDEX_SECOND_PERSON);
         targetedIndices.add(INDEX_FIRST_PERSON);
@@ -49,7 +49,7 @@ public class DeleteCommandParserTest {
     }
 
     @Test
-    public void parse_invalidArgs_multiple_throwsParseException() {
+    public void parse_invalidArgsMultiple_throwsParseException() {
         assertParseFailure(parser, "1 2 a", String.format(MESSAGE_INVALID_COMMAND_FORMAT, DeleteCommand.MESSAGE_USAGE));
     }
 }
