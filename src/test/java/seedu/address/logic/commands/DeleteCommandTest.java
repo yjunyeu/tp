@@ -8,6 +8,7 @@ import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.address.logic.commands.CommandTestUtil.showPersonAtIndex;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
 import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND_PERSON;
+import static seedu.address.testutil.TypicalIndexes.INDEX_THIRD_PERSON;
 import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;
 
 import java.util.ArrayList;
@@ -47,10 +48,43 @@ public class DeleteCommandTest {
     }
 
     @Test
+    public void execute_validIndicesUnfilteredList_success() {
+        Person firstPersonToDelete = model.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased());
+        Person secondPersonToDelete = model.getFilteredPersonList().get(INDEX_SECOND_PERSON.getZeroBased());
+        List<Index> targetedIndices = new ArrayList<Index>();
+        targetedIndices.add(INDEX_SECOND_PERSON);
+        targetedIndices.add(INDEX_FIRST_PERSON);
+        DeleteCommand deleteCommand = new DeleteCommand(targetedIndices);
+
+        String expectedMessage = String.format(DeleteCommand.MESSAGE_DELETE_PERSON_SUCCESS,
+                Messages.format(secondPersonToDelete)) + "\n"
+                + String.format(DeleteCommand.MESSAGE_DELETE_PERSON_SUCCESS,
+                Messages.format(firstPersonToDelete));
+
+        ModelManager expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs());
+        expectedModel.deletePerson(secondPersonToDelete);
+        expectedModel.deletePerson(firstPersonToDelete);
+
+        assertCommandSuccess(deleteCommand, model, expectedMessage, expectedModel);
+    }
+
+    @Test
     public void execute_invalidIndexUnfilteredList_throwsCommandException() {
+        Person firstPersonToDelete = model.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased());
         Index outOfBoundIndex = Index.fromOneBased(model.getFilteredPersonList().size() + 1);
         List<Index> targetedIndices = new ArrayList<Index>();
         targetedIndices.add(outOfBoundIndex);
+        DeleteCommand deleteCommand = new DeleteCommand(targetedIndices);
+
+        assertCommandFailure(deleteCommand, model, Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
+    }
+
+    @Test
+    public void execute_invalidIndicesUnfilteredList_throwsCommandException() {
+        Index outOfBoundIndex = Index.fromOneBased(model.getFilteredPersonList().size() + 1);
+        List<Index> targetedIndices = new ArrayList<Index>();
+        targetedIndices.add(outOfBoundIndex);
+        targetedIndices.add(INDEX_FIRST_PERSON);
         DeleteCommand deleteCommand = new DeleteCommand(targetedIndices);
 
         assertCommandFailure(deleteCommand, model, Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
@@ -98,6 +132,10 @@ public class DeleteCommandTest {
         List<Index> secondTargetedIndices = new ArrayList<Index>();
         secondTargetedIndices.add(INDEX_SECOND_PERSON);
         DeleteCommand deleteSecondCommand = new DeleteCommand(secondTargetedIndices);
+        List<Index> thirdTargetedIndices = new ArrayList<Index>();
+        thirdTargetedIndices.add(INDEX_SECOND_PERSON);
+        thirdTargetedIndices.add(INDEX_FIRST_PERSON);
+        DeleteCommand deleteThirdCommand = new DeleteCommand(thirdTargetedIndices);
 
         // same object -> returns true
         assertTrue(deleteFirstCommand.equals(deleteFirstCommand));
@@ -114,8 +152,10 @@ public class DeleteCommandTest {
         // null -> returns false
         assertFalse(deleteFirstCommand.equals(null));
 
-        // different person -> returns false
+        // different person(s) -> returns false
         assertFalse(deleteFirstCommand.equals(deleteSecondCommand));
+        assertFalse(deleteFirstCommand.equals(deleteThirdCommand));
+        assertFalse(deleteThirdCommand.equals(deleteSecondCommand));
     }
 
     @Test

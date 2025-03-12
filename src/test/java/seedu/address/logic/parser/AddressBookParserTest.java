@@ -6,6 +6,7 @@ import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.Messages.MESSAGE_UNKNOWN_COMMAND;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
+import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND_PERSON;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -53,6 +54,18 @@ public class AddressBookParserTest {
         DeleteCommand command = (DeleteCommand) parser.parseCommand(
                 DeleteCommand.COMMAND_WORD + " " + INDEX_FIRST_PERSON.getOneBased());
         List<Index> targetedIndices = new ArrayList<Index>();
+        targetedIndices.add(INDEX_FIRST_PERSON);
+        assertEquals(new DeleteCommand(targetedIndices), command);
+    }
+
+    @Test
+    public void parseCommand_deleteMultiple() throws Exception {
+        DeleteCommand command = (DeleteCommand) parser.parseCommand(
+                DeleteCommand.COMMAND_WORD
+                        + " " + INDEX_FIRST_PERSON.getOneBased()
+                        + " " + INDEX_SECOND_PERSON.getOneBased());
+        List<Index> targetedIndices = new ArrayList<Index>();
+        targetedIndices.add(INDEX_SECOND_PERSON);
         targetedIndices.add(INDEX_FIRST_PERSON);
         assertEquals(new DeleteCommand(targetedIndices), command);
     }
