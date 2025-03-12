@@ -126,7 +126,7 @@
     -fx-text-fill: #200a81;
 }
 
-.cell_small_label {
+.detail-label {
     -fx-font-family: "Segoe UI";
     -fx-font-size: 13px;
     -fx-text-fill: #010504;
@@ -349,4 +349,37 @@
     -fx-border-radius: 2;
     -fx-background-radius: 2;
     -fx-font-size: 11;
+}
+
+.label-subheader {
+    -fx-font-size: 16pt;
+    -fx-font-family: "Segoe UI Semibold";
+    -fx-text-fill: #000000;
+    -fx-opacity: 0.9;
+}
+
+.group-header-box {
+    -fx-background-color: derive(#003d7c, 20%);
+    -fx-padding: 8 10 8 10;
+    -fx-alignment: center;
+}
+
+.group-header-label {
+    -fx-font-size: 16pt;
+    -fx-font-family: "Segoe UI Semibold";
+    -fx-text-fill: white;
+    -fx-opacity: 1.0;
+}
+
+.person-header-label {
+    -fx-font-size: 22pt;
+    -fx-font-family: "Segoe UI Semibold";
+    -fx-text-fill: derive(#003d7c, 20%);
+    -fx-padding: 10 0 5 0;
+}
+
+.detail-label {
+    -fx-font-size: 10pt;
+    -fx-font-family: "Segoe UI";
+    -fx-text-fill: #707070;
 }
