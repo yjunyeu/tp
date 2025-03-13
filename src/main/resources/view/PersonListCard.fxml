@@ -28,13 +28,8 @@
         <Label fx:id="name" text="\$first" styleClass="cell_big_label" />
       </HBox>
       <FlowPane fx:id="modules" />
-      <Label fx:id="phone" styleClass="cell_small_label" />
-      <Label fx:id="email" styleClass="cell_small_label" />
-      <Label fx:id="alias" styleClass="cell_small_label" />
-      <Label fx:id="course" styleClass="cell_small_label" />
-      <Label fx:id="note" styleClass="cell_small_label" />
-      <Label fx:id="telegram" styleClass="cell_small_label" />
-      <Label fx:id="website" styleClass="cell_small_label" />
+      <Label fx:id="phone" styleClass="detail-label" />
+      <Label fx:id="telegram" styleClass="detail-label" />
     </VBox>
   </GridPane>
 </HBox>

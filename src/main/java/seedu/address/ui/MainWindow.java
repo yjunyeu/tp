@@ -34,6 +34,8 @@ public class MainWindow extends UiPart<Stage> {
     private PersonListPanel personListPanel;
     private ResultDisplay resultDisplay;
     private HelpWindow helpWindow;
+    private GroupPanel groupPanel;
+    private PersonDetailsPanel personDetailsPanel;
 
     @FXML
     private StackPane commandBoxPlaceholder;
@@ -49,6 +51,12 @@ public class MainWindow extends UiPart<Stage> {
 
     @FXML
     private StackPane statusbarPlaceholder;
+
+    @FXML
+    private StackPane groupPanelPlaceholder;
+
+    @FXML
+    private StackPane personDetailsPanelPlaceholder;
 
     /**
      * Creates a {@code MainWindow} with the given {@code Stage} and {@code Logic}.
@@ -112,6 +120,19 @@ public class MainWindow extends UiPart<Stage> {
     void fillInnerParts() {
         personListPanel = new PersonListPanel(logic.getFilteredPersonList());
         personListPanelPlaceholder.getChildren().add(personListPanel.getRoot());
+
+        groupPanel = new GroupPanel();
+        groupPanelPlaceholder.getChildren().add(groupPanel.getRoot());
+
+        personDetailsPanel = new PersonDetailsPanel();
+        personDetailsPanelPlaceholder.getChildren().add(personDetailsPanel.getRoot());
+
+        personListPanel.getPersonListView().getSelectionModel().selectedItemProperty().addListener((
+                observable, oldValue, newValue) -> {
+                    if (newValue != null) {
+                        personDetailsPanel.setPersonDetails(newValue);
+                    }
+                });
 
         resultDisplay = new ResultDisplay();
         resultDisplayPlaceholder.getChildren().add(resultDisplay.getRoot());

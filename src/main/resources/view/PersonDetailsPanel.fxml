@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+    <Label fx:id="nameLabel" styleClass="person-header-label" />
+    <VBox spacing="8" VBox.vgrow="NEVER">
+    <Label fx:id="phoneLabel" styleClass="detail-label" />
+    <Label fx:id="emailLabel" styleClass="detail-label" />
+    <Label fx:id="aliasLabel" styleClass="detail-label" />
+    <Label fx:id="courseLabel" styleClass="detail-label" />
+    <Label fx:id="noteLabel" styleClass="detail-label" />
+    <Label fx:id="telegramLabel" styleClass="detail-label" />
+    <Label fx:id="websiteLabel" styleClass="detail-label" />
+    </VBox>
+</VBox>

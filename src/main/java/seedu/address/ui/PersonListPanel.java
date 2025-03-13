@@ -45,4 +45,11 @@ public class PersonListPanel extends UiPart<Region> {
         }
     }
 
+    /**
+     * Returns the ListView containing persons.
+     */
+    public ListView<Person> getPersonListView() {
+        return personListView;
+    }
+
 }
