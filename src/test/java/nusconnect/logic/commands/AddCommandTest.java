@@ -1,11 +1,11 @@
 package nusconnect.logic.commands;
 
 import static java.util.Objects.requireNonNull;
+import static nusconnect.testutil.Assert.assertThrows;
+import static nusconnect.testutil.TypicalPersons.ALICE;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static nusconnect.testutil.Assert.assertThrows;
-import static nusconnect.testutil.TypicalPersons.ALICE;
 
 import java.nio.file.Path;
 import java.util.ArrayList;

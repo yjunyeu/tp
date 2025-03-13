@@ -1,6 +1,5 @@
 package nusconnect.logic;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static nusconnect.logic.Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX;
 import static nusconnect.logic.Messages.MESSAGE_UNKNOWN_COMMAND;
 import static nusconnect.logic.commands.CommandTestUtil.ALIAS_DESC_AMY;
@@ -13,6 +12,7 @@ import static nusconnect.logic.commands.CommandTestUtil.TELEGRAM_DESC_AMY;
 import static nusconnect.logic.commands.CommandTestUtil.WEBSITE_DESC_AMY;
 import static nusconnect.testutil.Assert.assertThrows;
 import static nusconnect.testutil.TypicalPersons.AMY;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.io.IOException;
 import java.nio.file.AccessDeniedException;

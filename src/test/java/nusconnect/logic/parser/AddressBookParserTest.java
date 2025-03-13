@@ -1,12 +1,12 @@
 package nusconnect.logic.parser;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 import static nusconnect.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static nusconnect.logic.Messages.MESSAGE_UNKNOWN_COMMAND;
 import static nusconnect.testutil.Assert.assertThrows;
 import static nusconnect.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
 import static nusconnect.testutil.TypicalIndexes.INDEX_SECOND_PERSON;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.ArrayList;
 import java.util.Arrays;

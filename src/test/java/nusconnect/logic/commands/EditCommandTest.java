@@ -1,8 +1,5 @@
 package nusconnect.logic.commands;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 import static nusconnect.logic.commands.CommandTestUtil.DESC_AMY;
 import static nusconnect.logic.commands.CommandTestUtil.DESC_BOB;
 import static nusconnect.logic.commands.CommandTestUtil.VALID_MODULE_CS2103T;
@@ -14,6 +11,9 @@ import static nusconnect.logic.commands.CommandTestUtil.showPersonAtIndex;
 import static nusconnect.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
 import static nusconnect.testutil.TypicalIndexes.INDEX_SECOND_PERSON;
 import static nusconnect.testutil.TypicalPersons.getTypicalAddressBook;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
 

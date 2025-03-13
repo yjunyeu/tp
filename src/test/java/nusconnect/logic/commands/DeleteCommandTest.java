@@ -1,14 +1,14 @@
 package nusconnect.logic.commands;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 import static nusconnect.logic.commands.CommandTestUtil.assertCommandFailure;
 import static nusconnect.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static nusconnect.logic.commands.CommandTestUtil.showPersonAtIndex;
 import static nusconnect.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
 import static nusconnect.testutil.TypicalIndexes.INDEX_SECOND_PERSON;
 import static nusconnect.testutil.TypicalPersons.getTypicalAddressBook;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,6 +1,5 @@
 package nusconnect.storage;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static nusconnect.logic.parser.CliSyntax.PREFIX_ALIAS;
 import static nusconnect.logic.parser.CliSyntax.PREFIX_COURSE;
 import static nusconnect.logic.parser.CliSyntax.PREFIX_NOTE;
@@ -9,6 +8,7 @@ import static nusconnect.logic.parser.CliSyntax.PREFIX_WEBSITE;
 import static nusconnect.storage.JsonAdaptedPerson.MISSING_FIELD_MESSAGE_FORMAT;
 import static nusconnect.testutil.Assert.assertThrows;
 import static nusconnect.testutil.TypicalPersons.BENSON;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.ArrayList;
 import java.util.List;

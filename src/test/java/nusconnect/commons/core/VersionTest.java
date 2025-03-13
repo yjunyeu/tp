@@ -1,8 +1,8 @@
 package nusconnect.commons.core;
 
+import static nusconnect.testutil.Assert.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static nusconnect.testutil.Assert.assertThrows;
 
 import org.junit.jupiter.api.Test;
 

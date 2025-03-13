@@ -1,14 +1,14 @@
 package nusconnect.logic.commands;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 import static nusconnect.logic.Messages.MESSAGE_PERSONS_LISTED_OVERVIEW;
 import static nusconnect.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static nusconnect.testutil.TypicalPersons.CARL;
 import static nusconnect.testutil.TypicalPersons.ELLE;
 import static nusconnect.testutil.TypicalPersons.FIONA;
 import static nusconnect.testutil.TypicalPersons.getTypicalAddressBook;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.Arrays;
 import java.util.Collections;

@@ -1,13 +1,13 @@
 package nusconnect.model;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 import static nusconnect.logic.commands.CommandTestUtil.VALID_COURSE_BOB;
 import static nusconnect.logic.commands.CommandTestUtil.VALID_MODULE_CS2103T;
 import static nusconnect.testutil.Assert.assertThrows;
 import static nusconnect.testutil.TypicalPersons.ALICE;
 import static nusconnect.testutil.TypicalPersons.getTypicalAddressBook;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.Arrays;
 import java.util.Collection;

@@ -1,12 +1,12 @@
 package nusconnect.storage;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
 import static nusconnect.testutil.Assert.assertThrows;
 import static nusconnect.testutil.TypicalPersons.ALICE;
 import static nusconnect.testutil.TypicalPersons.HOON;
 import static nusconnect.testutil.TypicalPersons.IDA;
 import static nusconnect.testutil.TypicalPersons.getTypicalAddressBook;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 
 import java.io.IOException;
 import java.nio.file.Path;

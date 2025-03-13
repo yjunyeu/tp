@@ -1,8 +1,5 @@
 package nusconnect.model.person;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 import static nusconnect.logic.commands.CommandTestUtil.VALID_ALIAS_BOB;
 import static nusconnect.logic.commands.CommandTestUtil.VALID_COURSE_BOB;
 import static nusconnect.logic.commands.CommandTestUtil.VALID_EMAIL_BOB;
@@ -16,6 +13,9 @@ import static nusconnect.logic.commands.CommandTestUtil.VALID_WEBSITE_BOB;
 import static nusconnect.testutil.Assert.assertThrows;
 import static nusconnect.testutil.TypicalPersons.ALICE;
 import static nusconnect.testutil.TypicalPersons.BOB;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
 

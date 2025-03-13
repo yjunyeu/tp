@@ -1,8 +1,8 @@
 package nusconnect.storage;
 
+import static nusconnect.testutil.TypicalPersons.getTypicalAddressBook;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static nusconnect.testutil.TypicalPersons.getTypicalAddressBook;
 
 import java.nio.file.Path;
 

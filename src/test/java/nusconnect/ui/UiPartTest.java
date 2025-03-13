@@ -1,8 +1,8 @@
 package nusconnect.ui;
 
+import static nusconnect.testutil.Assert.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static nusconnect.testutil.Assert.assertThrows;
 
 import java.net.URL;
 import java.nio.file.Path;

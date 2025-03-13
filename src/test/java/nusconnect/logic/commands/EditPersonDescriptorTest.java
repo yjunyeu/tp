@@ -1,8 +1,5 @@
 package nusconnect.logic.commands;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 import static nusconnect.logic.commands.CommandTestUtil.DESC_AMY;
 import static nusconnect.logic.commands.CommandTestUtil.DESC_BOB;
 import static nusconnect.logic.commands.CommandTestUtil.VALID_ALIAS_BOB;
@@ -14,6 +11,9 @@ import static nusconnect.logic.commands.CommandTestUtil.VALID_NOTE_BOB;
 import static nusconnect.logic.commands.CommandTestUtil.VALID_PHONE_BOB;
 import static nusconnect.logic.commands.CommandTestUtil.VALID_TELEGRAM_BOB;
 import static nusconnect.logic.commands.CommandTestUtil.VALID_WEBSITE_BOB;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
 
