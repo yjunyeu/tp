@@ -1,6 +1,5 @@
 package nusconnect.logic.commands;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static nusconnect.logic.parser.CliSyntax.PREFIX_ALIAS;
 import static nusconnect.logic.parser.CliSyntax.PREFIX_COURSE;
 import static nusconnect.logic.parser.CliSyntax.PREFIX_EMAIL;
@@ -11,6 +10,7 @@ import static nusconnect.logic.parser.CliSyntax.PREFIX_PHONE;
 import static nusconnect.logic.parser.CliSyntax.PREFIX_TELEGRAM;
 import static nusconnect.logic.parser.CliSyntax.PREFIX_WEBSITE;
 import static nusconnect.testutil.Assert.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.ArrayList;
