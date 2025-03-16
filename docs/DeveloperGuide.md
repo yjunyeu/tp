@@ -272,7 +272,7 @@ NUS students
 **Value proposition**: A fast and efficient contact management tool for NUS students.
 NUSConnect helps students quickly add, organise and find contacts with minimal effort.
 
-
+```markdown
 ### User stories
 
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
@@ -312,6 +312,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `*` | Student | Merge duplicate contacts | Maintain a clean and organized contact list |
 | `*` | Student | Customize the app’s theme (light/dark mode) | Personalize the user experience based on my visual preferences |
 *{More to be added}*
+```
 
 ### Use cases
 
