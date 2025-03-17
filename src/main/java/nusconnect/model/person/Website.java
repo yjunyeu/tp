@@ -5,34 +5,32 @@ import static nusconnect.commons.util.AppUtil.checkArgument;
 
 
 /**
- * Represents a Person's website in the website book.
+ * Represents a Person's website in the address book.
  * Guarantees: immutable; is valid as declared in {@link #isValidWebsite(String)}
  */
 public class Website {
 
-    public static final String MESSAGE_CONSTRAINTS = "Websitees can take any values, and it should not be blank";
+    public static final String MESSAGE_CONSTRAINTS =
+            "Websites start with 'http://' or 'https://', followed by a valid domain name";
 
-    /*
-     * The first character of the website must not be a whitespace,
-     * otherwise " " (a blank string) becomes a valid input.
-     */
-    public static final String VALIDATION_REGEX = "[^\\s].*";
+    // Regex for validating website format
+    public static final String VALIDATION_REGEX = "^(https?://)?([a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}(/[\\w-]*)*$";
 
     public final String value;
 
     /**
-     * Constructs an {@code Website}.
+     * Constructs a {@code Website}.
      *
      * @param website A valid website.
      */
     public Website(String website) {
-        requireNonNull(website);
+        requireNonNull(website, "Website cannot be null");
         checkArgument(isValidWebsite(website), MESSAGE_CONSTRAINTS);
         value = website;
     }
 
     /**
-     * Returns true if a given string is a valid email.
+     * Returns true if a given string is a valid website.
      */
     public static boolean isValidWebsite(String test) {
         return test.matches(VALIDATION_REGEX);
@@ -61,6 +59,4 @@ public class Website {
     public int hashCode() {
         return value.hashCode();
     }
-
 }
-

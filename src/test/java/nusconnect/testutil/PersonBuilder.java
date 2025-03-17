@@ -24,9 +24,9 @@ public class PersonBuilder {
     public static final String DEFAULT_PHONE = "85355255";
     public static final String DEFAULT_EMAIL = "amy@gmail.com";
     public static final String DEFAULT_ALIAS = "Amee";
-    public static final String DEFAULT_COURSE = "CS";
+    public static final String DEFAULT_COURSE = "Computer Science";
     public static final String DEFAULT_NOTE = "Bestie!";
-    public static final String DEFAULT_TELEGRAM = "@AMY";
+    public static final String DEFAULT_TELEGRAM = "amyamybee";
     public static final String DEFAULT_WEBSITE = "aimee.com";
 
     private Name name;

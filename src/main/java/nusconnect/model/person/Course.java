@@ -9,13 +9,14 @@ import static nusconnect.commons.util.AppUtil.checkArgument;
  */
 public class Course {
 
-    public static final String MESSAGE_CONSTRAINTS = "Courses can take any values, and it should not be blank";
+    public static final String MESSAGE_CONSTRAINTS =
+            "Courses can only contain alphabets, spaces, and it should not be blank";
 
     /*
      * The first character of the course must not be a whitespace,
      * otherwise " " (a blank string) becomes a valid input.
      */
-    public static final String VALIDATION_REGEX = "[^\\s].*";
+    public static final String VALIDATION_REGEX = "[A-Za-z][A-Za-z ]*";
 
     public final String value;
 
@@ -62,4 +63,3 @@ public class Course {
     }
 
 }
-

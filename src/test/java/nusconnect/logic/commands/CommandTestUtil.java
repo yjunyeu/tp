@@ -40,12 +40,12 @@ public class CommandTestUtil {
     public static final String VALID_MODULE_CS2106 = "CS2106";
     public static final String VALID_ALIAS_AMY = "AmyBeeAlias";
     public static final String VALID_ALIAS_BOB = "BobChooAlias";
-    public static final String VALID_COURSE_AMY = "CS101";
-    public static final String VALID_COURSE_BOB = "CS202";
+    public static final String VALID_COURSE_AMY = "Computer Science";
+    public static final String VALID_COURSE_BOB = "Information Security";
     public static final String VALID_NOTE_AMY = "Likes ice cream.";
     public static final String VALID_NOTE_BOB = "Enjoys long walks.";
-    public static final String VALID_TELEGRAM_AMY = "@amybee";
-    public static final String VALID_TELEGRAM_BOB = "@bobchoo";
+    public static final String VALID_TELEGRAM_AMY = "amybee";
+    public static final String VALID_TELEGRAM_BOB = "bobchoo";
     public static final String VALID_WEBSITE_AMY = "https://amy.example.com";
     public static final String VALID_WEBSITE_BOB = "https://bob.example.com";
 
