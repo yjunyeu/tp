@@ -272,7 +272,6 @@ NUS students
 **Value proposition**: A fast and efficient contact management tool for NUS students.
 NUSConnect helps students quickly add, organise and find contacts with minimal effort.
 
-
 ### User stories
 
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
@@ -339,6 +338,30 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     * 3a1. NUSConnect shows an error message.
 
       Use case resumes at step 2.
+
+**Use case: Delete multiple contacts**
+
+**MSS**
+
+1.  User requests to list contacts
+2.  NUSConnect shows a list of contacts
+3.  User requests to delete a list of contacts in the list
+4.  NUSConnect deletes the contacts
+
+    Use case ends.
+
+**Extensions**
+
+* 2a. The list is empty.
+
+  Use case ends.
+
+* 3a. At least one of the indices is invalid.
+
+    * 3a1. NUSConnect shows an error message.
+
+      Use case resumes at step 2.
+
 
 **Use case: Adding a person**
 
@@ -413,7 +436,7 @@ testers are expected to do more *exploratory* testing.
 
 1. _{ more test cases …​ }_
 
-### Deleting a person
+### Deleting people
 
 1. Deleting a person while all persons are being shown
 
@@ -421,6 +444,9 @@ testers are expected to do more *exploratory* testing.
 
    1. Test case: `delete 1`<br>
       Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.
+
+   1. Test case: `delete 1 2 1 2`<br>
+      Expected: The first and second contacts are deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated. 
 
    1. Test case: `delete 0`<br>
       Expected: No person is deleted. Error details shown in the status message. Status bar remains the same.
