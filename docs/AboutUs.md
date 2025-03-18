@@ -34,7 +34,7 @@ We are a team based in the [School of Computing, National University of Singapor
 [[github](http://github.com/javentankangle)]
 
 * Role: Developer
-* Responsibilities: Team Lead
+* Responsibilities: Integration, Refactoring and upgrade of model
 
 ### Sim Ray En Ryan
 
