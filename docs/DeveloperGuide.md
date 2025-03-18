@@ -550,7 +550,7 @@ NUSConnect helps students quickly add, organise and find contacts with minimal e
 
 1.  User request to list contacts
 2.  NUSConnect shows the list of contacts
-    
+
     Use case ends.
 
 **Extensions**
@@ -615,7 +615,7 @@ testers are expected to do more *exploratory* testing.
       Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.
 
    1. Test case: `delete 1 2 1 2`<br>
-      Expected: The first and second contacts are deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated. 
+      Expected: The first and second contacts are deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.
 
    1. Test case: `delete 0`<br>
       Expected: No person is deleted. Error details shown in the status message. Status bar remains the same.
