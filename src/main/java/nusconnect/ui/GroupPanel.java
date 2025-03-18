@@ -22,7 +22,8 @@ public class GroupPanel extends UiPart<Region> {
      */
     public GroupPanel() {
         super(FXML);
+        groupListView.getStyleClass().add("group-list");
         groupListView.getItems().addAll("1. CS2103T Team", "2. CS2106 Lab");
-        // dummy values; not fully done
+        // dummy values
     }
 }
