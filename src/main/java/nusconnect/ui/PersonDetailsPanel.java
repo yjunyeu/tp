@@ -60,13 +60,13 @@ public class PersonDetailsPanel extends UiPart<Region> {
     public void setPersonDetails(Person person) {
         if (person != null) {
             nameLabel.setText(person.getName().fullName);
-            phoneLabel.setText("Number: " + person.getPhone().value);
-            emailLabel.setText("Email: " + person.getEmail().value);
-            aliasLabel.setText("Alias: " + person.getAlias().value);
-            courseLabel.setText("Course: " + person.getCourse().value);
-            noteLabel.setText("Note: " + person.getNote().value);
-            telegramLabel.setText("Telegram: " + person.getTelegram().value);
-            websiteLabel.setText("Website: " + person.getWebsite().value);
+            phoneLabel.setText(person.getPhone().value);
+            emailLabel.setText(person.getEmail().value);
+            aliasLabel.setText(person.getAlias().value);
+            courseLabel.setText(person.getCourse().value);
+            noteLabel.setText(person.getNote().value);
+            telegramLabel.setText(person.getTelegram().value);
+            websiteLabel.setText(person.getWebsite().value);
         } else {
             setDefaultDetails();
         }

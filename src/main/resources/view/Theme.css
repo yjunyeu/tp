@@ -383,3 +383,10 @@
     -fx-font-family: "Segoe UI";
     -fx-text-fill: #707070;
 }
+
+.detail-label-bold {
+    -fx-font-size: 10pt;
+    -fx-font-family: "Segoe UI";
+    -fx-text-fill: #707070;
+    -fx-font-weight: bold;
+}
