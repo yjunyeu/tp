@@ -272,45 +272,254 @@ NUS students
 **Value proposition**: A fast and efficient contact management tool for NUS students.
 NUSConnect helps students quickly add, organise and find contacts with minimal effort.
 
-### User stories
 
-Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
-| Priority | As a … | I want to … | So that I can … |
-|----------|--------|------------|----------------|
-| `***` | Student | Group contacts under categories such as "Classmates" | Easily locate specific individuals (e.g., peers or professors) when needed |
-| `***` | Student | Export contacts to a CSV file | Transfer contact data efficiently across different platforms |
-| `***` | Student | Link multiple contact methods to a single person (e.g., email, phone) | Communicate through multiple channels as needed |
-| `***` | Student | Search for a contact by name | Retrieve contact details quickly |
-| `***` | Student | Import contacts from a CSV file | Seamlessly transfer contacts between devices |
-| `***` | Student | Delete a contact from the address book | Remove outdated or unnecessary contacts efficiently |
-| `***` | Student | Create an automatic group based on faculty or module | Organize contacts systematically for better accessibility |
-| `***` | Student | Edit a contact’s details | Ensure information remains accurate and up to date |
-| `***` | Student | View a contact’s profile with their full details | Access comprehensive details when needed |
-| `***` | Student | Sort contacts alphabetically | Keep the contact list structured and organized |
-| `**` | Student | View upcoming birthdays of contacts | Plan ahead for important dates |
-| `**` | Student | See recent interactions with a contact (e.g., messages, meetings) | Identify frequently contacted individuals easily |
-| `**` | Student | Set a custom label for each contact (e.g., Project Work, Hostel) | Categorize contacts effectively for quick filtering |
-| `**` | Student | Favorite certain contacts for quick access | Quickly access frequently used contacts |
-| `**` | Student | Share a contact’s details with another student | Streamline collaboration and networking |
-| `**` | Student | Store emergency contact details in a dedicated section | Quickly access critical contact information in urgent situations |
-| `**` | Student | Add personal notes to a contact’s profile | Preserve important contextual information about a contact |
-| `**` | Teaching assistant | Store and access student contact details efficiently | Manage student information systematically |
-| `**` | Student | Delete all contacts in bulk if needed | Reset my contact list when necessary |
-| `**` | Project group leader | Create a contact group specific to a project | Easily access project members’ details for coordination |
-| `**` | Student | Tag contacts for events (e.g., workshops, conferences) | Efficiently group and identify event participants |
-| `**` | Student | Add a profile picture to a contact | Recognize contacts visually more easily |
-| `*` | Cybersecurity-conscious student | Enable a PIN or biometric authentication for accessing the address book | Protect my contact data from unauthorized access |
-| `*` | Student | Hide certain contacts from the main list | Maintain privacy by controlling which contacts are visible |
-| `*` | Student | Send reminders regarding a contact | Keep track of important follow-ups or tasks |
-| `*` | Student | Filter contacts based on faculty or department | Quickly identify relevant individuals based on their affiliations |
-| `*` | Student | Copy a contact’s details to the clipboard | Paste contact information into other applications as needed |
-| `*` | Course Manager | Create a contact list for students | Provide a structured system for students to connect easily |
-| `*` | CCA committee leader | Create a list of CCA members with their roles | Efficiently manage and identify CCA members |
-| `*` | Student | Scan a QR code to instantly save someone’s contact details | Quickly add new contacts without manual entry |
-| `*` | Student | Merge duplicate contacts | Maintain a clean and organized contact list |
-| `*` | Student | Customize the app’s theme (light/dark mode) | Personalize the user experience based on my visual preferences |
-*{More to be added}*
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Stories Table</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        .high-priority {
+            background-color: #ffcccb;
+        }
+
+        .medium-priority {
+            background-color: #ffffcc;
+        }
+
+        .low-priority {
+            background-color: #e6f7ff;
+        }
+    </style>
+</head>
+<body>
+
+<h2>User Stories</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>Priority</th>
+            <th>As a …</th>
+            <th>I want to …</th>
+            <th>So that I can …</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr class="high-priority">
+            <td>***</td>
+            <td>Student</td>
+            <td>Group contacts under categories such as "Classmates"</td>
+            <td>Easily locate specific individuals (e.g., peers or professors) when needed</td>
+        </tr>
+        <tr class="high-priority">
+            <td>***</td>
+            <td>Student</td>
+            <td>Export contacts to a CSV file</td>
+            <td>Transfer contact data efficiently across different platforms</td>
+        </tr>
+        <tr class="high-priority">
+            <td>***</td>
+            <td>Student</td>
+            <td>Link multiple contact methods to a single person (e.g., email, phone)</td>
+            <td>Communicate through multiple channels as needed</td>
+        </tr>
+        <tr class="high-priority">
+            <td>***</td>
+            <td>Student</td>
+            <td>Search for a contact by name</td>
+            <td>Retrieve contact details quickly</td>
+        </tr>
+        <tr class="high-priority">
+            <td>***</td>
+            <td>Student</td>
+            <td>Import contacts from a CSV file</td>
+            <td>Seamlessly transfer contacts between devices</td>
+        </tr>
+        <tr class="high-priority">
+            <td>***</td>
+            <td>Student</td>
+            <td>Delete a contact from the address book</td>
+            <td>Remove outdated or unnecessary contacts efficiently</td>
+        </tr>
+        <tr class="high-priority">
+            <td>***</td>
+            <td>Student</td>
+            <td>Create an automatic group based on faculty or module</td>
+            <td>Organize contacts systematically for better accessibility</td>
+        </tr>
+        <tr class="high-priority">
+            <td>***</td>
+            <td>Student</td>
+            <td>Edit a contact’s details</td>
+            <td>Ensure information remains accurate and up to date</td>
+        </tr>
+        <tr class="high-priority">
+            <td>***</td>
+            <td>Student</td>
+            <td>View a contact’s profile with their full details</td>
+            <td>Access comprehensive details when needed</td>
+        </tr>
+        <tr class="high-priority">
+            <td>***</td>
+            <td>Student</td>
+            <td>Sort contacts alphabetically</td>
+            <td>Keep the contact list structured and organized</td>
+        </tr>
+        <tr class="medium-priority">
+            <td>**</td>
+            <td>Student</td>
+            <td>View upcoming birthdays of contacts</td>
+            <td>Plan ahead for important dates</td>
+        </tr>
+        <tr class="medium-priority">
+            <td>**</td>
+            <td>Student</td>
+            <td>See recent interactions with a contact (e.g., messages, meetings)</td>
+            <td>Identify frequently contacted individuals easily</td>
+        </tr>
+        <tr class="medium-priority">
+            <td>**</td>
+            <td>Student</td>
+            <td>Set a custom label for each contact (e.g., Project Work, Hostel)</td>
+            <td>Categorize contacts effectively for quick filtering</td>
+        </tr>
+        <tr class="medium-priority">
+            <td>**</td>
+            <td>Student</td>
+            <td>Favorite certain contacts for quick access</td>
+            <td>Quickly access frequently used contacts</td>
+        </tr>
+        <tr class="medium-priority">
+            <td>**</td>
+            <td>Student</td>
+            <td>Share a contact’s details with another student</td>
+            <td>Streamline collaboration and networking</td>
+        </tr>
+        <tr class="medium-priority">
+            <td>**</td>
+            <td>Student</td>
+            <td>Store emergency contact details in a dedicated section</td>
+            <td>Quickly access critical contact information in urgent situations</td>
+        </tr>
+        <tr class="medium-priority">
+            <td>**</td>
+            <td>Student</td>
+            <td>Add personal notes to a contact’s profile</td>
+            <td>Preserve important contextual information about a contact</td>
+        </tr>
+        <tr class="medium-priority">
+            <td>**</td>
+            <td>Teaching assistant</td>
+            <td>Store and access student contact details efficiently</td>
+            <td>Manage student information systematically</td>
+        </tr>
+        <tr class="medium-priority">
+            <td>**</td>
+            <td>Student</td>
+            <td>Delete all contacts in bulk if needed</td>
+            <td>Reset my contact list when necessary</td>
+        </tr>
+        <tr class="medium-priority">
+            <td>**</td>
+            <td>Project group leader</td>
+            <td>Create a contact group specific to a project</td>
+            <td>Easily access project members’ details for coordination</td>
+        </tr>
+        <tr class="medium-priority">
+            <td>**</td>
+            <td>Student</td>
+            <td>Tag contacts for events (e.g., workshops, conferences)</td>
+            <td>Efficiently group and identify event participants</td>
+        </tr>
+        <tr class="medium-priority">
+            <td>**</td>
+            <td>Student</td>
+            <td>Add a profile picture to a contact</td>
+            <td>Recognize contacts visually more easily</td>
+        </tr>
+        <tr class="low-priority">
+            <td>*</td>
+            <td>Cybersecurity-conscious student</td>
+            <td>Enable a PIN or biometric authentication for accessing the address book</td>
+            <td>Protect my contact data from unauthorized access</td>
+        </tr>
+        <tr class="low-priority">
+            <td>*</td>
+            <td>Student</td>
+            <td>Hide certain contacts from the main list</td>
+            <td>Maintain privacy by controlling which contacts are visible</td>
+        </tr>
+        <tr class="low-priority">
+            <td>*</td>
+            <td>Student</td>
+            <td>Send reminders regarding a contact</td>
+            <td>Keep track of important follow-ups or tasks</td>
+        </tr>
+        <tr class="low-priority">
+            <td>*</td>
+            <td>Student</td>
+            <td>Filter contacts based on faculty or department</td>
+            <td>Quickly identify relevant individuals based on their affiliations</td>
+        </tr>
+        <tr class="low-priority">
+            <td>*</td>
+            <td>Student</td>
+            <td>Copy a contact’s details to the clipboard</td>
+            <td>Paste contact information into other applications as needed</td>
+        </tr>
+        <tr class="low-priority">
+            <td>*</td>
+            <td>Course Manager</td>
+            <td>Create a contact list for students</td>
+            <td>Provide a structured system for students to connect easily</td>
+        </tr>
+        <tr class="low-priority">
+            <td>*</td>
+            <td>CCA committee leader</td>
+            <td>Create a list of CCA members with their roles</td>
+            <td>Efficiently manage and identify CCA members</td>
+        </tr>
+        <tr class="low-priority">
+            <td>*</td>
+            <td>Student</td>
+            <td>Scan a QR code to instantly save someone’s contact details</td>
+            <td>Quickly add new contacts without manual entry</td>
+        </tr>
+        <tr class="low-priority">
+            <td>*</td>
+            <td>Student</td>
+            <td>Merge duplicate contacts</td>
+            <td>Maintain a clean and organized contact list</td>
+        </tr>
+        <tr class="low-priority">
+            <td>*</td>
+            <td>Student</td>
+            <td>Customize the app’s theme (light/dark mode)</td>
+            <td>Personalize the user experience based on my visual preferences</td>
+        </tr>
+    </tbody>
+</table>
+
+</body>
+</html>
 
 ### Use cases
 
