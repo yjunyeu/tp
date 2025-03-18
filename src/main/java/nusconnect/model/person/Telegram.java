@@ -10,13 +10,15 @@ import static nusconnect.commons.util.AppUtil.checkArgument;
  */
 public class Telegram {
 
-    public static final String MESSAGE_CONSTRAINTS = "Telegram can take any values, and it should not be blank";
+    public static final String MESSAGE_CONSTRAINTS =
+            "Telegram handles must be at least 5 characters long, case-insensitive, \n"
+                    + "and can only contain letters, numbers, underscores, and it should not be blank";
 
     /*
      * The first character of the telegram must not be a whitespace,
      * otherwise " " (a blank string) becomes a valid input.
      */
-    public static final String VALIDATION_REGEX = "[^\\s].*";
+    public static final String VALIDATION_REGEX = "^[a-zA-Z0-9_]{5,}$";
 
     public final String value;
 
@@ -63,4 +65,3 @@ public class Telegram {
     }
 
 }
-

@@ -9,13 +9,14 @@ import static nusconnect.commons.util.AppUtil.checkArgument;
  */
 public class Alias {
 
-    public static final String MESSAGE_CONSTRAINTS = "Aliases can take any values, and it should not be blank";
+    public static final String MESSAGE_CONSTRAINTS =
+            "Aliases can only contain alphabets, numbers, underlines, spaces, and it should not be blank";
 
     /*
      * The first character of the alias must not be a whitespace,
      * otherwise " " (a blank string) becomes a valid input.
      */
-    public static final String VALIDATION_REGEX = "[^\\s].*";
+    public static final String VALIDATION_REGEX = "[A-Za-z0-9][A-Za-z0-9_ ]*";
 
     public final String value;
 
@@ -62,4 +63,3 @@ public class Alias {
     }
 
 }
-
