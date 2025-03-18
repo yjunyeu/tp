@@ -274,43 +274,6 @@ NUSConnect helps students quickly add, organise and find contacts with minimal e
 
 
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Stories Table</title>
-    <style>
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-
-        th, td {
-            padding: 8px;
-            text-align: left;
-            border: 1px solid #ddd;
-        }
-
-        th {
-            background-color: #f2f2f2;
-        }
-
-        .high-priority {
-            background-color: #ffcccb;
-        }
-
-        .medium-priority {
-            background-color: #ffffcc;
-        }
-
-        .low-priority {
-            background-color: #e6f7ff;
-        }
-    </style>
-</head>
-<body>
-
 <h2>User Stories</h2>
 
 <table>
@@ -517,9 +480,6 @@ NUSConnect helps students quickly add, organise and find contacts with minimal e
         </tr>
     </tbody>
 </table>
-
-</body>
-</html>
 
 ### Use cases
 
