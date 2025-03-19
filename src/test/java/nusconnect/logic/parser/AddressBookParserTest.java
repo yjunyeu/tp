@@ -25,6 +25,7 @@ import nusconnect.logic.commands.ExitCommand;
 import nusconnect.logic.commands.FindCommand;
 import nusconnect.logic.commands.HelpCommand;
 import nusconnect.logic.commands.ListCommand;
+import nusconnect.logic.commands.ViewCommand;
 import nusconnect.logic.parser.exceptions.ParseException;
 import nusconnect.model.person.ModuleContainsKeywordsPredicate;
 import nusconnect.model.person.NameContainsKeywordsPredicate;
@@ -105,6 +106,13 @@ public class AddressBookParserTest {
     public void parseCommand_list() throws Exception {
         assertTrue(parser.parseCommand(ListCommand.COMMAND_WORD) instanceof ListCommand);
         assertTrue(parser.parseCommand(ListCommand.COMMAND_WORD + " 3") instanceof ListCommand);
+    }
+
+    @Test
+    public void parseCommand_view() throws Exception {
+        ViewCommand command = (ViewCommand) parser.parseCommand(
+                ViewCommand.COMMAND_WORD + " " + INDEX_FIRST_PERSON.getOneBased());
+        assertEquals(new ViewCommand(INDEX_FIRST_PERSON), command);
     }
 
     @Test
