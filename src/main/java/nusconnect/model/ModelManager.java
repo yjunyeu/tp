@@ -12,6 +12,7 @@ import javafx.collections.transformation.FilteredList;
 import nusconnect.commons.core.GuiSettings;
 import nusconnect.commons.core.LogsCenter;
 import nusconnect.model.person.Person;
+import nusconnect.logic.LogicManager;
 
 /**
  * Represents the in-memory model of the address book data.
@@ -110,6 +111,7 @@ public class ModelManager implements Model {
 
         addressBook.setPerson(target, editedPerson);
     }
+
 
     //=========== Filtered Person List Accessors =============================================================
 

@@ -3,11 +3,13 @@ package nusconnect.logic;
 import java.io.IOException;
 import java.nio.file.AccessDeniedException;
 import java.nio.file.Path;
+import java.util.Optional;
 import java.util.logging.Logger;
 
 import javafx.collections.ObservableList;
 import nusconnect.commons.core.GuiSettings;
 import nusconnect.commons.core.LogsCenter;
+import nusconnect.commons.exceptions.DataLoadingException;
 import nusconnect.logic.commands.Command;
 import nusconnect.logic.commands.CommandResult;
 import nusconnect.logic.commands.exceptions.CommandException;
@@ -85,4 +87,33 @@ public class LogicManager implements Logic {
     public void setGuiSettings(GuiSettings guiSettings) {
         model.setGuiSettings(guiSettings);
     }
+
+    public void importAddressBook(Path filepath) {
+        logger.info("Attempting to import address book from: " + filepath);
+        Optional<ReadOnlyAddressBook> addressBookOptional;
+        try {
+            addressBookOptional = storage.readAddressBook(filepath);
+            if (addressBookOptional.isPresent()) {
+                model.setAddressBook(addressBookOptional.get());
+                logger.info("Address book successfully imported from: " + filepath);
+            } else {
+                logger.warning("No address book found at " + filepath + ". Import ignored.");
+            }
+
+        } catch (DataLoadingException e) {
+            logger.warning("Error importing address book from " + filepath + ". " + e.getMessage() + ". Import ignored.");
+        }
+    }
+
+    public void exportAddressBook(Path filepath) {
+        logger.info("Attempting to export address book to: " + filepath);
+
+        try {
+                storage.saveAddressBook(model.getAddressBook(), filepath);
+            logger.info("Address book successfully exported to: " + filepath);
+        } catch (IOException e) {
+            logger.severe("Error exporting address book: " + e.getMessage());
+        }
+    }
+
 }
