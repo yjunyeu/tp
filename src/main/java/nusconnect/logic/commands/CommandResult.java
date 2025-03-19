@@ -4,6 +4,7 @@ import static java.util.Objects.requireNonNull;
 
 import java.util.Objects;
 
+import nusconnect.commons.core.index.Index;
 import nusconnect.commons.util.ToStringBuilder;
 
 /**
@@ -19,13 +20,17 @@ public class CommandResult {
     /** The application should exit. */
     private final boolean exit;
 
+    /** Index of the person that should be selected in the UI, null if not applicable. */
+    private final Index personToSelect;
+
     /**
      * Constructs a {@code CommandResult} with the specified fields.
      */
-    public CommandResult(String feedbackToUser, boolean showHelp, boolean exit) {
+    public CommandResult(String feedbackToUser, boolean showHelp, boolean exit, Index personToSelect) {
         this.feedbackToUser = requireNonNull(feedbackToUser);
         this.showHelp = showHelp;
         this.exit = exit;
+        this.personToSelect = personToSelect;
     }
 
     /**
@@ -33,7 +38,21 @@ public class CommandResult {
      * and other fields set to their default value.
      */
     public CommandResult(String feedbackToUser) {
-        this(feedbackToUser, false, false);
+        this(feedbackToUser, false, false, null);
+    }
+
+    /**
+     * Constructs a {@code CommandResult} with the specified {@code feedbackToUser} and {@code showHelp}.
+     */
+    public CommandResult(String feedbackToUser, boolean showHelp, boolean exit) {
+        this(feedbackToUser, showHelp, exit, null);
+    }
+
+    /**
+     * Constructs a {@code CommandResult} for a view command.
+     */
+    public CommandResult(String feedbackToUser, Index personToSelect) {
+        this(feedbackToUser, false, false, personToSelect);
     }
 
     public String getFeedbackToUser() {
@@ -46,6 +65,14 @@ public class CommandResult {
 
     public boolean isExit() {
         return exit;
+    }
+
+    public boolean isViewCommand() {
+        return personToSelect != null;
+    }
+
+    public Index getPersonToSelect() {
+        return personToSelect;
     }
 
     @Override

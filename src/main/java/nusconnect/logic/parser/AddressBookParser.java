@@ -17,6 +17,7 @@ import nusconnect.logic.commands.ExitCommand;
 import nusconnect.logic.commands.FindCommand;
 import nusconnect.logic.commands.HelpCommand;
 import nusconnect.logic.commands.ListCommand;
+import nusconnect.logic.commands.ViewCommand;
 import nusconnect.logic.parser.exceptions.ParseException;
 
 /**
@@ -70,6 +71,9 @@ public class AddressBookParser {
 
         case ListCommand.COMMAND_WORD:
             return new ListCommand();
+
+        case ViewCommand.COMMAND_WORD:
+            return new ViewCommandParser().parse(arguments);
 
         case ExitCommand.COMMAND_WORD:
             return new ExitCommand();

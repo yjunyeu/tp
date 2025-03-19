@@ -44,7 +44,7 @@ public class PersonDetailsPanel extends UiPart<Region> {
      * Sets default details when no person is selected.
      */
     private void setDefaultDetails() {
-        nameLabel.setText("Select a person");
+        nameLabel.setText("Use view to select");
         phoneLabel.setText("");
         emailLabel.setText("");
         aliasLabel.setText("");

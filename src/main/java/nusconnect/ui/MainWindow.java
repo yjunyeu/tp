@@ -12,6 +12,7 @@ import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import nusconnect.commons.core.GuiSettings;
 import nusconnect.commons.core.LogsCenter;
+import nusconnect.commons.core.index.Index;
 import nusconnect.logic.Logic;
 import nusconnect.logic.commands.CommandResult;
 import nusconnect.logic.commands.exceptions.CommandException;
@@ -207,6 +208,13 @@ public class MainWindow extends UiPart<Stage> {
                 handleExit();
             }
 
+            if (commandResult.isViewCommand()) {
+                Index targetIndex = commandResult.getPersonToSelect();
+                int index = targetIndex.getZeroBased();
+                if (index < personListPanel.getPersonListView().getItems().size()) {
+                    personListPanel.getPersonListView().getSelectionModel().select(index);
+                }
+            }
             return commandResult;
         } catch (CommandException | ParseException e) {
             logger.info("An error occurred while executing command: " + commandText);
