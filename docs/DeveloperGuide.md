@@ -295,12 +295,6 @@ NUSConnect helps students quickly add, organise and find contacts with minimal e
         <tr class="high-priority">
             <td>***</td>
             <td>Student</td>
-            <td>Export contacts to a CSV file</td>
-            <td>Transfer contact data efficiently across different platforms</td>
-        </tr>
-        <tr class="high-priority">
-            <td>***</td>
-            <td>Student</td>
             <td>Link multiple contact methods to a single person (e.g., email, phone)</td>
             <td>Communicate through multiple channels as needed</td>
         </tr>
@@ -309,12 +303,6 @@ NUSConnect helps students quickly add, organise and find contacts with minimal e
             <td>Student</td>
             <td>Search for a contact by name</td>
             <td>Retrieve contact details quickly</td>
-        </tr>
-        <tr class="high-priority">
-            <td>***</td>
-            <td>Student</td>
-            <td>Import contacts from a CSV file</td>
-            <td>Seamlessly transfer contacts between devices</td>
         </tr>
         <tr class="high-priority">
             <td>***</td>
