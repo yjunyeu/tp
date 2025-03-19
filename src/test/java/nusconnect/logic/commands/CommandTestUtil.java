@@ -44,8 +44,8 @@ public class CommandTestUtil {
     public static final String VALID_COURSE_BOB = "Information Security";
     public static final String VALID_NOTE_AMY = "Likes ice cream.";
     public static final String VALID_NOTE_BOB = "Enjoys long walks.";
-    public static final String VALID_TELEGRAM_AMY = "amybee";
-    public static final String VALID_TELEGRAM_BOB = "bobchoo";
+    public static final String VALID_TELEGRAM_AMY = "@amybee";
+    public static final String VALID_TELEGRAM_BOB = "@bobchoo";
     public static final String VALID_WEBSITE_AMY = "https://amy.example.com";
     public static final String VALID_WEBSITE_BOB = "https://bob.example.com";
 
