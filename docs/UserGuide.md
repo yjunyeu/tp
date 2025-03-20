@@ -77,15 +77,15 @@ Format: `help`
 
 Adds a person to the address book.
 
-Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…​`
+Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ALIAS c/COURSE no/NOTE tele/TELEGRAM w/WEBSITE [m/MODULE]…​`
 
 <div markdown="span" class="alert alert-primary">:bulb: **Tip:**
 A person can have any number of modules (including 0)
 </div>
 
 Examples:
-* `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01`
-* `add n/Betsy Crowe t/friend e/betsycrowe@example.com a/Newgate Prison p/1234567 t/criminal`
+* `add n/John Doe p/98765432 e/johnd@example.com a/JDoe c/CompSci no/Enjoys programming tele/@johndoe w/https://johndoe.com m/CS2103T`
+* `add n/Betsy Crowe m/CS2106 e/betsycrowe@example.com a/BCrowe p/1234567 c/Business no/Hackathon peer tele/@bcrowe w/https://linkedin.com/betsycrowe`
 
 ### Listing all persons : `list`
 
@@ -97,18 +97,18 @@ Format: `list`
 
 Edits an existing person in the address book.
 
-Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`
+Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ALIAS] [c/COURSE] [no/NOTE] [tele/TELEGRAM] [w/WEBSITE] [m/MODULE]…​`
 
 * Edits the person at the specified `INDEX`. The index refers to the index number shown in the displayed person list. The index **must be a positive integer** 1, 2, 3, …​
 * At least one of the optional fields must be provided.
 * Existing values will be updated to the input values.
 * When editing modules, the existing modules of the person will be removed i.e adding of modules is not cumulative.
-* You can remove all the person’s modules by typing `t/` without
+* You can remove all the person’s modules by typing `m/` without
     specifying any modules after it.
 
 Examples:
 *  `edit 1 p/91234567 e/johndoe@example.com` Edits the phone number and email address of the 1st person to be `91234567` and `johndoe@example.com` respectively.
-*  `edit 2 n/Betsy Crower t/` Edits the name of the 2nd person to be `Betsy Crower` and clears all existing modules.
+*  `edit 2 n/Betsy Crower m/` Edits the name of the 2nd person to be `Betsy Crower` and clears all existing modules.
 
 ### Locating persons by name: `find`
 
