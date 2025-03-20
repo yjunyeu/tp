@@ -32,4 +32,4 @@ Given below are my contributions to the project.
 
 
 * **Documentation Updates**:
-  * Updated internal documentation and code comments to reflect changes in the data model and the updated workflows.
+  * Updated documentation and code comments to reflect changes in the data model and the updated workflows.
