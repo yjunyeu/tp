@@ -289,12 +289,6 @@ NUSConnect helps students quickly add, organise and find contacts with minimal e
         <tr class="high-priority">
             <td>***</td>
             <td>Student</td>
-            <td>Group contacts under categories such as "Classmates"</td>
-            <td>Easily locate specific individuals (e.g., peers or professors) when needed</td>
-        </tr>
-        <tr class="high-priority">
-            <td>***</td>
-            <td>Student</td>
             <td>Link multiple contact methods to a single person (e.g., email, phone)</td>
             <td>Communicate through multiple channels as needed</td>
         </tr>
@@ -307,14 +301,14 @@ NUSConnect helps students quickly add, organise and find contacts with minimal e
         <tr class="high-priority">
             <td>***</td>
             <td>Student</td>
-            <td>Delete a contact from the address book</td>
-            <td>Remove outdated or unnecessary contacts efficiently</td>
+            <td>Search for a contact by module</td>
+            <td>Retrieve contact details quickly</td>
         </tr>
         <tr class="high-priority">
             <td>***</td>
             <td>Student</td>
-            <td>Create an automatic group based on faculty or module</td>
-            <td>Organize contacts systematically for better accessibility</td>
+            <td>Delete a contact from the address book</td>
+            <td>Remove outdated or unnecessary contacts efficiently</td>
         </tr>
         <tr class="high-priority">
             <td>***</td>
@@ -331,8 +325,8 @@ NUSConnect helps students quickly add, organise and find contacts with minimal e
         <tr class="high-priority">
             <td>***</td>
             <td>Student</td>
-            <td>Sort contacts alphabetically</td>
-            <td>Keep the contact list structured and organized</td>
+            <td>Delete all contacts in bulk if needed</td>
+            <td>Reset my contact list when necessary</td>
         </tr>
         <tr class="medium-priority">
             <td>**</td>
@@ -381,12 +375,6 @@ NUSConnect helps students quickly add, organise and find contacts with minimal e
             <td>Teaching assistant</td>
             <td>Store and access student contact details efficiently</td>
             <td>Manage student information systematically</td>
-        </tr>
-        <tr class="medium-priority">
-            <td>**</td>
-            <td>Student</td>
-            <td>Delete all contacts in bulk if needed</td>
-            <td>Reset my contact list when necessary</td>
         </tr>
         <tr class="medium-priority">
             <td>**</td>
