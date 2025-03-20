@@ -14,7 +14,8 @@ We are a team based in the [School of Computing, National University of Singapor
 [[github](https://github.com/feconi1024)]
 [[portfolio](team/feconi1024.md)]
 
-* Role: Project Advisor
+* Role: Developer
+* Responsibilities: New Feature Implementation, Refactoring
 
 
 ### Yap Jun Yeu
