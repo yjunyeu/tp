@@ -14,19 +14,18 @@ It is written in Java.
 Given below are my contributions to the project.
 
 * **New Feature**:
-
-* **New Feature**:
+  * Created a mockup Ui of NUSConnect using figma
+  * Added a new `view` command to show all details of a contact
 
 * **Code contributed**:
+  * Change all instances of Tag to Module in all classes
+  * Modified the Ui to match the mock Ui
+  * Added PersonDetail and Group Ui classes
 
-* **Project management**:
-
-* **Enhancements to existing features**:
+* **Testing**:
+  * Modified tests to change from Tag to Module 
+  * Wrote and updated Junit tests to verify that the `view` command works
 
 * **Documentation**:
-    * User Guide:
-    * Developer Guide:
-
-* **Community**:
-
-* **Tools**:
+    * User Guide: 
+      * Updated the user guide to include the new `view` command
