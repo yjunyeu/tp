@@ -144,6 +144,21 @@ Examples:
 * `list` followed by `delete 2 4` deletes the 2nd and the 4th person in the address book.
 * `find Betsy` followed by `delete 1` deletes the 1st person in the results of the `find` command.
 
+### Viewing contact details: `view`
+
+Shows the details of the specified person from the address  book.
+
+Format: `view INDEX`
+
+* Shows the full details of the person at the specified `INDEX` on the right panel.
+* The index refers to the index number shown in the displayed person list.
+* The index **must be a positive integer** 1, 2, 3, ...
+* The index must not be larger than the size of the address book.
+
+Examples:
+* `list` followed by `view 2` shows the full details of the 2nd person in the address book.
+* `find Betsy` followed by `view 1` shows the full details of the 1st person in the results of the `find` command.
+
 ### Clearing all entries : `clear`
 
 Clears all entries from the address book.
