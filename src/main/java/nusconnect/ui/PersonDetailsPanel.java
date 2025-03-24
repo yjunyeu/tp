@@ -18,6 +18,8 @@ public class PersonDetailsPanel extends UiPart<Region> {
     @FXML
     private Label nameLabel;
     @FXML
+    private Label telegramLabel;
+    @FXML
     private Label phoneLabel;
     @FXML
     private Label emailLabel;
@@ -27,8 +29,6 @@ public class PersonDetailsPanel extends UiPart<Region> {
     private Label courseLabel;
     @FXML
     private Label noteLabel;
-    @FXML
-    private Label telegramLabel;
     @FXML
     private Label websiteLabel;
 
@@ -45,12 +45,12 @@ public class PersonDetailsPanel extends UiPart<Region> {
      */
     private void setDefaultDetails() {
         nameLabel.setText("Use view to select");
+        telegramLabel.setText("");
         phoneLabel.setText("");
         emailLabel.setText("");
         aliasLabel.setText("");
         courseLabel.setText("");
         noteLabel.setText("");
-        telegramLabel.setText("");
         websiteLabel.setText("");
     }
 
@@ -60,13 +60,13 @@ public class PersonDetailsPanel extends UiPart<Region> {
     public void setPersonDetails(Person person) {
         if (person != null) {
             nameLabel.setText(person.getName().fullName);
-            phoneLabel.setText(person.getPhone().value);
-            emailLabel.setText(person.getEmail().value);
-            aliasLabel.setText(person.getAlias().value);
-            courseLabel.setText(person.getCourse().value);
-            noteLabel.setText(person.getNote().value);
             telegramLabel.setText(person.getTelegram().value);
-            websiteLabel.setText(person.getWebsite().value);
+            phoneLabel.setText(person.getPhone().map(p -> p.value).orElse(""));
+            emailLabel.setText(person.getEmail().map(e -> e.value).orElse(""));
+            aliasLabel.setText(person.getAlias().map(a -> a.value).orElse(""));
+            courseLabel.setText(person.getCourse().map(c -> c.value).orElse(""));
+            noteLabel.setText(person.getNote().map(n -> n.value).orElse(""));
+            websiteLabel.setText(person.getWebsite().map(w -> w.value).orElse(""));
         } else {
             setDefaultDetails();
         }

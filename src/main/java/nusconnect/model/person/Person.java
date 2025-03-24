@@ -5,6 +5,7 @@ import static nusconnect.commons.util.CollectionUtil.requireAllNonNull;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Objects;
+import java.util.Optional;
 import java.util.Set;
 
 import nusconnect.commons.util.ToStringBuilder;
@@ -18,32 +19,41 @@ public class Person {
 
     // Identity fields
     private final Name name;
-    private final Phone phone;
-    private final Email email;
-    private final Alias alias;
+    private final Telegram telegram;
 
     // Data fields
-    private final Course course;
-    private final Note note;
-    private final Telegram telegram;
-    private final Website website;
+    private final Optional<Phone> phone;
+    private final Optional<Email> email;
+    private final Optional<Alias> alias;
+    private final Optional<Course> course;
+    private final Optional<Note> note;
+    private final Optional<Website> website;
     private final Set<Module> modules = new HashSet<>();
 
-
     /**
-     * Every field must be present and not null.
+     * Constructs a {@code Person} with the specified details.
+     *
+     * @param name the name of the person (must not be null)
+     * @param telegram the telegram of the person (must not be null)
+     * @param phone the phone number of the person (may be null)
+     * @param email the email address of the person (may be null)
+     * @param alias the alias of the person (may be null)
+     * @param course the course the person is enrolled in (may be null)
+     * @param note any additional notes about the person (may be null)
+     * @param website the website of the person (may be null)
+     * @param modules the set of modules the person is enrolled in (must not be null)
      */
-    public Person(Name name, Phone phone, Email email, Alias alias, Course course, Note note,
-                  Telegram telegram, Website website, Set<Module> modules) {
-        requireAllNonNull(name, phone, email, alias, course, note, telegram, website);
+    public Person(Name name, Telegram telegram, Phone phone, Email email, Alias alias, Course course, Note note,
+                   Website website, Set<Module> modules) {
+        requireAllNonNull(name, telegram);
         this.name = name;
-        this.phone = phone;
-        this.email = email;
-        this.alias = alias;
-        this.course = course;
-        this.note = note;
         this.telegram = telegram;
-        this.website = website;
+        this.phone = Optional.ofNullable(phone);
+        this.email = Optional.ofNullable(email);
+        this.alias = Optional.ofNullable(alias);
+        this.course = Optional.ofNullable(course);
+        this.note = Optional.ofNullable(note);
+        this.website = Optional.ofNullable(website);
         this.modules.addAll(modules);
     }
 
@@ -51,34 +61,33 @@ public class Person {
         return name;
     }
 
-    public Phone getPhone() {
-        return phone;
-    }
-
-    public Email getEmail() {
-        return email;
-    }
-
-    public Alias getAlias() {
-        return alias;
-    }
-
-    public Course getCourse() {
-        return course;
-    }
-
-    public Note getNote() {
-        return note;
-    }
-
     public Telegram getTelegram() {
         return telegram;
     }
 
-    public Website getWebsite() {
-        return website;
+    public Optional<Phone> getPhone() {
+        return phone;
     }
 
+    public Optional<Email> getEmail() {
+        return email;
+    }
+
+    public Optional<Alias> getAlias() {
+        return alias;
+    }
+
+    public Optional<Course> getCourse() {
+        return course;
+    }
+
+    public Optional<Note> getNote() {
+        return note;
+    }
+
+    public Optional<Website> getWebsite() {
+        return website;
+    }
 
     /**
      * Returns an immutable module set, which throws {@code UnsupportedOperationException}
@@ -118,12 +127,12 @@ public class Person {
 
         Person otherPerson = (Person) other;
         return name.equals(otherPerson.name)
+                && telegram.equals(otherPerson.telegram)
                 && phone.equals(otherPerson.phone)
                 && email.equals(otherPerson.email)
                 && alias.equals(otherPerson.alias)
                 && course.equals(otherPerson.course)
                 && note.equals(otherPerson.note)
-                && telegram.equals(otherPerson.telegram)
                 && website.equals(otherPerson.website)
                 && modules.equals(otherPerson.modules);
     }
@@ -131,20 +140,20 @@ public class Person {
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(name, phone, email, alias, course, note, telegram, website, modules);
+        return Objects.hash(name, telegram, phone, email, alias, course, note, website, modules);
     }
 
     @Override
     public String toString() {
         return new ToStringBuilder(this)
                 .add("name", name)
-                .add("phone", phone)
-                .add("email", email)
-                .add("alias", alias)
-                .add("course", course)
-                .add("note", note)
                 .add("telegram", telegram)
-                .add("website", website)
+                .add("phone", phone.orElse(null))
+                .add("email", email.orElse(null))
+                .add("alias", alias.orElse(null))
+                .add("course", course.orElse(null))
+                .add("note", note.orElse(null))
+                .add("website", website.orElse(null))
                 .add("modules", modules)
                 .toString();
     }

@@ -18,6 +18,7 @@ import nusconnect.logic.commands.FindCommand;
 import nusconnect.logic.commands.GroupCommand;
 import nusconnect.logic.commands.HelpCommand;
 import nusconnect.logic.commands.ListCommand;
+import nusconnect.logic.commands.SortCommand;
 import nusconnect.logic.commands.ViewCommand;
 import nusconnect.logic.parser.exceptions.ParseException;
 
@@ -84,6 +85,9 @@ public class AddressBookParser {
 
         case GroupCommand.COMMAND_WORD:
             return new GroupCommandParser().parse(arguments);
+            
+        case SortCommand.COMMAND_WORD:
+            return new SortCommand();
 
         default:
             logger.finer("This user input caused a ParseException: " + userInput);

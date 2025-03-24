@@ -36,8 +36,9 @@ public class EditCommandParser implements Parser<EditCommand> {
     public EditCommand parse(String args) throws ParseException {
         requireNonNull(args);
         ArgumentMultimap argMultimap =
-                ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_PHONE, PREFIX_EMAIL, PREFIX_ALIAS, PREFIX_COURSE,
-                        PREFIX_NOTE, PREFIX_TELEGRAM, PREFIX_WEBSITE, PREFIX_MODULE);
+                ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_TELEGRAM,
+                        PREFIX_PHONE, PREFIX_EMAIL, PREFIX_ALIAS, PREFIX_COURSE,
+                        PREFIX_NOTE, PREFIX_WEBSITE, PREFIX_MODULE);
 
         Index index;
 
@@ -47,14 +48,20 @@ public class EditCommandParser implements Parser<EditCommand> {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, EditCommand.MESSAGE_USAGE), pe);
         }
 
-        argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_NAME, PREFIX_PHONE, PREFIX_EMAIL, PREFIX_ALIAS, PREFIX_COURSE,
-                PREFIX_NOTE, PREFIX_TELEGRAM, PREFIX_WEBSITE);
+        argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_NAME, PREFIX_TELEGRAM,
+                PREFIX_PHONE, PREFIX_EMAIL, PREFIX_ALIAS, PREFIX_COURSE,
+                PREFIX_NOTE, PREFIX_WEBSITE);
 
         EditPersonDescriptor editPersonDescriptor = new EditPersonDescriptor();
 
         if (argMultimap.getValue(PREFIX_NAME).isPresent()) {
             editPersonDescriptor.setName(ParserUtil.parseName(argMultimap.getValue(PREFIX_NAME).get()));
         }
+
+        if (argMultimap.getValue(PREFIX_TELEGRAM).isPresent()) {
+            editPersonDescriptor.setTelegram(ParserUtil.parseTelegram(argMultimap.getValue(PREFIX_TELEGRAM).get()));
+        }
+
         if (argMultimap.getValue(PREFIX_PHONE).isPresent()) {
             editPersonDescriptor.setPhone(ParserUtil.parsePhone(argMultimap.getValue(PREFIX_PHONE).get()));
         }
@@ -73,13 +80,10 @@ public class EditCommandParser implements Parser<EditCommand> {
             editPersonDescriptor.setNote(ParserUtil.parseNote(argMultimap.getValue(PREFIX_NOTE).get()));
         }
 
-        if (argMultimap.getValue(PREFIX_TELEGRAM).isPresent()) {
-            editPersonDescriptor.setTelegram(ParserUtil.parseTelegram(argMultimap.getValue(PREFIX_TELEGRAM).get()));
-        }
-
         if (argMultimap.getValue(PREFIX_WEBSITE).isPresent()) {
             editPersonDescriptor.setWebsite(ParserUtil.parseWebsite(argMultimap.getValue(PREFIX_WEBSITE).get()));
         }
+
         parseModulesForEdit(argMultimap.getAllValues(PREFIX_MODULE)).ifPresent(editPersonDescriptor::setModules);
 
         if (!editPersonDescriptor.isAnyFieldEdited()) {

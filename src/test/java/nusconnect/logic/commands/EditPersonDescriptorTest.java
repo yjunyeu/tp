@@ -81,12 +81,12 @@ public class EditPersonDescriptorTest {
     public void toStringMethod() {
         EditPersonDescriptor editPersonDescriptor = new EditPersonDescriptor();
         String expected = EditPersonDescriptor.class.getCanonicalName() + "{name="
+                + editPersonDescriptor.getNote().orElse(null) + ", telegram="
                 + editPersonDescriptor.getName().orElse(null) + ", phone="
                 + editPersonDescriptor.getPhone().orElse(null) + ", email="
                 + editPersonDescriptor.getEmail().orElse(null) + ", alias="
                 + editPersonDescriptor.getAlias().orElse(null) + ", course="
                 + editPersonDescriptor.getCourse().orElse(null) + ", note="
-                + editPersonDescriptor.getNote().orElse(null) + ", telegram="
                 + editPersonDescriptor.getTelegram().orElse(null) + ", website="
                 + editPersonDescriptor.getWebsite().orElse(null) + ", modules="
                 + editPersonDescriptor.getTags().orElse(null) + "}";

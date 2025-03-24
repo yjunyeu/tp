@@ -30,12 +30,12 @@ class JsonAdaptedPerson {
     public static final String MISSING_FIELD_MESSAGE_FORMAT = "Person's %s field is missing!";
 
     private final String name;
+    private final String telegram;
     private final String phone;
     private final String email;
     private final String alias;
     private final String course;
     private final String note;
-    private final String telegram;
     private final String website;
     private final List<JsonAdaptedModule> modules = new ArrayList<>();
 
@@ -43,18 +43,18 @@ class JsonAdaptedPerson {
      * Constructs a {@code JsonAdaptedPerson} with the given person details.
      */
     @JsonCreator
-    public JsonAdaptedPerson(@JsonProperty("name") String name, @JsonProperty("phone") String phone,
-            @JsonProperty("email") String email, @JsonProperty("alias") String alias,
-            @JsonProperty("course") String course, @JsonProperty("note") String note,
-            @JsonProperty("telegram") String telegram, @JsonProperty("website") String website,
-            @JsonProperty("modules") List<JsonAdaptedModule> modules) {
+    public JsonAdaptedPerson(@JsonProperty("name") String name, @JsonProperty("telegram") String telegram,
+                             @JsonProperty("phone") String phone, @JsonProperty("email") String email,
+                             @JsonProperty("alias") String alias, @JsonProperty("course") String course,
+                             @JsonProperty("note") String note, @JsonProperty("website") String website,
+                             @JsonProperty("modules") List<JsonAdaptedModule> modules) {
         this.name = name;
+        this.telegram = telegram;
         this.phone = phone;
         this.email = email;
         this.alias = alias;
         this.course = course;
         this.note = note;
-        this.telegram = telegram;
         this.website = website;
         if (modules != null) {
             this.modules.addAll(modules);
@@ -66,13 +66,13 @@ class JsonAdaptedPerson {
      */
     public JsonAdaptedPerson(Person source) {
         name = source.getName().fullName;
-        phone = source.getPhone().value;
-        email = source.getEmail().value;
-        alias = source.getAlias().value;
-        course = source.getCourse().value;
-        note = source.getNote().value;
         telegram = source.getTelegram().value;
-        website = source.getWebsite().value;
+        phone = source.getPhone().map(p -> p.value).orElse(null);
+        email = source.getEmail().map(e -> e.value).orElse(null);
+        alias = source.getAlias().map(a -> a.value).orElse(null);
+        course = source.getCourse().map(c -> c.value).orElse(null);
+        note = source.getNote().map(n -> n.value).orElse(null);
+        website = source.getWebsite().map(w -> w.value).orElse(null);
 
         modules.addAll(source.getModules().stream()
                 .map(JsonAdaptedModule::new)
@@ -97,6 +97,15 @@ class JsonAdaptedPerson {
             throw new IllegalValueException(Name.MESSAGE_CONSTRAINTS);
         }
         final Name modelName = new Name(name);
+
+        if (telegram == null) {
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
+                    Telegram.class.getSimpleName()));
+        }
+        if (!Telegram.isValidTelegram(telegram)) {
+            throw new IllegalValueException(Telegram.MESSAGE_CONSTRAINTS);
+        }
+        final Telegram modelTelegram = new Telegram(telegram);
 
         if (phone == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Phone.class.getSimpleName()));
@@ -138,15 +147,6 @@ class JsonAdaptedPerson {
         }
         final Note modelNote = new Note(note);
 
-        if (telegram == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
-                    Telegram.class.getSimpleName()));
-        }
-        if (!Telegram.isValidTelegram(telegram)) {
-            throw new IllegalValueException(Telegram.MESSAGE_CONSTRAINTS);
-        }
-        final Telegram modelTelegram = new Telegram(telegram);
-
         if (website == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Website.class.getSimpleName()));
         }
@@ -156,8 +156,8 @@ class JsonAdaptedPerson {
         final Website modelWebsite = new Website(website);
 
         final Set<Module> modelModules = new HashSet<>(personModules);
-        return new Person(modelName, modelPhone, modelEmail, modelAlias, modelCourse, modelNote,
-                modelTelegram, modelWebsite, modelModules);
+        return new Person(modelName, modelTelegram, modelPhone, modelEmail, modelAlias, modelCourse, modelNote,
+                modelWebsite, modelModules);
     }
 
 }
