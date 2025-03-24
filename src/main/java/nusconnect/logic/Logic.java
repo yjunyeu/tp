@@ -1,9 +1,11 @@
 package nusconnect.logic;
 
 import java.nio.file.Path;
+import java.util.Optional;
 
 import javafx.collections.ObservableList;
 import nusconnect.commons.core.GuiSettings;
+import nusconnect.commons.exceptions.DataLoadingException;
 import nusconnect.logic.commands.CommandResult;
 import nusconnect.logic.commands.exceptions.CommandException;
 import nusconnect.logic.parser.exceptions.ParseException;
@@ -48,4 +50,10 @@ public interface Logic {
      * Set the user prefs' GUI settings.
      */
     void setGuiSettings(GuiSettings guiSettings);
+
+
+    /**
+     * Imports addressbook
+     */
+    Optional<ReadOnlyAddressBook> importAddressBook(Path filePath) throws DataLoadingException;
 }

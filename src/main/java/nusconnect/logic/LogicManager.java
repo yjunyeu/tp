@@ -3,11 +3,13 @@ package nusconnect.logic;
 import java.io.IOException;
 import java.nio.file.AccessDeniedException;
 import java.nio.file.Path;
+import java.util.Optional;
 import java.util.logging.Logger;
 
 import javafx.collections.ObservableList;
 import nusconnect.commons.core.GuiSettings;
 import nusconnect.commons.core.LogsCenter;
+import nusconnect.commons.exceptions.DataLoadingException;
 import nusconnect.logic.commands.Command;
 import nusconnect.logic.commands.CommandResult;
 import nusconnect.logic.commands.exceptions.CommandException;
@@ -39,7 +41,7 @@ public class LogicManager implements Logic {
     public LogicManager(Model model, Storage storage) {
         this.model = model;
         this.storage = storage;
-        addressBookParser = new AddressBookParser();
+        addressBookParser = new AddressBookParser(this);
     }
 
     @Override
@@ -85,4 +87,9 @@ public class LogicManager implements Logic {
     public void setGuiSettings(GuiSettings guiSettings) {
         model.setGuiSettings(guiSettings);
     }
+
+    public Optional<ReadOnlyAddressBook> importAddressBook(Path filePath) throws DataLoadingException {
+        return storage.readAddressBook(filePath);
+    }
+
 }

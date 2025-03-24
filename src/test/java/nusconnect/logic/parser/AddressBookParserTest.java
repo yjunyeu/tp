@@ -1,5 +1,7 @@
 package nusconnect.logic.parser;
 
+import static org.mockito.Mockito.*;
+
 import static nusconnect.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static nusconnect.logic.Messages.MESSAGE_UNKNOWN_COMMAND;
 import static nusconnect.testutil.Assert.assertThrows;
@@ -16,6 +18,7 @@ import java.util.stream.Collectors;
 import org.junit.jupiter.api.Test;
 
 import nusconnect.commons.core.index.Index;
+import nusconnect.logic.LogicManager;
 import nusconnect.logic.commands.AddCommand;
 import nusconnect.logic.commands.ClearCommand;
 import nusconnect.logic.commands.DeleteCommand;
@@ -27,16 +30,24 @@ import nusconnect.logic.commands.HelpCommand;
 import nusconnect.logic.commands.ListCommand;
 import nusconnect.logic.commands.ViewCommand;
 import nusconnect.logic.parser.exceptions.ParseException;
+import nusconnect.model.Model;
 import nusconnect.model.person.ModuleContainsKeywordsPredicate;
 import nusconnect.model.person.NameContainsKeywordsPredicate;
 import nusconnect.model.person.Person;
+import nusconnect.storage.Storage;
 import nusconnect.testutil.EditPersonDescriptorBuilder;
 import nusconnect.testutil.PersonBuilder;
 import nusconnect.testutil.PersonUtil;
 
 public class AddressBookParserTest {
 
-    private final AddressBookParser parser = new AddressBookParser();
+    private final Model model = mock(Model.class);
+    private final Storage storage = mock(Storage.class);
+    private final LogicManager logicManager = mock(LogicManager.class);
+
+
+    private final AddressBookParser parser = new AddressBookParser(logicManager);
+
 
     @Test
     public void parseCommand_add() throws Exception {

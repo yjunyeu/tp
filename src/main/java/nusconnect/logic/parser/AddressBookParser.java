@@ -8,6 +8,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import nusconnect.commons.core.LogsCenter;
+import nusconnect.logic.LogicManager;
 import nusconnect.logic.commands.AddCommand;
 import nusconnect.logic.commands.ClearCommand;
 import nusconnect.logic.commands.Command;
@@ -16,6 +17,7 @@ import nusconnect.logic.commands.EditCommand;
 import nusconnect.logic.commands.ExitCommand;
 import nusconnect.logic.commands.FindCommand;
 import nusconnect.logic.commands.HelpCommand;
+import nusconnect.logic.commands.ImportCommand;
 import nusconnect.logic.commands.ListCommand;
 import nusconnect.logic.commands.ViewCommand;
 import nusconnect.logic.parser.exceptions.ParseException;
@@ -30,6 +32,11 @@ public class AddressBookParser {
      */
     private static final Pattern BASIC_COMMAND_FORMAT = Pattern.compile("(?<commandWord>\\S+)(?<arguments>.*)");
     private static final Logger logger = LogsCenter.getLogger(AddressBookParser.class);
+    public final LogicManager logicManager;
+
+    public AddressBookParser(LogicManager logicManager) {
+        this.logicManager = logicManager;
+    }
 
     /**
      * Parses user input into command for execution.
@@ -80,6 +87,9 @@ public class AddressBookParser {
 
         case HelpCommand.COMMAND_WORD:
             return new HelpCommand();
+
+        case ImportCommand.COMMAND_WORD:
+            return new ImportCommandParser(logicManager).parse(arguments);
 
         default:
             logger.finer("This user input caused a ParseException: " + userInput);
