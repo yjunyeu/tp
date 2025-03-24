@@ -6,6 +6,8 @@ import java.util.List;
 
 import javafx.collections.ObservableList;
 import nusconnect.commons.util.ToStringBuilder;
+import nusconnect.model.group.Group;
+import nusconnect.model.group.UniqueGroupList;
 import nusconnect.model.person.Person;
 import nusconnect.model.person.UniquePersonList;
 
@@ -16,6 +18,7 @@ import nusconnect.model.person.UniquePersonList;
 public class AddressBook implements ReadOnlyAddressBook {
 
     private final UniquePersonList persons;
+    private final UniqueGroupList groups;
 
     /*
      * The 'unusual' code block below is a non-static initialization block, sometimes used to avoid duplication
@@ -26,6 +29,7 @@ public class AddressBook implements ReadOnlyAddressBook {
      */
     {
         persons = new UniquePersonList();
+        groups = new UniqueGroupList();
     }
 
     public AddressBook() {}
@@ -92,6 +96,29 @@ public class AddressBook implements ReadOnlyAddressBook {
      */
     public void removePerson(Person key) {
         persons.remove(key);
+    }
+
+    /**
+     * Returns true if a group with the same name as {@code group} exists in the address book.
+     */
+    public boolean hasGroup(Group group) {
+        requireNonNull(group);
+        return groups.contains(group);
+    }
+
+    /**
+     * Adds a group to the address book.
+     * The group must not already exist in the address book.
+     */
+    public void addGroup(Group group) {
+        groups.add(group);
+    }
+
+    /**
+     * Returns an unmodifiable view of the group list.
+     */
+    public ObservableList<Group> getGroupList() {
+        return groups.asUnmodifiableObservableList();
     }
 
     //// util methods
