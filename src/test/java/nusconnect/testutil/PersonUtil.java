@@ -35,13 +35,13 @@ public class PersonUtil {
     public static String getPersonDetails(Person person) {
         StringBuilder sb = new StringBuilder();
         sb.append(PREFIX_NAME + person.getName().fullName + " ");
-        sb.append(PREFIX_PHONE + person.getPhone().value + " ");
-        sb.append(PREFIX_EMAIL + person.getEmail().value + " ");
-        sb.append(PREFIX_ALIAS + person.getAlias().value + " ");
-        sb.append(PREFIX_COURSE + person.getCourse().value + " ");
-        sb.append(PREFIX_NOTE + person.getNote().value + " ");
         sb.append(PREFIX_TELEGRAM + person.getTelegram().value + " ");
-        sb.append(PREFIX_WEBSITE + person.getWebsite().value + " ");
+        sb.append(person.getPhone().map(p -> PREFIX_PHONE + p.value + " ").orElse(""));
+        sb.append(person.getEmail().map(e -> PREFIX_EMAIL + e.value + " ").orElse(""));
+        sb.append(person.getAlias().map(a -> PREFIX_ALIAS + a.value + " ").orElse(""));
+        sb.append(person.getCourse().map(c -> PREFIX_COURSE + c.value + " ").orElse(""));
+        sb.append(person.getNote().map(n -> PREFIX_NOTE + n.value + " ").orElse(""));
+        sb.append(person.getWebsite().map(w -> PREFIX_WEBSITE + w.value + " ").orElse(""));
 
         person.getModules().stream().forEach(
             s -> sb.append(PREFIX_MODULE + s.moduleName + " ")

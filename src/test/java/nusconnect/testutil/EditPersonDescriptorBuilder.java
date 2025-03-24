@@ -37,13 +37,13 @@ public class EditPersonDescriptorBuilder {
     public EditPersonDescriptorBuilder(Person person) {
         descriptor = new EditPersonDescriptor();
         descriptor.setName(person.getName());
-        descriptor.setPhone(person.getPhone());
-        descriptor.setEmail(person.getEmail());
-        descriptor.setAlias(person.getAlias());
-        descriptor.setCourse(person.getCourse());
-        descriptor.setNote(person.getNote());
         descriptor.setTelegram(person.getTelegram());
-        descriptor.setWebsite(person.getWebsite());
+        descriptor.setPhone(person.getPhone().orElse(null));
+        descriptor.setEmail(person.getEmail().orElse(null));
+        descriptor.setAlias(person.getAlias().orElse(null));
+        descriptor.setCourse(person.getCourse().orElse(null));
+        descriptor.setNote(person.getNote().orElse(null));
+        descriptor.setWebsite(person.getWebsite().orElse(null));
         descriptor.setModules(person.getModules());
     }
 
