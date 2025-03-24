@@ -16,7 +16,7 @@ import nusconnect.model.group.exceptions.DuplicateGroupException;
  *
  * Supports a minimal set of list operations.
  */
-public class UniqueGroupList implements  Iterable<Group> {
+public class UniqueGroupList implements Iterable<Group> {
 
     private final ObservableList<Group> internalList = FXCollections.observableArrayList();
     private final ObservableList<Group> internalUnmodifiableList =

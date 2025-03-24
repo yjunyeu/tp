@@ -3,10 +3,10 @@ package nusconnect.model.group;
 import static java.util.Objects.requireNonNull;
 import static nusconnect.commons.util.AppUtil.checkArgument;
 
-import java.util.HashSet;
-import java.util.Set;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 import nusconnect.commons.util.ToStringBuilder;
 import nusconnect.model.person.Person;

@@ -65,7 +65,6 @@ class JsonSerializableAddressBook {
 
         for (JsonAdaptedGroup jsonAdaptedGroup : groups) {
             Group group = jsonAdaptedGroup.toModelType();
-            System.out.println(group.getGroupName());
             if (addressBook.hasGroup(group)) {
                 throw new IllegalValueException(MESSAGE_DUPLICATE_GROUP);
             }
