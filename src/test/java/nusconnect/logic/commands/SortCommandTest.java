@@ -28,56 +28,34 @@ public class SortCommandTest {
 
     @Test
     public void execute_sortPersonsByName_sortedSuccessfully() {
-        // Call the sorting function
         model.sortPersonByName();
-
-        // Get the first and second persons after sorting
         Person firstPerson = model.getFilteredPersonList().get(0);
         Person secondPerson = model.getFilteredPersonList().get(1);
-
-        // Assert that AMY comes before BOB alphabetically
         assertTrue(firstPerson.getName().toString().compareTo(secondPerson.getName().toString()) < 0);
     }
 
     @Test
     public void execute_sortAlreadySortedList_sortedSuccessfully() {
-        // Setup a sorted list
         model.sortPersonByName();
         Person firstPerson = model.getFilteredPersonList().get(0);
         Person secondPerson = model.getFilteredPersonList().get(1);
-
-        // Assert that the first person comes before the second
         assertTrue(firstPerson.getName().toString().compareTo(secondPerson.getName().toString()) < 0);
     }
 
     @Test
     public void execute_sortEmptyList_sortedSuccessfully() {
-        // Clear the list before testing
         model.setAddressBook(new AddressBook());
-
-        // Call sort function
         model.sortPersonByName();
-
-        // Assert that the list is still empty
         assertTrue(model.getFilteredPersonList().isEmpty());
     }
 
     @Test
     public void execute_sortAfterAddingPerson_sortedSuccessfully() {
-        // Initial sorting
         model.sortPersonByName();
-
-        // Add a new person
         Person newPerson = new PersonBuilder().withName("Zara").build();
         model.addPerson(newPerson);
-
-        // Call the sort function again
         model.sortPersonByName();
-
-        // Check the position of the new person
         Person lastPerson = model.getFilteredPersonList().get(model.getFilteredPersonList().size() - 1);
-
-        // Assert that Zara is now at the end of the list
         assertEquals("Zara", lastPerson.getName().toString());
     }
 }
