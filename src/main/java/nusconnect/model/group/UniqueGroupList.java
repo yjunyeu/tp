@@ -43,6 +43,19 @@ public class UniqueGroupList implements  Iterable<Group> {
     }
 
     /**
+     * Replaces the contents of this list with {@code groups}.
+     * {@code groups} must not contain duplicate groups.
+     */
+    public void setGroups(List<Group> groups) {
+        requireAllNonNull(groups);
+        if (!groupsAreUnique(groups)) {
+            throw new DuplicateGroupException();
+        }
+
+        internalList.setAll(groups);
+    }
+
+    /**
      * Returns the backing list as an unmodifiable {@code ObservableList}.
      */
     public ObservableList<Group> asUnmodifiableObservableList() {
@@ -71,5 +84,19 @@ public class UniqueGroupList implements  Iterable<Group> {
     @Override
     public int hashCode() {
         return internalList.hashCode();
+    }
+
+    /**
+     * Returns true if {@code groups} contains only unique groups.
+     */
+    private boolean groupsAreUnique(List<Group> groups) {
+        for (int i = 0; i < groups.size() - 1; i++) {
+            for (int j = i + 1; j < groups.size(); j++) {
+                if (groups.get(i).equals(groups.get(j))) {
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 }

@@ -89,7 +89,7 @@ public class MainApp extends Application {
                     + " Will be starting with an empty AddressBook.");
             initialData = new AddressBook();
         }
-
+        System.out.println(initialData.getGroupList());
         return new ModelManager(initialData, userPrefs);
     }
 
