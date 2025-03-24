@@ -1,5 +1,6 @@
 package nusconnect.logic;
 
+import java.io.IOException;
 import java.nio.file.Path;
 import java.util.Optional;
 
@@ -51,9 +52,13 @@ public interface Logic {
      */
     void setGuiSettings(GuiSettings guiSettings);
 
-
     /**
      * Imports addressbook
      */
     Optional<ReadOnlyAddressBook> importAddressBook(Path filePath) throws DataLoadingException;
+
+    /**
+     * Exports addressbook
+     */
+    void exportAddressBook(Path filePath) throws IOException;
 }

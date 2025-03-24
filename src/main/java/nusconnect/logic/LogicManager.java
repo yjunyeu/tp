@@ -88,8 +88,14 @@ public class LogicManager implements Logic {
         model.setGuiSettings(guiSettings);
     }
 
+    @Override
     public Optional<ReadOnlyAddressBook> importAddressBook(Path filePath) throws DataLoadingException {
         return storage.readAddressBook(filePath);
+    }
+
+    @Override
+    public void exportAddressBook(Path filePath) throws IOException {
+        storage.saveAddressBook(getAddressBook(), filePath);
     }
 
 }
