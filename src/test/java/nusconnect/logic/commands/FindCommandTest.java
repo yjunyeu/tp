@@ -90,10 +90,6 @@ public class FindCommandTest {
 
         String expected = FindCommand.class.getCanonicalName() + "{namePredicate=" + namePredicate
                 + ", modulePredicate=" + modulePredicate + "}";
-
-        System.out.println("Expected: " + expected);
-        System.out.println("Actual: " + findCommand.toString());
-
         assertEquals(expected, findCommand.toString());
     }
 
