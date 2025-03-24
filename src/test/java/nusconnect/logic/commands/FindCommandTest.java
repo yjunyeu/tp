@@ -2,9 +2,13 @@ package nusconnect.logic.commands;
 
 import static nusconnect.logic.Messages.MESSAGE_PERSONS_LISTED_OVERVIEW;
 import static nusconnect.logic.commands.CommandTestUtil.assertCommandSuccess;
+import static nusconnect.testutil.TypicalPersons.ALICE;
+import static nusconnect.testutil.TypicalPersons.BENSON;
 import static nusconnect.testutil.TypicalPersons.CARL;
+import static nusconnect.testutil.TypicalPersons.DANIEL;
 import static nusconnect.testutil.TypicalPersons.ELLE;
 import static nusconnect.testutil.TypicalPersons.FIONA;
+import static nusconnect.testutil.TypicalPersons.GEORGE;
 import static nusconnect.testutil.TypicalPersons.getTypicalAddressBook;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -80,6 +84,50 @@ public class FindCommandTest {
         expectedModel.updateFilteredPersonList(namePredicate.or(modulePredicate));
         assertCommandSuccess(command, model, expectedMessage, expectedModel);
         assertEquals(Arrays.asList(CARL, ELLE, FIONA), model.getFilteredPersonList());
+    }
+
+    @Test
+    public void execute_moduleKeyword() {
+        String expectedMessage = String.format(MESSAGE_PERSONS_LISTED_OVERVIEW, 1);
+        NameContainsKeywordsPredicate namePredicate = prepareNamePredicate("");
+        ModuleContainsKeywordsPredicate modulePredicate = prepareModulePredicate("CS2103T");
+        FindCommand command = new FindCommand(namePredicate, modulePredicate);
+        expectedModel.updateFilteredPersonList(namePredicate.or(modulePredicate));
+        assertCommandSuccess(command, model, expectedMessage, expectedModel);
+        assertEquals(Arrays.asList(ALICE), model.getFilteredPersonList());
+    }
+
+    @Test
+    public void execute_partialNameKeyword() {
+        String expectedMessage = String.format(MESSAGE_PERSONS_LISTED_OVERVIEW, 1);
+        NameContainsKeywordsPredicate namePredicate = prepareNamePredicate("Kur");
+        ModuleContainsKeywordsPredicate modulePredicate = prepareModulePredicate("");
+        FindCommand command = new FindCommand(namePredicate, modulePredicate);
+        expectedModel.updateFilteredPersonList(namePredicate.or(modulePredicate));
+        assertCommandSuccess(command, model, expectedMessage, expectedModel);
+        assertEquals(Arrays.asList(CARL), model.getFilteredPersonList());
+    }
+
+    @Test
+    public void execute_partialModuleKeyword_multiplePersonsFound() {
+        String expectedMessage = String.format(MESSAGE_PERSONS_LISTED_OVERVIEW, 4);
+        NameContainsKeywordsPredicate namePredicate = prepareNamePredicate("");
+        ModuleContainsKeywordsPredicate modulePredicate = prepareModulePredicate("CS2");
+        FindCommand command = new FindCommand(namePredicate, modulePredicate);
+        expectedModel.updateFilteredPersonList(namePredicate.or(modulePredicate));
+        assertCommandSuccess(command, model, expectedMessage, expectedModel);
+        assertEquals(Arrays.asList(ALICE, BENSON, DANIEL, GEORGE), model.getFilteredPersonList());
+    }
+
+    @Test
+    public void execute_nameModuleKeyword_multiplePersonsFound() {
+        String expectedMessage = String.format(MESSAGE_PERSONS_LISTED_OVERVIEW, 5);
+        NameContainsKeywordsPredicate namePredicate = prepareNamePredicate("Kur");
+        ModuleContainsKeywordsPredicate modulePredicate = prepareModulePredicate("CS2");
+        FindCommand command = new FindCommand(namePredicate, modulePredicate);
+        expectedModel.updateFilteredPersonList(namePredicate.or(modulePredicate));
+        assertCommandSuccess(command, model, expectedMessage, expectedModel);
+        assertEquals(Arrays.asList(ALICE, BENSON, CARL, DANIEL, GEORGE), model.getFilteredPersonList());
     }
     @Test
     public void toStringMethod() {

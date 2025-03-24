@@ -123,6 +123,108 @@ public class StringUtilTest {
         assertTrue(StringUtil.containsWordIgnoreCase("AAA bBb ccc  bbb", "bbB"));
     }
 
+    //---------------- Tests for containsPartialIgnoreCase --------------------------------------
+
+    /*
+     * Invalid equivalence partitions for word: null, empty
+     * Invalid equivalence partitions for sentence: null
+     * The four test cases below test one invalid input at a time.
+     */
+
+    @Test
+    public void containsPartialIgnoreCase_nullWord_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> StringUtil.containsPartialIgnoreCase("typical sentence", null));
+    }
+
+    @Test
+    public void containsPartialIgnoreCase_emptyWord_throwsIllegalArgumentException() {
+        assertThrows(IllegalArgumentException.class, "Word parameter cannot be empty", () ->
+                StringUtil.containsPartialIgnoreCase("typical sentence", "  "));
+    }
+
+    @Test
+    public void containsPartialIgnoreCase_nullSentence_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> StringUtil.containsPartialIgnoreCase(null, "abc"));
+    }
+
+    //---------------- Valid inputs tests ----------------------------
+
+    @Test
+    public void containsPartialIgnoreCase_emptySentence_returnsFalse() {
+        // An empty sentence should return false, as nothing can be matched.
+        assertFalse(StringUtil.containsPartialIgnoreCase("", "abc"));
+    }
+
+    @Test
+    public void containsPartialIgnoreCase_emptyWord_returnsFalse() {
+        // An empty word should not match anything
+        assertThrows(IllegalArgumentException.class, "Word parameter cannot be empty", () ->
+                StringUtil.containsPartialIgnoreCase("typical sentence", ""));
+    }
+
+    @Test
+    public void containsPartialIgnoreCase_wordMatchesPartOfSentence() {
+        // Check for a match where the word is part of a sentence
+        assertTrue(StringUtil.containsPartialIgnoreCase("typical sentence", "sent"));
+        assertTrue(StringUtil.containsPartialIgnoreCase("typical sentence", "Typ"));
+        assertTrue(StringUtil.containsPartialIgnoreCase("typical sentence", "ence"));
+    }
+
+    @Test
+    public void containsPartialIgnoreCase_wordNotMatchingPartialSentence() {
+        // Check for a match where the word doesn't match part of any sentence word
+        assertFalse(StringUtil.containsPartialIgnoreCase("typical sentence", "xen"));
+    }
+
+    @Test
+    public void containsPartialIgnoreCase_caseInsensitiveMatch() {
+        // Case-insensitive matching
+        assertTrue(StringUtil.containsPartialIgnoreCase("typical sentence", "TYP"));
+        assertTrue(StringUtil.containsPartialIgnoreCase("typical sentence", "SEN"));
+        assertTrue(StringUtil.containsPartialIgnoreCase("TYPICAL sentence", "typical"));
+    }
+
+    @Test
+    public void containsPartialIgnoreCase_leadingTrailingSpacesInWord() {
+        // Match with leading/trailing spaces in the word
+        assertTrue(StringUtil.containsPartialIgnoreCase("typical sentence", "  sen "));
+        assertTrue(StringUtil.containsPartialIgnoreCase("typical sentence", "typ "));
+    }
+
+    @Test
+    public void containsPartialIgnoreCase_multipleSpacesInSentence() {
+        // Test when the sentence has multiple spaces between words
+        assertTrue(StringUtil.containsPartialIgnoreCase("typical    sentence", "sen"));
+        assertTrue(StringUtil.containsPartialIgnoreCase("typical    sentence", "typ"));
+    }
+
+    @Test
+    public void containsPartialIgnoreCase_exactMatch() {
+        // Exact match using partial substring
+        assertTrue(StringUtil.containsPartialIgnoreCase("typical sentence", "sentence"));
+    }
+
+    @Test
+    public void containsPartialIgnoreCase_nonMatch() {
+        // Non-match cases where the word doesn't exist anywhere in the sentence
+        assertFalse(StringUtil.containsPartialIgnoreCase("typical sentence", "xyz"));
+    }
+
+    @Test
+    public void containsPartialIgnoreCase_specialCharactersMatch() {
+        // Test matching with special characters in the word
+        assertTrue(StringUtil.containsPartialIgnoreCase("this is a #typical sentence!", "#typical"));
+        assertFalse(StringUtil.containsPartialIgnoreCase("this is a #typical sentence!", "typ!"));
+    }
+
+    @Test
+    public void containsPartialIgnoreCase_numericMatch() {
+        // Check for match with numeric characters
+        assertTrue(StringUtil.containsPartialIgnoreCase("123 456 789", "456"));
+        assertTrue(StringUtil.containsPartialIgnoreCase("test 123 test", "123"));
+        assertFalse(StringUtil.containsPartialIgnoreCase("test 123 test", "124"));
+    }
+
     //---------------- Tests for getDetails --------------------------------------
 
     /*
