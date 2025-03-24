@@ -39,28 +39,50 @@ public class AddCommandParser implements Parser<AddCommand> {
      */
     public AddCommand parse(String args) throws ParseException {
         ArgumentMultimap argMultimap =
-                ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_PHONE, PREFIX_EMAIL, PREFIX_ALIAS,
-                        PREFIX_COURSE, PREFIX_NOTE, PREFIX_TELEGRAM, PREFIX_WEBSITE, PREFIX_MODULE);
+                ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_TELEGRAM, PREFIX_PHONE, PREFIX_EMAIL, PREFIX_ALIAS,
+                        PREFIX_COURSE, PREFIX_NOTE, PREFIX_WEBSITE, PREFIX_MODULE);
 
-        if (!arePrefixesPresent(argMultimap, PREFIX_NAME, PREFIX_PHONE, PREFIX_EMAIL, PREFIX_ALIAS,
-                PREFIX_COURSE, PREFIX_NOTE, PREFIX_TELEGRAM, PREFIX_WEBSITE)
+        if (!arePrefixesPresent(argMultimap, PREFIX_NAME, PREFIX_TELEGRAM)
                 || !argMultimap.getPreamble().isEmpty()) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_USAGE));
         }
 
-        argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_NAME, PREFIX_PHONE, PREFIX_EMAIL, PREFIX_ALIAS,
-                PREFIX_COURSE, PREFIX_NOTE, PREFIX_TELEGRAM, PREFIX_WEBSITE);
+        argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_NAME, PREFIX_TELEGRAM, PREFIX_PHONE, PREFIX_EMAIL, PREFIX_ALIAS,
+                PREFIX_COURSE, PREFIX_NOTE, PREFIX_WEBSITE);
         Name name = ParserUtil.parseName(argMultimap.getValue(PREFIX_NAME).get());
-        Phone phone = ParserUtil.parsePhone(argMultimap.getValue(PREFIX_PHONE).get());
-        Email email = ParserUtil.parseEmail(argMultimap.getValue(PREFIX_EMAIL).get());
-        Alias alias = ParserUtil.parseAlias(argMultimap.getValue(PREFIX_ALIAS).get());
-        Course course = ParserUtil.parseCourse(argMultimap.getValue(PREFIX_COURSE).get());
-        Note note = ParserUtil.parseNote(argMultimap.getValue(PREFIX_NOTE).get());
         Telegram telegram = ParserUtil.parseTelegram(argMultimap.getValue(PREFIX_TELEGRAM).get());
-        Website website = ParserUtil.parseWebsite(argMultimap.getValue(PREFIX_WEBSITE).get());
+
+        Phone phone = null;
+        if (argMultimap.getValue(PREFIX_PHONE).isPresent()) {
+            phone = ParserUtil.parsePhone(argMultimap.getValue(PREFIX_PHONE).get());
+        }
+        Email email = null;
+        if (argMultimap.getValue(PREFIX_EMAIL).isPresent()) {
+            email = ParserUtil.parseEmail(argMultimap.getValue(PREFIX_EMAIL).get());
+        }
+        Alias alias = null;
+        if (argMultimap.getValue(PREFIX_ALIAS).isPresent()) {
+            alias = ParserUtil.parseAlias(argMultimap.getValue(PREFIX_ALIAS).get());
+        }
+
+        Course course = null;
+        if (argMultimap.getValue(PREFIX_COURSE).isPresent()) {
+            course = ParserUtil.parseCourse(argMultimap.getValue(PREFIX_COURSE).get());
+        }
+
+        Note note = null;
+        if (argMultimap.getValue(PREFIX_NOTE).isPresent()) {
+            note = ParserUtil.parseNote(argMultimap.getValue(PREFIX_NOTE).get());
+        }
+
+        Website website = null;
+        if (argMultimap.getValue(PREFIX_WEBSITE).isPresent()) {
+            website = ParserUtil.parseWebsite(argMultimap.getValue(PREFIX_WEBSITE).get());
+        }
+
         Set<Module> moduleList = ParserUtil.parseModules(argMultimap.getAllValues(PREFIX_MODULE));
 
-        Person person = new Person(name, phone, email, alias, course, note, telegram, website, moduleList);
+        Person person = new Person(name, telegram, phone, email, alias, course, note, website, moduleList);
 
         return new AddCommand(person);
     }
