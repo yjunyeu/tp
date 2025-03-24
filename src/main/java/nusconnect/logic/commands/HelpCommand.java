@@ -12,7 +12,7 @@ public class HelpCommand extends Command {
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Shows program usage instructions.\n"
             + "Example: " + COMMAND_WORD;
 
-    public static final String SHOWING_HELP_MESSAGE = "https://ay2425s2-cs2103t-t16-1.github.io/tp/UserGuide.html";
+    public static final String SHOWING_HELP_MESSAGE = "Opened help window.";
 
     @Override
     public CommandResult execute(Model model) {
