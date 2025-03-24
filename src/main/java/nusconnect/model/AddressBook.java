@@ -129,7 +129,7 @@ public class AddressBook implements ReadOnlyAddressBook {
     public ObservableList<Group> getGroupList() {
         return groups.asUnmodifiableObservableList();
     }
-  
+
     public void sortPersonByName() {
         persons.sortPersonByName();
     }

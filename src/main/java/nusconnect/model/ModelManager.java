@@ -128,7 +128,7 @@ public class ModelManager implements Model {
     public ObservableList<Group> getFilteredGroupList() {
         return filteredGroups;
     }
-  
+
     public void sortPersonByName() {
         addressBook.sortPersonByName();
     }
