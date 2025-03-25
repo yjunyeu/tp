@@ -5,6 +5,7 @@ import java.util.function.Predicate;
 
 import javafx.collections.ObservableList;
 import nusconnect.commons.core.GuiSettings;
+import nusconnect.model.group.Group;
 import nusconnect.model.person.Person;
 
 /**
@@ -89,4 +90,20 @@ public interface Model {
      * @throws NullPointerException if {@code predicate} is null.
      */
     void updateFilteredPersonList(Predicate<Person> predicate);
+
+    /**
+     * Returns true if a group with the same name as {@code group} exists in the address book.
+     */
+    boolean hasGroup(Group group);
+
+    /**
+     * Adds the given group.
+     * {@code group} must not already exist in the address book.
+     */
+    void addGroup(Group group);
+
+    /**
+     * Returns an unmodifiable view of the filtered group list
+     */
+    ObservableList<Group> getFilteredGroupList();
 }

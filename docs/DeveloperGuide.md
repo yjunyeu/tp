@@ -274,7 +274,7 @@ NUSConnect helps students quickly add, organise and find contacts with minimal e
 
 
 
-<h2>User Stories</h2>
+### User Stories
 
 <table>
     <thead>

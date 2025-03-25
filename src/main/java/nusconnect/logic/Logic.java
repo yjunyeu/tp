@@ -12,6 +12,7 @@ import nusconnect.logic.commands.exceptions.CommandException;
 import nusconnect.logic.parser.exceptions.ParseException;
 import nusconnect.model.Model;
 import nusconnect.model.ReadOnlyAddressBook;
+import nusconnect.model.group.Group;
 import nusconnect.model.person.Person;
 
 /**
@@ -53,6 +54,7 @@ public interface Logic {
     void setGuiSettings(GuiSettings guiSettings);
 
     /**
+    
      * Imports addressbook
      */
     Optional<ReadOnlyAddressBook> importAddressBook(Path filePath) throws DataLoadingException;
@@ -61,4 +63,9 @@ public interface Logic {
      * Exports addressbook
      */
     void exportAddressBook(Path filePath) throws IOException;
+
+    /**
+     * Returns an unmodifiable view of the filtered list of groups
+     */
+    ObservableList<Group> getFilteredGroupList();
 }

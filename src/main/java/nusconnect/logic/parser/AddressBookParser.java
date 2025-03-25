@@ -17,6 +17,7 @@ import nusconnect.logic.commands.EditCommand;
 import nusconnect.logic.commands.ExitCommand;
 import nusconnect.logic.commands.ExportCommand;
 import nusconnect.logic.commands.FindCommand;
+import nusconnect.logic.commands.GroupCommand;
 import nusconnect.logic.commands.HelpCommand;
 import nusconnect.logic.commands.ImportCommand;
 import nusconnect.logic.commands.ListCommand;
@@ -95,6 +96,8 @@ public class AddressBookParser {
 
         case ExportCommand.COMMAND_WORD:
             return new ExportCommandParser(logicManager).parse(arguments);
+        case GroupCommand.COMMAND_WORD:
+            return new GroupCommandParser().parse(arguments);
 
         case SortCommand.COMMAND_WORD:
             return new SortCommand();
