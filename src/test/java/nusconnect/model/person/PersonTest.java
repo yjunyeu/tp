@@ -123,13 +123,13 @@ public class PersonTest {
     @Test
     public void toStringMethod() {
         String expected = Person.class.getCanonicalName() + "{name=" + ALICE.getName()
-                + ", phone=" + ALICE.getPhone()
-                + ", email=" + ALICE.getEmail()
-                + ", alias=" + ALICE.getAlias()
-                + ", course=" + ALICE.getCourse()
-                + ", note=" + ALICE.getNote()
                 + ", telegram=" + ALICE.getTelegram()
-                + ", website=" + ALICE.getWebsite()
+                + ", phone=" + ALICE.getPhone().orElse(null)
+                + ", email=" + ALICE.getEmail().orElse(null)
+                + ", alias=" + ALICE.getAlias().orElse(null)
+                + ", course=" + ALICE.getCourse().orElse(null)
+                + ", note=" + ALICE.getNote().orElse(null)
+                + ", website=" + ALICE.getWebsite().orElse(null)
                 + ", modules=" + ALICE.getModules() + "}";
         assertEquals(expected, ALICE.toString());
 
