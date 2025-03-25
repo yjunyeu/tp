@@ -48,12 +48,12 @@ public class EditCommand extends Command {
             + "Existing values will be overwritten by the input values.\n"
             + "Parameters: INDEX (must be a positive integer) "
             + "[" + PREFIX_NAME + "NAME] "
+            + "[" + PREFIX_TELEGRAM + "TELEGRAM] "
             + "[" + PREFIX_PHONE + "PHONE] "
             + "[" + PREFIX_EMAIL + "EMAIL] "
             + "[" + PREFIX_ALIAS + "ALIAS] "
             + "[" + PREFIX_COURSE + "COURSE] "
             + "[" + PREFIX_NOTE + "NOTE] "
-            + "[" + PREFIX_TELEGRAM + "TELEGRAM] "
             + "[" + PREFIX_WEBSITE + "WEBSITE] "
             + "[" + PREFIX_MODULE + "MODULE]...\n"
             + "Example: " + COMMAND_WORD + " 1 "
@@ -108,17 +108,17 @@ public class EditCommand extends Command {
         assert personToEdit != null;
 
         Name updatedName = editPersonDescriptor.getName().orElse(personToEdit.getName());
-        Phone updatedPhone = editPersonDescriptor.getPhone().orElse(personToEdit.getPhone());
-        Email updatedEmail = editPersonDescriptor.getEmail().orElse(personToEdit.getEmail());
-        Alias updatedAlias = editPersonDescriptor.getAlias().orElse(personToEdit.getAlias());
-        Course updatedCourse = editPersonDescriptor.getCourse().orElse(personToEdit.getCourse());
-        Note updatedNote = editPersonDescriptor.getNote().orElse(personToEdit.getNote());
         Telegram updatedTelegram = editPersonDescriptor.getTelegram().orElse(personToEdit.getTelegram());
-        Website updatedWebsite = editPersonDescriptor.getWebsite().orElse(personToEdit.getWebsite());
+        Phone updatedPhone = editPersonDescriptor.getPhone().orElse(personToEdit.getPhone().orElse(null));
+        Email updatedEmail = editPersonDescriptor.getEmail().orElse(personToEdit.getEmail().orElse(null));
+        Alias updatedAlias = editPersonDescriptor.getAlias().orElse(personToEdit.getAlias().orElse(null));
+        Course updatedCourse = editPersonDescriptor.getCourse().orElse(personToEdit.getCourse().orElse(null));
+        Note updatedNote = editPersonDescriptor.getNote().orElse(personToEdit.getNote().orElse(null));
+        Website updatedWebsite = editPersonDescriptor.getWebsite().orElse(personToEdit.getWebsite().orElse(null));
         Set<Module> updatedModules = editPersonDescriptor.getTags().orElse(personToEdit.getModules());
 
-        return new Person(updatedName, updatedPhone, updatedEmail, updatedAlias, updatedCourse, updatedNote,
-                updatedTelegram, updatedWebsite, updatedModules);
+        return new Person(updatedName, updatedTelegram, updatedPhone,
+                updatedEmail, updatedAlias, updatedCourse, updatedNote, updatedWebsite, updatedModules);
     }
 
     @Override
@@ -151,12 +151,12 @@ public class EditCommand extends Command {
      */
     public static class EditPersonDescriptor {
         private Name name;
+        private Telegram telegram;
         private Phone phone;
         private Email email;
         private Alias alias;
         private Course course;
         private Note note;
-        private Telegram telegram;
         private Website website;
         private Set<Module> modules;
 
@@ -168,12 +168,12 @@ public class EditCommand extends Command {
          */
         public EditPersonDescriptor(EditPersonDescriptor toCopy) {
             setName(toCopy.name);
+            setTelegram(toCopy.telegram);
             setPhone(toCopy.phone);
             setEmail(toCopy.email);
             setAlias(toCopy.alias);
             setCourse(toCopy.course);
             setNote(toCopy.note);
-            setTelegram(toCopy.telegram);
             setWebsite(toCopy.website);
             setModules(toCopy.modules);
         }
@@ -182,8 +182,8 @@ public class EditCommand extends Command {
          * Returns true if at least one field is edited.
          */
         public boolean isAnyFieldEdited() {
-            return CollectionUtil.isAnyNonNull(name, phone, email, alias, course,
-                    note, telegram, website, modules);
+            return CollectionUtil.isAnyNonNull(name, telegram, phone, email, alias, course,
+                    note, website, modules);
         }
 
         public void setName(Name name) {
@@ -282,12 +282,12 @@ public class EditCommand extends Command {
 
             EditPersonDescriptor otherEditPersonDescriptor = (EditPersonDescriptor) other;
             return Objects.equals(name, otherEditPersonDescriptor.name)
+                    && Objects.equals(telegram, otherEditPersonDescriptor.telegram)
                     && Objects.equals(phone, otherEditPersonDescriptor.phone)
                     && Objects.equals(email, otherEditPersonDescriptor.email)
                     && Objects.equals(alias, otherEditPersonDescriptor.alias)
                     && Objects.equals(course, otherEditPersonDescriptor.course)
                     && Objects.equals(note, otherEditPersonDescriptor.note)
-                    && Objects.equals(telegram, otherEditPersonDescriptor.telegram)
                     && Objects.equals(website, otherEditPersonDescriptor.website)
                     && Objects.equals(modules, otherEditPersonDescriptor.modules);
         }
@@ -296,12 +296,12 @@ public class EditCommand extends Command {
         public String toString() {
             return new ToStringBuilder(this)
                     .add("name", name)
+                    .add("telegram", telegram)
                     .add("phone", phone)
                     .add("email", email)
                     .add("alias", alias)
                     .add("course", course)
                     .add("note", note)
-                    .add("telegram", telegram)
                     .add("website", website)
                     .add("modules", modules)
                     .toString();

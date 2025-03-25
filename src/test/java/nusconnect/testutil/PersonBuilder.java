@@ -21,21 +21,22 @@ import nusconnect.model.util.SampleDataUtil;
 public class PersonBuilder {
 
     public static final String DEFAULT_NAME = "Amy Bee";
+    public static final String DEFAULT_TELEGRAM = "@amyamybee";
     public static final String DEFAULT_PHONE = "85355255";
     public static final String DEFAULT_EMAIL = "amy@gmail.com";
     public static final String DEFAULT_ALIAS = "Amee";
     public static final String DEFAULT_COURSE = "Computer Science";
     public static final String DEFAULT_NOTE = "Bestie!";
-    public static final String DEFAULT_TELEGRAM = "@amyamybee";
     public static final String DEFAULT_WEBSITE = "aimee.com";
 
     private Name name;
+    private Telegram telegram;
     private Phone phone;
     private Email email;
     private Alias alias;
     private Course course;
     private Note note;
-    private Telegram telegram;
+
     private Website website;
     private Set<Module> modules;
 
@@ -44,12 +45,12 @@ public class PersonBuilder {
      */
     public PersonBuilder() {
         name = new Name(DEFAULT_NAME);
+        telegram = new Telegram(DEFAULT_TELEGRAM);
         phone = new Phone(DEFAULT_PHONE);
         email = new Email(DEFAULT_EMAIL);
         alias = new Alias(DEFAULT_ALIAS);
         course = new Course(DEFAULT_COURSE);
         note = new Note(DEFAULT_NOTE);
-        telegram = new Telegram(DEFAULT_TELEGRAM);
         website = new Website(DEFAULT_WEBSITE);
         modules = new HashSet<>();
     }
@@ -59,13 +60,13 @@ public class PersonBuilder {
      */
     public PersonBuilder(Person personToCopy) {
         name = personToCopy.getName();
-        phone = personToCopy.getPhone();
-        email = personToCopy.getEmail();
-        alias = personToCopy.getAlias();
-        course = personToCopy.getCourse();
-        note = personToCopy.getNote();
         telegram = personToCopy.getTelegram();
-        website = personToCopy.getWebsite();
+        phone = personToCopy.getPhone().orElse(null);
+        email = personToCopy.getEmail().orElse(null);
+        alias = personToCopy.getAlias().orElse(null);
+        course = personToCopy.getCourse().orElse(null);
+        note = personToCopy.getNote().orElse(null);
+        website = personToCopy.getWebsite().orElse(null);
         modules = new HashSet<>(personToCopy.getModules());
     }
 
@@ -74,6 +75,14 @@ public class PersonBuilder {
      */
     public PersonBuilder withName(String name) {
         this.name = new Name(name);
+        return this;
+    }
+
+    /**
+     * Sets the {@code Telegram} of the {@code Person} that we are building.
+     */
+    public PersonBuilder withTelegram(String telegram) {
+        this.telegram = new Telegram(telegram);
         return this;
     }
 
@@ -118,14 +127,6 @@ public class PersonBuilder {
     }
 
     /**
-     * Sets the {@code Telegram} of the {@code Person} that we are building.
-     */
-    public PersonBuilder withTelegram(String telegram) {
-        this.telegram = new Telegram(telegram);
-        return this;
-    }
-
-    /**
      * Sets the {@code Website} of the {@code Person} that we are building.
      */
     public PersonBuilder withWebsite(String website) {
@@ -142,7 +143,7 @@ public class PersonBuilder {
     }
 
     public Person build() {
-        return new Person(name, phone, email, alias, course, note, telegram, website, modules);
+        return new Person(name, telegram, phone, email, alias, course, note, website, modules);
     }
 
 }
