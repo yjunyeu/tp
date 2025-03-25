@@ -9,6 +9,7 @@ import nusconnect.logic.commands.exceptions.CommandException;
 import nusconnect.logic.parser.exceptions.ParseException;
 import nusconnect.model.Model;
 import nusconnect.model.ReadOnlyAddressBook;
+import nusconnect.model.group.Group;
 import nusconnect.model.person.Person;
 
 /**
@@ -48,4 +49,9 @@ public interface Logic {
      * Set the user prefs' GUI settings.
      */
     void setGuiSettings(GuiSettings guiSettings);
+
+    /**
+     * Returns an unmodifiable view of the filtered list of groups
+     */
+    ObservableList<Group> getFilteredGroupList();
 }

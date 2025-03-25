@@ -15,6 +15,7 @@ import nusconnect.logic.parser.AddressBookParser;
 import nusconnect.logic.parser.exceptions.ParseException;
 import nusconnect.model.Model;
 import nusconnect.model.ReadOnlyAddressBook;
+import nusconnect.model.group.Group;
 import nusconnect.model.person.Person;
 import nusconnect.storage.Storage;
 
@@ -84,5 +85,10 @@ public class LogicManager implements Logic {
     @Override
     public void setGuiSettings(GuiSettings guiSettings) {
         model.setGuiSettings(guiSettings);
+    }
+
+    @Override
+    public ObservableList<Group> getFilteredGroupList() {
+        return model.getFilteredGroupList();
     }
 }

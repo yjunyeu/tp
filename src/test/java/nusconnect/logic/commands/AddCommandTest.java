@@ -22,6 +22,7 @@ import nusconnect.model.AddressBook;
 import nusconnect.model.Model;
 import nusconnect.model.ReadOnlyAddressBook;
 import nusconnect.model.ReadOnlyUserPrefs;
+import nusconnect.model.group.Group;
 import nusconnect.model.person.Person;
 import nusconnect.testutil.PersonBuilder;
 
@@ -124,6 +125,11 @@ public class AddCommandTest {
         }
 
         @Override
+        public void addGroup(Group group) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
         public void setAddressBook(ReadOnlyAddressBook newData) {
             throw new AssertionError("This method should not be called.");
         }
@@ -135,6 +141,11 @@ public class AddCommandTest {
 
         @Override
         public boolean hasPerson(Person person) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public boolean hasGroup(Group group) {
             throw new AssertionError("This method should not be called.");
         }
 
@@ -155,6 +166,11 @@ public class AddCommandTest {
 
         @Override
         public ObservableList<Person> getFilteredPersonList() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public ObservableList<Group> getFilteredGroupList() {
             throw new AssertionError("This method should not be called.");
         }
 
