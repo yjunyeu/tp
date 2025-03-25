@@ -130,6 +130,10 @@ public class AddressBook implements ReadOnlyAddressBook {
         return groups.asUnmodifiableObservableList();
     }
 
+    public void sortPersonByName() {
+        persons.sortPersonByName();
+    }
+
     //// util methods
 
     @Override

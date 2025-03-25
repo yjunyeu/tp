@@ -129,6 +129,11 @@ public class ModelManager implements Model {
         return filteredGroups;
     }
 
+    @Override
+    public void sortPersonByName() {
+        addressBook.sortPersonByName();
+    }
+
     //=========== Filtered Person List Accessors =============================================================
 
     /**
