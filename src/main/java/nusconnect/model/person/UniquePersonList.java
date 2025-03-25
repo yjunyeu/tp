@@ -98,6 +98,9 @@ public class UniquePersonList implements Iterable<Person> {
         internalList.setAll(persons);
     }
 
+    /**
+     * Sorts {@code persons} in the list by the names in alphanumerical order
+     */
     public void sortPersonByName() {
         internalList.sort(Comparator.comparing(person -> person.getName().toString()));
     }
