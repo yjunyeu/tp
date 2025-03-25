@@ -5,7 +5,6 @@ import static nusconnect.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import java.nio.file.Path;
 
 import nusconnect.logic.LogicManager;
-import nusconnect.logic.commands.AddCommand;
 import nusconnect.logic.commands.ImportCommand;
 import nusconnect.logic.parser.exceptions.ParseException;
 
