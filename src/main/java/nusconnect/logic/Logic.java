@@ -54,7 +54,6 @@ public interface Logic {
     void setGuiSettings(GuiSettings guiSettings);
 
     /**
-    
      * Imports addressbook
      */
     Optional<ReadOnlyAddressBook> importAddressBook(Path filePath) throws DataLoadingException;
