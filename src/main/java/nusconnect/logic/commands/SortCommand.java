@@ -5,7 +5,7 @@ import static java.util.Objects.requireNonNull;
 import nusconnect.model.Model;
 
 /**
- * Lists all persons in the address book to the user.
+ * Sorts all the persons in the address book by name in alphabetical order.
  */
 public class SortCommand extends Command {
 
