@@ -5,6 +5,7 @@ import static nusconnect.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.util.Iterator;
 import java.util.List;
+import java.util.Optional;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -65,6 +66,15 @@ public class UniqueGroupList implements Iterable<Group> {
         }
 
         internalList.setAll(groups);
+    }
+
+    /**
+     * Finds and returns the group in the list that equals the given group.
+     */
+    public Optional<Group> find(Group toFind) {
+        return internalList.stream()
+                .filter(group -> group.equals(toFind))
+                .findFirst();
     }
 
     /**

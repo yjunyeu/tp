@@ -3,9 +3,11 @@ package nusconnect.model;
 import static java.util.Objects.requireNonNull;
 
 import java.util.List;
+import java.util.Optional;
 
 import javafx.collections.ObservableList;
 import nusconnect.commons.util.ToStringBuilder;
+import nusconnect.logic.parser.Parser;
 import nusconnect.model.group.Group;
 import nusconnect.model.group.UniqueGroupList;
 import nusconnect.model.person.Person;
@@ -129,6 +131,20 @@ public class AddressBook implements ReadOnlyAddressBook {
      */
     public void removeGroup(Group key) {
         groups.remove(key);
+    }
+
+    /**
+     * Adds a person to a group.
+     * Both the person and the group must exist in the address book.
+     */
+    public void addPersonToGroup(Person person, Group group) {
+        requireNonNull(person);
+        requireNonNull(group);
+
+        Optional<Group> actualGroup = groups.find(group);
+        if (actualGroup.isPresent()) {
+            actualGroup.get().addMember(person);
+        }
     }
 
     /**

@@ -130,6 +130,12 @@ public class ModelManager implements Model {
     }
 
     @Override
+    public void addPersonToGroup(Person person, Group group) {
+        requireAllNonNull(person, group);
+        addressBook.addPersonToGroup(person, group);
+    }
+
+    @Override
     public ObservableList<Group> getFilteredGroupList() {
         return filteredGroups;
     }

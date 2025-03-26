@@ -112,4 +112,10 @@ public interface Model {
      * Returns an unmodifiable view of the filtered group list
      */
     ObservableList<Group> getFilteredGroupList();
+
+    /**
+     * Adds a person to a group.
+     * The person and group must exist in the address book.
+     */
+    void addPersonToGroup(Person person, Group group);
 }
