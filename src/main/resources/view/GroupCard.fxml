@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.Region?>
+
+<VBox id="cardPane" fx:id="cardPane" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" styleClass="group-card">
+    <padding>
+        <Insets top="5" right="5" bottom="5" left="5" />
+    </padding>
+    <HBox alignment="CENTER_LEFT" spacing="5">
+        <Label fx:id="id" styleClass="cell_big_label">
+            <minWidth>
+                <Region fx:constant="USE_PREF_SIZE" />
+            </minWidth>
+        </Label>
+        <Label fx:id="groupName" text="\$first" styleClass="group-name-label" />
+    </HBox>
+    <VBox fx:id="membersBox" styleClass="members-box" VBox.vgrow="ALWAYS">
+        <!-- Member labels will be added here programmatically -->
+    </VBox>
+</VBox>

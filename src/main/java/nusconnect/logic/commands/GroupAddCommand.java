@@ -2,7 +2,6 @@ package nusconnect.logic.commands;
 
 import static java.util.Objects.requireNonNull;
 
-import nusconnect.commons.core.LogsCenter;
 import nusconnect.commons.core.index.Index;
 import nusconnect.commons.util.ToStringBuilder;
 import nusconnect.logic.Messages;

@@ -391,9 +391,39 @@
     -fx-font-weight: bold;
 }
 
-.group-list .list-cell {
-    -fx-font-size: 12pt;
-    -fx-font-family: "Segoe UI Semibold";
-    -fx-padding: 10 8 10 8;
+.group-card {
+    -fx-background-color: derive(#f6f6f6, 20%);
     -fx-border-width: 0 0 1 0;
+    -fx-border-color: #cccccc;
+}
+
+.group-name-label {
+    -fx-font-size: 14pt;
+    -fx-font-family: "Segoe UI Semibold";
+    -fx-text-fill: #003d7c;
+}
+
+.members-box {
+    -fx-background-color: transparent;
+    -fx-spacing: 2;
+    -fx-padding: 0 0 0 15;
+}
+
+.member-label {
+    -fx-font-family: "Segoe UI";
+    -fx-font-size: 11pt;
+    -fx-text-fill: #444444;
+}
+
+.group-header-box {
+    -fx-background-color: derive(#003d7c, 20%);
+    -fx-padding: 8 10 8 10;
+    -fx-alignment: center;
+}
+
+.group-header-label {
+    -fx-font-size: 16pt;
+    -fx-font-family: "Segoe UI Semibold";
+    -fx-text-fill: white;
+    -fx-opacity: 1.0;
 }
