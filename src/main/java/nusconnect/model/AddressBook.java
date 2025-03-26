@@ -2,12 +2,12 @@ package nusconnect.model;
 
 import static java.util.Objects.requireNonNull;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
 
 import javafx.collections.ObservableList;
 import nusconnect.commons.util.ToStringBuilder;
-import nusconnect.logic.parser.Parser;
 import nusconnect.model.group.Group;
 import nusconnect.model.group.UniqueGroupList;
 import nusconnect.model.person.Person;
@@ -99,6 +99,17 @@ public class AddressBook implements ReadOnlyAddressBook {
         requireNonNull(editedPerson);
 
         persons.setPerson(target, editedPerson);
+
+        // Update person reference in all groups
+        for (Group group: groups) {
+            for (Person member : new HashSet<>(group.getMembers())) {
+                if (member == target) {
+                    group.removeMember(member);
+                    group.addMember(editedPerson);
+                    break;
+                }
+            }
+        }
     }
 
     /**
@@ -107,6 +118,12 @@ public class AddressBook implements ReadOnlyAddressBook {
      */
     public void removePerson(Person key) {
         persons.remove(key);
+
+        for (Group group : groups) {
+            if (group.hasMember(key)) {
+                group.removeMember(key);
+            }
+        }
     }
 
     /**

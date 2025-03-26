@@ -8,8 +8,6 @@ import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableSet;
 import nusconnect.commons.util.ToStringBuilder;
 import nusconnect.model.person.Person;
 

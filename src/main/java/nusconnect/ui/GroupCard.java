@@ -7,7 +7,6 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 import nusconnect.model.group.Group;
-import nusconnect.model.person.Person;
 
 /**
  * An UI component that displays information of a {@code Group}.

@@ -43,10 +43,8 @@ public class GroupCreateCommandTest {
     @Test
     public void execute_duplicateGroup_throwsCommandException() {
 
-        // First add the group to the model
         model.addGroup(new Group(VALID_GROUP_NAME_CCA));
 
-        // Try to add the same group again
         GroupCreateCommand groupCreateCommand = new GroupCreateCommand(VALID_GROUP_NAME_CCA);
 
         assertCommandFailure(groupCreateCommand, model, GroupCreateCommand.MESSAGE_DUPLICATE_GROUP);
