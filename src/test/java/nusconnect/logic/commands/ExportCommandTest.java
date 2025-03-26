@@ -1,7 +1,9 @@
 package nusconnect.logic.commands;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.doThrow;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verify;
 
 import java.io.IOException;
 import java.nio.file.Path;
@@ -15,7 +17,7 @@ import nusconnect.model.Model;
 
 public class ExportCommandTest {
 
-    public Path testFolder = Paths.get("src", "test", "data", "JsonAddressBookStorageTest");
+    private final Path testFolder = Paths.get("src", "test", "data", "JsonAddressBookStorageTest");
 
     @Test
     public void execute_validFilePath_exportSuccess() throws Exception {

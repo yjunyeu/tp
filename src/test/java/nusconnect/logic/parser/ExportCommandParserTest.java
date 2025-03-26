@@ -54,7 +54,8 @@ public class ExportCommandParserTest {
         ParseException exception = assertThrows(ParseException.class, () -> parser.parse(emptyInput));
 
         // Verify the exception message is correct
-        assertEquals(String.format(MESSAGE_INVALID_COMMAND_FORMAT, ExportCommand.MESSAGE_USAGE), exception.getMessage());
+        assertEquals(String.format(MESSAGE_INVALID_COMMAND_FORMAT, ExportCommand.MESSAGE_USAGE),
+                exception.getMessage());
     }
 
     @Test
@@ -66,6 +67,7 @@ public class ExportCommandParserTest {
         ParseException exception = assertThrows(ParseException.class, () -> parser.parse("")); // Empty string case
 
         // Verify the exception message is correct
-        assertEquals(String.format(MESSAGE_INVALID_COMMAND_FORMAT, ExportCommand.MESSAGE_USAGE), exception.getMessage());
+        assertEquals(String.format(MESSAGE_INVALID_COMMAND_FORMAT, ExportCommand.MESSAGE_USAGE),
+                exception.getMessage());
     }
 }

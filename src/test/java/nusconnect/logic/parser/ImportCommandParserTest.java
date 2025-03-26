@@ -52,7 +52,8 @@ public class ImportCommandParserTest {
         ParseException exception = assertThrows(ParseException.class, () -> parser.parse(emptyInput));
 
         // Verify the exception message is correct
-        assertEquals(String.format(MESSAGE_INVALID_COMMAND_FORMAT, ImportCommand.MESSAGE_USAGE), exception.getMessage());
+        assertEquals(String.format(MESSAGE_INVALID_COMMAND_FORMAT, ImportCommand.MESSAGE_USAGE),
+                exception.getMessage());
     }
 
     @Test
@@ -62,10 +63,12 @@ public class ImportCommandParserTest {
 
         // Expected behavior: the parser does not throw ParseException because the parser does not validate path
         // We expect the exception to be thrown when the input is empty (or handles empty case)
-        ParseException exception = assertThrows(ParseException.class, () -> parser.parse("")); // Empty string case
+        // Empty string case
+        ParseException exception = assertThrows(ParseException.class, () -> parser.parse(""));
 
         // Verify the exception message is correct
-        assertEquals(String.format(MESSAGE_INVALID_COMMAND_FORMAT, ImportCommand.MESSAGE_USAGE), exception.getMessage());
+        assertEquals(String.format(MESSAGE_INVALID_COMMAND_FORMAT, ImportCommand.MESSAGE_USAGE),
+                exception.getMessage());
     }
 
 
