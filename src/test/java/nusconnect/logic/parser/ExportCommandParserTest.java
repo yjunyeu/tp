@@ -32,7 +32,7 @@ public class ExportCommandParserTest {
         String validInputParser = "src/test/data/JsonAddressBookStorageTest";
 
         //valid input for command because
-        String validInputCommand = "src/test/data/JsonAddressBookStorageTest/addressbook.json";
+        String validInputCommand = "src/test/data/JsonAddressBookStorageTest\\addressbook.json";
         Path validPathCommand = Path.of(validInputCommand);
 
         // Create expected ExportCommand with the correct file path
