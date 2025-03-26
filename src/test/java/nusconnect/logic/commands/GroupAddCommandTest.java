@@ -41,7 +41,6 @@ public class GroupAddCommandTest {
 
     @Test
     public void execute_validIndices_success() {
-
         Person personToAdd = model.getFilteredPersonList().get(INDEX_FIRST.getZeroBased());
         Group targetGroup = model.getFilteredGroupList().get(INDEX_SECOND.getZeroBased());
         GroupAddCommand groupAddCommand = new GroupAddCommand(INDEX_FIRST, INDEX_SECOND);
@@ -49,7 +48,9 @@ public class GroupAddCommandTest {
         String expectedMessage = String.format(GroupAddCommand.MESSAGE_SUCCESS,
                 personToAdd.getName().fullName, targetGroup.getGroupName());
 
-        expectedModel.addPersonToGroup(personToAdd, targetGroup);
+        Person expectedPersonToAdd = expectedModel.getFilteredPersonList().get(INDEX_FIRST.getZeroBased());
+        Group expectedTargetGroup = expectedModel.getFilteredGroupList().get(INDEX_FIRST.getZeroBased());
+        expectedModel.addPersonToGroup(expectedPersonToAdd, expectedTargetGroup);
 
         assertCommandSuccess(groupAddCommand, model, expectedMessage, expectedModel);
     }
