@@ -23,9 +23,9 @@ Given below are my contributions to the project.
   * Added PersonDetail and Group Ui classes
 
 * **Testing**:
-  * Modified tests to change from Tag to Module 
+  * Modified tests to change from Tag to Module
   * Wrote and updated Junit tests to verify that the `view` command works
 
 * **Documentation**:
-    * User Guide: 
+    * User Guide:
       * Updated the user guide to include the new `view` command
