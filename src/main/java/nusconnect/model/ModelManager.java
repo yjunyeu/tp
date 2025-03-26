@@ -133,6 +133,8 @@ public class ModelManager implements Model {
     public void addPersonToGroup(Person person, Group group) {
         requireAllNonNull(person, group);
         addressBook.addPersonToGroup(person, group);
+
+        updateFilteredGroupList(g -> false);
         updateFilteredGroupList(PREDICATE_SHOW_ALL_GROUPS);
     }
 
