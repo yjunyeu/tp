@@ -7,6 +7,9 @@ Given below are my contributions to the project.
   * Introduced new classes to the model, such as Alias, Course, Note, Person, Telegram, and Website, to better organize and represent the data structure.
   * Ensured that each class accurately reflects the relevant properties and behaviors of the corresponding entities within the project.
 
+* **Added Import/Export Functionality**:
+  * Implemented an import/export function to enable users to import their address book data from a JSON file.
+  * Provided the option to export the user's address book data to a JSON file for backup or sharing purposes.
 
 * **Refactored the Edit/Add Command**:
   * Updated the logic behind the edit and add commands to accommodate the new data structure.
