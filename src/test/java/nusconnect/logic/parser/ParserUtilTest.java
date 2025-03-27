@@ -28,7 +28,7 @@ public class ParserUtilTest {
     private static final String INVALID_NAME = "R@chel";
     private static final String INVALID_PHONE = "+651234";
     private static final String INVALID_EMAIL = "example.com";
-    private static final String INVALID_TAG = "#friend";
+    private static final String INVALID_MODULE = "#CS2103T";
     private static final String INVALID_ALIAS = "";
     private static final String INVALID_COURSE = "";
     private static final String INVALID_NOTE = "";
@@ -39,8 +39,8 @@ public class ParserUtilTest {
     private static final String VALID_NAME = "Rachel Walker";
     private static final String VALID_PHONE = "123456";
     private static final String VALID_EMAIL = "rachel@example.com";
-    private static final String VALID_TAG_1 = "friend";
-    private static final String VALID_TAG_2 = "neighbour";
+    private static final String VALID_MODULE_1 = "CS2106";
+    private static final String VALID_MODULE_2 = "CS2103T";
     private static final String VALID_ALIAS = "RachelWalker";
     private static final String VALID_COURSE = "Computer Science";
     private static final String VALID_NOTE = "This is a valid note.";
@@ -260,19 +260,19 @@ public class ParserUtilTest {
 
     @Test
     public void parseTag_invalidValue_throwsParseException() {
-        assertThrows(ParseException.class, () -> ParserUtil.parseModule(INVALID_TAG));
+        assertThrows(ParseException.class, () -> ParserUtil.parseModule(INVALID_MODULE));
     }
 
     @Test
     public void parseTag_validValueWithoutWhitespace_returnsModule() throws Exception {
-        Module expectedModule = new Module(VALID_TAG_1);
-        assertEquals(expectedModule, ParserUtil.parseModule(VALID_TAG_1));
+        Module expectedModule = new Module(VALID_MODULE_1);
+        assertEquals(expectedModule, ParserUtil.parseModule(VALID_MODULE_1));
     }
 
     @Test
     public void parseTag_validValueWithWhitespace_returnsTrimmedModule() throws Exception {
-        String tagWithWhitespace = WHITESPACE + VALID_TAG_1 + WHITESPACE;
-        Module expectedModule = new Module(VALID_TAG_1);
+        String tagWithWhitespace = WHITESPACE + VALID_MODULE_1 + WHITESPACE;
+        Module expectedModule = new Module(VALID_MODULE_1);
         assertEquals(expectedModule, ParserUtil.parseModule(tagWithWhitespace));
     }
 
@@ -283,7 +283,7 @@ public class ParserUtilTest {
 
     @Test
     public void parseTags_collectionWithInvalidTags_throwsParseException() {
-        assertThrows(ParseException.class, () -> ParserUtil.parseModules(Arrays.asList(VALID_TAG_1, INVALID_TAG)));
+        assertThrows(ParseException.class, () -> ParserUtil.parseModules(Arrays.asList(VALID_MODULE_1, INVALID_MODULE)));
     }
 
     @Test
@@ -293,9 +293,9 @@ public class ParserUtilTest {
 
     @Test
     public void parseTags_collectionWithValidModules_returnsModuleSet() throws Exception {
-        Set<Module> actualModuleSet = ParserUtil.parseModules(Arrays.asList(VALID_TAG_1, VALID_TAG_2));
-        Set<Module> expectedModuleSet = new HashSet<Module>(Arrays.asList(new Module(VALID_TAG_1),
-                new Module(VALID_TAG_2)));
+        Set<Module> actualModuleSet = ParserUtil.parseModules(Arrays.asList(VALID_MODULE_1, VALID_MODULE_2));
+        Set<Module> expectedModuleSet = new HashSet<Module>(Arrays.asList(new Module(VALID_MODULE_1),
+                new Module(VALID_MODULE_2)));
 
         assertEquals(expectedModuleSet, actualModuleSet);
     }
