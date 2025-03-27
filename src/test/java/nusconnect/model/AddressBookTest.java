@@ -22,6 +22,7 @@ import nusconnect.model.group.Group;
 import nusconnect.model.person.Person;
 import nusconnect.model.person.exceptions.DuplicatePersonException;
 import nusconnect.testutil.PersonBuilder;
+import nusconnect.testutil.TypicalGroups;
 
 public class AddressBookTest {
 
@@ -88,6 +89,49 @@ public class AddressBookTest {
     public void toStringMethod() {
         String expected = AddressBook.class.getCanonicalName() + "{persons=" + addressBook.getPersonList() + "}";
         assertEquals(expected, addressBook.toString());
+    }
+
+    @Test
+    public void hasGroup_nullGroup_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> addressBook.hasGroup(null));
+    }
+
+    @Test
+    public void hasGroup_groupNotInAddressBook_returnsFalse() {
+        Group group = TypicalGroups.GROUP_CS2100;
+        assertFalse(addressBook.hasGroup(group));
+    }
+
+    @Test
+    public void hasGroup_groupInAddressBook_returnsTrue() {
+        Group group = TypicalGroups.GROUP_CS2100;
+        addressBook.addGroup(group);
+        assertTrue(addressBook.hasGroup(group));
+    }
+
+    @Test
+    public void removeGroup_existingGroup_success() {
+        Group group = TypicalGroups.GROUP_CS2100;
+        addressBook.addGroup(group);
+        assertTrue(addressBook.hasGroup(group));
+
+        addressBook.removeGroup(group);
+        assertFalse(addressBook.hasGroup(group));
+        assertEquals(0, addressBook.getGroupList().size());
+    }
+
+    @Test
+    public void addPersonToGroup_validPersonAndGroup_success() {
+        Person person = ALICE;
+        Group group = TypicalGroups.GROUP_CS2100;
+
+        addressBook.addPerson(person);
+        addressBook.addGroup(group);
+
+        addressBook.addPersonToGroup(person, group);
+
+        Group actualGroup = addressBook.getGroupList().get(0);
+        assertTrue(actualGroup.hasMember(person));
     }
 
     /**

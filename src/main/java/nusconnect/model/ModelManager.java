@@ -98,6 +98,10 @@ public class ModelManager implements Model {
     @Override
     public void deletePerson(Person target) {
         addressBook.removePerson(target);
+
+        // Force refresh the groups list UI
+        updateFilteredGroupList(g -> false);
+        updateFilteredGroupList(PREDICATE_SHOW_ALL_GROUPS);
     }
 
     @Override
@@ -109,8 +113,10 @@ public class ModelManager implements Model {
     @Override
     public void setPerson(Person target, Person editedPerson) {
         requireAllNonNull(target, editedPerson);
-
         addressBook.setPerson(target, editedPerson);
+
+        updateFilteredGroupList(g -> false);
+        updateFilteredGroupList(PREDICATE_SHOW_ALL_GROUPS);
     }
 
     @Override
@@ -127,6 +133,15 @@ public class ModelManager implements Model {
     @Override
     public void deleteGroup(Group group) {
         addressBook.removeGroup(group);
+    }
+
+    @Override
+    public void addPersonToGroup(Person person, Group group) {
+        requireAllNonNull(person, group);
+        addressBook.addPersonToGroup(person, group);
+
+        updateFilteredGroupList(g -> false);
+        updateFilteredGroupList(PREDICATE_SHOW_ALL_GROUPS);
     }
 
     @Override
@@ -154,6 +169,12 @@ public class ModelManager implements Model {
     public void updateFilteredPersonList(Predicate<Person> predicate) {
         requireNonNull(predicate);
         filteredPersons.setPredicate(predicate);
+    }
+
+    @Override
+    public void updateFilteredGroupList(Predicate<Group> predicate) {
+        requireNonNull(predicate);
+        filteredGroups.setPredicate(predicate);
     }
 
     @Override

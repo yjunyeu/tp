@@ -49,8 +49,7 @@ public class GroupPanel extends UiPart<Region> {
                 setGraphic(null);
                 setText(null);
             } else {
-                int displayIndex = getIndex() + 1;
-                setText(displayIndex + ". " + group.getGroupName());
+                setGraphic(new GroupCard(group, getIndex() + 1).getRoot());
             }
         }
     }
