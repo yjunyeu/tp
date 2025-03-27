@@ -1,0 +1,21 @@
+@startuml
+actor User
+participant "UI" as UI
+participant "Parser" as Parser
+participant "Logic" as Logic
+
+participant "Storage" as Storage
+
+
+User -> UI: enter "import filename"
+UI -> Parser: parse(filename)
+Parser -> Logic: execute("import filename")
+
+
+Logic -> Storage: importAddressBook(filePath)
+Storage -> Storage: update the AddressBook \n with the imported data
+
+Storage -> Logic
+Logic -> UI:
+UI -> User
+@enduml

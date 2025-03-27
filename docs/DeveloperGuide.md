@@ -155,6 +155,47 @@ Classes used by multiple components are in the `seedu.address.commons` package.
 
 This section describes some noteworthy details on how certain features are implemented.
 
+### Import feature
+#### Implementation
+The Import feature allows users to load an existing address book from a JSON file into the application. This feature provides a seamless way to integrate external data and ensures that users can transfer their address book information efficiently without manual entry.
+
+This high-level sequence diagram outlines the flow of interactions between the components involved in the import functionality. Here's an elaboration on each part of the diagram:
+
+<img src="images/ImportSequenceDiagram.png" width="450" />
+
+1. User Input:
+   User initiates the import process by entering the command import filename via the UI. This command indicates the user's intention to import an address book from a file located at the specified filename path.
+
+
+2. UI - Parsing the Command:
+   The UI receives the user's input and sends the command (import filename) to the Parser.
+
+
+3. Parser - Passing Command to Logic:
+   After parsing the input, the Parser creates the appropriate Logic command and forwards the parsed information (like the file path) to Logic for execution. The Logic component is the core handler that manages the overall operation of importing the data and updating the application state.
+
+
+4. Logic - Invoking Storage:
+   Logic interacts with Storage to begin the import process. Specifically, it calls importAddressBook(filePath), passing the file path of the address book file that needs to be imported.
+
+
+5. Storage - Updating AddressBook:
+   The Storage component reads the JSON (or other file format) data from the specified file and deserializes it into the AddressBook model. 
+   Once the data is read successfully, Storage updates the internal AddressBook with the newly imported data, effectively replacing or merging the previous address book data with the imported data.
+
+
+6. Storage - Returning Control to Logic:
+   After the AddressBook has been updated, Storage sends a response back to Logic, confirming that the import was successful and the address book has been updated.
+
+
+7. Logic - Returning Status to UI:
+   Logic then communicates with the UI to update it on the status of the import operation. This can be either a success message or an error message, depending on whether the operation was successful or if there were issues (e.g., file format errors).
+
+
+8. UI - Displaying Result to User:
+   Finally, the UI displays the result to the User, letting them know whether the import was successful or if there were any errors encountered during the process. This step ensures that the user is kept informed about the status of the operation.
+
+
 ### \[Proposed\] Undo/redo feature
 
 #### Proposed Implementation
