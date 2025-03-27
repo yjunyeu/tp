@@ -8,7 +8,7 @@ import nusconnect.logic.commands.exceptions.CommandException;
 import nusconnect.model.Model;
 
 /**
- * Imports a new JSON file consisting of new addressbook
+ * Exports a new JSON file consisting of new addressbook
  */
 public class ExportCommand extends Command {
 
@@ -27,6 +27,7 @@ public class ExportCommand extends Command {
 
     /**
      * @param filePath JSON file path
+     * @param logicManager  handles model and storage
      */
     public ExportCommand(Path filePath, LogicManager logicManager) {
         this.filePath = filePath;
