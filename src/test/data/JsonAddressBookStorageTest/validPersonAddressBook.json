@@ -1,0 +1,14 @@
+{
+  "persons": [
+    {
+      "name": "Valid Person",
+      "phone": "9482424",
+      "email": "hans@example.com",
+      "alias": "validP",
+      "course": "Software Engineering",
+      "note": "This is a valid person entry",
+      "telegram": "@valid_person",
+      "website": "https://validperson.com"
+    }
+  ]
+}
