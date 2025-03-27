@@ -12,6 +12,7 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 
 import nusconnect.model.group.exceptions.DuplicateGroupException;
+import nusconnect.testutil.TypicalGroups;
 
 public class UniqueGroupListTest {
 
@@ -24,13 +25,13 @@ public class UniqueGroupListTest {
 
     @Test
     public void contains_groupNotInList_returnsFalse() {
-        assertFalse(uniqueGroupList.contains(new Group("CS2103T")));
+        assertFalse(uniqueGroupList.contains(TypicalGroups.GROUP_CS2100));
     }
 
     @Test
     public void contains_groupInList_returnsTrue() {
-        uniqueGroupList.add(new Group("CS2103T"));
-        assertTrue(uniqueGroupList.contains(new Group("CS2103T")));
+        uniqueGroupList.add(TypicalGroups.GROUP_CS2100);
+        assertTrue(uniqueGroupList.contains(TypicalGroups.GROUP_CS2100));
     }
 
     @Test
@@ -40,8 +41,8 @@ public class UniqueGroupListTest {
 
     @Test
     public void add_duplicateGroup_throwsDuplicateGroupException() {
-        uniqueGroupList.add(new Group("CS2103T"));
-        assertThrows(DuplicateGroupException.class, () -> uniqueGroupList.add(new Group("CS2103T")));
+        uniqueGroupList.add(TypicalGroups.GROUP_CCA);
+        assertThrows(DuplicateGroupException.class, () -> uniqueGroupList.add(TypicalGroups.GROUP_CCA));
     }
 
     @Test
@@ -51,9 +52,9 @@ public class UniqueGroupListTest {
 
     @Test
     public void setGroups_uniqueGroupList_replacesOwnListWithProvidedUniqueGroupList() {
-        uniqueGroupList.add(new Group("CS2103T"));
+        uniqueGroupList.add(TypicalGroups.GROUP_CS2100);
         UniqueGroupList expectedUniqueGroupList = new UniqueGroupList();
-        expectedUniqueGroupList.add(new Group("CS2106"));
+        expectedUniqueGroupList.add(TypicalGroups.GROUP_CCA);
         uniqueGroupList.setGroups(expectedUniqueGroupList.asUnmodifiableObservableList());
         assertEquals(expectedUniqueGroupList, uniqueGroupList);
     }
@@ -65,17 +66,17 @@ public class UniqueGroupListTest {
 
     @Test
     public void setGroups_list_replacesOwnListWithProvidedList() {
-        uniqueGroupList.add(new Group("CS2103T"));
-        List<Group> groupList = Collections.singletonList(new Group("CS2106"));
+        uniqueGroupList.add(TypicalGroups.GROUP_CCA);
+        List<Group> groupList = Collections.singletonList(TypicalGroups.GROUP_CS2100);
         uniqueGroupList.setGroups(groupList);
         UniqueGroupList expectedUniqueGroupList = new UniqueGroupList();
-        expectedUniqueGroupList.add(new Group("CS2106"));
+        expectedUniqueGroupList.add(TypicalGroups.GROUP_CS2100);
         assertEquals(expectedUniqueGroupList, uniqueGroupList);
     }
 
     @Test
     public void setGroups_listWithDuplicateGroups_throwsDuplicateGroupException() {
-        List<Group> listWithDuplicateGroups = Arrays.asList(new Group("CS2103T"), new Group("CS2103T"));
+        List<Group> listWithDuplicateGroups = Arrays.asList(TypicalGroups.GROUP_CCA, TypicalGroups.GROUP_CCA);
         assertThrows(DuplicateGroupException.class, () -> uniqueGroupList.setGroups(listWithDuplicateGroups));
     }
 
