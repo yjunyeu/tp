@@ -9,7 +9,9 @@ import static nusconnect.commons.util.AppUtil.checkArgument;
  */
 public class Module {
 
-    public static final String MESSAGE_CONSTRAINTS = "Module names should be alphanumeric";
+    public static final String MESSAGE_CONSTRAINTS =
+            "Module names should be alphanumeric, starting with 2~3 alphabets, followed by 4 numeric characters, " +
+                    "and followed by an optional character.";
     public static final String VALIDATION_REGEX = "^[A-Za-z]{2,3}[0-9]{4}[A-Za-z]?$";
 
     public final String moduleName;
