@@ -15,17 +15,25 @@ Given below are my contributions to the project.
 
 * **New Feature**:
   * Created a mockup Ui of NUSConnect using figma
-  * Added a new `view` command to show all details of a contact
+  * Added a new `view` command to show all details of a contact 
+  * Implemented group functionality
+    * Added the `group create` command to create new groups
+    * Added the `group delete` command to delete existing groups
+    * Added the `group add` command to add contacts to groups
 
 * **Code contributed**:
   * Change all instances of Tag to Module in all classes
   * Modified the Ui to match the mock Ui
   * Added PersonDetail and Group Ui classes
+  * Implemented GroupCommand, GroupCreateCommand, GroupDeleteCommand, and GroupAddCommand classes
+  * Implemented GroupPanel and GroupCard components for displaying groups in the UI
 
 * **Testing**:
   * Modified tests to change from Tag to Module
   * Wrote and updated Junit tests to verify that the `view` command works
+  * Added tests for group-related commands and functionality  
 
 * **Documentation**:
     * User Guide:
       * Updated the user guide to include the new `view` command
+      * Added documentation for all group-related commands (`group create`, `group delete`, `group add`)
