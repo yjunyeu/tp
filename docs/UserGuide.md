@@ -159,6 +159,44 @@ Examples:
 * `list` followed by `view 2` shows the full details of the 2nd person in the address book.
 * `find Betsy` followed by `view 1` shows the full details of the 1st person in the results of the `find` command.
 
+### Creating a group : `group create`
+
+Creates a new group with the specified name.
+
+Format: `group create NAME`
+
+* The group name should be alphanumeric.
+
+Examples:
+* `group create CS2103T Team` Creates a new group named "CS2103T Team"
+* `group create Grey Hats` Creates a new group named "Grey Hats"
+
+### Deleting a group : `group delete`
+
+Deletes the group at the specified index.
+
+Format: `group delete INDEX`
+
+* Deletes the group at the specified `INDEX`.
+* The index refers to the index number shown in the displayed group list.
+* The index **must be a positive integer** 1, 2, 3, ...
+
+Examples:
+* `group delete 2` Deletes the 2nd group in the group list.
+
+### Adding a person to a group : `group add`
+
+Adds a person to a group.
+
+Format: `group add PERSON_INDEX to GROUP_INDEX`
+
+* Adds the person at the specified `PERSON_INDEX` to the group at the specified `GROUP_INDEX`.
+* Both indices refer to the index numbers shown in the displayed person list and group list respectively.
+* Both indices **must be positive integers** 1, 2, 3, ...
+
+Examples:
+* `group add 1 to 2` Adds the 1st person in the person list to the 2nd group in the group list.
+
 ### Clearing all entries : `clear`
 
 Clears all entries from the address book.
@@ -183,10 +221,6 @@ AddressBook data are saved automatically as a JSON file `[JAR file location]/dat
 If your changes to the data file makes its format invalid, AddressBook will discard all data and start with an empty data file at the next run. Hence, it is recommended to take a backup of the file before editing it.<br>
 Furthermore, certain edits can cause the AddressBook to behave in unexpected ways (e.g., if a value entered is outside of the acceptable range). Therefore, edit the data file only if you are confident that you can update it correctly.
 </div>
-
-### Archiving data files `[coming in v2.0]`
-
-_Details coming soon ..._
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -214,5 +248,8 @@ Action | Format, Examples
 **View** | `view INDEX` <br> e.g., `view 1`
 **Edit** | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [m/MODULE]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`
 **Find** | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`
+**Group create** | `group create NAME`<br> e.g., `group create CS2103T Team`
+**Group delete** | `group delete INDEX`<br> e.g., `group delete 2`
+**Group add** | `group add PERSON_INDEX to GROUP_INDEX`<br> e.g. `group add 1 to 2`
 **List** | `list`
 **Help** | `help`
