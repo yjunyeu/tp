@@ -102,65 +102,47 @@ class JsonAdaptedPerson {
         }
         final Telegram modelTelegram = new Telegram(telegram);
 
-        final Phone modelPhone;
-        if (phone != null) {
-            if (!Phone.isValidPhone(phone)) {
-                throw new IllegalValueException(Phone.MESSAGE_CONSTRAINTS);
-            }
-            modelPhone = new Phone(phone);
-        } else {
-            modelPhone = null;
-        }
+        final Phone modelPhone = JsonFieldValidator.validateField(
+                phone,
+                Phone::isValidPhone,
+                Phone::new,
+                Phone.MESSAGE_CONSTRAINTS
+        );
 
-        final Email modelEmail;
-        if (email != null) {
-            if (!Email.isValidEmail(email)) {
-                throw new IllegalValueException(Email.MESSAGE_CONSTRAINTS);
-            }
-            modelEmail = new Email(email);
-        } else {
-            modelEmail = null;
-        }
+        final Email modelEmail = JsonFieldValidator.validateField(
+                email,
+                Email::isValidEmail,
+                Email::new,
+                Email.MESSAGE_CONSTRAINTS
+        );
 
-        final Alias modelAlias;
-        if (alias != null) {
-            if (!Alias.isValidAlias(alias)) {
-                throw new IllegalValueException(Alias.MESSAGE_CONSTRAINTS);
-            }
-            modelAlias = new Alias(alias);
-        } else {
-            modelAlias = null;
-        }
+        final Alias modelAlias = JsonFieldValidator.validateField(
+                alias,
+                Alias::isValidAlias,
+                Alias::new,
+                Alias.MESSAGE_CONSTRAINTS
+        );
 
-        final Course modelCourse;
-        if (course != null) {
-            if (!Course.isValidCourse(course)) {
-                throw new IllegalValueException(Course.MESSAGE_CONSTRAINTS);
-            }
-            modelCourse = new Course(course);
-        } else {
-            modelCourse = null;
-        }
+        final Course modelCourse = JsonFieldValidator.validateField(
+                course,
+                Course::isValidCourse,
+                Course::new,
+                Course.MESSAGE_CONSTRAINTS
+        );
 
-        final Note modelNote;
-        if (note != null) {
-            if (!Note.isValidNote(note)) {
-                throw new IllegalValueException(Note.MESSAGE_CONSTRAINTS);
-            }
-            modelNote = new Note(note);
-        } else {
-            modelNote = null;
-        }
+        final Note modelNote = JsonFieldValidator.validateField(
+                note,
+                Note::isValidNote,
+                Note::new,
+                Note.MESSAGE_CONSTRAINTS
+        );
 
-        final Website modelWebsite;
-        if (website != null) {
-            if (!Website.isValidWebsite(website)) {
-                throw new IllegalValueException(Website.MESSAGE_CONSTRAINTS);
-            }
-            modelWebsite = new Website(website);
-        } else {
-            modelWebsite = null;
-        }
+        final Website modelWebsite = JsonFieldValidator.validateField(
+                website,
+                Website::isValidWebsite,
+                Website::new,
+                Website.MESSAGE_CONSTRAINTS
+        );
 
         final List<Module> personModules = new ArrayList<>();
         for (JsonAdaptedModule module : modules) {
