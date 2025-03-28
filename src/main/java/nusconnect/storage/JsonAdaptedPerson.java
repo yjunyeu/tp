@@ -85,11 +85,6 @@ class JsonAdaptedPerson {
      * @throws IllegalValueException if there were any data constraints violated in the adapted person.
      */
     public Person toModelType() throws IllegalValueException {
-        final List<Module> personModules = new ArrayList<>();
-        for (JsonAdaptedModule module : modules) {
-            personModules.add(module.toModelType());
-        }
-
         if (name == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Name.class.getSimpleName()));
         }
@@ -107,53 +102,70 @@ class JsonAdaptedPerson {
         }
         final Telegram modelTelegram = new Telegram(telegram);
 
-        if (phone == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Phone.class.getSimpleName()));
+        final Phone modelPhone;
+        if (phone != null) {
+            if (!Phone.isValidPhone(phone)) {
+                throw new IllegalValueException(Phone.MESSAGE_CONSTRAINTS);
+            }
+            modelPhone = new Phone(phone);
+        } else {
+            modelPhone = null;
         }
-        if (!Phone.isValidPhone(phone)) {
-            throw new IllegalValueException(Phone.MESSAGE_CONSTRAINTS);
-        }
-        final Phone modelPhone = new Phone(phone);
 
-        if (email == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Email.class.getSimpleName()));
+        final Email modelEmail;
+        if (email != null) {
+            if (!Email.isValidEmail(email)) {
+                throw new IllegalValueException(Email.MESSAGE_CONSTRAINTS);
+            }
+            modelEmail = new Email(email);
+        } else {
+            modelEmail = null;
         }
-        if (!Email.isValidEmail(email)) {
-            throw new IllegalValueException(Email.MESSAGE_CONSTRAINTS);
-        }
-        final Email modelEmail = new Email(email);
 
-        if (alias == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Alias.class.getSimpleName()));
+        final Alias modelAlias;
+        if (alias != null) {
+            if (!Alias.isValidAlias(alias)) {
+                throw new IllegalValueException(Alias.MESSAGE_CONSTRAINTS);
+            }
+            modelAlias = new Alias(alias);
+        } else {
+            modelAlias = null;
         }
-        if (!Alias.isValidAlias(alias)) {
-            throw new IllegalValueException(Alias.MESSAGE_CONSTRAINTS);
-        }
-        final Alias modelAlias = new Alias(alias);
 
-        if (course == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Course.class.getSimpleName()));
+        final Course modelCourse;
+        if (course != null) {
+            if (!Course.isValidCourse(course)) {
+                throw new IllegalValueException(Course.MESSAGE_CONSTRAINTS);
+            }
+            modelCourse = new Course(course);
+        } else {
+            modelCourse = null;
         }
-        if (!Course.isValidCourse(course)) {
-            throw new IllegalValueException(Course.MESSAGE_CONSTRAINTS);
-        }
-        final Course modelCourse = new Course(course);
 
-        if (note == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Note.class.getSimpleName()));
+        final Note modelNote;
+        if (note != null) {
+            if (!Note.isValidNote(note)) {
+                throw new IllegalValueException(Note.MESSAGE_CONSTRAINTS);
+            }
+            modelNote = new Note(note);
+        } else {
+            modelNote = null;
         }
-        if (!Note.isValidNote(note)) {
-            throw new IllegalValueException(Note.MESSAGE_CONSTRAINTS);
-        }
-        final Note modelNote = new Note(note);
 
-        if (website == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Website.class.getSimpleName()));
+        final Website modelWebsite;
+        if (website != null) {
+            if (!Website.isValidWebsite(website)) {
+                throw new IllegalValueException(Website.MESSAGE_CONSTRAINTS);
+            }
+            modelWebsite = new Website(website);
+        } else {
+            modelWebsite = null;
         }
-        if (!Website.isValidWebsite(website)) {
-            throw new IllegalValueException(Website.MESSAGE_CONSTRAINTS);
+
+        final List<Module> personModules = new ArrayList<>();
+        for (JsonAdaptedModule module : modules) {
+            personModules.add(module.toModelType());
         }
-        final Website modelWebsite = new Website(website);
 
         final Set<Module> modelModules = new HashSet<>(personModules);
         return new Person(modelName, modelTelegram, modelPhone, modelEmail, modelAlias, modelCourse, modelNote,
