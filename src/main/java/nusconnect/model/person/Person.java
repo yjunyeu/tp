@@ -157,5 +157,4 @@ public class Person {
                 .add("modules", modules)
                 .toString();
     }
-
 }
