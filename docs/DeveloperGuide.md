@@ -349,7 +349,7 @@ NUSConnect helps students quickly add, organise and find contacts with minimal e
             <td>***</td>
             <td>Student</td>
             <td>Delete a contact from the address book</td>
-            <td>Remove outdated or unnecessary contacts efficiently</td>
+            <td>Remove outdated or unnecessary contacts</td>
         </tr>
         <tr class="high-priority">
             <td>***</td>
@@ -363,8 +363,8 @@ NUSConnect helps students quickly add, organise and find contacts with minimal e
             <td>View a contact’s profile with their full details</td>
             <td>Access comprehensive details when needed</td>
         </tr>
-        <tr class="high-priority">
-            <td>***</td>
+        <tr class="medium-priority">
+            <td>**</td>
             <td>Student</td>
             <td>Delete all contacts in bulk if needed</td>
             <td>Reset my contact list when necessary</td>
@@ -372,38 +372,8 @@ NUSConnect helps students quickly add, organise and find contacts with minimal e
         <tr class="medium-priority">
             <td>**</td>
             <td>Student</td>
-            <td>View upcoming birthdays of contacts</td>
-            <td>Plan ahead for important dates</td>
-        </tr>
-        <tr class="medium-priority">
-            <td>**</td>
-            <td>Student</td>
-            <td>See recent interactions with a contact (e.g., messages, meetings)</td>
-            <td>Identify frequently contacted individuals easily</td>
-        </tr>
-        <tr class="medium-priority">
-            <td>**</td>
-            <td>Student</td>
-            <td>Set a custom label for each contact (e.g., Project Work, Hostel)</td>
-            <td>Categorize contacts effectively for quick filtering</td>
-        </tr>
-        <tr class="medium-priority">
-            <td>**</td>
-            <td>Student</td>
-            <td>Favorite certain contacts for quick access</td>
-            <td>Quickly access frequently used contacts</td>
-        </tr>
-        <tr class="medium-priority">
-            <td>**</td>
-            <td>Student</td>
-            <td>Share a contact’s details with another student</td>
-            <td>Streamline collaboration and networking</td>
-        </tr>
-        <tr class="medium-priority">
-            <td>**</td>
-            <td>Student</td>
-            <td>Store emergency contact details in a dedicated section</td>
-            <td>Quickly access critical contact information in urgent situations</td>
+            <td>Delete multiple contacts from the address book</td>
+            <td>Remove outdated or unnecessary contacts efficiently</td>
         </tr>
         <tr class="medium-priority">
             <td>**</td>
@@ -413,87 +383,15 @@ NUSConnect helps students quickly add, organise and find contacts with minimal e
         </tr>
         <tr class="medium-priority">
             <td>**</td>
-            <td>Teaching assistant</td>
-            <td>Store and access student contact details efficiently</td>
-            <td>Manage student information systematically</td>
-        </tr>
-        <tr class="medium-priority">
-            <td>**</td>
             <td>Project group leader</td>
             <td>Create a contact group specific to a project</td>
             <td>Easily access project members’ details for coordination</td>
         </tr>
-        <tr class="medium-priority">
-            <td>**</td>
-            <td>Student</td>
-            <td>Tag contacts for events (e.g., workshops, conferences)</td>
-            <td>Efficiently group and identify event participants</td>
-        </tr>
-        <tr class="medium-priority">
-            <td>**</td>
-            <td>Student</td>
-            <td>Add a profile picture to a contact</td>
-            <td>Recognize contacts visually more easily</td>
-        </tr>
-        <tr class="low-priority">
-            <td>*</td>
-            <td>Cybersecurity-conscious student</td>
-            <td>Enable a PIN or biometric authentication for accessing the address book</td>
-            <td>Protect my contact data from unauthorized access</td>
-        </tr>
         <tr class="low-priority">
             <td>*</td>
             <td>Student</td>
-            <td>Hide certain contacts from the main list</td>
-            <td>Maintain privacy by controlling which contacts are visible</td>
-        </tr>
-        <tr class="low-priority">
-            <td>*</td>
-            <td>Student</td>
-            <td>Send reminders regarding a contact</td>
-            <td>Keep track of important follow-ups or tasks</td>
-        </tr>
-        <tr class="low-priority">
-            <td>*</td>
-            <td>Student</td>
-            <td>Filter contacts based on faculty or department</td>
-            <td>Quickly identify relevant individuals based on their affiliations</td>
-        </tr>
-        <tr class="low-priority">
-            <td>*</td>
-            <td>Student</td>
-            <td>Copy a contact’s details to the clipboard</td>
-            <td>Paste contact information into other applications as needed</td>
-        </tr>
-        <tr class="low-priority">
-            <td>*</td>
-            <td>Course Manager</td>
-            <td>Create a contact list for students</td>
-            <td>Provide a structured system for students to connect easily</td>
-        </tr>
-        <tr class="low-priority">
-            <td>*</td>
-            <td>CCA committee leader</td>
-            <td>Create a list of CCA members with their roles</td>
-            <td>Efficiently manage and identify CCA members</td>
-        </tr>
-        <tr class="low-priority">
-            <td>*</td>
-            <td>Student</td>
-            <td>Scan a QR code to instantly save someone’s contact details</td>
-            <td>Quickly add new contacts without manual entry</td>
-        </tr>
-        <tr class="low-priority">
-            <td>*</td>
-            <td>Student</td>
-            <td>Merge duplicate contacts</td>
-            <td>Maintain a clean and organized contact list</td>
-        </tr>
-        <tr class="low-priority">
-            <td>*</td>
-            <td>Student</td>
-            <td>Customize the app’s theme (light/dark mode)</td>
-            <td>Personalize the user experience based on my visual preferences</td>
+            <td>View upcoming birthdays of contacts</td>
+            <td>Plan ahead for important dates</td>
         </tr>
     </tbody>
 </table>
