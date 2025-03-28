@@ -1,21 +1,34 @@
 @startuml
-actor User
-participant "UI" as UI
-participant "Parser" as Parser
-participant "Logic" as Logic
-
-participant "Storage" as Storage
+!include style.puml
+skinparam ArrowFontStyle plain
 
 
-User -> UI: enter "import filename"
-UI -> Parser: parse(filename)
-Parser -> Logic: execute("import filename")
+Actor User as user USER_COLOR
+Participant ":UI" as ui UI_COLOR
+Participant ":Logic" as logic LOGIC_COLOR
+Participant ":Storage" as storage STORAGE_COLOR
 
+user -[USER_COLOR]> ui : "import filename"
+activate ui UI_COLOR
 
-Logic -> Storage: importAddressBook(filePath)
-Storage -> Storage: update the AddressBook \n with the imported data
+ui -[UI_COLOR]> logic : execute("import filename")
+activate logic LOGIC_COLOR
 
-Storage -> Logic
-Logic -> UI:
-UI -> User
+logic -[LOGIC_COLOR]> storage : importAddressBook(filePath)
+activate storage STORAGE_COLOR
+
+storage -[STORAGE_COLOR]> storage : update the AddressBook \n with the imported data
+activate storage STORAGE_COLOR_T1
+storage --[STORAGE_COLOR]> storage
+deactivate storage
+
+storage --[STORAGE_COLOR]> logic
+deactivate storage
+
+logic --[LOGIC_COLOR]> ui
+deactivate logic
+
+ui--[UI_COLOR]> user
+deactivate ui
+
 @enduml
