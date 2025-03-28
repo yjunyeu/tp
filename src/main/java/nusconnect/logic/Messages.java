@@ -37,7 +37,8 @@ public class Messages {
      */
     public static String format(Person person) {
         final StringBuilder builder = new StringBuilder();
-        builder.append(person.getName())
+        builder.append("Name: ")
+                .append(person.getName())
                 .append("; Telegram: ")
                 .append(person.getTelegram());
         person.getPhone().ifPresent(phone -> builder.append("; Phone: ").append(phone));
