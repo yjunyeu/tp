@@ -85,11 +85,6 @@ class JsonAdaptedPerson {
      * @throws IllegalValueException if there were any data constraints violated in the adapted person.
      */
     public Person toModelType() throws IllegalValueException {
-        final List<Module> personModules = new ArrayList<>();
-        for (JsonAdaptedModule module : modules) {
-            personModules.add(module.toModelType());
-        }
-
         if (name == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Name.class.getSimpleName()));
         }
@@ -107,53 +102,52 @@ class JsonAdaptedPerson {
         }
         final Telegram modelTelegram = new Telegram(telegram);
 
-        if (phone == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Phone.class.getSimpleName()));
-        }
-        if (!Phone.isValidPhone(phone)) {
-            throw new IllegalValueException(Phone.MESSAGE_CONSTRAINTS);
-        }
-        final Phone modelPhone = new Phone(phone);
+        final Phone modelPhone = JsonFieldValidator.validateField(
+                phone,
+                Phone::isValidPhone,
+                Phone::new,
+                Phone.MESSAGE_CONSTRAINTS
+        );
 
-        if (email == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Email.class.getSimpleName()));
-        }
-        if (!Email.isValidEmail(email)) {
-            throw new IllegalValueException(Email.MESSAGE_CONSTRAINTS);
-        }
-        final Email modelEmail = new Email(email);
+        final Email modelEmail = JsonFieldValidator.validateField(
+                email,
+                Email::isValidEmail,
+                Email::new,
+                Email.MESSAGE_CONSTRAINTS
+        );
 
-        if (alias == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Alias.class.getSimpleName()));
-        }
-        if (!Alias.isValidAlias(alias)) {
-            throw new IllegalValueException(Alias.MESSAGE_CONSTRAINTS);
-        }
-        final Alias modelAlias = new Alias(alias);
+        final Alias modelAlias = JsonFieldValidator.validateField(
+                alias,
+                Alias::isValidAlias,
+                Alias::new,
+                Alias.MESSAGE_CONSTRAINTS
+        );
 
-        if (course == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Course.class.getSimpleName()));
-        }
-        if (!Course.isValidCourse(course)) {
-            throw new IllegalValueException(Course.MESSAGE_CONSTRAINTS);
-        }
-        final Course modelCourse = new Course(course);
+        final Course modelCourse = JsonFieldValidator.validateField(
+                course,
+                Course::isValidCourse,
+                Course::new,
+                Course.MESSAGE_CONSTRAINTS
+        );
 
-        if (note == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Note.class.getSimpleName()));
-        }
-        if (!Note.isValidNote(note)) {
-            throw new IllegalValueException(Note.MESSAGE_CONSTRAINTS);
-        }
-        final Note modelNote = new Note(note);
+        final Note modelNote = JsonFieldValidator.validateField(
+                note,
+                Note::isValidNote,
+                Note::new,
+                Note.MESSAGE_CONSTRAINTS
+        );
 
-        if (website == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Website.class.getSimpleName()));
+        final Website modelWebsite = JsonFieldValidator.validateField(
+                website,
+                Website::isValidWebsite,
+                Website::new,
+                Website.MESSAGE_CONSTRAINTS
+        );
+
+        final List<Module> personModules = new ArrayList<>();
+        for (JsonAdaptedModule module : modules) {
+            personModules.add(module.toModelType());
         }
-        if (!Website.isValidWebsite(website)) {
-            throw new IllegalValueException(Website.MESSAGE_CONSTRAINTS);
-        }
-        final Website modelWebsite = new Website(website);
 
         final Set<Module> modelModules = new HashSet<>(personModules);
         return new Person(modelName, modelTelegram, modelPhone, modelEmail, modelAlias, modelCourse, modelNote,
