@@ -37,23 +37,20 @@ public class Messages {
      */
     public static String format(Person person) {
         final StringBuilder builder = new StringBuilder();
-        builder.append(person.getName())
-                .append("; Phone: ")
-                .append(person.getPhone())
-                .append("; Email: ")
-                .append(person.getEmail())
-                .append("; Alias: ")
-                .append(person.getAlias())
-                .append("; Course: ")
-                .append(person.getCourse())
-                .append("; Note: ")
-                .append(person.getNote())
+        builder.append("Name: ")
+                .append(person.getName())
                 .append("; Telegram: ")
-                .append(person.getTelegram())
-                .append("; Website: ")
-                .append(person.getWebsite())
-                .append("; Modules: ");
-        person.getModules().forEach(builder::append);
+                .append(person.getTelegram());
+        person.getPhone().ifPresent(phone -> builder.append("; Phone: ").append(phone));
+        person.getEmail().ifPresent(email -> builder.append("; Email: ").append(email));
+        person.getAlias().ifPresent(alias -> builder.append("; Alias: ").append(alias));
+        person.getCourse().ifPresent(course -> builder.append("; Course: ").append(course));
+        person.getNote().ifPresent(note -> builder.append("; Note: ").append(note));
+        person.getWebsite().ifPresent(website -> builder.append("; Website: ").append(website));
+        if (!person.getModules().isEmpty()) {
+            builder.append("; Modules: ");
+            person.getModules().forEach(builder::append);
+        }
         return builder.toString();
     }
 
