@@ -1,6 +1,6 @@
 package nusconnect.logic;
 
-import static nusconnect.logic.Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX;
+import static nusconnect.logic.Messages.MESSAGE_INVALID_PERSON_TO_DELETE_INDEX;
 import static nusconnect.logic.Messages.MESSAGE_UNKNOWN_COMMAND;
 import static nusconnect.logic.commands.CommandTestUtil.ALIAS_DESC_AMY;
 import static nusconnect.logic.commands.CommandTestUtil.COURSE_DESC_AMY;
@@ -65,7 +65,7 @@ public class LogicManagerTest {
     @Test
     public void execute_commandExecutionError_throwsCommandException() {
         String deleteCommand = "delete 9";
-        assertCommandException(deleteCommand, MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
+        assertCommandException(deleteCommand, String.format(MESSAGE_INVALID_PERSON_TO_DELETE_INDEX, "9"));
     }
 
     @Test
