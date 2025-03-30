@@ -64,15 +64,9 @@ NUSConnect is a **desktop app for managing contacts, optimized for use via a Com
 * If you are using a PDF version of this document, be careful when copying and pasting commands that span multiple lines as space characters surrounding line-breaks may be omitted when copied over to the application.
 </div>
 
-### Viewing help : `help`
+### Address Book Operations: 
 
-Shows a message explaning how to access the help page. This message can also be brought up using `F1`
-
-![help message](images/helpMessage.png)
-
-Format: `help`
-
-### Adding a person: `add`
+#### Adding a person: `add`
 
 Adds a person to the address book.
 
@@ -86,13 +80,7 @@ Examples:
 * `add n/John Doe p/98765432 e/johnd@example.com a/JDoe c/CompSci no/Enjoys programming tele/@johndoe w/https://johndoe.com m/CS2103T`
 * `add n/Betsy Crowe m/CS2106 e/betsycrowe@example.com a/BCrowe p/1234567 c/Business no/Hackathon peer tele/@bcrowe w/https://linkedin.com/betsycrowe`
 
-### Listing all persons : `list`
-
-Shows a list of all persons in the address book.
-
-Format: `list`
-
-### Editing a person : `edit`
+#### Editing a person : `edit`
 
 Edits an existing person in the address book.
 
@@ -103,13 +91,83 @@ Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ALIAS] [c/COURSE] [no/NOTE] 
 * Existing values will be updated to the input values.
 * When editing modules, the existing modules of the person will be removed i.e adding of modules is not cumulative.
 * You can remove all the person’s modules by typing `m/` without
-    specifying any modules after it.
+  specifying any modules after it.
 
 Examples:
 *  `edit 1 p/91234567 e/johndoe@example.com` Edits the phone number and email address of the 1st person to be `91234567` and `johndoe@example.com` respectively.
 *  `edit 2 n/Betsy Crower m/` Edits the name of the 2nd person to be `Betsy Crower` and clears all existing modules.
 
-### Locating persons by name or modules: `find`
+#### Deleting people : `delete`
+
+Deletes the specified person or a list of people from the address book.
+
+Format: `delete INDEX [MORE_INDICES]`
+
+* Deletes the person at the specified `INDEX`, or all people at the specified `INDICES`
+* The index refers to the index number shown in the displayed person list.
+* The indices **must be a positive integer** 1, 2, 3, ...
+* The indices must not be larger than the size of the address book.
+
+Examples:
+* `list` followed by `delete 2` deletes the 2nd person in the address book.
+* `list` followed by `delete 2 4` deletes the 2nd and the 4th person in the address book.
+* `find Betsy` followed by `delete 1` deletes the 1st person in the results of the `find` command.
+
+#### Clearing all entries : `clear`
+
+Clears all entries from the address book.
+
+Format: `clear`
+
+### Group Operations:
+
+#### Creating a group : `group create`
+
+Creates a new group with the specified name.
+
+Format: `group create NAME`
+
+* The group name should be alphanumeric.
+
+Examples:
+* `group create CS2103T Team` Creates a new group named "CS2103T Team"
+* `group create Grey Hats` Creates a new group named "Grey Hats"
+
+#### Deleting a group : `group delete`
+
+Deletes the group at the specified index.
+
+Format: `group delete INDEX`
+
+* Deletes the group at the specified `INDEX`.
+* The index refers to the index number shown in the displayed group list.
+* The index **must be a positive integer** 1, 2, 3, ...
+
+Examples:
+* `group delete 2` Deletes the 2nd group in the group list.
+
+#### Adding a person to a group : `group add`
+
+Adds a person to a group.
+
+Format: `group add PERSON_INDEX to GROUP_INDEX`
+
+* Adds the person at the specified `PERSON_INDEX` to the group at the specified `GROUP_INDEX`.
+* Both indices refer to the index numbers shown in the displayed person list and group list respectively.
+* Both indices **must be positive integers** 1, 2, 3, ...
+
+Examples:
+* `group add 1 to 2` Adds the 1st person in the person list to the 2nd group in the group list.
+
+### Address Book Organization:
+
+#### Listing all persons : `list`
+
+Shows a list of all persons in the address book.
+
+Format: `list`
+
+#### Locating persons by name or modules: `find`
 
 Finds persons whose names or modules contain any of the given keywords.
 
@@ -127,23 +185,8 @@ Examples:
 * `find doe CS2106` returns `John Doe` (matching name `Doe`) and `John Sim` (matching module `CS2106`)
   ![result for 'find doe CS2106'](images/findDoeCs2106.png)
 
-### Deleting people : `delete`
 
-Deletes the specified person or a list of people from the address book.
-
-Format: `delete INDEX [MORE_INDICES]`
-
-* Deletes the person at the specified `INDEX`, or all people at the specified `INDICES`
-* The index refers to the index number shown in the displayed person list.
-* The indices **must be a positive integer** 1, 2, 3, ...
-* The indices must not be larger than the size of the address book.
-
-Examples:
-* `list` followed by `delete 2` deletes the 2nd person in the address book.
-* `list` followed by `delete 2 4` deletes the 2nd and the 4th person in the address book.
-* `find Betsy` followed by `delete 1` deletes the 1st person in the results of the `find` command.
-
-### Viewing contact details: `view`
+#### Viewing contact details: `view`
 
 Shows the details of the specified person from the address  book.
 
@@ -158,61 +201,15 @@ Examples:
 * `list` followed by `view 2` shows the full details of the 2nd person in the address book.
 * `find Betsy` followed by `view 1` shows the full details of the 1st person in the results of the `find` command.
 
-### Creating a group : `group create`
+#### Sorting the address book: `sort`
 
-Creates a new group with the specified name.
+### Storage:
 
-Format: `group create NAME`
-
-* The group name should be alphanumeric.
-
-Examples:
-* `group create CS2103T Team` Creates a new group named "CS2103T Team"
-* `group create Grey Hats` Creates a new group named "Grey Hats"
-
-### Deleting a group : `group delete`
-
-Deletes the group at the specified index.
-
-Format: `group delete INDEX`
-
-* Deletes the group at the specified `INDEX`.
-* The index refers to the index number shown in the displayed group list.
-* The index **must be a positive integer** 1, 2, 3, ...
-
-Examples:
-* `group delete 2` Deletes the 2nd group in the group list.
-
-### Adding a person to a group : `group add`
-
-Adds a person to a group.
-
-Format: `group add PERSON_INDEX to GROUP_INDEX`
-
-* Adds the person at the specified `PERSON_INDEX` to the group at the specified `GROUP_INDEX`.
-* Both indices refer to the index numbers shown in the displayed person list and group list respectively.
-* Both indices **must be positive integers** 1, 2, 3, ...
-
-Examples:
-* `group add 1 to 2` Adds the 1st person in the person list to the 2nd group in the group list.
-
-### Clearing all entries : `clear`
-
-Clears all entries from the address book.
-
-Format: `clear`
-
-### Exiting the program : `exit`
-
-Exits the program.
-
-Format: `exit`
-
-### Saving the data
+#### Saving the data
 
 AddressBook data are saved in the hard disk automatically after any command that changes the data. There is no need to save manually.
 
-### Editing the data file
+#### Editing the data file
 
 AddressBook data are saved automatically as a JSON file `[JAR file location]/data/addressbook.json`. Advanced users are welcome to update data directly by editing that data file.
 
@@ -220,6 +217,26 @@ AddressBook data are saved automatically as a JSON file `[JAR file location]/dat
 If your changes to the data file makes its format invalid, AddressBook will discard all data and start with an empty data file at the next run. Hence, it is recommended to take a backup of the file before editing it.<br>
 Furthermore, certain edits can cause the AddressBook to behave in unexpected ways (e.g., if a value entered is outside of the acceptable range). Therefore, edit the data file only if you are confident that you can update it correctly.
 </div>
+
+#### Exporting the current address book: `export`
+
+#### Importing an address book: `import`
+
+### Misc:
+
+#### Viewing help : `help`
+
+Shows a message explaning how to access the help page. This message can also be brought up using `F1`
+
+![help message](images/helpMessage.png)
+
+Format: `help`
+
+#### Exiting the program : `exit`
+
+Exits the program.
+
+Format: `exit`
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -242,13 +259,15 @@ Furthermore, certain edits can cause the AddressBook to behave in unexpected way
 Action | Format, Examples
 --------|------------------
 **Add** | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [m/MODULE]…​` <br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 m/CS2103T`
-**Clear** | `clear`
-**Delete** | `delete INDEX [MORE_INDICES]`<br> e.g., `delete 3` `delete 1 3 5`
-**View** | `view INDEX` <br> e.g., `view 1`
 **Edit** | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [m/MODULE]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`
-**Find** | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`
+**Delete** | `delete INDEX [MORE_INDICES]`<br> e.g., `delete 3` `delete 1 3 5`
+**Clear** | `clear`
 **Group create** | `group create NAME`<br> e.g., `group create CS2103T Team`
 **Group delete** | `group delete INDEX`<br> e.g., `group delete 2`
 **Group add** | `group add PERSON_INDEX to GROUP_INDEX`<br> e.g. `group add 1 to 2`
 **List** | `list`
+**Find** | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`
+**View** | `view INDEX` <br> e.g., `view 1`
+**Sort** | `sort`
 **Help** | `help`
+**Exit** | `exit`
