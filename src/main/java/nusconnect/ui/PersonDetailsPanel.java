@@ -61,12 +61,12 @@ public class PersonDetailsPanel extends UiPart<Region> {
         if (person != null) {
             nameLabel.setText(person.getName().fullName);
             telegramLabel.setText(person.getTelegram().value);
-            phoneLabel.setText(person.getPhone().map(p -> p.value).orElse(""));
-            emailLabel.setText(person.getEmail().map(e -> e.value).orElse(""));
-            aliasLabel.setText(person.getAlias().map(a -> a.value).orElse(""));
-            courseLabel.setText(person.getCourse().map(c -> c.value).orElse(""));
-            noteLabel.setText(person.getNote().map(n -> n.value).orElse(""));
-            websiteLabel.setText(person.getWebsite().map(w -> w.value).orElse(""));
+            phoneLabel.setText(person.getPhone().map(p -> p.value).orElse("-"));
+            emailLabel.setText(person.getEmail().map(e -> e.value).orElse("-"));
+            aliasLabel.setText(person.getAlias().map(a -> a.value).orElse("-"));
+            courseLabel.setText(person.getCourse().map(c -> c.value).orElse("-"));
+            noteLabel.setText(person.getNote().map(n -> n.value).orElse("-"));
+            websiteLabel.setText(person.getWebsite().map(w -> w.value).orElse("-"));
         } else {
             setDefaultDetails();
         }
