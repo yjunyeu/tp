@@ -8,6 +8,10 @@
     <Label fx:id="nameLabel" styleClass="person-header-label" />
     <VBox spacing="8" VBox.vgrow="NEVER">
         <HBox spacing="5">
+            <Label text="Telegram:" styleClass="detail-label-bold" />
+            <Label fx:id="telegramLabel" styleClass="detail-label" />
+        </HBox>
+        <HBox spacing="5">
             <Label text="Number:" styleClass="detail-label-bold" />
             <Label fx:id="phoneLabel" styleClass="detail-label" />
         </HBox>
@@ -26,10 +30,6 @@
         <HBox spacing="5">
             <Label text="Note:" styleClass="detail-label-bold" />
             <Label fx:id="noteLabel" styleClass="detail-label" />
-        </HBox>
-        <HBox spacing="5">
-            <Label text="Telegram:" styleClass="detail-label-bold" />
-            <Label fx:id="telegramLabel" styleClass="detail-label" />
         </HBox>
         <HBox spacing="5">
             <Label text="Website:" styleClass="detail-label-bold" />
