@@ -1,8 +1,11 @@
 package nusconnect.logic.commands;
 
+
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.InvalidPathException;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 
 import nusconnect.logic.LogicManager;
 import nusconnect.logic.commands.exceptions.CommandException;
@@ -22,29 +25,31 @@ public class ExportCommand extends Command {
     public static final String MESSAGE_SUCCESS = "Successfully exported address book data.";
     public static final String MESSAGE_FAILURE = "Failed to export address book data.";
 
-    private final Path filePath;
     private final LogicManager logicManager;
+    private final String fileString;
 
     /**
-     * @param filePath JSON file path
+     * @param fileString JSON file path
      * @param logicManager  handles model and storage
      */
-    public ExportCommand(Path filePath, LogicManager logicManager) {
-        this.filePath = filePath;
+    public ExportCommand(String fileString, LogicManager logicManager) {
+        this.fileString = fileString;
         this.logicManager = logicManager;
     }
 
     @Override
     public CommandResult execute(Model model) throws CommandException {
         try {
+            Path filePath = Paths.get(fileString);
             Path directory = filePath.getParent();
+
             if (!Files.exists(directory)) {
                 throw new CommandException(MESSAGE_FAILURE + "\nInvalid file path!");
             }
 
             logicManager.exportAddressBook(filePath);
             return new CommandResult(MESSAGE_SUCCESS);
-        } catch (IOException e) {
+        } catch (InvalidPathException | IOException e) {
             throw new CommandException(MESSAGE_FAILURE + "\nInvalid file path!");
         }
     }
@@ -60,6 +65,6 @@ public class ExportCommand extends Command {
         }
 
         ExportCommand otherExportCommand = (ExportCommand) other;
-        return filePath.equals(otherExportCommand.filePath);
+        return fileString.equals(otherExportCommand.fileString);
     }
 }

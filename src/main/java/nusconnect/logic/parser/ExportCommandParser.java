@@ -2,9 +2,6 @@ package nusconnect.logic.parser;
 
 import static nusconnect.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 
-import java.nio.file.Path;
-import java.nio.file.Paths;
-
 import nusconnect.logic.LogicManager;
 import nusconnect.logic.commands.ExportCommand;
 import nusconnect.logic.parser.exceptions.ParseException;
@@ -29,15 +26,14 @@ public class ExportCommandParser implements Parser<ExportCommand> {
     @Override
     public ExportCommand parse(String args) throws ParseException {
         String trimmedArgs = args.trim().split("\\.")[0];
-        Path path = Paths.get(trimmedArgs);
 
         if (trimmedArgs.isEmpty()) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, ExportCommand.MESSAGE_USAGE));
         }
 
         trimmedArgs += ".json";
-        Path filePath = Path.of(trimmedArgs);
-        return new ExportCommand(filePath, logicManager);
+
+        return new ExportCommand(trimmedArgs, logicManager);
     }
 }
 

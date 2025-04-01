@@ -5,8 +5,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.mock;
 
-import java.nio.file.Path;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -30,9 +28,8 @@ public class ExportCommandParserTest {
     public void parse_validFilePath_returnsExportCommand() throws ParseException {
 
         String validInputParser = "src/test/data/JsonAddressBookStorageTest/addressbook.json";
-        Path validPathCommand = Path.of(validInputParser);
 
-        ExportCommand expectedExportCommand = new ExportCommand(validPathCommand, mockLogicManager);
+        ExportCommand expectedExportCommand = new ExportCommand(validInputParser, mockLogicManager);
 
         // Parse input to get the actual ExportCommand
         ExportCommand actualExportCommand = parser.parse(validInputParser);
