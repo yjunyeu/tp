@@ -30,6 +30,7 @@ public class Messages {
 
     public static final String MESSAGE_PERSON_LISTED_OVERVIEW = "%1$d person listed!";
     public static final String MESSAGE_PERSONS_LISTED_OVERVIEW = "%1$d persons listed!";
+    public static final String MESSAGE_NO_PERSON_LISTED_OVERVIEW = "No results found!";
     public static final String MESSAGE_DUPLICATE_FIELDS =
                 "Multiple values specified for the following single-valued field(s): ";
     public static final String MESSAGE_INVALID_GROUP_INDEX = "The group index provided is invalid";
@@ -94,7 +95,9 @@ public class Messages {
 
     // Method to handle singular/plural "person" for the list overview
     public static String getPersonsListedOverview(int numPersons) {
-        if (numPersons < 2) {
+        if (numPersons == 0) {
+            return MESSAGE_NO_PERSON_LISTED_OVERVIEW;
+        } else if (numPersons == 1) {
             return String.format(MESSAGE_PERSON_LISTED_OVERVIEW, numPersons);
         } else {
             return String.format(MESSAGE_PERSONS_LISTED_OVERVIEW, numPersons);

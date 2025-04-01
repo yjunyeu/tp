@@ -1,5 +1,6 @@
 package nusconnect.logic.commands;
 
+import static nusconnect.logic.Messages.MESSAGE_NO_PERSON_LISTED_OVERVIEW;
 import static nusconnect.logic.Messages.MESSAGE_PERSONS_LISTED_OVERVIEW;
 import static nusconnect.logic.Messages.MESSAGE_PERSON_LISTED_OVERVIEW;
 import static nusconnect.logic.commands.CommandTestUtil.assertCommandSuccess;
@@ -67,7 +68,7 @@ public class FindCommandTest {
 
     @Test
     public void execute_zeroKeywords_noPersonFound() {
-        String expectedMessage = String.format(MESSAGE_PERSON_LISTED_OVERVIEW, 0);
+        String expectedMessage = String.format(MESSAGE_NO_PERSON_LISTED_OVERVIEW, 0);
         NameContainsKeywordsPredicate namePredicate = prepareNamePredicate("");
         ModuleContainsKeywordsPredicate modulePredicate = prepareModulePredicate("");
         FindCommand command = new FindCommand(namePredicate, modulePredicate);
