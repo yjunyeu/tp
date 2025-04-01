@@ -29,7 +29,7 @@ public class ExportCommandParserTest {
     @Test
     public void parse_validFilePath_returnsExportCommand() throws ParseException {
         // Valid input for exportcommandparser because filename is added there
-        String validInputParser = "src/test/data/JsonAddressBookStorageTest";
+        String validInputParser = "src/test/data/JsonAddressBookStorageTest/addressbook.json";
 
         //valid input for command because
         String validInputCommand = "src/test/data/JsonAddressBookStorageTest\\addressbook.json";

@@ -63,7 +63,7 @@ public class ImportCommandTest {
 
         // Execute and check the result
         CommandResult result = importCommand.execute(mockModel);
-        assertEquals(ImportCommand.MESSAGE_FAILURE + "\nInvalid FilePath", result.getFeedbackToUser());
+        assertEquals(ImportCommand.MESSAGE_FAILURE + "\nInvalid file path!", result.getFeedbackToUser());
 
         // Verify interactions
         verify(mockLogicManager).importAddressBook(invalidFilePath);

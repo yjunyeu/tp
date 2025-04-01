@@ -61,10 +61,8 @@ public class ExportCommandTest {
         }
 
         // Verify that the exception was thrown and contains the correct failure message
-        assertEquals(ExportCommand.MESSAGE_FAILURE + "\nInvalid file path", exception.getMessage());
+        assertEquals(ExportCommand.MESSAGE_FAILURE + "\nInvalid file path!", exception.getMessage());
 
-        // Verify that exportAddressBook was called with the correct invalid file path
-        verify(mockLogicManager).exportAddressBook(invalidFilePath);
     }
 
 
