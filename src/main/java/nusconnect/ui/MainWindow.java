@@ -130,10 +130,8 @@ public class MainWindow extends UiPart<Stage> {
 
         personListPanel.getPersonListView().getSelectionModel().selectedItemProperty().addListener((
                 observable, oldValue, newValue) -> {
-                    if (newValue != null) {
-                        personDetailsPanel.setPersonDetails(newValue);
-                    }
-                });
+            personDetailsPanel.setPersonDetails(newValue);
+        });
 
         resultDisplay = new ResultDisplay();
         resultDisplayPlaceholder.getChildren().add(resultDisplay.getRoot());
