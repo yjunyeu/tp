@@ -28,14 +28,10 @@ public class ExportCommandParserTest {
 
     @Test
     public void parse_validFilePath_returnsExportCommand() throws ParseException {
-        // Valid input for exportcommandparser because filename is added there
+
         String validInputParser = "src/test/data/JsonAddressBookStorageTest/addressbook.json";
+        Path validPathCommand = Path.of(validInputParser);
 
-        //valid input for command because
-        String validInputCommand = "src/test/data/JsonAddressBookStorageTest\\addressbook.json";
-        Path validPathCommand = Path.of(validInputCommand);
-
-        // Create expected ExportCommand with the correct file path
         ExportCommand expectedExportCommand = new ExportCommand(validPathCommand, mockLogicManager);
 
         // Parse input to get the actual ExportCommand
