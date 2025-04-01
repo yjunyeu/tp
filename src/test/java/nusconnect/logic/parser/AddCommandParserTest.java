@@ -61,7 +61,6 @@ import nusconnect.model.person.Alias;
 import nusconnect.model.person.Course;
 import nusconnect.model.person.Email;
 import nusconnect.model.person.Name;
-import nusconnect.model.person.Note;
 import nusconnect.model.person.Person;
 import nusconnect.model.person.Phone;
 import nusconnect.model.person.Telegram;

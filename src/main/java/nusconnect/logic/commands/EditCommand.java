@@ -20,7 +20,6 @@ import java.util.Optional;
 import java.util.Set;
 
 import nusconnect.commons.core.index.Index;
-import nusconnect.commons.util.CollectionUtil;
 import nusconnect.commons.util.ToStringBuilder;
 import nusconnect.logic.Messages;
 import nusconnect.logic.commands.exceptions.CommandException;
@@ -107,14 +106,22 @@ public class EditCommand extends Command {
     private static Person createEditedPerson(Person personToEdit, EditPersonDescriptor editPersonDescriptor) {
         assert personToEdit != null;
 
-        Name updatedName = editPersonDescriptor.getIsNameEdited() ? editPersonDescriptor.getName() : personToEdit.getName();
-        Telegram updatedTelegram = editPersonDescriptor.getIsTelegramEdited() ? editPersonDescriptor.getTelegram() : personToEdit.getTelegram();
-        Phone updatedPhone = editPersonDescriptor.getIsPhoneEdited() ? editPersonDescriptor.getPhone() : personToEdit.getPhone().orElse(null);
-        Email updatedEmail = editPersonDescriptor.getIsEmailEdited() ? editPersonDescriptor.getEmail() : personToEdit.getEmail().orElse(null);
-        Alias updatedAlias = editPersonDescriptor.getIsAliasEdited() ? editPersonDescriptor.getAlias() : personToEdit.getAlias().orElse(null);
-        Course updatedCourse = editPersonDescriptor.getIsCourseEdited() ? editPersonDescriptor.getCourse() : personToEdit.getCourse().orElse(null);
-        Note updatedNote = editPersonDescriptor.getIsNoteEdited() ? editPersonDescriptor.getNote() : personToEdit.getNote().orElse(null);
-        Website updatedWebsite = editPersonDescriptor.getIsWebsiteEdited() ? editPersonDescriptor.getWebsite() : personToEdit.getWebsite().orElse(null);
+        Name updatedName = editPersonDescriptor.getIsNameEdited() ? editPersonDescriptor.getName()
+                : personToEdit.getName();
+        Telegram updatedTelegram = editPersonDescriptor.getIsTelegramEdited() ? editPersonDescriptor.getTelegram()
+                : personToEdit.getTelegram();
+        Phone updatedPhone = editPersonDescriptor.getIsPhoneEdited() ? editPersonDescriptor.getPhone()
+                : personToEdit.getPhone().orElse(null);
+        Email updatedEmail = editPersonDescriptor.getIsEmailEdited() ? editPersonDescriptor.getEmail()
+                : personToEdit.getEmail().orElse(null);
+        Alias updatedAlias = editPersonDescriptor.getIsAliasEdited() ? editPersonDescriptor.getAlias()
+                : personToEdit.getAlias().orElse(null);
+        Course updatedCourse = editPersonDescriptor.getIsCourseEdited() ? editPersonDescriptor.getCourse()
+                : personToEdit.getCourse().orElse(null);
+        Note updatedNote = editPersonDescriptor.getIsNoteEdited() ? editPersonDescriptor.getNote()
+                : personToEdit.getNote().orElse(null);
+        Website updatedWebsite = editPersonDescriptor.getIsWebsiteEdited() ? editPersonDescriptor.getWebsite()
+                : personToEdit.getWebsite().orElse(null);
         Set<Module> updatedModules = editPersonDescriptor.getTags().orElse(personToEdit.getModules());
 
         return new Person(updatedName, updatedTelegram, updatedPhone,
@@ -198,8 +205,8 @@ public class EditCommand extends Command {
          * Returns true if at least one field is edited.
          */
         public boolean isAnyFieldEdited() {
-            return isNameEdited || isTelegramEdited || isPhoneEdited || isEmailEdited ||
-                    isAliasEdited || isCourseEdited || isNoteEdited || isWebsiteEdited || isModulesEdited;
+            return isNameEdited || isTelegramEdited || isPhoneEdited || isEmailEdited
+                    || isAliasEdited || isCourseEdited || isNoteEdited || isWebsiteEdited || isModulesEdited;
         }
 
         public void setName(Name name) {

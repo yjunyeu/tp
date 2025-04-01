@@ -16,8 +16,6 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.Optional;
 import java.util.Set;
-import java.util.function.Consumer;
-import java.util.function.Function;
 
 import nusconnect.commons.core.index.Index;
 import nusconnect.logic.commands.EditCommand;
