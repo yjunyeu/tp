@@ -1,7 +1,6 @@
 package nusconnect.model.person;
 
 import static java.util.Objects.requireNonNull;
-import static nusconnect.commons.util.AppUtil.checkArgument;
 
 /**
  * Represents a Person's note in the note book.
@@ -26,15 +25,14 @@ public class Note {
      */
     public Note(String note) {
         requireNonNull(note);
-        checkArgument(isValidNote(note), MESSAGE_CONSTRAINTS);
         value = note;
     }
 
     /**
      * Returns true if a given string is a valid email.
      */
-    public static boolean isValidNote(String test) {
-        return test.matches(VALIDATION_REGEX);
+    public static boolean isValidNote(Note test) {
+        return test.value.matches(VALIDATION_REGEX);
     }
 
     @Override

@@ -1,7 +1,6 @@
 package nusconnect.model.person;
 
 import static java.util.Objects.requireNonNull;
-import static nusconnect.commons.util.AppUtil.checkArgument;
 
 /**
  * Represents a Person's course in the course book.
@@ -27,15 +26,14 @@ public class Course {
      */
     public Course(String course) {
         requireNonNull(course);
-        checkArgument(isValidCourse(course), MESSAGE_CONSTRAINTS);
         value = course;
     }
 
     /**
-     * Returns true if a given string is a valid email.
+     * Returns true if a given string is a valid course.
      */
-    public static boolean isValidCourse(String test) {
-        return test.matches(VALIDATION_REGEX);
+    public static boolean isValidCourse(Course test) {
+        return test.value.matches(VALIDATION_REGEX);
     }
 
     @Override
