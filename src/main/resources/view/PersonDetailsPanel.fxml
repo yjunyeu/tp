@@ -5,35 +5,35 @@
 <?import javafx.scene.layout.VBox?>
 
 <VBox xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
-    <Label fx:id="nameLabel" styleClass="person-header-label" />
+    <Label fx:id="nameLabel" styleClass="person-header-label" wrapText="true" maxWidth="270"/>
     <VBox spacing="8" VBox.vgrow="NEVER">
         <HBox spacing="5">
+            <Label text="Telegram:" styleClass="detail-label-bold" />
+            <Label fx:id="telegramLabel" styleClass="detail-label" wrapText="true" maxWidth="240"/>
+        </HBox>
+        <HBox spacing="5">
             <Label text="Number:" styleClass="detail-label-bold" />
-            <Label fx:id="phoneLabel" styleClass="detail-label" />
+            <Label fx:id="phoneLabel" styleClass="detail-label" wrapText="true" maxWidth="250"/>
         </HBox>
         <HBox spacing="5">
             <Label text="Email:" styleClass="detail-label-bold" />
-            <Label fx:id="emailLabel" styleClass="detail-label" />
+            <Label fx:id="emailLabel" styleClass="detail-label" wrapText="true" maxWidth="270"/>
         </HBox>
         <HBox spacing="5">
             <Label text="Alias:" styleClass="detail-label-bold" />
-            <Label fx:id="aliasLabel" styleClass="detail-label" />
+            <Label fx:id="aliasLabel" styleClass="detail-label" wrapText="true" maxWidth="270"/>
         </HBox>
         <HBox spacing="5">
             <Label text="Course:" styleClass="detail-label-bold" />
-            <Label fx:id="courseLabel" styleClass="detail-label" />
+            <Label fx:id="courseLabel" styleClass="detail-label" wrapText="true" maxWidth="250"/>
         </HBox>
         <HBox spacing="5">
             <Label text="Note:" styleClass="detail-label-bold" />
-            <Label fx:id="noteLabel" styleClass="detail-label" />
-        </HBox>
-        <HBox spacing="5">
-            <Label text="Telegram:" styleClass="detail-label-bold" />
-            <Label fx:id="telegramLabel" styleClass="detail-label" />
+            <Label fx:id="noteLabel" styleClass="detail-label" wrapText="true" maxWidth="270"/>
         </HBox>
         <HBox spacing="5">
             <Label text="Website:" styleClass="detail-label-bold" />
-            <Label fx:id="websiteLabel" styleClass="detail-label" />
+            <Label fx:id="websiteLabel" styleClass="detail-label" wrapText="true" maxWidth="250"/>
         </HBox>
     </VBox>
 </VBox>

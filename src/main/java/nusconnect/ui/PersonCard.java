@@ -47,7 +47,12 @@ public class PersonCard extends UiPart<Region> {
         this.person = person;
         id.setText(displayedIndex + ". ");
         name.setText(person.getName().fullName);
-        phone.setText(person.getPhone().map(p -> p.value).orElse(""));
+
+        String phoneText = person.getPhone().map(p -> p.value).orElse("");
+        phone.setText(phoneText);
+        phone.setVisible(!phoneText.isEmpty());
+        phone.setManaged(!phoneText.isEmpty());
+
         telegram.setText(person.getTelegram().value);
         person.getModules().stream()
                 .sorted(Comparator.comparing(tag -> tag.moduleName))
