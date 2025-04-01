@@ -11,7 +11,6 @@ import static nusconnect.logic.commands.CommandTestUtil.INVALID_ALIAS_DESC;
 import static nusconnect.logic.commands.CommandTestUtil.INVALID_COURSE_DESC;
 import static nusconnect.logic.commands.CommandTestUtil.INVALID_EMAIL_DESC;
 import static nusconnect.logic.commands.CommandTestUtil.INVALID_NAME_DESC;
-import static nusconnect.logic.commands.CommandTestUtil.INVALID_NOTE_DESC;
 import static nusconnect.logic.commands.CommandTestUtil.INVALID_PHONE_DESC;
 import static nusconnect.logic.commands.CommandTestUtil.INVALID_TAG_DESC;
 import static nusconnect.logic.commands.CommandTestUtil.INVALID_TELEGRAM_DESC;
@@ -113,10 +112,8 @@ public class EditCommandParserTest {
         assertParseFailure(parser, "1" + INVALID_EMAIL_DESC, Email.MESSAGE_CONSTRAINTS); // invalid email
         assertParseFailure(parser, "1" + INVALID_ALIAS_DESC, Alias.MESSAGE_CONSTRAINTS); // invalid alias
         assertParseFailure(parser, "1" + INVALID_COURSE_DESC, Course.MESSAGE_CONSTRAINTS); // invalid course
-        assertParseFailure(parser, "1" + INVALID_NOTE_DESC, Note.MESSAGE_CONSTRAINTS); // invalid note
         assertParseFailure(parser, "1" + INVALID_TELEGRAM_DESC, Telegram.MESSAGE_CONSTRAINTS); // invalid telegram
         assertParseFailure(parser, "1" + INVALID_WEBSITE_DESC, Website.MESSAGE_CONSTRAINTS); // invalid website
-
         assertParseFailure(parser, "1" + INVALID_TAG_DESC, Module.MESSAGE_CONSTRAINTS); // invalid module
 
         // invalid phone followed by valid email

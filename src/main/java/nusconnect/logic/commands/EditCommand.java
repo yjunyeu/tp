@@ -107,14 +107,14 @@ public class EditCommand extends Command {
     private static Person createEditedPerson(Person personToEdit, EditPersonDescriptor editPersonDescriptor) {
         assert personToEdit != null;
 
-        Name updatedName = editPersonDescriptor.getName().orElse(personToEdit.getName());
-        Telegram updatedTelegram = editPersonDescriptor.getTelegram().orElse(personToEdit.getTelegram());
-        Phone updatedPhone = editPersonDescriptor.getPhone().orElse(personToEdit.getPhone().orElse(null));
-        Email updatedEmail = editPersonDescriptor.getEmail().orElse(personToEdit.getEmail().orElse(null));
-        Alias updatedAlias = editPersonDescriptor.getAlias().orElse(personToEdit.getAlias().orElse(null));
-        Course updatedCourse = editPersonDescriptor.getCourse().orElse(personToEdit.getCourse().orElse(null));
-        Note updatedNote = editPersonDescriptor.getNote().orElse(personToEdit.getNote().orElse(null));
-        Website updatedWebsite = editPersonDescriptor.getWebsite().orElse(personToEdit.getWebsite().orElse(null));
+        Name updatedName = editPersonDescriptor.getIsNameEdited() ? editPersonDescriptor.getName() : personToEdit.getName();
+        Telegram updatedTelegram = editPersonDescriptor.getIsTelegramEdited() ? editPersonDescriptor.getTelegram() : personToEdit.getTelegram();
+        Phone updatedPhone = editPersonDescriptor.getIsPhoneEdited() ? editPersonDescriptor.getPhone() : personToEdit.getPhone().orElse(null);
+        Email updatedEmail = editPersonDescriptor.getIsEmailEdited() ? editPersonDescriptor.getEmail() : personToEdit.getEmail().orElse(null);
+        Alias updatedAlias = editPersonDescriptor.getIsAliasEdited() ? editPersonDescriptor.getAlias() : personToEdit.getAlias().orElse(null);
+        Course updatedCourse = editPersonDescriptor.getIsCourseEdited() ? editPersonDescriptor.getCourse() : personToEdit.getCourse().orElse(null);
+        Note updatedNote = editPersonDescriptor.getIsNoteEdited() ? editPersonDescriptor.getNote() : personToEdit.getNote().orElse(null);
+        Website updatedWebsite = editPersonDescriptor.getIsWebsiteEdited() ? editPersonDescriptor.getWebsite() : personToEdit.getWebsite().orElse(null);
         Set<Module> updatedModules = editPersonDescriptor.getTags().orElse(personToEdit.getModules());
 
         return new Person(updatedName, updatedTelegram, updatedPhone,
@@ -159,7 +159,15 @@ public class EditCommand extends Command {
         private Note note;
         private Website website;
         private Set<Module> modules;
-
+        private boolean isNameEdited = false;
+        private boolean isTelegramEdited = false;
+        private boolean isPhoneEdited = false;
+        private boolean isEmailEdited = false;
+        private boolean isAliasEdited = false;
+        private boolean isCourseEdited = false;
+        private boolean isNoteEdited = false;
+        private boolean isWebsiteEdited = false;
+        private boolean isModulesEdited = false;
         public EditPersonDescriptor() {}
 
         /**
@@ -168,13 +176,21 @@ public class EditCommand extends Command {
          */
         public EditPersonDescriptor(EditPersonDescriptor toCopy) {
             setName(toCopy.name);
+            setIsNameEdited(toCopy.isNameEdited);
             setTelegram(toCopy.telegram);
+            setIsTelegramEdited(toCopy.isTelegramEdited);
             setPhone(toCopy.phone);
+            setIsPhoneEdited(toCopy.isPhoneEdited);
             setEmail(toCopy.email);
+            setIsEmailEdited(toCopy.isEmailEdited);
             setAlias(toCopy.alias);
+            setIsAliasEdited(toCopy.isAliasEdited);
             setCourse(toCopy.course);
+            setIsCourseEdited(toCopy.isCourseEdited);
             setNote(toCopy.note);
+            setIsNoteEdited(toCopy.isNoteEdited);
             setWebsite(toCopy.website);
+            setIsWebsiteEdited(toCopy.isWebsiteEdited);
             setModules(toCopy.modules);
         }
 
@@ -182,75 +198,137 @@ public class EditCommand extends Command {
          * Returns true if at least one field is edited.
          */
         public boolean isAnyFieldEdited() {
-            return CollectionUtil.isAnyNonNull(name, telegram, phone, email, alias, course,
-                    note, website, modules);
+            return isNameEdited || isTelegramEdited || isPhoneEdited || isEmailEdited ||
+                    isAliasEdited || isCourseEdited || isNoteEdited || isWebsiteEdited || isModulesEdited;
         }
 
         public void setName(Name name) {
             this.name = name;
         }
 
-        public Optional<Name> getName() {
-            return Optional.ofNullable(name);
+        public Name getName() {
+            return name;
         }
 
-        public void setPhone(Phone phone) {
-            this.phone = phone;
+        public void setIsNameEdited(boolean isNameEdited) {
+            this.isNameEdited = isNameEdited;
         }
 
-        public Optional<Phone> getPhone() {
-            return Optional.ofNullable(phone);
-        }
-
-        public void setEmail(Email email) {
-            this.email = email;
-        }
-
-        public Optional<Email> getEmail() {
-            return Optional.ofNullable(email);
-        }
-
-        public void setAlias(Alias alias) {
-            this.alias = alias;
-        }
-
-        public Optional<Alias> getAlias() {
-            return Optional.ofNullable(alias);
-        }
-
-        public void setCourse(Course course) {
-            this.course = course;
-        }
-
-        public Optional<Course> getCourse() {
-            return Optional.ofNullable(course);
-        }
-
-        public void setNote(Note note) {
-            this.note = note;
-        }
-
-        public Optional<Note> getNote() {
-            return Optional.ofNullable(note);
+        public Boolean getIsNameEdited() {
+            return isNameEdited;
         }
 
         public void setTelegram(Telegram telegram) {
             this.telegram = telegram;
         }
 
-        public Optional<Telegram> getTelegram() {
-            return Optional.ofNullable(telegram);
+        public Telegram getTelegram() {
+            return telegram;
+        }
+
+        public void setIsTelegramEdited(boolean isTelegramEdited) {
+            this.isTelegramEdited = isTelegramEdited;
+        }
+
+        public Boolean getIsTelegramEdited() {
+            return isTelegramEdited;
+        }
+
+        public void setPhone(Phone phone) {
+            this.phone = phone;
+        }
+
+        public Phone getPhone() {
+            return phone;
+        }
+
+        public void setIsPhoneEdited(boolean isPhoneEdited) {
+            this.isPhoneEdited = isPhoneEdited;
+        }
+
+        public Boolean getIsPhoneEdited() {
+            return isPhoneEdited;
+        }
+
+        public void setEmail(Email email) {
+            this.email = email;
+        }
+
+        public Email getEmail() {
+            return email;
+        }
+
+        public void setIsEmailEdited(boolean isEmailEdited) {
+            this.isEmailEdited = isEmailEdited;
+        }
+
+        public Boolean getIsEmailEdited() {
+            return isEmailEdited;
+        }
+
+        public void setAlias(Alias alias) {
+            this.alias = alias;
+        }
+
+        public Alias getAlias() {
+            return alias;
+        }
+
+        public void setIsAliasEdited(boolean isAliasEdited) {
+            this.isAliasEdited = isAliasEdited;
+        }
+
+        public Boolean getIsAliasEdited() {
+            return isAliasEdited;
+        }
+
+        public void setCourse(Course course) {
+            this.course = course;
+        }
+
+        public Course getCourse() {
+            return course;
+        }
+
+        public void setIsCourseEdited(boolean isCourseEdited) {
+            this.isCourseEdited = isCourseEdited;
+        }
+
+        public Boolean getIsCourseEdited() {
+            return isCourseEdited;
+        }
+
+        public void setNote(Note note) {
+            this.note = note;
+        }
+
+        public Note getNote() {
+            return note;
+        }
+
+        public void setIsNoteEdited(boolean isNoteEdited) {
+            this.isNoteEdited = isNoteEdited;
+        }
+
+        public Boolean getIsNoteEdited() {
+            return isNoteEdited;
         }
 
         public void setWebsite(Website website) {
             this.website = website;
         }
 
-        public Optional<Website> getWebsite() {
-            return Optional.ofNullable(website);
+        public Website getWebsite() {
+            return website;
         }
 
+        public void setIsWebsiteEdited(boolean isWebsiteEdited) {
+            this.isWebsiteEdited = isWebsiteEdited;
+        }
 
+        public Boolean getIsWebsiteEdited() {
+            return isWebsiteEdited;
+        }
 
         /**
          * Sets {@code modules} to this object's {@code modules}.
@@ -258,6 +336,7 @@ public class EditCommand extends Command {
          */
         public void setModules(Set<Module> modules) {
             this.modules = (modules != null) ? new HashSet<>(modules) : null;
+            this.isModulesEdited = true;
         }
 
         /**

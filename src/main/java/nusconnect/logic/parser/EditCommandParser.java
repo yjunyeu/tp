@@ -16,6 +16,8 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.Optional;
 import java.util.Set;
+import java.util.function.Consumer;
+import java.util.function.Function;
 
 import nusconnect.commons.core.index.Index;
 import nusconnect.logic.commands.EditCommand;
@@ -55,33 +57,73 @@ public class EditCommandParser implements Parser<EditCommand> {
         EditPersonDescriptor editPersonDescriptor = new EditPersonDescriptor();
 
         if (argMultimap.getValue(PREFIX_NAME).isPresent()) {
+            editPersonDescriptor.setIsNameEdited(true);
             editPersonDescriptor.setName(ParserUtil.parseName(argMultimap.getValue(PREFIX_NAME).get()));
         }
 
         if (argMultimap.getValue(PREFIX_TELEGRAM).isPresent()) {
+            editPersonDescriptor.setIsNameEdited(true);
             editPersonDescriptor.setTelegram(ParserUtil.parseTelegram(argMultimap.getValue(PREFIX_TELEGRAM).get()));
         }
 
         if (argMultimap.getValue(PREFIX_PHONE).isPresent()) {
-            editPersonDescriptor.setPhone(ParserUtil.parsePhone(argMultimap.getValue(PREFIX_PHONE).get()));
+            editPersonDescriptor.setIsPhoneEdited(true);
+            String phoneValue = argMultimap.getValue(PREFIX_PHONE).get();
+            if (!phoneValue.isEmpty()) {
+                editPersonDescriptor.setPhone(ParserUtil.parsePhone(phoneValue));
+            } else {
+                editPersonDescriptor.setPhone(null);
+            }
         }
+
         if (argMultimap.getValue(PREFIX_EMAIL).isPresent()) {
-            editPersonDescriptor.setEmail(ParserUtil.parseEmail(argMultimap.getValue(PREFIX_EMAIL).get()));
+            editPersonDescriptor.setIsEmailEdited(true);
+            String emailValue = argMultimap.getValue(PREFIX_EMAIL).get();
+            if (!emailValue.isEmpty()) {
+                editPersonDescriptor.setEmail(ParserUtil.parseEmail(emailValue));
+            } else {
+                editPersonDescriptor.setEmail(null);
+            }
         }
+
         if (argMultimap.getValue(PREFIX_ALIAS).isPresent()) {
-            editPersonDescriptor.setAlias(ParserUtil.parseAlias(argMultimap.getValue(PREFIX_ALIAS).get()));
+            editPersonDescriptor.setIsAliasEdited(true);
+            String aliasValue = argMultimap.getValue(PREFIX_ALIAS).get();
+            if (!aliasValue.isEmpty()) {
+                editPersonDescriptor.setAlias(ParserUtil.parseAlias(aliasValue));
+            } else {
+                editPersonDescriptor.setAlias(null);
+            }
         }
 
         if (argMultimap.getValue(PREFIX_COURSE).isPresent()) {
-            editPersonDescriptor.setCourse(ParserUtil.parseCourse(argMultimap.getValue(PREFIX_COURSE).get()));
+            editPersonDescriptor.setIsCourseEdited(true);
+            String courseValue = argMultimap.getValue(PREFIX_COURSE).get();
+            if (!courseValue.isEmpty()) {
+                editPersonDescriptor.setCourse(ParserUtil.parseCourse(courseValue));
+            } else {
+                editPersonDescriptor.setCourse(null);
+            }
         }
 
         if (argMultimap.getValue(PREFIX_NOTE).isPresent()) {
-            editPersonDescriptor.setNote(ParserUtil.parseNote(argMultimap.getValue(PREFIX_NOTE).get()));
+            editPersonDescriptor.setIsNoteEdited(true);
+            String noteValue = argMultimap.getValue(PREFIX_NOTE).get();
+            if (!noteValue.isEmpty()) {
+                editPersonDescriptor.setNote(ParserUtil.parseNote(noteValue));
+            } else {
+                editPersonDescriptor.setNote(null);
+            }
         }
 
         if (argMultimap.getValue(PREFIX_WEBSITE).isPresent()) {
-            editPersonDescriptor.setWebsite(ParserUtil.parseWebsite(argMultimap.getValue(PREFIX_WEBSITE).get()));
+            editPersonDescriptor.setIsWebsiteEdited(true);
+            String websiteValue = argMultimap.getValue(PREFIX_WEBSITE).get();
+            if (!websiteValue.isEmpty()) {
+                editPersonDescriptor.setWebsite(ParserUtil.parseWebsite(websiteValue));
+            } else {
+                editPersonDescriptor.setWebsite(null);
+            }
         }
 
         parseModulesForEdit(argMultimap.getAllValues(PREFIX_MODULE)).ifPresent(editPersonDescriptor::setModules);

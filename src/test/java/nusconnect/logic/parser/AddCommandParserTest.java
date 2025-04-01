@@ -11,7 +11,6 @@ import static nusconnect.logic.commands.CommandTestUtil.INVALID_ALIAS_DESC;
 import static nusconnect.logic.commands.CommandTestUtil.INVALID_COURSE_DESC;
 import static nusconnect.logic.commands.CommandTestUtil.INVALID_EMAIL_DESC;
 import static nusconnect.logic.commands.CommandTestUtil.INVALID_NAME_DESC;
-import static nusconnect.logic.commands.CommandTestUtil.INVALID_NOTE_DESC;
 import static nusconnect.logic.commands.CommandTestUtil.INVALID_PHONE_DESC;
 import static nusconnect.logic.commands.CommandTestUtil.INVALID_TAG_DESC;
 import static nusconnect.logic.commands.CommandTestUtil.INVALID_TELEGRAM_DESC;
@@ -158,10 +157,6 @@ public class AddCommandParserTest {
         assertParseFailure(parser, INVALID_COURSE_DESC + validExpectedPersonString,
                 Messages.getErrorMessageForDuplicatePrefixes(PREFIX_COURSE));
 
-        // invalid note
-        assertParseFailure(parser, INVALID_NOTE_DESC + validExpectedPersonString,
-                Messages.getErrorMessageForDuplicatePrefixes(PREFIX_NOTE));
-
         // invalid telegram
         assertParseFailure(parser, INVALID_TELEGRAM_DESC + validExpectedPersonString,
                 Messages.getErrorMessageForDuplicatePrefixes(PREFIX_TELEGRAM));
@@ -191,10 +186,6 @@ public class AddCommandParserTest {
         // invalid course
         assertParseFailure(parser, validExpectedPersonString + INVALID_COURSE_DESC,
                 Messages.getErrorMessageForDuplicatePrefixes(PREFIX_COURSE));
-
-        // invalid note
-        assertParseFailure(parser, validExpectedPersonString + INVALID_NOTE_DESC,
-                Messages.getErrorMessageForDuplicatePrefixes(PREFIX_NOTE));
 
         // invalid telegram
         assertParseFailure(parser, validExpectedPersonString + INVALID_TELEGRAM_DESC,
@@ -291,11 +282,6 @@ public class AddCommandParserTest {
         assertParseFailure(parser, NAME_DESC_BOB + PHONE_DESC_BOB + EMAIL_DESC_BOB
                 + ALIAS_DESC_BOB + INVALID_COURSE_DESC + NOTE_DESC_BOB + TELEGRAM_DESC_BOB
                 + WEBSITE_DESC_BOB + TAG_DESC_HUSBAND + TAG_DESC_FRIEND, Course.MESSAGE_CONSTRAINTS);
-
-        // invalid note
-        assertParseFailure(parser, NAME_DESC_BOB + PHONE_DESC_BOB + EMAIL_DESC_BOB
-                + ALIAS_DESC_BOB + COURSE_DESC_BOB + INVALID_NOTE_DESC + TELEGRAM_DESC_BOB
-                + WEBSITE_DESC_BOB + TAG_DESC_HUSBAND + TAG_DESC_FRIEND, Note.MESSAGE_CONSTRAINTS);
 
         // invalid telegram
         assertParseFailure(parser, NAME_DESC_BOB + PHONE_DESC_BOB + EMAIL_DESC_BOB
