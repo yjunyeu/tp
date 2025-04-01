@@ -54,7 +54,8 @@ public class Name {
         }
 
         Name otherName = (Name) other;
-        return fullName.equals(otherName.fullName);
+        return this.fullName.trim().toLowerCase().replaceAll(" ", "")
+                .equals(otherName.fullName.trim().toLowerCase().replaceAll(" ", ""));
     }
 
     @Override
