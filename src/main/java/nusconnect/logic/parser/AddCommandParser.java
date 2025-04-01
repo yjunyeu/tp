@@ -12,6 +12,7 @@ import static nusconnect.logic.parser.CliSyntax.PREFIX_TELEGRAM;
 import static nusconnect.logic.parser.CliSyntax.PREFIX_WEBSITE;
 
 import java.util.Set;
+import java.util.function.Function;
 import java.util.stream.Stream;
 
 import nusconnect.logic.commands.AddCommand;
@@ -31,6 +32,13 @@ import nusconnect.model.person.Website;
  * Parses input arguments and creates a new AddCommand object
  */
 public class AddCommandParser implements Parser<AddCommand> {
+    private <T> T parseField(ArgumentMultimap argMultimap, Prefix prefix, Function<String, T> constructor) {
+        if (argMultimap.getValue(prefix).isPresent()) {
+            String trimmedT = argMultimap.getValue(prefix).get().trim();
+            return constructor.apply(trimmedT);
+        }
+        return null;
+    }
 
     /**
      * Parses the given {@code String} of arguments in the context of the AddCommand
@@ -49,36 +57,16 @@ public class AddCommandParser implements Parser<AddCommand> {
 
         argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_NAME, PREFIX_TELEGRAM, PREFIX_PHONE, PREFIX_EMAIL, PREFIX_ALIAS,
                 PREFIX_COURSE, PREFIX_NOTE, PREFIX_WEBSITE);
-        Name name = ParserUtil.parseName(argMultimap.getValue(PREFIX_NAME).get());
-        Telegram telegram = ParserUtil.parseTelegram(argMultimap.getValue(PREFIX_TELEGRAM).get());
 
-        Phone phone = null;
-        if (argMultimap.getValue(PREFIX_PHONE).isPresent()) {
-            phone = ParserUtil.parsePhone(argMultimap.getValue(PREFIX_PHONE).get());
-        }
-        Email email = null;
-        if (argMultimap.getValue(PREFIX_EMAIL).isPresent()) {
-            email = ParserUtil.parseEmail(argMultimap.getValue(PREFIX_EMAIL).get());
-        }
-        Alias alias = null;
-        if (argMultimap.getValue(PREFIX_ALIAS).isPresent()) {
-            alias = ParserUtil.parseAlias(argMultimap.getValue(PREFIX_ALIAS).get());
-        }
+        Name name = parseField(argMultimap, PREFIX_NAME, Name::new);
+        Telegram telegram = parseField(argMultimap, PREFIX_TELEGRAM, Telegram::new);
 
-        Course course = null;
-        if (argMultimap.getValue(PREFIX_COURSE).isPresent()) {
-            course = ParserUtil.parseCourse(argMultimap.getValue(PREFIX_COURSE).get());
-        }
-
-        Note note = null;
-        if (argMultimap.getValue(PREFIX_NOTE).isPresent()) {
-            note = ParserUtil.parseNote(argMultimap.getValue(PREFIX_NOTE).get());
-        }
-
-        Website website = null;
-        if (argMultimap.getValue(PREFIX_WEBSITE).isPresent()) {
-            website = ParserUtil.parseWebsite(argMultimap.getValue(PREFIX_WEBSITE).get());
-        }
+        Phone phone = parseField(argMultimap, PREFIX_PHONE, Phone::new);
+        Email email = parseField(argMultimap, PREFIX_EMAIL, Email::new);
+        Alias alias = parseField(argMultimap, PREFIX_ALIAS, Alias::new);
+        Course course = parseField(argMultimap, PREFIX_COURSE, Course::new);
+        Note note = parseField(argMultimap, PREFIX_NOTE, Note::new);
+        Website website = parseField(argMultimap, PREFIX_WEBSITE, Website::new);
 
         Set<Module> moduleList = ParserUtil.parseModules(argMultimap.getAllValues(PREFIX_MODULE));
 

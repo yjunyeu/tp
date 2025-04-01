@@ -56,15 +56,7 @@ import org.junit.jupiter.api.Test;
 
 import nusconnect.logic.Messages;
 import nusconnect.logic.commands.AddCommand;
-import nusconnect.model.module.Module;
-import nusconnect.model.person.Alias;
-import nusconnect.model.person.Course;
-import nusconnect.model.person.Email;
-import nusconnect.model.person.Name;
 import nusconnect.model.person.Person;
-import nusconnect.model.person.Phone;
-import nusconnect.model.person.Telegram;
-import nusconnect.model.person.Website;
 import nusconnect.testutil.PersonBuilder;
 
 public class AddCommandParserTest {
@@ -256,57 +248,77 @@ public class AddCommandParserTest {
     }
 
     @Test
-    public void parse_invalidValue_failure() {
+    public void parse_invalidPreamble_failure() {
+        assertParseFailure(parser, PREAMBLE_NON_EMPTY + NAME_DESC_BOB + PHONE_DESC_BOB + EMAIL_DESC_BOB
+                        + ALIAS_DESC_BOB + COURSE_DESC_BOB + NOTE_DESC_BOB + TELEGRAM_DESC_BOB
+                        + WEBSITE_DESC_BOB + TAG_DESC_HUSBAND + TAG_DESC_FRIEND,
+                String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_USAGE));
+    }
+
+    @Test
+    public void parse_invalidValue_stillSuccess() {
         // invalid name
-        assertParseFailure(parser, INVALID_NAME_DESC + PHONE_DESC_BOB + EMAIL_DESC_BOB
-                + ALIAS_DESC_BOB + COURSE_DESC_BOB + NOTE_DESC_BOB + TELEGRAM_DESC_BOB
-                + WEBSITE_DESC_BOB + TAG_DESC_HUSBAND + TAG_DESC_FRIEND, Name.MESSAGE_CONSTRAINTS);
+        Person expectedPersonInvalidName = new PersonBuilder(BOB).withName("James&").build();
+        assertParseSuccess(parser,
+                INVALID_NAME_DESC + PHONE_DESC_BOB + EMAIL_DESC_BOB + ALIAS_DESC_BOB + COURSE_DESC_BOB
+                        + NOTE_DESC_BOB + TELEGRAM_DESC_BOB + WEBSITE_DESC_BOB + TAG_DESC_HUSBAND + TAG_DESC_FRIEND,
+                new AddCommand(expectedPersonInvalidName));
 
         // invalid phone
-        assertParseFailure(parser, NAME_DESC_BOB + INVALID_PHONE_DESC + EMAIL_DESC_BOB
+        Person expectedPersonInvalidPhone = new PersonBuilder(BOB).withPhone("911a").build();
+        assertParseSuccess(parser, NAME_DESC_BOB + INVALID_PHONE_DESC + EMAIL_DESC_BOB
                 + ALIAS_DESC_BOB + COURSE_DESC_BOB + NOTE_DESC_BOB + TELEGRAM_DESC_BOB
-                + WEBSITE_DESC_BOB + TAG_DESC_HUSBAND + TAG_DESC_FRIEND, Phone.MESSAGE_CONSTRAINTS);
+                + WEBSITE_DESC_BOB + TAG_DESC_HUSBAND + TAG_DESC_FRIEND, new AddCommand(expectedPersonInvalidPhone));
+
 
         // invalid email
-        assertParseFailure(parser, NAME_DESC_BOB + PHONE_DESC_BOB + INVALID_EMAIL_DESC
+        Person expectedPersonInvalidEmail = new PersonBuilder(BOB).withEmail("bob!yahoo").build();
+        assertParseSuccess(parser, NAME_DESC_BOB + PHONE_DESC_BOB + INVALID_EMAIL_DESC
                 + ALIAS_DESC_BOB + COURSE_DESC_BOB + NOTE_DESC_BOB + TELEGRAM_DESC_BOB
-                + WEBSITE_DESC_BOB + TAG_DESC_HUSBAND + TAG_DESC_FRIEND, Email.MESSAGE_CONSTRAINTS);
+                + WEBSITE_DESC_BOB + TAG_DESC_HUSBAND + TAG_DESC_FRIEND, new AddCommand(expectedPersonInvalidEmail));
+
 
         // invalid alias
-        assertParseFailure(parser, NAME_DESC_BOB + PHONE_DESC_BOB + EMAIL_DESC_BOB
+        Person expectedPersonInvalidAlias = new PersonBuilder(BOB).withAlias("&").build();
+        assertParseSuccess(parser, NAME_DESC_BOB + PHONE_DESC_BOB + EMAIL_DESC_BOB
                 + INVALID_ALIAS_DESC + COURSE_DESC_BOB + NOTE_DESC_BOB + TELEGRAM_DESC_BOB
-                + WEBSITE_DESC_BOB + TAG_DESC_HUSBAND + TAG_DESC_FRIEND, Alias.MESSAGE_CONSTRAINTS);
+                + WEBSITE_DESC_BOB + TAG_DESC_HUSBAND + TAG_DESC_FRIEND, new AddCommand(expectedPersonInvalidAlias));
+
 
         // invalid course
-        assertParseFailure(parser, NAME_DESC_BOB + PHONE_DESC_BOB + EMAIL_DESC_BOB
+        Person expectedPersonInvalidCourse = new PersonBuilder(BOB).withCourse("1").build();
+        assertParseSuccess(parser, NAME_DESC_BOB + PHONE_DESC_BOB + EMAIL_DESC_BOB
                 + ALIAS_DESC_BOB + INVALID_COURSE_DESC + NOTE_DESC_BOB + TELEGRAM_DESC_BOB
-                + WEBSITE_DESC_BOB + TAG_DESC_HUSBAND + TAG_DESC_FRIEND, Course.MESSAGE_CONSTRAINTS);
+                + WEBSITE_DESC_BOB + TAG_DESC_HUSBAND + TAG_DESC_FRIEND, new AddCommand(expectedPersonInvalidCourse));
 
         // invalid telegram
-        assertParseFailure(parser, NAME_DESC_BOB + PHONE_DESC_BOB + EMAIL_DESC_BOB
+        Person expectedPersonInvalidTelegram = new PersonBuilder(BOB).withTelegram("telehandle").build();
+        assertParseSuccess(parser, NAME_DESC_BOB + PHONE_DESC_BOB + EMAIL_DESC_BOB
                 + ALIAS_DESC_BOB + COURSE_DESC_BOB + NOTE_DESC_BOB + INVALID_TELEGRAM_DESC
-                + WEBSITE_DESC_BOB + TAG_DESC_HUSBAND + TAG_DESC_FRIEND, Telegram.MESSAGE_CONSTRAINTS);
+                + WEBSITE_DESC_BOB + TAG_DESC_HUSBAND + TAG_DESC_FRIEND, new AddCommand(expectedPersonInvalidTelegram));
+
 
         // invalid website
-        assertParseFailure(parser, NAME_DESC_BOB + PHONE_DESC_BOB + EMAIL_DESC_BOB
+        Person expectedPersonInvalidWebsite = new PersonBuilder(BOB).withWebsite("website").build();
+        assertParseSuccess(parser, NAME_DESC_BOB + PHONE_DESC_BOB + EMAIL_DESC_BOB
                 + ALIAS_DESC_BOB + COURSE_DESC_BOB + NOTE_DESC_BOB + TELEGRAM_DESC_BOB
-                + INVALID_WEBSITE_DESC + TAG_DESC_HUSBAND + TAG_DESC_FRIEND, Website.MESSAGE_CONSTRAINTS);
+                + INVALID_WEBSITE_DESC + TAG_DESC_HUSBAND + TAG_DESC_FRIEND,
+                new AddCommand(expectedPersonInvalidWebsite));
 
 
         // invalid module
-        assertParseFailure(parser, NAME_DESC_BOB + PHONE_DESC_BOB + EMAIL_DESC_BOB
+        Person expectedPersonInvalidModule = new PersonBuilder(BOB).withModules("hubby*").build();
+        assertParseSuccess(parser, NAME_DESC_BOB + PHONE_DESC_BOB + EMAIL_DESC_BOB
                 + ALIAS_DESC_BOB + COURSE_DESC_BOB + NOTE_DESC_BOB + TELEGRAM_DESC_BOB
-                + WEBSITE_DESC_BOB + INVALID_TAG_DESC, Module.MESSAGE_CONSTRAINTS);
+                + WEBSITE_DESC_BOB + INVALID_TAG_DESC, new AddCommand(expectedPersonInvalidModule));
 
-        // two invalid values, only first invalid value reported
-        assertParseFailure(parser, INVALID_NAME_DESC + INVALID_PHONE_DESC + EMAIL_DESC_BOB
+        // two invalid values
+        Person expectedPersonTwoInvalid = new PersonBuilder(BOB).withName("James&").withPhone("911a").build();
+        assertParseSuccess(parser, INVALID_NAME_DESC + INVALID_PHONE_DESC + EMAIL_DESC_BOB
                 + ALIAS_DESC_BOB + COURSE_DESC_BOB + NOTE_DESC_BOB + TELEGRAM_DESC_BOB
-                + INVALID_WEBSITE_DESC + TAG_DESC_HUSBAND + TAG_DESC_FRIEND, Name.MESSAGE_CONSTRAINTS);
+                + WEBSITE_DESC_BOB + TAG_DESC_HUSBAND + TAG_DESC_FRIEND, new AddCommand(expectedPersonTwoInvalid));
 
         // non-empty preamble
-        assertParseFailure(parser, PREAMBLE_NON_EMPTY + NAME_DESC_BOB + PHONE_DESC_BOB + EMAIL_DESC_BOB
-                + ALIAS_DESC_BOB + COURSE_DESC_BOB + NOTE_DESC_BOB + TELEGRAM_DESC_BOB
-                + WEBSITE_DESC_BOB + TAG_DESC_HUSBAND + TAG_DESC_FRIEND,
-                String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_USAGE));
+
     }
 }
