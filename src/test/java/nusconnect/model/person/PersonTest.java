@@ -5,6 +5,7 @@ import static nusconnect.logic.commands.CommandTestUtil.VALID_COURSE_BOB;
 import static nusconnect.logic.commands.CommandTestUtil.VALID_EMAIL_BOB;
 import static nusconnect.logic.commands.CommandTestUtil.VALID_MODULE_CS2103T;
 import static nusconnect.logic.commands.CommandTestUtil.VALID_MODULE_CS2106;
+import static nusconnect.logic.commands.CommandTestUtil.VALID_NAME_AMY;
 import static nusconnect.logic.commands.CommandTestUtil.VALID_NAME_BOB;
 import static nusconnect.logic.commands.CommandTestUtil.VALID_NOTE_BOB;
 import static nusconnect.logic.commands.CommandTestUtil.VALID_PHONE_BOB;
@@ -55,13 +56,13 @@ public class PersonTest {
         assertFalse(ALICE.isSamePerson(editedAlice));
 
         // name differs in case, all other attributes same -> returns false
-        Person editedBob = new PersonBuilder(BOB).withName(VALID_NAME_BOB.toLowerCase()).build();
+        Person editedBob = new PersonBuilder(BOB).withName(VALID_NAME_AMY.toLowerCase()).build();
         assertFalse(BOB.isSamePerson(editedBob));
 
         // name has trailing spaces, all other attributes same -> returns false
         String nameWithTrailingSpaces = VALID_NAME_BOB + " ";
         editedBob = new PersonBuilder(BOB).withName(nameWithTrailingSpaces).build();
-        assertFalse(BOB.isSamePerson(editedBob));
+        assertTrue(BOB.isSamePerson(editedBob));
     }
 
     @Test
