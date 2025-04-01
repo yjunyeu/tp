@@ -54,14 +54,37 @@ public class PersonUtil {
      */
     public static String getEditPersonDescriptorDetails(EditPersonDescriptor descriptor) {
         StringBuilder sb = new StringBuilder();
-        descriptor.getName().ifPresent(name -> sb.append(PREFIX_NAME).append(name.fullName).append(" "));
-        descriptor.getPhone().ifPresent(phone -> sb.append(PREFIX_PHONE).append(phone.value).append(" "));
-        descriptor.getEmail().ifPresent(email -> sb.append(PREFIX_EMAIL).append(email.value).append(" "));
-        descriptor.getAlias().ifPresent(alias -> sb.append(PREFIX_ALIAS).append(alias.value).append(" "));
-        descriptor.getCourse().ifPresent(course -> sb.append(PREFIX_COURSE).append(course.value).append(" "));
-        descriptor.getNote().ifPresent(note -> sb.append(PREFIX_NOTE).append(note.value).append(" "));
-        descriptor.getTelegram().ifPresent(telegram -> sb.append(PREFIX_TELEGRAM).append(telegram.value).append(" "));
-        descriptor.getWebsite().ifPresent(website -> sb.append(PREFIX_WEBSITE).append(website.value).append(" "));
+        if (descriptor.getIsNameEdited()) {
+            sb.append(PREFIX_NAME).append(descriptor.getName()).append(" ");
+        }
+
+        if (descriptor.getIsPhoneEdited()) {
+            sb.append(PREFIX_PHONE).append(descriptor.getPhone()).append(" ");
+        }
+
+        if (descriptor.getIsEmailEdited()) {
+            sb.append(PREFIX_EMAIL).append(descriptor.getEmail()).append(" ");
+        }
+
+        if (descriptor.getIsAliasEdited()) {
+            sb.append(PREFIX_ALIAS).append(descriptor.getAlias()).append(" ");
+        }
+
+        if (descriptor.getIsCourseEdited()) {
+            sb.append(PREFIX_COURSE).append(descriptor.getCourse()).append(" ");
+        }
+
+        if (descriptor.getIsNoteEdited()) {
+            sb.append(PREFIX_NOTE).append(descriptor.getNote()).append(" ");
+        }
+
+        if (descriptor.getIsTelegramEdited()) {
+            sb.append(PREFIX_TELEGRAM).append(descriptor.getTelegram()).append(" ");
+        }
+
+        if (descriptor.getIsWebsiteEdited()) {
+            sb.append(PREFIX_WEBSITE).append(descriptor.getWebsite()).append(" ");
+        }
 
         if (descriptor.getTags().isPresent()) {
             Set<Module> modules = descriptor.getTags().get();

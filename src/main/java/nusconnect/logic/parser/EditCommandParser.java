@@ -63,34 +63,42 @@ public class EditCommandParser implements Parser<EditCommand> {
         EditPersonDescriptor editPersonDescriptor = new EditPersonDescriptor();
 
         if (argMultimap.getValue(PREFIX_NAME).isPresent()) {
+            editPersonDescriptor.setIsNameEdited(true);
             editPersonDescriptor.setName(new Name(argMultimap.getValue(PREFIX_NAME).get()));
         }
 
         if (argMultimap.getValue(PREFIX_TELEGRAM).isPresent()) {
+            editPersonDescriptor.setIsTelegramEdited(true);
             editPersonDescriptor.setTelegram(new Telegram(argMultimap.getValue(PREFIX_TELEGRAM).get()));
         }
 
         if (argMultimap.getValue(PREFIX_PHONE).isPresent()) {
+            editPersonDescriptor.setIsPhoneEdited(true);
             editPersonDescriptor.setPhone(new Phone(argMultimap.getValue(PREFIX_PHONE).get()));
         }
 
         if (argMultimap.getValue(PREFIX_EMAIL).isPresent()) {
+            editPersonDescriptor.setIsEmailEdited(true);
             editPersonDescriptor.setEmail(new Email(argMultimap.getValue(PREFIX_EMAIL).get()));
         }
 
         if (argMultimap.getValue(PREFIX_ALIAS).isPresent()) {
+            editPersonDescriptor.setIsAliasEdited(true);
             editPersonDescriptor.setAlias(new Alias(argMultimap.getValue(PREFIX_ALIAS).get()));
         }
 
         if (argMultimap.getValue(PREFIX_COURSE).isPresent()) {
+            editPersonDescriptor.setIsCourseEdited(true);
             editPersonDescriptor.setCourse(new Course(argMultimap.getValue(PREFIX_COURSE).get()));
         }
 
         if (argMultimap.getValue(PREFIX_NOTE).isPresent()) {
+            editPersonDescriptor.setIsNoteEdited(true);
             editPersonDescriptor.setNote(new Note(argMultimap.getValue(PREFIX_NOTE).get()));
         }
 
         if (argMultimap.getValue(PREFIX_WEBSITE).isPresent()) {
+            editPersonDescriptor.setIsWebsiteEdited(true);
             editPersonDescriptor.setWebsite(new Website(argMultimap.getValue(PREFIX_WEBSITE).get()));
         }
 
