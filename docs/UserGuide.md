@@ -3,7 +3,7 @@ layout: page
 title: User Guide
 ---
 
-NUSConnect is a **desktop app for managing contacts, optimized for use via a Command Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, NUSConnect can get your contact management tasks done faster than traditional GUI apps.
+**NUSConnect** is a **desktop app for managing contacts, optimized for use via a Command Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, **NUSConnect** can get your contact management tasks done faster than traditional GUI apps.
 
 * Table of Contents
 {:toc}
@@ -28,7 +28,7 @@ NUSConnect is a **desktop app for managing contacts, optimized for use via a Com
 
    * `list` : Lists all contacts.
 
-   * `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01` : Adds a contact named `John Doe` to the Address Book.
+   * `add n/John Doe tele/@johndoe p/91234567` : Adds a contact named `John Doe` to NUSConnect.
 
    * `delete 3` : Deletes the 3rd contact shown in the current list.
 
@@ -37,6 +37,8 @@ NUSConnect is a **desktop app for managing contacts, optimized for use via a Com
    * `exit` : Exits the app.
 
 1. Refer to the [Features](#features) below for details of each command.
+
+[Back to top](#user-guide)
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -64,27 +66,32 @@ NUSConnect is a **desktop app for managing contacts, optimized for use via a Com
 * If you are using a PDF version of this document, be careful when copying and pasting commands that span multiple lines as space characters surrounding line-breaks may be omitted when copied over to the application.
 </div>
 
-### Address Book Operations: 
+### Address Book Operations:
 
 #### Adding a person: `add`
 
 Adds a person to the address book.
 
-Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ALIAS c/COURSE no/NOTE tele/TELEGRAM w/WEBSITE [m/MODULE]…​`
+Format: `add n/NAME tele/TELEGRAM [p/PHONE_NUMBER] [e/EMAIL] [a/ALIAS] [c/COURSE] [no/NOTE] [w/WEBSITE] [m/MODULE]…​`
 
 <div markdown="span" class="alert alert-primary">:bulb: **Tip:**
 A person can have any number of modules (including 0)
 </div>
 
 Examples:
-* `add n/John Doe p/98765432 e/johnd@example.com a/JDoe c/CompSci no/Enjoys programming tele/@johndoe w/https://johndoe.com m/CS2103T`
-* `add n/Betsy Crowe m/CS2106 e/betsycrowe@example.com a/BCrowe p/1234567 c/Business no/Hackathon peer tele/@bcrowe w/https://linkedin.com/betsycrowe`
+
+After forming a group in CS2103T Software Engineering, you add your two teammates to NUSConnect:
+
+* `add n/John Doe p/98765432 e/john@u.nus.edu a/John no/Enjoys programming tele/@johndoe w/https://johndoe.com m/CS2103T`
+* `add n/Betsy Crowe tele/@bcrowe c/Information Security no/Group Leader w/https://linkedin.com/betsycrowe m/CS2103T`
+
+![AddExample](images/AddExample.png)
 
 #### Editing a person : `edit`
 
 Edits an existing person in the address book.
 
-Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ALIAS] [c/COURSE] [no/NOTE] [tele/TELEGRAM] [w/WEBSITE] [m/MODULE]…​`
+Format: `edit INDEX [n/NAME] [tele/TELEGRAM] [p/PHONE] [e/EMAIL] [a/ALIAS] [c/COURSE] [no/NOTE] [w/WEBSITE] [m/MODULE]…​`
 
 * Edits the person at the specified `INDEX`. The index refers to the index number shown in the displayed person list. The index **must be a positive integer** 1, 2, 3, …​
 * At least one of the optional fields must be provided.
@@ -94,8 +101,13 @@ Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ALIAS] [c/COURSE] [no/NOTE] 
   specifying any modules after it.
 
 Examples:
-*  `edit 1 p/91234567 e/johndoe@example.com` Edits the phone number and email address of the 1st person to be `91234567` and `johndoe@example.com` respectively.
-*  `edit 2 n/Betsy Crower m/` Edits the name of the 2nd person to be `Betsy Crower` and clears all existing modules.
+
+You realize that you share an additional module, IS1108 Digital Ethics and Privacy, with John. You also realize you had mispelled Betsy's name, and they have dropped CS2103T.
+
+*  `edit 1 m/CS2103T m/IS1108` Edits the modules of the 1st person to have both CS2103T and IS1108.
+*  `edit 2 n/Betsy Crower no/ m/` Edits the name of the 2nd person to be `Betsy Crower`, clears the note, and clears all existing modules.
+
+![EditExample](images/EditExample.png)
 
 #### Deleting people : `delete`
 
@@ -108,10 +120,31 @@ Format: `delete INDEX [MORE_INDICES]`
 * The indices **must be a positive integer** 1, 2, 3, ...
 * The indices must not be larger than the size of the address book.
 
+<div markdown="span" class="alert alert-primary">:bulb: **Tip:**
+Duplicate indices are allowed! NUSConnect will delete the person specified at that index once.
+</div>
+
+<div markdown="span" class="alert alert-primary">:bulb: **Tip:**
+The indices also do not have to be in any particular order!
+</div>
+
 Examples:
-* `list` followed by `delete 2` deletes the 2nd person in the address book.
-* `list` followed by `delete 2 4` deletes the 2nd and the 4th person in the address book.
+
+You heard that Betsy has dropped out of NUS, and will likely not need to keep in contact. You also do not want to keep some contacts you created to test out the features of NUSConnect.
+
+![DeleteExampleOne](images/DeleteExampleOne.png)
+
 * `find Betsy` followed by `delete 1` deletes the 1st person in the results of the `find` command.
+
+![DeleteExampleTwoA](images/DeleteExampleTwoA.png)
+
+After `list` again:
+
+![DeleteExampleTwo](images/DeleteExampleTwo.png)
+
+* `list` followed by `delete 2 4 3` deletes the 2nd, the 3rd, and the 4th person in the address book.
+
+![DeleteExampleTwo](images/DeleteExampleThree.png)
 
 #### Clearing all entries : `clear`
 
@@ -238,13 +271,24 @@ Exits the program.
 
 Format: `exit`
 
+[Back to top](#user-guide)
 --------------------------------------------------------------------------------------------------------------------
 
 ## FAQ
 
+**Q**: How is my data being used?<br>
+**A**: All data is stored locally and is not collected or shared with external parties.
+
+**Q**: Can I use NUSConnect without an internet connection?<br>
+**A**: Yes, NUSConnect is a desktop application that operates fully offline. No internet connection is required to manage your contacts.
+
 **Q**: How do I transfer my data to another Computer?<br>
 **A**: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous AddressBook home folder.
 
+**Q**: Can I undo a command if I delete or modify the wrong contact?<br>
+**A**: Currently, there is no undo feature in NUSConnect. It is recommended to back up your address book data regularly to prevent accidental data loss.
+
+[Back to top](#user-guide)
 --------------------------------------------------------------------------------------------------------------------
 
 ## Known issues
@@ -252,14 +296,15 @@ Format: `exit`
 1. **When using multiple screens**, if you move the application to a secondary screen, and later switch to using only the primary screen, the GUI will open off-screen. The remedy is to delete the `preferences.json` file created by the application before running the application again.
 2. **If you minimize the Help Window** and then run the `help` command (or use the `Help` menu, or the keyboard shortcut `F1`) again, the original Help Window will remain minimized, and no new Help Window will appear. The remedy is to manually restore the minimized Help Window.
 
+[Back to top](#user-guide)
 --------------------------------------------------------------------------------------------------------------------
 
 ## Command summary
 
 Action | Format, Examples
 --------|------------------
-**Add** | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [m/MODULE]…​` <br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 m/CS2103T`
-**Edit** | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [m/MODULE]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`
+**Add** | `add n/NAME tele/TELEGRAM [p/PHONE_NUMBER] [e/EMAIL] [a/ALIAS] [c/COURSE] [no/NOTE] [w/WEBSITE] [m/MODULE]…​` <br> e.g., `add n/John Doe tele/@johndoe p/98765432 e/johnd@example.com a/alias123 c/CompSci no/Enjoys programming w/https://johndoe.com m/CS2103T`
+**Edit** | `edit INDEX [n/NAME] [tele/TELEGRAM] [p/PHONE] [e/EMAIL] [a/ALIAS] [c/COURSE] [no/NOTE] [w/WEBSITE] [m/MODULE]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`
 **Delete** | `delete INDEX [MORE_INDICES]`<br> e.g., `delete 3` `delete 1 3 5`
 **Clear** | `clear`
 **Group create** | `group create NAME`<br> e.g., `group create CS2103T Team`
@@ -271,3 +316,5 @@ Action | Format, Examples
 **Sort** | `sort`
 **Help** | `help`
 **Exit** | `exit`
+
+[Back to top](#user-guide)
