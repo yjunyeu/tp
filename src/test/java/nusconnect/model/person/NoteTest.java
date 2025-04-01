@@ -14,28 +14,23 @@ public class NoteTest {
     }
 
     @Test
-    public void constructor_invalidNote_throwsIllegalArgumentException() {
-        String invalidNote = "";
-        assertThrows(IllegalArgumentException.class, () -> new Note(invalidNote));
-    }
-
-    @Test
     public void isValidNote() {
         // null note
         assertThrows(NullPointerException.class, () -> Note.isValidNote(null));
 
         // invalid note
-        assertFalse(Note.isValidNote("")); // empty string
-        assertFalse(Note.isValidNote(" ")); // spaces only
+        assertFalse(Note.isValidNote(new Note(""))); // empty string
+        assertFalse(Note.isValidNote(new Note(" "))); // spaces only
 
         // valid note
-        assertTrue(Note.isValidNote("^")); // only non-alphanumeric characters
-        assertTrue(Note.isValidNote("peter*")); // contains non-alphanumeric characters
-        assertTrue(Note.isValidNote("peter jack")); // alphabets only
-        assertTrue(Note.isValidNote("12345")); // numbers only
-        assertTrue(Note.isValidNote("peter the 2nd")); // alphanumeric characters
-        assertTrue(Note.isValidNote("Capital Tan")); // with capital letters
-        assertTrue(Note.isValidNote("David Roger Jackson Ray Jr 2nd")); // long notes
+        assertTrue(Note.isValidNote(new Note("^"))); // only non-alphanumeric characters
+        assertTrue(Note.isValidNote(new Note("peter*"))); // contains non-alphanumeric characters
+        assertTrue(Note.isValidNote(new Note("peter jack"))); // alphabets only
+        assertTrue(Note.isValidNote(new Note("12345"))); // numbers only
+        assertTrue(Note.isValidNote(new Note("peter the 2nd"))); // alphanumeric characters
+        assertTrue(Note.isValidNote(new Note("Capital Tan"))); // with capital letters
+        assertTrue(Note.isValidNote(new Note("David Roger Jackson Ray Jr 2nd"))); // long notes
+
     }
 
     @Test

@@ -1,7 +1,6 @@
 package nusconnect.model.person;
 
 import static java.util.Objects.requireNonNull;
-import static nusconnect.commons.util.AppUtil.checkArgument;
 
 /**
  * Represents a Person's email in the address book.
@@ -40,15 +39,14 @@ public class Email {
      */
     public Email(String email) {
         requireNonNull(email);
-        checkArgument(isValidEmail(email), MESSAGE_CONSTRAINTS);
         value = email;
     }
 
     /**
      * Returns if a given string is a valid email.
      */
-    public static boolean isValidEmail(String test) {
-        return test.matches(VALIDATION_REGEX);
+    public static boolean isValidEmail(Email test) {
+        return test.value.matches(VALIDATION_REGEX);
     }
 
     @Override

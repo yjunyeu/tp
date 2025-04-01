@@ -88,60 +88,44 @@ class JsonAdaptedPerson {
         if (name == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Name.class.getSimpleName()));
         }
-        if (!Name.isValidName(name)) {
-            throw new IllegalValueException(Name.MESSAGE_CONSTRAINTS);
-        }
+
         final Name modelName = new Name(name);
 
         if (telegram == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
                     Telegram.class.getSimpleName()));
         }
-        if (!Telegram.isValidTelegram(telegram)) {
-            throw new IllegalValueException(Telegram.MESSAGE_CONSTRAINTS);
-        }
+
         final Telegram modelTelegram = new Telegram(telegram);
 
-        final Phone modelPhone = JsonFieldValidator.validateField(
+        final Phone modelPhone = JsonFieldCreator.createField(
                 phone,
-                Phone::isValidPhone,
-                Phone::new,
-                Phone.MESSAGE_CONSTRAINTS
+                Phone::new
         );
 
-        final Email modelEmail = JsonFieldValidator.validateField(
+        final Email modelEmail = JsonFieldCreator.createField(
                 email,
-                Email::isValidEmail,
-                Email::new,
-                Email.MESSAGE_CONSTRAINTS
+                Email::new
         );
 
-        final Alias modelAlias = JsonFieldValidator.validateField(
+        final Alias modelAlias = JsonFieldCreator.createField(
                 alias,
-                Alias::isValidAlias,
-                Alias::new,
-                Alias.MESSAGE_CONSTRAINTS
+                Alias::new
         );
 
-        final Course modelCourse = JsonFieldValidator.validateField(
+        final Course modelCourse = JsonFieldCreator.createField(
                 course,
-                Course::isValidCourse,
-                Course::new,
-                Course.MESSAGE_CONSTRAINTS
+                Course::new
         );
 
-        final Note modelNote = JsonFieldValidator.validateField(
+        final Note modelNote = JsonFieldCreator.createField(
                 note,
-                Note::isValidNote,
-                Note::new,
-                Note.MESSAGE_CONSTRAINTS
+                Note::new
         );
 
-        final Website modelWebsite = JsonFieldValidator.validateField(
+        final Website modelWebsite = JsonFieldCreator.createField(
                 website,
-                Website::isValidWebsite,
-                Website::new,
-                Website.MESSAGE_CONSTRAINTS
+                Website::new
         );
 
         final List<Module> personModules = new ArrayList<>();
