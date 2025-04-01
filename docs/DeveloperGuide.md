@@ -180,7 +180,7 @@ This high-level sequence diagram outlines the flow of interactions between the c
 
 
 5. Storage - Updating AddressBook:
-   The Storage component reads the JSON (or other file format) data from the specified file and deserializes it into the AddressBook model. 
+   The Storage component reads the JSON (or other file format) data from the specified file and deserializes it into the AddressBook model.
    Once the data is read successfully, Storage updates the internal AddressBook with the newly imported data, effectively replacing or merging the previous address book data with the imported data.
 
 
