@@ -50,10 +50,8 @@ public class PersonCard extends UiPart<Region> {
 
         String phoneText = person.getPhone().map(p -> p.value).orElse("");
         phone.setText(phoneText);
-        if (phoneText.isEmpty()) {
-            phone.setVisible(false);
-            phone.setManaged(false);
-        }
+        phone.setVisible(!phoneText.isEmpty());
+        phone.setManaged(!phoneText.isEmpty());
 
         telegram.setText(person.getTelegram().value);
         person.getModules().stream()
