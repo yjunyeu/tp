@@ -2,7 +2,6 @@ package nusconnect.logic.parser;
 
 import static nusconnect.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 
-import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
