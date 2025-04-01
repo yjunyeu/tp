@@ -55,7 +55,8 @@ public class DeleteCommandTest {
         targetedIndices.add(INDEX_FIRST);
         DeleteCommand deleteCommand = new DeleteCommand(targetedIndices);
 
-        String expectedMessage = String.format(DeleteCommand.MESSAGE_DELETE_PERSON_SUCCESS,
+        String expectedMessage = DeleteCommand.MESSAGE_DELETE_MULTIPLE_PERSONS_SUCCESS
+                + String.format(DeleteCommand.MESSAGE_DELETE_PERSON_SUCCESS,
                 Messages.format(secondPersonToDelete)) + "\n"
                 + String.format(DeleteCommand.MESSAGE_DELETE_PERSON_SUCCESS,
                 Messages.format(firstPersonToDelete));
@@ -75,7 +76,8 @@ public class DeleteCommandTest {
         targetedIndices.add(outOfBoundIndex);
         DeleteCommand deleteCommand = new DeleteCommand(targetedIndices);
 
-        assertCommandFailure(deleteCommand, model, Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
+        assertCommandFailure(deleteCommand, model,
+                String.format(Messages.MESSAGE_INVALID_PERSON_TO_DELETE_INDEX, outOfBoundIndex.getOneBased()));
     }
 
     @Test
@@ -86,7 +88,8 @@ public class DeleteCommandTest {
         targetedIndices.add(INDEX_FIRST);
         DeleteCommand deleteCommand = new DeleteCommand(targetedIndices);
 
-        assertCommandFailure(deleteCommand, model, Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
+        assertCommandFailure(deleteCommand, model,
+                String.format(Messages.MESSAGE_INVALID_PERSON_TO_DELETE_INDEX, outOfBoundIndex.getOneBased()));
     }
 
     @Test
@@ -120,7 +123,8 @@ public class DeleteCommandTest {
         targetedIndices.add(outOfBoundIndex);
         DeleteCommand deleteCommand = new DeleteCommand(targetedIndices);
 
-        assertCommandFailure(deleteCommand, model, Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
+        assertCommandFailure(deleteCommand, model,
+                String.format(Messages.MESSAGE_INVALID_PERSON_TO_DELETE_INDEX, outOfBoundIndex.getOneBased()));
     }
 
     @Test
