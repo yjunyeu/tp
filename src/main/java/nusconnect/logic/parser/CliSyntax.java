@@ -13,7 +13,7 @@ public class CliSyntax {
     public static final Prefix PREFIX_ALIAS = new Prefix("a/");
     public static final Prefix PREFIX_COURSE = new Prefix("c/");
     public static final Prefix PREFIX_NOTE = new Prefix("no/");
-    public static final Prefix PREFIX_TELEGRAM = new Prefix("tele/");
+    public static final Prefix PREFIX_TELEGRAM = new Prefix("t/");
     public static final Prefix PREFIX_WEBSITE = new Prefix("w/");
     public static final Prefix PREFIX_MODULE = new Prefix("m/");
 
