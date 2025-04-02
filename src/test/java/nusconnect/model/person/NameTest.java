@@ -15,7 +15,7 @@ public class NameTest {
     }
 
     @Test
-    public void blankNameIsChangedToNoName () {
+    public void blankNameIsChangedToNoName() {
         Name name = new Name("");
         assertEquals("<no name>", name.toString());
     }
