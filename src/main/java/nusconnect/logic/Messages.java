@@ -7,6 +7,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import nusconnect.logic.parser.Prefix;
+import nusconnect.model.module.Module;
 import nusconnect.model.person.Alias;
 import nusconnect.model.person.Course;
 import nusconnect.model.person.Email;
@@ -66,6 +67,9 @@ public class Messages {
                 Note.MESSAGE_CONSTRAINTS)));
         person.getWebsite().map(website -> warnings.append(checkArgument(Website.isValidWebsite(website),
                 Website.MESSAGE_CONSTRAINTS)));
+        for (Module module : person.getModules()) {
+            warnings.append(checkArgument(Module.isValidModuleName(module), Module.MESSAGE_CONSTRAINTS));
+        }
         return warnings.toString();
     }
 
