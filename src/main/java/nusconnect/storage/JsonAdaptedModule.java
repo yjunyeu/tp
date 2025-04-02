@@ -38,10 +38,7 @@ class JsonAdaptedModule {
      *
      * @throws IllegalValueException if there were any data constraints violated in the adapted module.
      */
-    public Module toModelType() throws IllegalValueException {
-        if (!Module.isValidModuleName(moduleName)) {
-            throw new IllegalValueException(Module.MESSAGE_CONSTRAINTS);
-        }
+    public Module toModelType() {
         return new Module(moduleName);
     }
 
