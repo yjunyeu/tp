@@ -46,10 +46,10 @@ public class ImportCommand extends Command {
                 model.setAddressBook(addressBook);
                 return new CommandResult(MESSAGE_SUCCESS);
             } else {
-                return new CommandResult(MESSAGE_FAILURE + "\nInvalid FilePath");
+                return new CommandResult(MESSAGE_FAILURE + "\nInvalid file path!");
             }
         } catch (DataLoadingException e) {
-            throw new CommandException(MESSAGE_FAILURE + "\nInvalid JSON file");
+            throw new CommandException(MESSAGE_FAILURE + "\nInvalid JSON file!");
         }
     }
 
