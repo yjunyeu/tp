@@ -26,7 +26,11 @@ public class Name {
      */
     public Name(String name) {
         requireNonNull(name);
-        fullName = name;
+        if (name.isEmpty()) {
+            fullName = "<no name>";
+        } else {
+            fullName = name;
+        }
     }
 
     /**
