@@ -1,8 +1,6 @@
 package nusconnect.model.person;
 
 import static java.util.Objects.requireNonNull;
-import static nusconnect.commons.util.AppUtil.checkArgument;
-
 
 /**
  * Represents a Person's website in the address book.
@@ -11,7 +9,7 @@ import static nusconnect.commons.util.AppUtil.checkArgument;
 public class Website {
 
     public static final String MESSAGE_CONSTRAINTS =
-            "Websites start with 'http://' or 'https://', followed by a valid domain name";
+            "Websites start with 'http://' or 'https://', followed by a valid domain name!";
 
     // Regex for validating website format
     public static final String VALIDATION_REGEX = "^(https?://)?([a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}(/[\\w-]*)*$";
@@ -25,15 +23,14 @@ public class Website {
      */
     public Website(String website) {
         requireNonNull(website, "Website cannot be null");
-        checkArgument(isValidWebsite(website), MESSAGE_CONSTRAINTS);
         value = website;
     }
 
     /**
      * Returns true if a given string is a valid website.
      */
-    public static boolean isValidWebsite(String test) {
-        return test.matches(VALIDATION_REGEX);
+    public static boolean isValidWebsite(Website test) {
+        return test.value.matches(VALIDATION_REGEX);
     }
 
     @Override

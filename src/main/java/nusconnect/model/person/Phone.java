@@ -1,7 +1,6 @@
 package nusconnect.model.person;
 
 import static java.util.Objects.requireNonNull;
-import static nusconnect.commons.util.AppUtil.checkArgument;
 
 /**
  * Represents a Person's phone number in the address book.
@@ -11,8 +10,8 @@ public class Phone {
 
 
     public static final String MESSAGE_CONSTRAINTS =
-            "Phone numbers should only contain numbers, and it should be at least 3 digits long";
-    public static final String VALIDATION_REGEX = "\\d{3,}";
+            "Phone numbers should only contain numbers, and it should be 8 digits long";
+    public static final String VALIDATION_REGEX = "\\d{8}";
     public final String value;
 
     /**
@@ -22,15 +21,14 @@ public class Phone {
      */
     public Phone(String phone) {
         requireNonNull(phone);
-        checkArgument(isValidPhone(phone), MESSAGE_CONSTRAINTS);
         value = phone;
     }
 
     /**
      * Returns true if a given string is a valid phone number.
      */
-    public static boolean isValidPhone(String test) {
-        return test.matches(VALIDATION_REGEX);
+    public static boolean isValidPhone(Phone test) {
+        return test.value.matches(VALIDATION_REGEX);
     }
 
     @Override

@@ -1,7 +1,6 @@
 package nusconnect.model.person;
 
 import static java.util.Objects.requireNonNull;
-import static nusconnect.commons.util.AppUtil.checkArgument;
 
 /**
  * Represents a Person's name in the address book.
@@ -10,7 +9,7 @@ import static nusconnect.commons.util.AppUtil.checkArgument;
 public class Name {
 
     public static final String MESSAGE_CONSTRAINTS =
-            "Names should only contain alphanumeric characters and spaces, and it should not be blank";
+            "Names should only contain alphanumeric characters and spaces, and it should not be blank!";
 
     /*
      * The first character of the address must not be a whitespace,
@@ -27,15 +26,14 @@ public class Name {
      */
     public Name(String name) {
         requireNonNull(name);
-        checkArgument(isValidName(name), MESSAGE_CONSTRAINTS);
         fullName = name;
     }
 
     /**
      * Returns true if a given string is a valid name.
      */
-    public static boolean isValidName(String test) {
-        return test.matches(VALIDATION_REGEX);
+    public static boolean isValidName(Name test) {
+        return test.fullName.matches(VALIDATION_REGEX);
     }
 
 
@@ -56,7 +54,8 @@ public class Name {
         }
 
         Name otherName = (Name) other;
-        return fullName.equals(otherName.fullName);
+        return this.fullName.trim().toLowerCase().replaceAll(" ", "")
+                .equals(otherName.fullName.trim().toLowerCase().replaceAll(" ", ""));
     }
 
     @Override

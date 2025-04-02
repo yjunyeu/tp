@@ -72,7 +72,7 @@ public class TypicalPersons {
             .withModules("CS2106").build();
 
     public static final Person ELLE = new PersonBuilder().withName("Elle Meyer")
-            .withPhone("9482224")
+            .withPhone("94822242")
             .withEmail("werner@example.com")
             .withAlias("ElleAlias")
             .withCourse("Comp Science")
@@ -82,7 +82,7 @@ public class TypicalPersons {
             .build();
 
     public static final Person FIONA = new PersonBuilder().withName("Fiona Kunz")
-            .withPhone("9482427")
+            .withPhone("94824272")
             .withEmail("lydia@example.com")
             .withAlias("FionaAlias")
             .withCourse("Engineering")
@@ -92,7 +92,7 @@ public class TypicalPersons {
             .build();
 
     public static final Person GEORGE = new PersonBuilder().withName("George Best")
-            .withPhone("9482442")
+            .withPhone("94824422")
             .withEmail("anna@example.com")
             .withAlias("GeorgeAlias")
             .withCourse("Business")
@@ -103,7 +103,7 @@ public class TypicalPersons {
 
     // Manually added
     public static final Person HOON = new PersonBuilder().withName("Hoon Meier")
-            .withPhone("8482424")
+            .withPhone("84824242")
             .withEmail("stefan@example.com")
             .withAlias("HoonAlias")
             .withCourse("Engineering")
@@ -113,7 +113,7 @@ public class TypicalPersons {
             .build();
 
     public static final Person IDA = new PersonBuilder().withName("Ida Mueller")
-            .withPhone("8482131")
+            .withPhone("84821312")
             .withEmail("hans@example.com")
             .withAlias("IdaAlias")
             .withCourse("Comp Science")

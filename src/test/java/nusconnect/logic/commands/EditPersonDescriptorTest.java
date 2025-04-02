@@ -81,14 +81,14 @@ public class EditPersonDescriptorTest {
     public void toStringMethod() {
         EditPersonDescriptor editPersonDescriptor = new EditPersonDescriptor();
         String expected = EditPersonDescriptor.class.getCanonicalName() + "{name="
-                + editPersonDescriptor.getNote().orElse(null) + ", telegram="
-                + editPersonDescriptor.getName().orElse(null) + ", phone="
-                + editPersonDescriptor.getPhone().orElse(null) + ", email="
-                + editPersonDescriptor.getEmail().orElse(null) + ", alias="
-                + editPersonDescriptor.getAlias().orElse(null) + ", course="
-                + editPersonDescriptor.getCourse().orElse(null) + ", note="
-                + editPersonDescriptor.getTelegram().orElse(null) + ", website="
-                + editPersonDescriptor.getWebsite().orElse(null) + ", modules="
+                + editPersonDescriptor.getNote() + ", telegram="
+                + editPersonDescriptor.getName() + ", phone="
+                + editPersonDescriptor.getPhone() + ", email="
+                + editPersonDescriptor.getEmail() + ", alias="
+                + editPersonDescriptor.getAlias() + ", course="
+                + editPersonDescriptor.getCourse() + ", note="
+                + editPersonDescriptor.getTelegram() + ", website="
+                + editPersonDescriptor.getWebsite() + ", modules="
                 + editPersonDescriptor.getTags().orElse(null) + "}";
         assertEquals(expected, editPersonDescriptor.toString());
     }

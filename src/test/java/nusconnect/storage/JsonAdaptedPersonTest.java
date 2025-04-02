@@ -10,7 +10,6 @@ import static nusconnect.testutil.Assert.assertThrows;
 import static nusconnect.testutil.TypicalPersons.BENSON;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -22,9 +21,11 @@ import nusconnect.model.person.Course;
 import nusconnect.model.person.Email;
 import nusconnect.model.person.Name;
 import nusconnect.model.person.Note;
+import nusconnect.model.person.Person;
 import nusconnect.model.person.Phone;
 import nusconnect.model.person.Telegram;
 import nusconnect.model.person.Website;
+import nusconnect.testutil.PersonBuilder;
 
 public class JsonAdaptedPersonTest {
     private static final String INVALID_NAME = "R@chel";
@@ -57,13 +58,19 @@ public class JsonAdaptedPersonTest {
     }
 
     @Test
-    public void toModelType_invalidName_throwsIllegalValueException() {
-        JsonAdaptedPerson person =
-                new JsonAdaptedPerson(INVALID_NAME, VALID_TELEGRAM,
-                        VALID_PHONE, VALID_EMAIL, VALID_ALIAS, VALID_COURSE, VALID_NOTE,
-                        VALID_WEBSITE, VALID_TAGS);
-        String expectedMessage = Name.MESSAGE_CONSTRAINTS;
-        assertThrows(IllegalValueException.class, expectedMessage, person::toModelType);
+    public void toModelType_invalidName_stillReturnsPerson() throws Exception {
+        Person person = new PersonBuilder()
+                .withName(INVALID_NAME)
+                .withTelegram(VALID_TELEGRAM)
+                .withPhone(VALID_PHONE)
+                .withEmail(VALID_EMAIL)
+                .withAlias(VALID_ALIAS)
+                .withCourse(VALID_COURSE)
+                .withNote(VALID_NOTE)
+                .withWebsite(VALID_WEBSITE)
+                .build();
+        JsonAdaptedPerson jsonPerson = new JsonAdaptedPerson(person);
+        assertEquals(person, jsonPerson.toModelType());
     }
 
     @Test
@@ -77,63 +84,84 @@ public class JsonAdaptedPersonTest {
     }
 
     @Test
-    public void toModelType_invalidPhone_throwsIllegalValueException() {
-        JsonAdaptedPerson person =
-                new JsonAdaptedPerson(VALID_NAME, VALID_TELEGRAM,
-                        INVALID_PHONE, VALID_EMAIL, VALID_ALIAS, VALID_COURSE, VALID_NOTE,
-                       VALID_WEBSITE, VALID_TAGS);
-        String expectedMessage = Phone.MESSAGE_CONSTRAINTS;
-        assertThrows(IllegalValueException.class, expectedMessage, person::toModelType);
+    public void invalidPhone_stillReturnsPerson() throws Exception {
+        Person person = new PersonBuilder()
+                .withName(VALID_NAME)
+                .withTelegram(VALID_TELEGRAM)
+                .withPhone(INVALID_PHONE)
+                .withEmail(VALID_EMAIL)
+                .withAlias(VALID_ALIAS)
+                .withCourse(VALID_COURSE)
+                .withNote(VALID_NOTE)
+                .withWebsite(VALID_WEBSITE)
+                .build();
+        JsonAdaptedPerson jsonPerson = new JsonAdaptedPerson(person);
+        assertEquals(person, jsonPerson.toModelType());
     }
 
     @Test
-    public void toModelType_invalidEmail_throwsIllegalValueException() {
-        JsonAdaptedPerson person =
-                new JsonAdaptedPerson(VALID_NAME, VALID_TELEGRAM,
-                        VALID_PHONE, INVALID_EMAIL, VALID_ALIAS, VALID_COURSE, VALID_NOTE,
-                        VALID_WEBSITE, VALID_TAGS);
-        String expectedMessage = Email.MESSAGE_CONSTRAINTS;
-        assertThrows(IllegalValueException.class, expectedMessage, person::toModelType);
+    public void invalidEmail_stillReturnsPerson() throws Exception {
+        Person person = new PersonBuilder()
+                .withName(VALID_NAME)
+                .withTelegram(VALID_TELEGRAM)
+                .withPhone(VALID_PHONE)
+                .withEmail(INVALID_EMAIL)
+                .withAlias(VALID_ALIAS)
+                .withCourse(VALID_COURSE)
+                .withNote(VALID_NOTE)
+                .withWebsite(VALID_WEBSITE)
+                .build();
+        JsonAdaptedPerson jsonPerson = new JsonAdaptedPerson(person);
+        assertEquals(person, jsonPerson.toModelType());
     }
 
     @Test
-    public void toModelType_invalidAlias_throwsIllegalValueException() {
-        JsonAdaptedPerson person =
-                new JsonAdaptedPerson(VALID_NAME, VALID_TELEGRAM,
-                        VALID_PHONE, VALID_EMAIL, INVALID_ALIAS, VALID_COURSE, VALID_NOTE,
-                        VALID_WEBSITE, VALID_TAGS);
-        String expectedMessage = Alias.MESSAGE_CONSTRAINTS;
-        assertThrows(IllegalValueException.class, expectedMessage, person::toModelType);
+    public void invalidAlias_stillReturnsPerson() throws Exception {
+        Person person = new PersonBuilder()
+                .withName(VALID_NAME)
+                .withTelegram(VALID_TELEGRAM)
+                .withPhone(VALID_PHONE)
+                .withEmail(VALID_EMAIL)
+                .withAlias(INVALID_ALIAS)
+                .withCourse(VALID_COURSE)
+                .withNote(VALID_NOTE)
+                .withWebsite(VALID_WEBSITE)
+                .build();
+        JsonAdaptedPerson jsonPerson = new JsonAdaptedPerson(person);
+        assertEquals(person, jsonPerson.toModelType());
+    }
+
+
+    @Test
+    public void invalidCourse_stillReturnsPerson() throws Exception {
+        Person person = new PersonBuilder()
+                .withName(VALID_NAME)
+                .withTelegram(VALID_TELEGRAM)
+                .withPhone(VALID_PHONE)
+                .withEmail(VALID_EMAIL)
+                .withAlias(VALID_ALIAS)
+                .withCourse(INVALID_COURSE)
+                .withNote(VALID_NOTE)
+                .withWebsite(VALID_WEBSITE)
+                .build();
+        JsonAdaptedPerson jsonPerson = new JsonAdaptedPerson(person);
+        assertEquals(person, jsonPerson.toModelType());
     }
 
     @Test
-    public void toModelType_invalidCourse_throwsIllegalValueException() {
-        JsonAdaptedPerson person =
-                new JsonAdaptedPerson(VALID_NAME, VALID_TELEGRAM,
-                        VALID_PHONE, VALID_EMAIL, VALID_ALIAS, INVALID_COURSE, VALID_NOTE,
-                        VALID_WEBSITE, VALID_TAGS);
-        String expectedMessage = Course.MESSAGE_CONSTRAINTS;
-        assertThrows(IllegalValueException.class, expectedMessage, person::toModelType);
-    }
-
-    @Test
-    public void toModelType_invalidNote_throwsIllegalValueException() {
-        JsonAdaptedPerson person =
-                new JsonAdaptedPerson(VALID_NAME, VALID_TELEGRAM,
-                        VALID_PHONE, VALID_EMAIL, VALID_ALIAS, VALID_COURSE, INVALID_NOTE,
-                        VALID_WEBSITE, VALID_TAGS);
-        String expectedMessage = Note.MESSAGE_CONSTRAINTS;
-        assertThrows(IllegalValueException.class, expectedMessage, person::toModelType);
-    }
-
-    @Test
-    public void toModelType_invalidTelegram_throwsIllegalValueException() {
-        JsonAdaptedPerson person =
-                new JsonAdaptedPerson(VALID_NAME, INVALID_TELEGRAM,
-                        VALID_PHONE, VALID_EMAIL, VALID_ALIAS, VALID_COURSE, VALID_NOTE,
-                        VALID_WEBSITE, VALID_TAGS);
-        String expectedMessage = Telegram.MESSAGE_CONSTRAINTS;
-        assertThrows(IllegalValueException.class, expectedMessage, person::toModelType);
+    public void invalidTelegram_stillReturnsPerson() throws Exception {
+        Person person = new PersonBuilder()
+                .withName(VALID_NAME)
+                .withTelegram(INVALID_TELEGRAM)
+                .withPhone(VALID_PHONE)
+                .withEmail(VALID_EMAIL)
+                .withAlias(VALID_ALIAS)
+                .withCourse(VALID_COURSE)
+                .withNote(VALID_NOTE)
+                .withWebsite(VALID_WEBSITE)
+                .build();
+        JsonAdaptedPerson jsonPerson = new JsonAdaptedPerson(person);
+        assertEquals(person, jsonPerson.toModelType());
     }
 
     @Test
@@ -147,24 +175,19 @@ public class JsonAdaptedPersonTest {
     }
 
     @Test
-    public void toModelType_invalidWebsite_throwsIllegalValueException() {
-        JsonAdaptedPerson person =
-                new JsonAdaptedPerson(VALID_NAME, VALID_TELEGRAM,
-                        VALID_PHONE, VALID_EMAIL, VALID_ALIAS, VALID_COURSE, VALID_NOTE,
-                        INVALID_WEBSITE, VALID_TAGS);
-        String expectedMessage = Website.MESSAGE_CONSTRAINTS;
-        assertThrows(IllegalValueException.class, expectedMessage, person::toModelType);
-    }
-
-    @Test
-    public void toModelType_invalidTags_throwsIllegalValueException() {
-        List<JsonAdaptedModule> invalidTags = new ArrayList<>(VALID_TAGS);
-        invalidTags.add(new JsonAdaptedModule(INVALID_TAG));
-        JsonAdaptedPerson person =
-                new JsonAdaptedPerson(VALID_NAME,
-                        VALID_PHONE, VALID_EMAIL, VALID_ALIAS, VALID_COURSE, VALID_NOTE,
-                        VALID_TELEGRAM, VALID_WEBSITE, invalidTags);
-        assertThrows(IllegalValueException.class, person::toModelType);
+    public void invalidWebsite_stillReturnsPerson() throws Exception {
+        Person person = new PersonBuilder()
+                .withName(VALID_NAME)
+                .withTelegram(VALID_TELEGRAM)
+                .withPhone(VALID_PHONE)
+                .withEmail(VALID_EMAIL)
+                .withAlias(VALID_ALIAS)
+                .withCourse(VALID_COURSE)
+                .withNote(VALID_NOTE)
+                .withWebsite(INVALID_WEBSITE)
+                .build();
+        JsonAdaptedPerson jsonPerson = new JsonAdaptedPerson(person);
+        assertEquals(person, jsonPerson.toModelType());
     }
 
 }

@@ -71,14 +71,13 @@ public class CommandTestUtil {
     public static final String WEBSITE_DESC_BOB = " " + PREFIX_WEBSITE + VALID_WEBSITE_BOB;
 
     public static final String INVALID_NAME_DESC = " " + PREFIX_NAME + "James&"; // '&' not allowed in names
+    public static final String INVALID_TELEGRAM_DESC = " " + PREFIX_TELEGRAM + "telehandle"; // Must start with @
     public static final String INVALID_PHONE_DESC = " " + PREFIX_PHONE + "911a"; // 'a' not allowed in phones
     public static final String INVALID_EMAIL_DESC = " " + PREFIX_EMAIL + "bob!yahoo"; // missing '@' symbol
     public static final String INVALID_TAG_DESC = " " + PREFIX_MODULE + "hubby*"; // '*' not allowed in Modules
-    public static final String INVALID_ALIAS_DESC = " " + PREFIX_ALIAS; //blank
-    public static final String INVALID_COURSE_DESC = " " + PREFIX_COURSE; //cannot be blank
-    public static final String INVALID_NOTE_DESC = " " + PREFIX_NOTE; //cannot be blank
-    public static final String INVALID_TELEGRAM_DESC = " " + PREFIX_TELEGRAM; //cannot be blank
-    public static final String INVALID_WEBSITE_DESC = " " + PREFIX_WEBSITE; //cannot be blank
+    public static final String INVALID_ALIAS_DESC = " " + PREFIX_ALIAS + "&"; // Only alphanumeric
+    public static final String INVALID_COURSE_DESC = " " + PREFIX_COURSE + "1"; //Only alphabet and spaces
+    public static final String INVALID_WEBSITE_DESC = " " + PREFIX_WEBSITE + "website"; // Not a url
     public static final String PREAMBLE_WHITESPACE = "\t  \r  \n";
     public static final String PREAMBLE_NON_EMPTY = "NonEmptyPreamble";
 

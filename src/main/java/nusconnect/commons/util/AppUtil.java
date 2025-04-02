@@ -30,11 +30,21 @@ public class AppUtil {
     }
 
     /**
+     * Checks that {@code condition} is true. Used for propagating warning messages to command result..
+     */
+    public static String checkArgument(Boolean condition, String warningMessage) {
+        if (!condition) {
+            return warningMessage + "\n";
+        }
+        return "";
+    }
+
+    /**
      * Checks that {@code condition} is true. Used for validating arguments to methods.
      *
      * @throws IllegalArgumentException with {@code errorMessage} if {@code condition} is false.
      */
-    public static void checkArgument(Boolean condition, String errorMessage) {
+    public static void checkArgumentAndThrow(Boolean condition, String errorMessage) {
         if (!condition) {
             throw new IllegalArgumentException(errorMessage);
         }

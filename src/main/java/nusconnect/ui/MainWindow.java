@@ -130,10 +130,8 @@ public class MainWindow extends UiPart<Stage> {
 
         personListPanel.getPersonListView().getSelectionModel().selectedItemProperty().addListener((
                 observable, oldValue, newValue) -> {
-                    if (newValue != null) {
-                        personDetailsPanel.setPersonDetails(newValue);
-                    }
-                });
+            personDetailsPanel.setPersonDetails(newValue);
+        });
 
         resultDisplay = new ResultDisplay();
         resultDisplayPlaceholder.getChildren().add(resultDisplay.getRoot());
@@ -151,6 +149,8 @@ public class MainWindow extends UiPart<Stage> {
     private void setWindowDefaultSize(GuiSettings guiSettings) {
         primaryStage.setHeight(guiSettings.getWindowHeight());
         primaryStage.setWidth(guiSettings.getWindowWidth());
+        primaryStage.setMinWidth(700);
+        primaryStage.setMinHeight(600);
         if (guiSettings.getWindowCoordinates() != null) {
             primaryStage.setX(guiSettings.getWindowCoordinates().getX());
             primaryStage.setY(guiSettings.getWindowCoordinates().getY());

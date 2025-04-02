@@ -28,7 +28,7 @@ title: User Guide
 
    * `list` : Lists all contacts.
 
-   * `add n/John Doe tele/@johndoe p/91234567` : Adds a contact named `John Doe` to NUSConnect.
+   * `add n/John Doe t/@johndoe p/91234567` : Adds a contact named `John Doe` to NUSConnect.
 
    * `delete 3` : Deletes the 3rd contact shown in the current list.
 
@@ -72,7 +72,7 @@ title: User Guide
 
 Adds a person to the address book.
 
-Format: `add n/NAME tele/TELEGRAM [p/PHONE_NUMBER] [e/EMAIL] [a/ALIAS] [c/COURSE] [no/NOTE] [w/WEBSITE] [m/MODULE]…​`
+Format: `add n/NAME t/TELEGRAM [p/PHONE_NUMBER] [e/EMAIL] [a/ALIAS] [c/COURSE] [no/NOTE] [w/WEBSITE] [m/MODULE]…​`
 
 <div markdown="span" class="alert alert-primary">:bulb: **Tip:**
 A person can have any number of modules (including 0)
@@ -82,8 +82,8 @@ Examples:
 
 After forming a group in CS2103T Software Engineering, you add your two teammates to NUSConnect:
 
-* `add n/John Doe p/98765432 e/john@u.nus.edu a/John no/Enjoys programming tele/@johndoe w/https://johndoe.com m/CS2103T`
-* `add n/Betsy Crowe tele/@bcrowe c/Information Security no/Group Leader w/https://linkedin.com/betsycrowe m/CS2103T`
+* `add n/John Doe p/98765432 e/john@u.nus.edu a/John no/Enjoys programming t/@johndoe w/https://johndoe.com m/CS2103T`
+* `add n/Betsy Crowe t/@bcrowe c/Information Security no/Group Leader w/https://linkedin.com/betsycrowe m/CS2103T`
 
 ![AddExample](images/AddExample.png)
 
@@ -91,7 +91,7 @@ After forming a group in CS2103T Software Engineering, you add your two teammate
 
 Edits an existing person in the address book.
 
-Format: `edit INDEX [n/NAME] [tele/TELEGRAM] [p/PHONE] [e/EMAIL] [a/ALIAS] [c/COURSE] [no/NOTE] [w/WEBSITE] [m/MODULE]…​`
+Format: `edit INDEX [n/NAME] [t/TELEGRAM] [p/PHONE] [e/EMAIL] [a/ALIAS] [c/COURSE] [no/NOTE] [w/WEBSITE] [m/MODULE]…​`
 
 * Edits the person at the specified `INDEX`. The index refers to the index number shown in the displayed person list. The index **must be a positive integer** 1, 2, 3, …​
 * At least one of the optional fields must be provided.
@@ -253,7 +253,37 @@ Furthermore, certain edits can cause the AddressBook to behave in unexpected way
 
 #### Exporting the current address book: `export`
 
+Exports the current address book data to a specified file.
+
+format: `export FILE_PATH`
+
+* FILE_PATH refers to the location where the data will be exported.
+* The filename can be empty (i.e., the user only provides a path without a filename).
+* File extension provided by user will be ignored and the default (.json) extension will be used.
+* If a file already exists at the specified location, it will be overwritten with the current data.
+* If the file path is invalid or there are issues with writing the file (e.g., insufficient permissions), an error message will be displayed.
+
+Examples:
+
+* export exported_data.txt exports the address book data to the exported_data.txt file in the current directory.
+* export /Users/user/Downloads/addressbook_backup.json exports the address book data to a specific location on your system.
+
+
+
 #### Importing an address book: `import`
+
+Format: import FILE_PATH
+
+* FILE_PATH refers to the path of the file from which data will be imported. It can be either an absolute or relative path.
+* The file must be in the correct format (e.g., .json, .txt), and it must contain data that is compatible with the address book structure.
+* If the file path is invalid, the operation will fail, and an error message will be displayed.
+* If the data in the file is successfully imported, the address book will be updated with the new information.
+
+Examples:
+
+* import data.json imports data from the data.json file.
+* import ./backup/addressbook.json imports data from the addressbook.json file located in the backup folder.
+* import /Users/user/Documents/addressbook_data.txt imports data from the addressbook_data.txt file located in the specified directory.
 
 ### Misc:
 
@@ -303,8 +333,8 @@ Format: `exit`
 
 Action | Format, Examples
 --------|------------------
-**Add** | `add n/NAME tele/TELEGRAM [p/PHONE_NUMBER] [e/EMAIL] [a/ALIAS] [c/COURSE] [no/NOTE] [w/WEBSITE] [m/MODULE]…​` <br> e.g., `add n/John Doe tele/@johndoe p/98765432 e/johnd@example.com a/alias123 c/CompSci no/Enjoys programming w/https://johndoe.com m/CS2103T`
-**Edit** | `edit INDEX [n/NAME] [tele/TELEGRAM] [p/PHONE] [e/EMAIL] [a/ALIAS] [c/COURSE] [no/NOTE] [w/WEBSITE] [m/MODULE]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`
+**Add** | `add n/NAME t/TELEGRAM [p/PHONE_NUMBER] [e/EMAIL] [a/ALIAS] [c/COURSE] [no/NOTE] [w/WEBSITE] [m/MODULE]…​` <br> e.g., `add n/John Doe t/@johndoe p/98765432 e/johnd@example.com a/alias123 c/CompSci no/Enjoys programming w/https://johndoe.com m/CS2103T`
+**Edit** | `edit INDEX [n/NAME] [t/TELEGRAM] [p/PHONE] [e/EMAIL] [a/ALIAS] [c/COURSE] [no/NOTE] [w/WEBSITE] [m/MODULE]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`
 **Delete** | `delete INDEX [MORE_INDICES]`<br> e.g., `delete 3` `delete 1 3 5`
 **Clear** | `clear`
 **Group create** | `group create NAME`<br> e.g., `group create CS2103T Team`
@@ -314,6 +344,8 @@ Action | Format, Examples
 **Find** | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`
 **View** | `view INDEX` <br> e.g., `view 1`
 **Sort** | `sort`
+**Export** | `export`
+**Import** | `import`
 **Help** | `help`
 **Exit** | `exit`
 

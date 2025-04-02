@@ -1,7 +1,6 @@
 package nusconnect.model.person;
 
 import static java.util.Objects.requireNonNull;
-import static nusconnect.commons.util.AppUtil.checkArgument;
 
 /**
  * Represents a Person's alias in the alias book.
@@ -10,7 +9,7 @@ import static nusconnect.commons.util.AppUtil.checkArgument;
 public class Alias {
 
     public static final String MESSAGE_CONSTRAINTS =
-            "Aliases can only contain alphabets, numbers, underlines, spaces, and it should not be blank";
+            "Aliases can only contain alphabets, numbers, underlines, spaces, and it should not be blank!";
 
     /*
      * The first character of the alias must not be a whitespace,
@@ -27,15 +26,14 @@ public class Alias {
      */
     public Alias(String alias) {
         requireNonNull(alias);
-        checkArgument(isValidAlias(alias), MESSAGE_CONSTRAINTS);
         value = alias;
     }
 
     /**
-     * Returns true if a given string is a valid email.
+     * Returns true if a given string is a valid alias.
      */
-    public static boolean isValidAlias(String test) {
-        return test.matches(VALIDATION_REGEX);
+    public static boolean isValidAlias(Alias test) {
+        return test.value.matches(VALIDATION_REGEX);
     }
 
     @Override

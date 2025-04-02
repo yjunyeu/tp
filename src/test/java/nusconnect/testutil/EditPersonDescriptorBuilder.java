@@ -45,6 +45,14 @@ public class EditPersonDescriptorBuilder {
         descriptor.setNote(person.getNote().orElse(null));
         descriptor.setWebsite(person.getWebsite().orElse(null));
         descriptor.setModules(person.getModules());
+        descriptor.setIsNameEdited(true);
+        descriptor.setIsTelegramEdited(true);
+        descriptor.setIsPhoneEdited(true);
+        descriptor.setIsEmailEdited(true);
+        descriptor.setIsAliasEdited(true);
+        descriptor.setIsCourseEdited(true);
+        descriptor.setIsNoteEdited(true);
+        descriptor.setIsWebsiteEdited(true);
     }
 
     /**
@@ -52,6 +60,7 @@ public class EditPersonDescriptorBuilder {
      */
     public EditPersonDescriptorBuilder withName(String name) {
         descriptor.setName(new Name(name));
+        descriptor.setIsNameEdited(true);
         return this;
     }
 
@@ -60,6 +69,7 @@ public class EditPersonDescriptorBuilder {
      */
     public EditPersonDescriptorBuilder withPhone(String phone) {
         descriptor.setPhone(new Phone(phone));
+        descriptor.setIsPhoneEdited(true);
         return this;
     }
 
@@ -68,6 +78,7 @@ public class EditPersonDescriptorBuilder {
      */
     public EditPersonDescriptorBuilder withEmail(String email) {
         descriptor.setEmail(new Email(email));
+        descriptor.setIsEmailEdited(true);
         return this;
     }
 
@@ -76,6 +87,7 @@ public class EditPersonDescriptorBuilder {
      */
     public EditPersonDescriptorBuilder withAlias(String alias) {
         descriptor.setAlias(new Alias(alias));
+        descriptor.setIsAliasEdited(true);
         return this;
     }
 
@@ -84,6 +96,7 @@ public class EditPersonDescriptorBuilder {
      */
     public EditPersonDescriptorBuilder withCourse(String course) {
         descriptor.setCourse(new Course(course));
+        descriptor.setIsCourseEdited(true);
         return this;
     }
 
@@ -92,6 +105,7 @@ public class EditPersonDescriptorBuilder {
      */
     public EditPersonDescriptorBuilder withNote(String note) {
         descriptor.setNote(new Note(note));
+        descriptor.setIsNoteEdited(true);
         return this;
     }
 
@@ -100,6 +114,7 @@ public class EditPersonDescriptorBuilder {
      */
     public EditPersonDescriptorBuilder withTelegram(String telegram) {
         descriptor.setTelegram(new Telegram(telegram));
+        descriptor.setIsTelegramEdited(true);
         return this;
     }
 
@@ -108,6 +123,7 @@ public class EditPersonDescriptorBuilder {
      */
     public EditPersonDescriptorBuilder withWebsite(String website) {
         descriptor.setWebsite(new Website(website));
+        descriptor.setIsWebsiteEdited(true);
         return this;
     }
 
