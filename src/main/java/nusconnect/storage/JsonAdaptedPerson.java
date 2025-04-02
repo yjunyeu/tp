@@ -82,7 +82,8 @@ class JsonAdaptedPerson {
     /**
      * Converts this Jackson-friendly adapted person object into the model's {@code Person} object.
      *
-     * @throws IllegalValueException if there were any data constraints violated in the adapted person.
+     * @throws IllegalValueException if there were any data constraints violated in the
+     * adapted person's name and Telegram.
      */
     public Person toModelType() throws IllegalValueException {
         if (name == null) {

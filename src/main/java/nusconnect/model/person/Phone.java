@@ -4,7 +4,7 @@ import static java.util.Objects.requireNonNull;
 
 /**
  * Represents a Person's phone number in the address book.
- * Guarantees: immutable; is valid as declared in {@link #isValidPhone(String)}
+ * Guarantees: immutable
  */
 public class Phone {
 
@@ -16,8 +16,6 @@ public class Phone {
 
     /**
      * Constructs a {@code Phone}.
-     *
-     * @param phone A valid phone number.
      */
     public Phone(String phone) {
         requireNonNull(phone);
@@ -25,7 +23,7 @@ public class Phone {
     }
 
     /**
-     * Returns true if a given string is a valid phone number.
+     * Returns true if a given Phone is a valid phone number.
      */
     public static boolean isValidPhone(Phone test) {
         return test.value.matches(VALIDATION_REGEX);

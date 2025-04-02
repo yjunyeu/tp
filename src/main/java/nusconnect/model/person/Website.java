@@ -4,7 +4,7 @@ import static java.util.Objects.requireNonNull;
 
 /**
  * Represents a Person's website in the address book.
- * Guarantees: immutable; is valid as declared in {@link #isValidWebsite(String)}
+ * Guarantees: immutable
  */
 public class Website {
 
@@ -18,8 +18,6 @@ public class Website {
 
     /**
      * Constructs a {@code Website}.
-     *
-     * @param website A valid website.
      */
     public Website(String website) {
         requireNonNull(website, "Website cannot be null");
@@ -27,7 +25,7 @@ public class Website {
     }
 
     /**
-     * Returns true if a given string is a valid website.
+     * Returns true if a given Website is a valid website.
      */
     public static boolean isValidWebsite(Website test) {
         return test.value.matches(VALIDATION_REGEX);

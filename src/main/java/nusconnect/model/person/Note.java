@@ -3,8 +3,8 @@ package nusconnect.model.person;
 import static java.util.Objects.requireNonNull;
 
 /**
- * Represents a Person's note in the note book.
- * Guarantees: immutable; is valid as declared in {@link #isValidNote(String)}
+ * Represents a Person's note in the address book.
+ * Guarantees: immutable
  */
 public class Note {
 
@@ -20,8 +20,6 @@ public class Note {
 
     /**
      * Constructs an {@code Note}.
-     *
-     * @param note A valid note.
      */
     public Note(String note) {
         requireNonNull(note);
@@ -29,7 +27,7 @@ public class Note {
     }
 
     /**
-     * Returns true if a given string is a valid email.
+     * Returns true if a given Note is a valid note.
      */
     public static boolean isValidNote(Note test) {
         return test.value.matches(VALIDATION_REGEX);
