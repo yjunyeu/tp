@@ -1,5 +1,6 @@
 package nusconnect.logic.commands;
 
+import static nusconnect.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static nusconnect.testutil.TypicalPersons.getTypicalAddressBook;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -20,10 +21,12 @@ import nusconnect.testutil.PersonBuilder;
 public class SortCommandTest {
 
     private Model model;
+    private Model expectedModel;
 
     @BeforeEach
     public void setUp() {
         model = new ModelManager(getTypicalAddressBook(), new UserPrefs());
+        expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs());
     }
 
     @Test
@@ -40,6 +43,27 @@ public class SortCommandTest {
         Person firstPerson = model.getFilteredPersonList().get(0);
         Person secondPerson = model.getFilteredPersonList().get(1);
         assertTrue(firstPerson.getName().toString().compareTo(secondPerson.getName().toString()) < 0);
+    }
+
+    @Test
+    public void execute_listIsNotFiltered_sortsAndShowsSameList() {
+        assertCommandSuccess(new SortCommand(), model, SortCommand.MESSAGE_SUCCESS, expectedModel);
+    }
+
+    @Test
+    public void execute_emptyList_showsEmptyMessage() {
+        model = new ModelManager(new AddressBook(), new UserPrefs());
+        model.updateFilteredPersonList(person -> false);
+        expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs());
+        assertCommandSuccess(new SortCommand(), model, SortCommand.MESSAGE_EMPTY_LIST, expectedModel);
+    }
+
+    @Test
+    public void execute_onePersonInList_showsOnePersonMessage() {
+        model = new ModelManager(new AddressBook(), new UserPrefs());
+        model.addPerson(new PersonBuilder().build());
+        expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs());
+        assertCommandSuccess(new SortCommand(), model, SortCommand.MESSAGE_ONE_PERSON, expectedModel);
     }
 
     @Test
