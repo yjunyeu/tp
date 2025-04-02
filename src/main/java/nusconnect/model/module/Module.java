@@ -4,7 +4,7 @@ import static java.util.Objects.requireNonNull;
 
 /**
  * Represents a Module in the address book.
- * Guarantees: immutable; name is valid as declared in {@link #isValidModuleName(String)}
+ * Guarantees: immutable; name is valid as declared in {@link #isValidModuleName(Module)}
  */
 public class Module {
 
