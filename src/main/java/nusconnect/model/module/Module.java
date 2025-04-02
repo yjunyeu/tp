@@ -1,7 +1,6 @@
 package nusconnect.model.module;
 
 import static java.util.Objects.requireNonNull;
-import static nusconnect.commons.util.AppUtil.checkArgument;
 
 /**
  * Represents a Module in the address book.

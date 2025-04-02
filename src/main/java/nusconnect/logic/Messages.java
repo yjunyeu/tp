@@ -6,11 +6,11 @@ import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import nusconnect.model.module.Module;
 import nusconnect.logic.parser.Prefix;
 import nusconnect.model.person.Alias;
 import nusconnect.model.person.Course;
 import nusconnect.model.person.Email;
-import nusconnect.model.module.Module;
 import nusconnect.model.person.Name;
 import nusconnect.model.person.Note;
 import nusconnect.model.person.Person;
