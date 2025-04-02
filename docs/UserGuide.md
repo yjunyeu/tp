@@ -217,12 +217,13 @@ Format: `find KEYWORD [MORE_KEYWORDS]`
 * The search is case-insensitive. e.g `hans` will match `Hans`
 * The order of the keywords does not matter. e.g. `Hans Bo` will match `Bo Hans`
 * Both the name and the module are searched.
-* Only full words will be matched e.g. `Han` will not match `Hans`
+* Partial words can be matched e.g. `Han` will match `Hans`
 * Persons matching at least one keyword in either the name or module will be returned (i.e. OR search). e.g. `Hans Bo CS2103T` will return `Hans Gruber` (matching `Hans`), `Bo Yang` (matching `Bo`), and `John Sim` (if module matches).
 
 Examples:
 * `find John` returns `john` and `John Doe`
 * `find alex david` returns `Alex Yeoh`, `David Li`<br>
+* `find tim` returns `Tim Yeoh`, `Timothy Lim`
 * `find doe CS2106` returns `John Doe` (matching name `Doe`) and `John Sim` (matching module `CS2106`)
   ![result for 'find doe CS2106'](images/findDoeCs2106.png)
 
@@ -243,6 +244,24 @@ Examples:
 * `find Betsy` followed by `view 1` shows the full details of the 1st person in the results of the `find` command.
 
 #### Sorting the address book: `sort`
+
+Sorts all the persons in the address book by their names in alphabetical order.
+
+Format: `sort`
+
+* The  `sort` command organises all the contacts in the address book by their names in ascending alphabetical order.
+* If the address book is empty, the command will display the message `The address book is empty!`.
+* If there is only one person in the address book, the list will remain unchanged, and the command will display the message `Sorted one person!`.
+
+Examples:
+* Before sorting:
+
+![Before `sort`](images/BeforeSort.png)
+
+
+* After sorting:
+
+![After `sort`](images/AfterSort.png)
 
 ### Storage:
 
