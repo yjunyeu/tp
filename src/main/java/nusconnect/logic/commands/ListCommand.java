@@ -11,7 +11,6 @@ import nusconnect.model.Model;
 public class ListCommand extends Command {
 
     public static final String COMMAND_WORD = "list";
-  
     public static final String MESSAGE_SUCCESS = "Listed all persons!";
     public static final String MESSAGE_EMPTY_LIST = "The address book is empty!";
     public static final String MESSAGE_ONE_PERSON = "Listed one person!";
