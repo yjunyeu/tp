@@ -2,8 +2,12 @@
 layout: page
 title: User Guide
 ---
+# NUSConnect
 
-**NUSConnect** is a **desktop app for managing contacts, optimized for use via a Command Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, **NUSConnect** can get your contact management tasks done faster than traditional GUI apps.
+Thank you for using **NUSConnect**! With NUSConnect, you can manage your contacts quickly and efficiently using the 
+Command Line Interface (CLI), all displayed with our custom-designed Graphical User Interface (GUI) specifically for 
+NUS students! Type fast, and **NUSConnect** lets you breeze through contact management tasks faster than any 
+traditional address book!
 
 * Table of Contents
 {:toc}
@@ -12,33 +16,37 @@ title: User Guide
 
 ## Quick start
 
-1. Ensure you have Java `17` or above installed in your Computer.<br>
-   **Mac users:** Ensure you have the precise JDK version prescribed [here](https://se-education.org/guides/tutorials/javaInstallationMac.html).
+1. First, make sure you have Java `17` or above installed in your computer!<br>
+   **Mac users:** Check out [this guide](https://se-education.org/guides/tutorials/javaInstallationMac.html) to get the exact JDK version you need.
 
-1. Download the latest `.jar` file from [here](https://github.com/AY2425S2-CS2103T-T16-1/tp/releases).
+1. Next, download the latest `nusconnect.jar` file from [here](https://github.com/AY2425S2-CS2103T-T16-1/tp/releases).
 
-1. Copy the file to the folder you want to use as the _home folder_ for your AddressBook.
+1. Then, move `nusconnect.jar` to the folder where you want to keep your contacts.
 
-1. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar nusconnect.jar` command to run the application.<br>
-   A GUI similar to the below should appear in a few seconds. Note how the app contains some sample data.<br>
+1. Now, open up a command terminal, go to the folder where `nusconnect.jar` is, and use the `java -jar nusconnect.jar` command to 
+   run the application. You've just taken your first step toward managing contacts quickly! 
    ![Ui](images/Ui.png)
 
-1. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
-   Some example commands you can try:
+1. Let's try a few commands! First, let's add your own contact to NUSConnect:
+   * `add n/(your name) t/@(your handle)`
+2. Let's also add your phone number, and CS2103T as a course you are taking:
+   * `edit 1 p/(your number) m/CS2103T`. We use `1` as that is the number currently written beside your name.
+3. Now, you can extend this to add as many contacts as you want! Let us now add in one command a groupmate John:
+   * `add n/John Tan t/@johntan m/CS2103T`
+4. Since you and John are group members, let's create a group and add both contacts to it!
+   * `group create CS2103T Group Project`
+   * `group add 1 to 1`. You have now added the first person to the first group.
+   * `group add 2 to 1`. You have now added the second person to the first group.
+5. Let's view John's details! Here, you will be able to see what other fields can be added to John.
+   * `view 2`. 
+6. But of course, once NUSConnect has been populated with real data, we do not want a "John" sticking around. Let's remove this using:
+   * `delete 2`
+7. Now that you are done, you may save exit NUSConnect using:
+   * `exit`. 
+8. For more features, refer to the [Features](#features) below!
+9. Welcome to NUSConnect! We hope you will enjoy managing your contacts effortlessly!
 
-   * `list` : Lists all contacts.
-
-   * `add n/John Doe t/@johndoe p/91234567` : Adds a contact named `John Doe` to NUSConnect.
-
-   * `delete 3` : Deletes the 3rd contact shown in the current list.
-
-   * `clear` : Deletes all contacts.
-
-   * `exit` : Exits the app.
-
-1. Refer to the [Features](#features) below for details of each command.
-
-[Back to top](#user-guide)
+[Back to top](#nusconnect)
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -301,7 +309,7 @@ Exits the program.
 
 Format: `exit`
 
-[Back to top](#user-guide)
+* [Back to top](#nusconnect)
 --------------------------------------------------------------------------------------------------------------------
 
 ## FAQ
@@ -318,7 +326,9 @@ Format: `exit`
 **Q**: Can I undo a command if I delete or modify the wrong contact?<br>
 **A**: Currently, there is no undo feature in NUSConnect. It is recommended to back up your address book data regularly to prevent accidental data loss.
 
-[Back to top](#user-guide)
+
+* [Back to top](#nusconnect)
+
 --------------------------------------------------------------------------------------------------------------------
 
 ## Known issues
@@ -326,7 +336,7 @@ Format: `exit`
 1. **When using multiple screens**, if you move the application to a secondary screen, and later switch to using only the primary screen, the GUI will open off-screen. The remedy is to delete the `preferences.json` file created by the application before running the application again.
 2. **If you minimize the Help Window** and then run the `help` command (or use the `Help` menu, or the keyboard shortcut `F1`) again, the original Help Window will remain minimized, and no new Help Window will appear. The remedy is to manually restore the minimized Help Window.
 
-[Back to top](#user-guide)
+* [Back to top](#nusconnect)
 --------------------------------------------------------------------------------------------------------------------
 
 ## Command summary
@@ -349,4 +359,4 @@ Action | Format, Examples
 **Help** | `help`
 **Exit** | `exit`
 
-[Back to top](#user-guide)
+* [Back to top](#nusconnect)
