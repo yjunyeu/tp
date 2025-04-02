@@ -1,6 +1,8 @@
 package nusconnect.logic.commands;
 
+import static nusconnect.logic.Messages.MESSAGE_NO_PERSON_LISTED_OVERVIEW;
 import static nusconnect.logic.Messages.MESSAGE_PERSONS_LISTED_OVERVIEW;
+import static nusconnect.logic.Messages.MESSAGE_PERSON_LISTED_OVERVIEW;
 import static nusconnect.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static nusconnect.testutil.TypicalPersons.ALICE;
 import static nusconnect.testutil.TypicalPersons.BENSON;
@@ -66,7 +68,7 @@ public class FindCommandTest {
 
     @Test
     public void execute_zeroKeywords_noPersonFound() {
-        String expectedMessage = String.format(MESSAGE_PERSONS_LISTED_OVERVIEW, 0);
+        String expectedMessage = String.format(MESSAGE_NO_PERSON_LISTED_OVERVIEW, 0);
         NameContainsKeywordsPredicate namePredicate = prepareNamePredicate("");
         ModuleContainsKeywordsPredicate modulePredicate = prepareModulePredicate("");
         FindCommand command = new FindCommand(namePredicate, modulePredicate);
@@ -88,7 +90,7 @@ public class FindCommandTest {
 
     @Test
     public void execute_moduleKeyword() {
-        String expectedMessage = String.format(MESSAGE_PERSONS_LISTED_OVERVIEW, 1);
+        String expectedMessage = String.format(MESSAGE_PERSON_LISTED_OVERVIEW, 1);
         NameContainsKeywordsPredicate namePredicate = prepareNamePredicate("");
         ModuleContainsKeywordsPredicate modulePredicate = prepareModulePredicate("CS2103T");
         FindCommand command = new FindCommand(namePredicate, modulePredicate);
@@ -99,7 +101,7 @@ public class FindCommandTest {
 
     @Test
     public void execute_partialNameKeyword() {
-        String expectedMessage = String.format(MESSAGE_PERSONS_LISTED_OVERVIEW, 1);
+        String expectedMessage = String.format(MESSAGE_PERSON_LISTED_OVERVIEW, 1);
         NameContainsKeywordsPredicate namePredicate = prepareNamePredicate("Kur");
         ModuleContainsKeywordsPredicate modulePredicate = prepareModulePredicate("");
         FindCommand command = new FindCommand(namePredicate, modulePredicate);
