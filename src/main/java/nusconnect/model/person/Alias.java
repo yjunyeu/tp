@@ -9,7 +9,7 @@ import static java.util.Objects.requireNonNull;
 public class Alias {
 
     public static final String MESSAGE_CONSTRAINTS =
-            "Aliases can only contain alphabets, numbers, underlines, spaces, and it should not be blank";
+            "Aliases can only contain alphabets, numbers, underlines, spaces, and it should not be blank!";
 
     /*
      * The first character of the alias must not be a whitespace,

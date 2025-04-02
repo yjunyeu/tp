@@ -9,7 +9,7 @@ import static java.util.Objects.requireNonNull;
 public class Course {
 
     public static final String MESSAGE_CONSTRAINTS =
-            "Courses can only contain alphabets, spaces, and it should not be blank";
+            "Courses can only contain alphabets, spaces, and it should not be blank!";
 
     /*
      * The first character of the course must not be a whitespace,

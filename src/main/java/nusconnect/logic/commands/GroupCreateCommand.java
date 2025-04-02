@@ -20,7 +20,7 @@ public class GroupCreateCommand extends GroupCommand {
             + "Example: group " + COMMAND_WORD + " CS2103T";
 
     public static final String MESSAGE_SUCCESS = "New group created: %1$s";
-    public static final String MESSAGE_DUPLICATE_GROUP = "This group already exists";
+    public static final String MESSAGE_DUPLICATE_GROUP = "This group already exists!";
 
     private final String groupName;
 
