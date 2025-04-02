@@ -9,7 +9,7 @@ import static java.util.Objects.requireNonNull;
 public class Website {
 
     public static final String MESSAGE_CONSTRAINTS =
-            "Websites start with 'http://' or 'https://', followed by a valid domain name";
+            "Websites start with 'http://' or 'https://', followed by a valid domain name!";
 
     // Regex for validating website format
     public static final String VALIDATION_REGEX = "^(https?://)?([a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}(/[\\w-]*)*$";

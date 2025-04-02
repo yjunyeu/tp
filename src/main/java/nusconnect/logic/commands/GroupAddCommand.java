@@ -22,8 +22,8 @@ public class GroupAddCommand extends GroupCommand {
             + "Parameters: PERSON_INDEX (must be a positive integer) to GROUP_INDEX (must be a positive integer)\n"
             + "Example: group " + COMMAND_WORD + " 1 to 2";
 
-    public static final String MESSAGE_SUCCESS = "Added person %1$s to group %2$s";
-    public static final String MESSAGE_PERSON_ALREADY_IN_GROUP = "This person is already in the group";
+    public static final String MESSAGE_SUCCESS = "Added person %1$s to group %2$s!";
+    public static final String MESSAGE_PERSON_ALREADY_IN_GROUP = "This person is already in the group!";
 
     private final Index personIndex;
     private final Index groupIndex;
