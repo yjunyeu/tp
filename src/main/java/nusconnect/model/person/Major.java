@@ -3,16 +3,16 @@ package nusconnect.model.person;
 import static java.util.Objects.requireNonNull;
 
 /**
- * Represents a Person's course in the course book.
- * Guarantees: immutable; is valid as declared in {@link #isValidCourse(String)}
+ * Represents a Person's major in the major book.
+ * Guarantees: immutable; is valid as declared in {@link #isValidMajor(Major)}
  */
-public class Course {
+public class Major {
 
     public static final String MESSAGE_CONSTRAINTS =
-            "Courses can only contain alphabets, spaces, and it should not be blank!";
+            "Majors can only contain alphabets, spaces, and it should not be blank!";
 
     /*
-     * The first character of the course must not be a whitespace,
+     * The first character of the major must not be a whitespace,
      * otherwise " " (a blank string) becomes a valid input.
      */
     public static final String VALIDATION_REGEX = "[A-Za-z][A-Za-z ]*";
@@ -20,19 +20,19 @@ public class Course {
     public final String value;
 
     /**
-     * Constructs an {@code Course}.
+     * Constructs an {@code Major}.
      *
-     * @param course A valid course.
+     * @param major A valid major.
      */
-    public Course(String course) {
-        requireNonNull(course);
-        value = course;
+    public Major(String major) {
+        requireNonNull(major);
+        value = major;
     }
 
     /**
-     * Returns true if a given string is a valid course.
+     * Returns true if a given string is a valid major.
      */
-    public static boolean isValidCourse(Course test) {
+    public static boolean isValidMajor(Major test) {
         return test.value.matches(VALIDATION_REGEX);
     }
 
@@ -47,11 +47,11 @@ public class Course {
             return true;
         }
         // instanceof handles nulls
-        if (!(other instanceof Course)) {
+        if (!(other instanceof Major)) {
             return false;
         }
 
-        Course otherCourse = (Course) other;
+        Major otherCourse = (Major) other;
         return value.equals(otherCourse.value);
     }
 

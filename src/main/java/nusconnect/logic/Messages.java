@@ -9,7 +9,7 @@ import java.util.stream.Stream;
 import nusconnect.logic.parser.Prefix;
 import nusconnect.model.module.Module;
 import nusconnect.model.person.Alias;
-import nusconnect.model.person.Course;
+import nusconnect.model.person.Major;
 import nusconnect.model.person.Email;
 import nusconnect.model.person.Name;
 import nusconnect.model.person.Note;
@@ -61,8 +61,8 @@ public class Messages {
                 Email.MESSAGE_CONSTRAINTS)));
         person.getAlias().map(alias -> warnings.append(checkArgument(Alias.isValidAlias(alias),
                 Alias.MESSAGE_CONSTRAINTS)));
-        person.getCourse().map(course -> warnings.append(checkArgument(Course.isValidCourse(course),
-                Course.MESSAGE_CONSTRAINTS)));
+        person.getCourse().map(course -> warnings.append(checkArgument(Major.isValidMajor(course),
+                Major.MESSAGE_CONSTRAINTS)));
         person.getNote().map(note -> warnings.append(checkArgument(Note.isValidNote(note),
                 Note.MESSAGE_CONSTRAINTS)));
         person.getWebsite().map(website -> warnings.append(checkArgument(Website.isValidWebsite(website),
@@ -85,7 +85,7 @@ public class Messages {
         person.getPhone().ifPresent(phone -> builder.append("; Phone: ").append(phone));
         person.getEmail().ifPresent(email -> builder.append("; Email: ").append(email));
         person.getAlias().ifPresent(alias -> builder.append("; Alias: ").append(alias));
-        person.getCourse().ifPresent(course -> builder.append("; Course: ").append(course));
+        person.getCourse().ifPresent(course -> builder.append("; Major: ").append(course));
         person.getNote().ifPresent(note -> builder.append("; Note: ").append(note));
         person.getWebsite().ifPresent(website -> builder.append("; Website: ").append(website));
         if (!person.getModules().isEmpty()) {

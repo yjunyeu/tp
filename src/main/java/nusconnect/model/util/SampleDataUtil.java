@@ -8,7 +8,7 @@ import nusconnect.model.AddressBook;
 import nusconnect.model.ReadOnlyAddressBook;
 import nusconnect.model.module.Module;
 import nusconnect.model.person.Alias;
-import nusconnect.model.person.Course;
+import nusconnect.model.person.Major;
 import nusconnect.model.person.Email;
 import nusconnect.model.person.Name;
 import nusconnect.model.person.Note;
@@ -25,32 +25,32 @@ public class SampleDataUtil {
         return new Person[] {
             new Person(new Name("Alex Yeoh"), new Telegram("@alexyeoh"), new Phone("87438807"),
                     new Email("alexyeoh@example.com"),
-                    new Alias("alexAlias"), new Course("Engineering"), new Note("Enjoys math"),
+                    new Alias("alexAlias"), new Major("Engineering"), new Note("Enjoys math"),
                     new Website("https://alexyeoh.com"),
                     getModuleSet("CS2100")),
             new Person(new Name("Bernice Yu"), new Telegram("@berniceyu"), new Phone("99272758"),
                     new Email("berniceyu@example.com"),
-                    new Alias("berniceAlias"), new Course("Comp Science"), new Note("Loves coding"),
+                    new Alias("berniceAlias"), new Major("Comp Science"), new Note("Loves coding"),
                     new Website("https://berniceyu.com"),
                     getModuleSet("CS2106", "CS2100")),
             new Person(new Name("Charlotte Oliveiro"), new Telegram("@charlotte"), new Phone("93210283"),
                     new Email("charlotte@example.com"),
-                    new Alias("charlotteAlias"), new Course("Business"), new Note("Enjoys design"),
+                    new Alias("charlotteAlias"), new Major("Business"), new Note("Enjoys design"),
                     new Website("https://charlotteoliveiro.com"),
                     getModuleSet("CS2107")),
             new Person(new Name("David Li"), new Telegram("@davidli"), new Phone("91031282"),
                     new Email("lidavid@example.com"),
-                    new Alias("davidAlias"), new Course("Mech Eng"), new Note("Tech enthusiast"),
+                    new Alias("davidAlias"), new Major("Mech Eng"), new Note("Tech enthusiast"),
                     new Website("https://davidli.com"),
                     getModuleSet("CS2103T")),
             new Person(new Name("Irfan Ibrahim"), new Telegram("@irfanibrahim"), new Phone("92492021"),
                     new Email("irfan@example.com"),
-                    new Alias("irfanAlias"), new Course("Engineering"), new Note("Loves music"),
+                    new Alias("irfanAlias"), new Major("Engineering"), new Note("Loves music"),
                     new Website("https://irfanibrahim.com"),
                     getModuleSet("CS3235")),
             new Person(new Name("Roy Balakrishnan"), new Telegram("@roybalakrishnan"), new Phone("92624417"),
                     new Email("royb@example.com"),
-                    new Alias("royAlias"), new Course("Comp Science"), new Note("Enjoys reading"),
+                    new Alias("royAlias"), new Major("Comp Science"), new Note("Enjoys reading"),
                     new Website("https://roybalakrishnan.com"),
                     getModuleSet("CS3230"))
         };

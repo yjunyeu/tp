@@ -12,7 +12,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import nusconnect.commons.exceptions.IllegalValueException;
 import nusconnect.model.module.Module;
 import nusconnect.model.person.Alias;
-import nusconnect.model.person.Course;
+import nusconnect.model.person.Major;
 import nusconnect.model.person.Email;
 import nusconnect.model.person.Name;
 import nusconnect.model.person.Note;
@@ -113,9 +113,9 @@ class JsonAdaptedPerson {
                 Alias::new
         );
 
-        final Course modelCourse = JsonFieldCreator.createField(
+        final Major modelCourse = JsonFieldCreator.createField(
                 course,
-                Course::new
+                Major::new
         );
 
         final Note modelNote = JsonFieldCreator.createField(

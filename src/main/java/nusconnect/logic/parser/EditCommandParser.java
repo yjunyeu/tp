@@ -23,7 +23,7 @@ import nusconnect.logic.commands.EditCommand.EditPersonDescriptor;
 import nusconnect.logic.parser.exceptions.ParseException;
 import nusconnect.model.module.Module;
 import nusconnect.model.person.Alias;
-import nusconnect.model.person.Course;
+import nusconnect.model.person.Major;
 import nusconnect.model.person.Email;
 import nusconnect.model.person.Name;
 import nusconnect.model.person.Note;
@@ -89,7 +89,7 @@ public class EditCommandParser implements Parser<EditCommand> {
 
         if (argMultimap.getValue(PREFIX_COURSE).isPresent()) {
             editPersonDescriptor.setIsCourseEdited(true);
-            editPersonDescriptor.setCourse(new Course(argMultimap.getValue(PREFIX_COURSE).get()));
+            editPersonDescriptor.setCourse(new Major(argMultimap.getValue(PREFIX_COURSE).get()));
         }
 
         if (argMultimap.getValue(PREFIX_NOTE).isPresent()) {

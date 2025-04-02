@@ -26,7 +26,7 @@ import nusconnect.logic.commands.exceptions.CommandException;
 import nusconnect.model.Model;
 import nusconnect.model.module.Module;
 import nusconnect.model.person.Alias;
-import nusconnect.model.person.Course;
+import nusconnect.model.person.Major;
 import nusconnect.model.person.Email;
 import nusconnect.model.person.Name;
 import nusconnect.model.person.Note;
@@ -116,7 +116,7 @@ public class EditCommand extends Command {
                 : personToEdit.getEmail().orElse(null);
         Alias updatedAlias = editPersonDescriptor.getIsAliasEdited() ? editPersonDescriptor.getAlias()
                 : personToEdit.getAlias().orElse(null);
-        Course updatedCourse = editPersonDescriptor.getIsCourseEdited() ? editPersonDescriptor.getCourse()
+        Major updatedCourse = editPersonDescriptor.getIsCourseEdited() ? editPersonDescriptor.getCourse()
                 : personToEdit.getCourse().orElse(null);
         Note updatedNote = editPersonDescriptor.getIsNoteEdited() ? editPersonDescriptor.getNote()
                 : personToEdit.getNote().orElse(null);
@@ -162,7 +162,7 @@ public class EditCommand extends Command {
         private Phone phone;
         private Email email;
         private Alias alias;
-        private Course course;
+        private Major course;
         private Note note;
         private Website website;
         private Set<Module> modules;
@@ -289,11 +289,11 @@ public class EditCommand extends Command {
             return isAliasEdited;
         }
 
-        public void setCourse(Course course) {
+        public void setCourse(Major course) {
             this.course = course;
         }
 
-        public Course getCourse() {
+        public Major getCourse() {
             return course;
         }
 

@@ -25,7 +25,7 @@ public class Person {
     private final Optional<Phone> phone;
     private final Optional<Email> email;
     private final Optional<Alias> alias;
-    private final Optional<Course> course;
+    private final Optional<Major> course;
     private final Optional<Note> note;
     private final Optional<Website> website;
     private final Set<Module> modules = new HashSet<>();
@@ -43,8 +43,8 @@ public class Person {
      * @param website the website of the person (may be null)
      * @param modules the set of modules the person is enrolled in (must not be null)
      */
-    public Person(Name name, Telegram telegram, Phone phone, Email email, Alias alias, Course course, Note note,
-                   Website website, Set<Module> modules) {
+    public Person(Name name, Telegram telegram, Phone phone, Email email, Alias alias, Major course, Note note,
+                  Website website, Set<Module> modules) {
         requireAllNonNull(name, telegram);
         this.name = name;
         this.telegram = telegram;
@@ -77,7 +77,7 @@ public class Person {
         return alias;
     }
 
-    public Optional<Course> getCourse() {
+    public Optional<Major> getCourse() {
         return course;
     }
 

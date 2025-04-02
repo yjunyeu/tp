@@ -10,32 +10,32 @@ public class CourseTest {
 
     @Test
     public void constructor_null_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> new Course(null));
+        assertThrows(NullPointerException.class, () -> new Major(null));
     }
 
     @Test
     public void isValidCourse() {
         // null course
-        assertThrows(NullPointerException.class, () -> Course.isValidCourse(null));
+        assertThrows(NullPointerException.class, () -> Major.isValidMajor(null));
 
         // invalid course
-        assertFalse(Course.isValidCourse(new Course(""))); // empty string
-        assertFalse(Course.isValidCourse(new Course(" "))); // spaces only
-        assertFalse(Course.isValidCourse(new Course("^"))); // only non-alphabets
-        assertFalse(Course.isValidCourse(new Course("Computer*Science"))); // contains non-alphabets
+        assertFalse(Major.isValidMajor(new Major(""))); // empty string
+        assertFalse(Major.isValidMajor(new Major(" "))); // spaces only
+        assertFalse(Major.isValidMajor(new Major("^"))); // only non-alphabets
+        assertFalse(Major.isValidMajor(new Major("Computer*Science"))); // contains non-alphabets
 
         // valid course
-        assertTrue(Course.isValidCourse(new Course("computer science"))); // alphabets only
-        assertTrue(Course.isValidCourse(new Course("Computer Science"))); // with capital letters
-        assertTrue(Course.isValidCourse(new Course("Computer Science with Mathematics"))); // long course name
+        assertTrue(Major.isValidMajor(new Major("computer science"))); // alphabets only
+        assertTrue(Major.isValidMajor(new Major("Computer Science"))); // with capital letters
+        assertTrue(Major.isValidMajor(new Major("Computer Science with Mathematics"))); // long course name
     }
 
     @Test
     public void equals() {
-        Course course = new Course("Valid Course");
+        Major course = new Major("Valid Major");
 
         // same values -> returns true
-        assertTrue(course.equals(new Course("Valid Course")));
+        assertTrue(course.equals(new Major("Valid Major")));
 
         // same object -> returns true
         assertTrue(course.equals(course));
@@ -47,6 +47,6 @@ public class CourseTest {
         assertFalse(course.equals(5.0f));
 
         // different values -> returns false
-        assertFalse(course.equals(new Course("Other Valid Course")));
+        assertFalse(course.equals(new Major("Other Valid Major")));
     }
 }

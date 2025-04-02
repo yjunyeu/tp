@@ -17,7 +17,7 @@ import org.junit.jupiter.api.Test;
 
 import nusconnect.commons.exceptions.IllegalValueException;
 import nusconnect.model.person.Alias;
-import nusconnect.model.person.Course;
+import nusconnect.model.person.Major;
 import nusconnect.model.person.Email;
 import nusconnect.model.person.Name;
 import nusconnect.model.person.Note;
@@ -43,7 +43,7 @@ public class JsonAdaptedPersonTest {
     private static final String VALID_PHONE = BENSON.getPhone().map(Phone::toString).orElse(null);
     private static final String VALID_EMAIL = BENSON.getEmail().map(Email::toString).orElse(null);
     private static final String VALID_ALIAS = BENSON.getAlias().map(Alias::toString).orElse(null);
-    private static final String VALID_COURSE = BENSON.getCourse().map(Course::toString).orElse(null);
+    private static final String VALID_COURSE = BENSON.getCourse().map(Major::toString).orElse(null);
     private static final String VALID_NOTE = BENSON.getNote().map(Note::toString).orElse(null);
     private static final String VALID_WEBSITE = BENSON.getWebsite().map(Website::toString).orElse(null);
 

@@ -7,7 +7,7 @@ import java.util.stream.Stream;
 import nusconnect.logic.commands.EditCommand.EditPersonDescriptor;
 import nusconnect.model.module.Module;
 import nusconnect.model.person.Alias;
-import nusconnect.model.person.Course;
+import nusconnect.model.person.Major;
 import nusconnect.model.person.Email;
 import nusconnect.model.person.Name;
 import nusconnect.model.person.Note;
@@ -92,10 +92,10 @@ public class EditPersonDescriptorBuilder {
     }
 
     /**
-     * Sets the {@code Course} of the {@code EditPersonDescriptor} that we are building.
+     * Sets the {@code Major} of the {@code EditPersonDescriptor} that we are building.
      */
     public EditPersonDescriptorBuilder withCourse(String course) {
-        descriptor.setCourse(new Course(course));
+        descriptor.setCourse(new Major(course));
         descriptor.setIsCourseEdited(true);
         return this;
     }

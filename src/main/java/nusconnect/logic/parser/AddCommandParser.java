@@ -19,7 +19,7 @@ import nusconnect.logic.commands.AddCommand;
 import nusconnect.logic.parser.exceptions.ParseException;
 import nusconnect.model.module.Module;
 import nusconnect.model.person.Alias;
-import nusconnect.model.person.Course;
+import nusconnect.model.person.Major;
 import nusconnect.model.person.Email;
 import nusconnect.model.person.Name;
 import nusconnect.model.person.Note;
@@ -64,7 +64,7 @@ public class AddCommandParser implements Parser<AddCommand> {
         Phone phone = parseField(argMultimap, PREFIX_PHONE, Phone::new);
         Email email = parseField(argMultimap, PREFIX_EMAIL, Email::new);
         Alias alias = parseField(argMultimap, PREFIX_ALIAS, Alias::new);
-        Course course = parseField(argMultimap, PREFIX_COURSE, Course::new);
+        Major course = parseField(argMultimap, PREFIX_COURSE, Major::new);
         Note note = parseField(argMultimap, PREFIX_NOTE, Note::new);
         Website website = parseField(argMultimap, PREFIX_WEBSITE, Website::new);
 

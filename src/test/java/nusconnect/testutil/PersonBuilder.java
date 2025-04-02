@@ -5,7 +5,7 @@ import java.util.Set;
 
 import nusconnect.model.module.Module;
 import nusconnect.model.person.Alias;
-import nusconnect.model.person.Course;
+import nusconnect.model.person.Major;
 import nusconnect.model.person.Email;
 import nusconnect.model.person.Name;
 import nusconnect.model.person.Note;
@@ -34,7 +34,7 @@ public class PersonBuilder {
     private Phone phone;
     private Email email;
     private Alias alias;
-    private Course course;
+    private Major course;
     private Note note;
 
     private Website website;
@@ -49,7 +49,7 @@ public class PersonBuilder {
         phone = new Phone(DEFAULT_PHONE);
         email = new Email(DEFAULT_EMAIL);
         alias = new Alias(DEFAULT_ALIAS);
-        course = new Course(DEFAULT_COURSE);
+        course = new Major(DEFAULT_COURSE);
         note = new Note(DEFAULT_NOTE);
         website = new Website(DEFAULT_WEBSITE);
         modules = new HashSet<>();
@@ -111,10 +111,10 @@ public class PersonBuilder {
     }
 
     /**
-     * Sets the {@code Course} of the {@code Person} that we are building.
+     * Sets the {@code Major} of the {@code Person} that we are building.
      */
     public PersonBuilder withCourse(String course) {
-        this.course = new Course(course);
+        this.course = new Major(course);
         return this;
     }
 
