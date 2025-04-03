@@ -4,7 +4,7 @@ import static java.util.Objects.requireNonNull;
 
 /**
  * Represents a Person's course in the course book.
- * Guarantees: immutable
+ * Guarantees: immutable; is valid as declared in {@link #isValidCourse(String)}
  */
 public class Course {
 
@@ -21,6 +21,8 @@ public class Course {
 
     /**
      * Constructs an {@code Course}.
+     *
+     * @param course A valid course.
      */
     public Course(String course) {
         requireNonNull(course);
@@ -28,7 +30,7 @@ public class Course {
     }
 
     /**
-     * Returns true if a given Course is a valid course.
+     * Returns true if a given string is a valid course.
      */
     public static boolean isValidCourse(Course test) {
         return test.value.matches(VALIDATION_REGEX);

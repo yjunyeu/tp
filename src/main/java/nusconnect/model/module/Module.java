@@ -4,7 +4,7 @@ import static java.util.Objects.requireNonNull;
 
 /**
  * Represents a Module in the address book.
- * Guarantees: immutable
+ * Guarantees: immutable; name is valid as declared in {@link #isValidModuleName(String)}
  */
 public class Module {
 
@@ -17,6 +17,8 @@ public class Module {
 
     /**
      * Constructs a {@code Module}.
+     *
+     * @param moduleName A valid module name.
      */
     public Module(String moduleName) {
         requireNonNull(moduleName);
@@ -24,7 +26,7 @@ public class Module {
     }
 
     /**
-     * Returns true if a given Module is a valid module.
+     * Returns true if a given string is a valid module name.
      */
     public static boolean isValidModuleName(Module test) {
         return test.moduleName.matches(VALIDATION_REGEX);

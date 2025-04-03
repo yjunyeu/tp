@@ -34,6 +34,8 @@ public class ParserUtil {
     /**
      * Parses a {@code String module} into a {@code Module}.
      * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code module} is invalid.
      */
     public static Module parseModule(String module) {
         String trimmedModule = module.trim();
@@ -43,7 +45,7 @@ public class ParserUtil {
     /**
      * Parses {@code Collection<String> modules} into a {@code Set<Module>}.
      */
-    public static Set<Module> parseModules(Collection<String> modules) {
+    public static Set<Module> parseModules(Collection<String> modules) throws ParseException {
         requireNonNull(modules);
         final Set<Module> moduleSet = new HashSet<>();
         for (String module : modules) {

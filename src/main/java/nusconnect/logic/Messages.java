@@ -74,7 +74,7 @@ public class Messages {
     }
 
     /**
-     * Formats the {@code person} for display to the user, including any warnings.
+     * Formats the {@code person} for display to the user.
      */
     public static String format(Person person) {
         final StringBuilder builder = new StringBuilder();

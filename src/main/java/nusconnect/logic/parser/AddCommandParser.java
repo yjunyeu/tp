@@ -32,11 +32,6 @@ import nusconnect.model.person.Website;
  * Parses input arguments and creates a new AddCommand object
  */
 public class AddCommandParser implements Parser<AddCommand> {
-
-    /*
-     * Parses each of the fields given in {@code argMultimap} based on {@code prefix} and a corresponding
-     * {@code constructor}, returning the constructed field if the prefix is present and returns null if not.
-     */
     private <T> T parseField(ArgumentMultimap argMultimap, Prefix prefix, Function<String, T> constructor) {
         if (argMultimap.getValue(prefix).isPresent()) {
             String trimmedT = argMultimap.getValue(prefix).get().trim();

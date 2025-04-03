@@ -4,7 +4,7 @@ import static java.util.Objects.requireNonNull;
 
 /**
  * Represents a Person's telegram in the telegram book.
- * Guarantees: immutable
+ * Guarantees: immutable; is valid as declared in {@link #isValidTelegram(String)}
  */
 public class Telegram {
 
@@ -22,6 +22,8 @@ public class Telegram {
 
     /**
      * Constructs an {@code Telegram}.
+     *
+     * @param telegram A valid telegram.
      */
     public Telegram(String telegram) {
         requireNonNull(telegram);
@@ -29,7 +31,7 @@ public class Telegram {
     }
 
     /**
-     * Returns true if a given Telegram is a valid telegram handle.
+     * Returns true if a given string is a valid email.
      */
     public static boolean isValidTelegram(Telegram test) {
         return test.value.matches(VALIDATION_REGEX);

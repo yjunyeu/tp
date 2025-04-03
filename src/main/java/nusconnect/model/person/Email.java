@@ -4,7 +4,7 @@ import static java.util.Objects.requireNonNull;
 
 /**
  * Represents a Person's email in the address book.
- * Guarantees: immutable
+ * Guarantees: immutable; is valid as declared in {@link #isValidEmail(String)}
  */
 public class Email {
 
@@ -34,6 +34,8 @@ public class Email {
 
     /**
      * Constructs an {@code Email}.
+     *
+     * @param email A valid email address.
      */
     public Email(String email) {
         requireNonNull(email);
@@ -41,7 +43,7 @@ public class Email {
     }
 
     /**
-     * Returns if a given Email is a valid email.
+     * Returns if a given string is a valid email.
      */
     public static boolean isValidEmail(Email test) {
         return test.value.matches(VALIDATION_REGEX);

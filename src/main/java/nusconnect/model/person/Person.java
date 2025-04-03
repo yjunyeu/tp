@@ -13,7 +13,7 @@ import nusconnect.model.module.Module;
 
 /**
  * Represents a Person in the address book.
- * Guarantees: name is present, field values are immutable.
+ * Guarantees: details are present and not null, field values are validated, immutable.
  */
 public class Person {
 
@@ -41,7 +41,7 @@ public class Person {
      * @param course the course the person is enrolled in (may be null)
      * @param note any additional notes about the person (may be null)
      * @param website the website of the person (may be null)
-     * @param modules the set of modules the person is enrolled in (must not be null, but the set may be empty)
+     * @param modules the set of modules the person is enrolled in (must not be null)
      */
     public Person(Name name, Telegram telegram, Phone phone, Email email, Alias alias, Course course, Note note,
                    Website website, Set<Module> modules) {
