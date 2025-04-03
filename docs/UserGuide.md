@@ -313,31 +313,33 @@ Exports the current address book data to a specified file.
 format: `export FILE_PATH`
 
 * FILE_PATH refers to the location where the data will be exported. It can be either an absolute or relative path.
+* FILE_PATH is normalized. E.g. `C:////////addressbook.json` is the same as `C:/addressbook.json`
 * The filename cannot be empty, the file name should end with .json as file extension. (e.g. addressbook.json)
 * If a file already exists at the specified location, it will be overwritten with the current data.
 * If the file path is invalid or there are issues with writing the file (e.g., insufficient permissions), an error message will be displayed.
 
 Examples:
 
-* export exported_data.json exports the address book data to the ``exported_data.json`` file in the current directory.
-* export C:/Users/user/Downloads/addressbook_backup.json exports ``addressbook_backup.json`` to a ``C:/Users/user/Downloads``
+* export exported_data.json exports the address book data to the `exported_data.json` file in the current directory.
+* export C:/Users/user/Downloads/addressbook_backup.json exports `addressbook_backup.json` to a `C:/Users/user/Downloads`
 
 
 
 #### Importing an address book: `import`
 
-Format: import FILE_PATH
+Format: `import FILE_PATH`
 
 * FILE_PATH refers to the path of the file from which data will be imported. It can be either an absolute or relative path.
+* FILE_PATH is normalized. E.g. `C:////////addressbook.json` is the same as `C:/addressbook.json`
 * The file must be in the correct format (e.g., .json, .txt), and it must contain data that is compatible with the address book structure.
 * If the file path is invalid, the operation will fail, and an error message will be displayed.
 * If the data in the file is successfully imported, the address book will be updated with the new information.
 
 Examples:
 
-* import data.json imports data from the ``data.json`` file.
-* import backup/addressbook.json imports data from the ``addressbook.json`` file located in the backup folder.
-* import C:/Users/user/Documents/addressbook_data.txt imports data from the ``addressbook_data.txt`` file located in the `` C:/Users/user/Documents``
+* import data.json imports data from the `data.json` file.
+* import backup/addressbook.json imports data from the `addressbook.json` file located in the backup folder.
+* import C:/Users/user/Documents/addressbook_data.txt imports data from the `addressbook_data.txt` file located in the `C:/Users/user/Documents`
 
 ### Misc:
 
