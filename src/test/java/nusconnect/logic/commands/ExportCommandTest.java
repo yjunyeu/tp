@@ -73,5 +73,23 @@ public class ExportCommandTest {
 
     }
 
+    @Test
+    public void execute_permissionDenied_exportFailure() throws Exception {
+        String invalidFilePath = "f:oops.json";
+        LogicManager mockLogicManager = mock(LogicManager.class);
+        Model mockModel = mock(Model.class);
+
+        // Create the ExportCommand
+        ExportCommand exportCommand = new ExportCommand(invalidFilePath, mockLogicManager);
+
+        // Execute the command and check for CommandException
+        try {
+            exportCommand.execute(mockModel);
+        } catch (CommandException e) {
+            assertEquals(ExportCommand.MESSAGE_FAILURE
+                    + "\nPermission denied! Cannot write to the directory.", e.getMessage());
+        }
+    }
+
 
 }
