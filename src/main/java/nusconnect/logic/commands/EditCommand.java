@@ -99,6 +99,7 @@ public class EditCommand extends Command {
             throw new CommandException(MESSAGE_EDITED_BUT_NO_CHANGE);
         }
 
+        // Happy path: editedPerson does not already exist, and personToEdit and editedPerson are different.
         model.setPerson(personToEdit, editedPerson);
         model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
         return new CommandResult(String.format(MESSAGE_EDIT_PERSON_SUCCESS,
@@ -107,7 +108,11 @@ public class EditCommand extends Command {
 
     /**
      * Creates and returns a {@code Person} with the details of {@code personToEdit}
-     * edited with {@code editPersonDescriptor}.
+     * updated with values from {@code editPersonDescriptor}.
+     *
+     * @param personToEdit The original {@code Person} to be edited. Must not be {@code null}.
+     * @param editPersonDescriptor The descriptor with the updated values. Must not be {@code null}.
+     * @return A new {@code Person} with updated details.
      */
     private static Person createEditedPerson(Person personToEdit, EditPersonDescriptor editPersonDescriptor) {
         assert personToEdit != null;
@@ -159,8 +164,8 @@ public class EditCommand extends Command {
     }
 
     /**
-     * Stores the details to edit the person with. Each non-empty field value will replace the
-     * corresponding field value of the person.
+     * Stores the details to edit a {@code Person}. Fields marked as having been edited will replace
+     * the corresponding fields of the person.
      */
     public static class EditPersonDescriptor {
         private Name name;
@@ -344,7 +349,7 @@ public class EditCommand extends Command {
         }
 
         /**
-         * Sets {@code modules} to this object's {@code modules}.
+         * Sets {@code modules} to this object's {@code modules}, and mark modules as edited
          * A defensive copy of {@code modules} is used internally.
          */
         public void setModules(Set<Module> modules) {

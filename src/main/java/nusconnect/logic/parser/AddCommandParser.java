@@ -49,17 +49,25 @@ public class AddCommandParser implements Parser<AddCommand> {
 
         argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_NAME, PREFIX_TELEGRAM, PREFIX_PHONE, PREFIX_EMAIL, PREFIX_ALIAS,
                 PREFIX_MAJOR, PREFIX_NOTE, PREFIX_WEBSITE);
+
         Name name = ParserUtil.parseName(argMultimap.getValue(PREFIX_NAME).get());
         Telegram telegram = ParserUtil.parseTelegram(argMultimap.getValue(PREFIX_TELEGRAM).get());
+
+        /*
+         * Due to constraints of exceptions in functional programming, extracting this section of code
+         * will result in a less concise and less clear version of the code. Handle changes with care.
+         */
 
         Phone phone = null;
         if (argMultimap.getValue(PREFIX_PHONE).isPresent()) {
             phone = ParserUtil.parsePhone(argMultimap.getValue(PREFIX_PHONE).get());
         }
+
         Email email = null;
         if (argMultimap.getValue(PREFIX_EMAIL).isPresent()) {
             email = ParserUtil.parseEmail(argMultimap.getValue(PREFIX_EMAIL).get());
         }
+
         Alias alias = null;
         if (argMultimap.getValue(PREFIX_ALIAS).isPresent()) {
             alias = ParserUtil.parseAlias(argMultimap.getValue(PREFIX_ALIAS).get());
@@ -80,6 +88,8 @@ public class AddCommandParser implements Parser<AddCommand> {
             website = ParserUtil.parseWebsite(argMultimap.getValue(PREFIX_WEBSITE).get());
         }
 
+        // End of repeated code section
+
         Set<Module> moduleList = ParserUtil.parseModules(argMultimap.getAllValues(PREFIX_MODULE));
 
         Person person = new Person(name, telegram, phone, email, alias, major, note, website, moduleList);
@@ -91,8 +101,8 @@ public class AddCommandParser implements Parser<AddCommand> {
      * Returns true if none of the prefixes contains empty {@code Optional} values in the given
      * {@code ArgumentMultimap}.
      */
-    private static boolean arePrefixesPresent(ArgumentMultimap argumentMultimap, Prefix... prefixes) {
-        return Stream.of(prefixes).allMatch(prefix -> argumentMultimap.getValue(prefix).isPresent());
+    private static boolean arePrefixesPresent(ArgumentMultimap argMultimap, Prefix... prefixes) {
+        return Stream.of(prefixes).allMatch(prefix -> argMultimap.getValue(prefix).isPresent());
     }
 
 }
