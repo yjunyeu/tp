@@ -14,20 +14,26 @@ public class MajorTest {
     }
 
     @Test
+    public void constructor_invalidMajor_throwsIllegalArgumentException() {
+        String invalidMajor = "";
+        assertThrows(IllegalArgumentException.class, () -> new Major(invalidMajor));
+    }
+
+    @Test
     public void isValidMajor() {
         // null major
         assertThrows(NullPointerException.class, () -> Major.isValidMajor(null));
 
         // invalid major
-        assertFalse(Major.isValidMajor(new Major(""))); // empty string
-        assertFalse(Major.isValidMajor(new Major(" "))); // spaces only
-        assertFalse(Major.isValidMajor(new Major("^"))); // only non-alphabets
-        assertFalse(Major.isValidMajor(new Major("Computer*Science"))); // contains non-alphabets
+        assertFalse(Major.isValidMajor("")); // empty string
+        assertFalse(Major.isValidMajor(" ")); // spaces only
+        assertFalse(Major.isValidMajor("^")); // only non-alphabets
+        assertFalse(Major.isValidMajor("Computer*Science")); // contains non-alphanbets
 
         // valid major
-        assertTrue(Major.isValidMajor(new Major("computer science"))); // alphabets only
-        assertTrue(Major.isValidMajor(new Major("Computer Science"))); // with capital letters
-        assertTrue(Major.isValidMajor(new Major("Computer Science with Mathematics"))); // long major name
+        assertTrue(Major.isValidMajor("computer science")); // alphabets only
+        assertTrue(Major.isValidMajor("Computer Science")); // with capital letters
+        assertTrue(Major.isValidMajor("Computer Science with a second major in Mathematics")); // long courses
     }
 
     @Test

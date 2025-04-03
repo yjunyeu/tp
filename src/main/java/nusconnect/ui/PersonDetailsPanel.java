@@ -2,6 +2,7 @@ package nusconnect.ui;
 
 import java.util.logging.Logger;
 
+import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Region;
@@ -57,7 +58,7 @@ public class PersonDetailsPanel extends UiPart<Region> {
     /**
      * Updates the UI with the details of the given {@code person}.
      */
-    public void setPersonDetails(Person person) {
+    private void setPersonDetails(Person person) {
         if (person != null) {
             nameLabel.setText(person.getName().fullName);
             telegramLabel.setText(person.getTelegram().value);
@@ -70,5 +71,15 @@ public class PersonDetailsPanel extends UiPart<Region> {
         } else {
             setDefaultDetails();
         }
+    }
+
+    /**
+     * Binds the UI to the given {@code selectedPersonProperty} so that the person details
+     * are automatically updated when a new person is selected.
+     */
+    public void bindSelectedPerson(ObservableValue<Person> selectedPerson) {
+        selectedPerson.addListener((observable, oldValue, newValue) -> {
+            setPersonDetails(newValue);
+        });
     }
 }

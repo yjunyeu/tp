@@ -128,10 +128,9 @@ public class MainWindow extends UiPart<Stage> {
         personDetailsPanel = new PersonDetailsPanel();
         personDetailsPanelPlaceholder.getChildren().add(personDetailsPanel.getRoot());
 
-        personListPanel.getPersonListView().getSelectionModel().selectedItemProperty().addListener((
-                observable, oldValue, newValue) -> {
-            personDetailsPanel.setPersonDetails(newValue);
-        });
+        personDetailsPanel.bindSelectedPerson(
+                personListPanel.getPersonListView().getSelectionModel().selectedItemProperty()
+        );
 
         resultDisplay = new ResultDisplay();
         resultDisplayPlaceholder.getChildren().add(resultDisplay.getRoot());
@@ -189,6 +188,14 @@ public class MainWindow extends UiPart<Stage> {
         return personListPanel;
     }
 
+    private void handleView(CommandResult commandResult) {
+        Index targetIndex = commandResult.getPersonToSelect();
+        int index = targetIndex.getZeroBased();
+        if (index < personListPanel.getPersonListView().getItems().size()) {
+            personListPanel.getPersonListView().getSelectionModel().select(index);
+        }
+    }
+
     /**
      * Executes the command and returns the result.
      *
@@ -208,13 +215,10 @@ public class MainWindow extends UiPart<Stage> {
                 handleExit();
             }
 
-            if (commandResult.isViewCommand()) {
-                Index targetIndex = commandResult.getPersonToSelect();
-                int index = targetIndex.getZeroBased();
-                if (index < personListPanel.getPersonListView().getItems().size()) {
-                    personListPanel.getPersonListView().getSelectionModel().select(index);
-                }
+            if (commandResult.isSelectionRequired()) {
+                handleView(commandResult);
             }
+
             return commandResult;
         } catch (CommandException | ParseException e) {
             logger.info("An error occurred while executing command: " + commandText);

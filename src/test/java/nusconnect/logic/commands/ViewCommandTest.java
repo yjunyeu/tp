@@ -32,9 +32,11 @@ public class ViewCommandTest {
         String expectedMessage = String.format(ViewCommand.MESSAGE_VIEW_PERSON_SUCCESS,
                 Messages.format(personToView));
 
+        CommandResult expectedCommandResult = new CommandResult(expectedMessage, INDEX_FIRST);
+
         ModelManager expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs());
 
-        assertCommandSuccess(viewCommand, model, expectedMessage, expectedModel);
+        assertCommandSuccess(viewCommand, model, expectedCommandResult, expectedModel);
     }
 
     @Test
@@ -55,10 +57,12 @@ public class ViewCommandTest {
         String expectedMessage = String.format(ViewCommand.MESSAGE_VIEW_PERSON_SUCCESS,
                 Messages.format(personToView));
 
+        CommandResult expectedCommandResult = new CommandResult(expectedMessage, INDEX_FIRST);
+
         Model expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs());
         showPersonAtIndex(expectedModel, INDEX_FIRST);
 
-        assertCommandSuccess(viewCommand, model, expectedMessage, expectedModel);
+        assertCommandSuccess(viewCommand, model, expectedCommandResult, expectedModel);
     }
 
     @Test

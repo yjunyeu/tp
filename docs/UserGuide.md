@@ -200,6 +200,33 @@ Format: `group add PERSON_INDEX to GROUP_INDEX`
 Examples:
 * `group add 1 to 2` Adds the 1st person in the person list to the 2nd group in the group list.
 
+#### Group Commands: Organizing Your Project Team
+You are working on a group project for CS2103T with your teammates (Betsy Crowe, John Smith and Michael Tan). You have already
+added all of them to NUSConnect. However, with many other contacts in your address book, it is hard to remember who 
+exactly is in which project. To quickly identify and see who is in your team at a glance, you decide to use the group feature.
+
+1. Creating the Group
+   ![GroupCreateExample](images/GroupCreateExample.png)
+* `group create CS2103T Project Team` creates a new group.
+
+2. Adding Teammates to the Group
+   ![GroupAddExample](images/GroupAddExample.png)
+* Suppose in your person list:
+  * Betsy is at index `2`.
+  * John is at index `3`.
+  * Michael is at index `5`.
+* Under group list "CS2103T Project Team" is the first group.
+* `group add 2 to 1` adds Betsy to the group.
+* `group add 3 to 1` adds John to the group.
+* `group add 5 to 1` adds Michael to the group.
+
+3. Cleaning Up the Group
+   ![GroupDeleteExample](images/GroupDeleteExample.png)
+* After the semester ends, you no longer need "CS2103T Project Team".
+* To keep the list organize you decide to delete it.
+* If the group is listed as the first group, `group delete 1` deletes it.
+* Your contacts remain in NUSConnect, but they are no longer grouped under “CS2103T Project Team.”
+
 ### Address Book Organization:
 
 #### Listing all persons : `list`
@@ -284,16 +311,15 @@ Exports the current address book data to a specified file.
 
 format: `export FILE_PATH`
 
-* FILE_PATH refers to the location where the data will be exported.
-* The filename can be empty (i.e., the user only provides a path without a filename).
-* File extension provided by user will be ignored and the default (.json) extension will be used.
+* FILE_PATH refers to the location where the data will be exported. It can be either an absolute or relative path.
+* The filename cannot be empty, the file name should end with .json as file extension. (e.g. addressbook.json)
 * If a file already exists at the specified location, it will be overwritten with the current data.
 * If the file path is invalid or there are issues with writing the file (e.g., insufficient permissions), an error message will be displayed.
 
 Examples:
 
-* export exported_data.txt exports the address book data to the exported_data.txt file in the current directory.
-* export /Users/user/Downloads/addressbook_backup.json exports the address book data to a specific location on your system.
+* export exported_data.json exports the address book data to the ``exported_data.json`` file in the current directory.
+* export C:/Users/user/Downloads/addressbook_backup.json exports ``addressbook_backup.json`` to a ``C:/Users/user/Downloads``
 
 
 
@@ -308,9 +334,9 @@ Format: import FILE_PATH
 
 Examples:
 
-* import data.json imports data from the data.json file.
-* import ./backup/addressbook.json imports data from the addressbook.json file located in the backup folder.
-* import /Users/user/Documents/addressbook_data.txt imports data from the addressbook_data.txt file located in the specified directory.
+* import data.json imports data from the ``data.json`` file.
+* import backup/addressbook.json imports data from the ``addressbook.json`` file located in the backup folder.
+* import C:/Users/user/Documents/addressbook_data.txt imports data from the ``addressbook_data.txt`` file located in the `` C:/Users/user/Documents``
 
 ### Misc:
 

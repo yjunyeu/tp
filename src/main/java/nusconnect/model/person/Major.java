@@ -1,10 +1,11 @@
 package nusconnect.model.person;
 
 import static java.util.Objects.requireNonNull;
+import static nusconnect.commons.util.AppUtil.checkArgument;
 
 /**
  * Represents a Person's major in the major book.
- * Guarantees: immutable; is valid as declared in {@link #isValidMajor(Major)}
+ * Guarantees: immutable; is valid as declared in {@link #isValidMajor(String)}
  */
 public class Major {
 
@@ -26,14 +27,15 @@ public class Major {
      */
     public Major(String major) {
         requireNonNull(major);
+        checkArgument(isValidMajor(major), MESSAGE_CONSTRAINTS);
         value = major;
     }
 
     /**
      * Returns true if a given string is a valid major.
      */
-    public static boolean isValidMajor(Major test) {
-        return test.value.matches(VALIDATION_REGEX);
+    public static boolean isValidMajor(String test) {
+        return test.matches(VALIDATION_REGEX);
     }
 
     @Override

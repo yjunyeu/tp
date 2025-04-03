@@ -67,7 +67,7 @@ public class CommandResult {
         return exit;
     }
 
-    public boolean isViewCommand() {
+    public boolean isSelectionRequired() {
         return personToSelect != null;
     }
 
@@ -89,7 +89,9 @@ public class CommandResult {
         CommandResult otherCommandResult = (CommandResult) other;
         return feedbackToUser.equals(otherCommandResult.feedbackToUser)
                 && showHelp == otherCommandResult.showHelp
-                && exit == otherCommandResult.exit;
+                && exit == otherCommandResult.exit
+                && Objects.equals(personToSelect,
+                otherCommandResult.personToSelect);
     }
 
     @Override
@@ -103,6 +105,7 @@ public class CommandResult {
                 .add("feedbackToUser", feedbackToUser)
                 .add("showHelp", showHelp)
                 .add("exit", exit)
+                .add("personToSelect", personToSelect)
                 .toString();
     }
 
