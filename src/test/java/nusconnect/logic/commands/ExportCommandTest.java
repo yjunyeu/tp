@@ -28,8 +28,8 @@ public class ExportCommandTest {
         CommandResult result = exportCommand.execute(mockModel);
 
         // Verify that the command returns the expected success message
-        assertEquals(ExportCommand.MESSAGE_SUCCESS +
-                "C:\\tp\\src\\test\\data\\JsonAddressBookStorageTest\\addressbook.json", result.getFeedbackToUser());
+        assertEquals(ExportCommand.MESSAGE_SUCCESS
+                + "C:\\tp\\src\\test\\data\\JsonAddressBookStorageTest\\addressbook.json", result.getFeedbackToUser());
     }
 
     @Test
