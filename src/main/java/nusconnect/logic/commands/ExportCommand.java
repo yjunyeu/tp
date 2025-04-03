@@ -40,12 +40,11 @@ public class ExportCommand extends Command {
     @Override
     public CommandResult execute(Model model) throws CommandException {
         try {
-            Path filePath = Paths.get(fileString);
-            Path directory = filePath.getParent();
-
-            if (!Files.exists(directory)) {
-                throw new CommandException(MESSAGE_FAILURE + "\nInvalid file path!");
+            if (!fileString.contains(".json")) {
+                throw new CommandException(MESSAGE_FAILURE + "\nFile name not provided!");
             }
+
+            Path filePath = Paths.get(fileString);
 
             logicManager.exportAddressBook(filePath);
             return new CommandResult(MESSAGE_SUCCESS);

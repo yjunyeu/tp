@@ -25,14 +25,10 @@ public class ExportCommandParser implements Parser<ExportCommand> {
      */
     @Override
     public ExportCommand parse(String args) throws ParseException {
-        String trimmedArgs = args.trim().split("\\.")[0];
-
+        String trimmedArgs = args.trim();
         if (trimmedArgs.isEmpty()) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, ExportCommand.MESSAGE_USAGE));
         }
-
-        trimmedArgs += ".json";
-
         return new ExportCommand(trimmedArgs, logicManager);
     }
 }
