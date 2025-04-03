@@ -26,7 +26,7 @@ public class PersonDetailsPanel extends UiPart<Region> {
     @FXML
     private Label aliasLabel;
     @FXML
-    private Label courseLabel;
+    private Label majorLabel;
     @FXML
     private Label noteLabel;
     @FXML
@@ -49,7 +49,7 @@ public class PersonDetailsPanel extends UiPart<Region> {
         phoneLabel.setText("");
         emailLabel.setText("");
         aliasLabel.setText("");
-        courseLabel.setText("");
+        majorLabel.setText("");
         noteLabel.setText("");
         websiteLabel.setText("");
     }
@@ -64,7 +64,7 @@ public class PersonDetailsPanel extends UiPart<Region> {
             phoneLabel.setText(person.getPhone().map(p -> p.value).orElse("-"));
             emailLabel.setText(person.getEmail().map(e -> e.value).orElse("-"));
             aliasLabel.setText(person.getAlias().map(a -> a.value).orElse("-"));
-            courseLabel.setText(person.getMajor().map(c -> c.value).orElse("-"));
+            majorLabel.setText(person.getMajor().map(c -> c.value).orElse("-"));
             noteLabel.setText(person.getNote().map(n -> n.value).orElse("-"));
             websiteLabel.setText(person.getWebsite().map(w -> w.value).orElse("-"));
         } else {

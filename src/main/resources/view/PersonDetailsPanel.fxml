@@ -24,8 +24,8 @@
             <Label fx:id="aliasLabel" styleClass="detail-label" wrapText="true" maxWidth="270"/>
         </HBox>
         <HBox spacing="5">
-            <Label text="Course:" styleClass="detail-label-bold" />
-            <Label fx:id="courseLabel" styleClass="detail-label" wrapText="true" maxWidth="250"/>
+            <Label text="Major:" styleClass="detail-label-bold" />
+            <Label fx:id="majorLabel" styleClass="detail-label" wrapText="true" maxWidth="250"/>
         </HBox>
         <HBox spacing="5">
             <Label text="Note:" styleClass="detail-label-bold" />
