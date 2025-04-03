@@ -22,7 +22,7 @@ public class ExportCommand extends Command {
             + "Example: " + COMMAND_WORD + " "
             + "C:/Users/User/Documents/addressbook.json";
 
-    public static final String MESSAGE_SUCCESS = "Successfully exported address book data.";
+    public static final String MESSAGE_SUCCESS = "Successfully exported address book data: ";
     public static final String MESSAGE_FAILURE = "Failed to export address book data.";
 
     private final LogicManager logicManager;
@@ -40,14 +40,15 @@ public class ExportCommand extends Command {
     @Override
     public CommandResult execute(Model model) throws CommandException {
         try {
-            if (!fileString.contains(".json")) {
+            if (!fileString.endsWith(".json")) {
                 throw new CommandException(MESSAGE_FAILURE + "\nFile name not provided!");
             }
 
             Path filePath = Paths.get(fileString);
+            String absoluteFilePath = filePath.toFile().getAbsolutePath();
 
             logicManager.exportAddressBook(filePath);
-            return new CommandResult(MESSAGE_SUCCESS);
+            return new CommandResult(MESSAGE_SUCCESS + absoluteFilePath);
         } catch (InvalidPathException | IOException e) {
             throw new CommandException(MESSAGE_FAILURE + "\nInvalid file path!");
         }
