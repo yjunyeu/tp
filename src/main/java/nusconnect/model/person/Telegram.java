@@ -25,11 +25,7 @@ public class Telegram {
      */
     public Telegram(String telegram) {
         requireNonNull(telegram);
-        if (telegram.isEmpty()) {
-            value = "<no handle>";
-        } else {
-            value = telegram;
-        }
+        value = telegram;
     }
 
     /**
