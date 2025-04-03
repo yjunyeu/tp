@@ -1,7 +1,7 @@
 package nusconnect.testutil;
 
 import static nusconnect.logic.parser.CliSyntax.PREFIX_ALIAS;
-import static nusconnect.logic.parser.CliSyntax.PREFIX_COURSE;
+import static nusconnect.logic.parser.CliSyntax.PREFIX_MAJOR;
 import static nusconnect.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static nusconnect.logic.parser.CliSyntax.PREFIX_MODULE;
 import static nusconnect.logic.parser.CliSyntax.PREFIX_NAME;
@@ -39,7 +39,7 @@ public class PersonUtil {
         sb.append(person.getPhone().map(p -> PREFIX_PHONE + p.value + " ").orElse(""));
         sb.append(person.getEmail().map(e -> PREFIX_EMAIL + e.value + " ").orElse(""));
         sb.append(person.getAlias().map(a -> PREFIX_ALIAS + a.value + " ").orElse(""));
-        sb.append(person.getCourse().map(c -> PREFIX_COURSE + c.value + " ").orElse(""));
+        sb.append(person.getMajor().map(c -> PREFIX_MAJOR + c.value + " ").orElse(""));
         sb.append(person.getNote().map(n -> PREFIX_NOTE + n.value + " ").orElse(""));
         sb.append(person.getWebsite().map(w -> PREFIX_WEBSITE + w.value + " ").orElse(""));
 
@@ -70,8 +70,8 @@ public class PersonUtil {
             sb.append(PREFIX_ALIAS).append(descriptor.getAlias()).append(" ");
         }
 
-        if (descriptor.getIsCourseEdited()) {
-            sb.append(PREFIX_COURSE).append(descriptor.getCourse()).append(" ");
+        if (descriptor.getIsMajorEdited()) {
+            sb.append(PREFIX_MAJOR).append(descriptor.getMajor()).append(" ");
         }
 
         if (descriptor.getIsNoteEdited()) {

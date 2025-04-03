@@ -1,7 +1,7 @@
 package nusconnect.logic.commands;
 
 import static nusconnect.logic.parser.CliSyntax.PREFIX_ALIAS;
-import static nusconnect.logic.parser.CliSyntax.PREFIX_COURSE;
+import static nusconnect.logic.parser.CliSyntax.PREFIX_MAJOR;
 import static nusconnect.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static nusconnect.logic.parser.CliSyntax.PREFIX_MODULE;
 import static nusconnect.logic.parser.CliSyntax.PREFIX_NAME;
@@ -40,8 +40,8 @@ public class CommandTestUtil {
     public static final String VALID_MODULE_CS2106 = "CS2106";
     public static final String VALID_ALIAS_AMY = "AmyBeeAlias";
     public static final String VALID_ALIAS_BOB = "BobChooAlias";
-    public static final String VALID_COURSE_AMY = "Computer Science";
-    public static final String VALID_COURSE_BOB = "Information Security";
+    public static final String VALID_MAJOR_ANY = "Computer Science";
+    public static final String VALID_MAJOR_BOB = "Information Security";
     public static final String VALID_NOTE_AMY = "Likes ice cream.";
     public static final String VALID_NOTE_BOB = "Enjoys long walks.";
     public static final String VALID_TELEGRAM_AMY = "@amybee";
@@ -61,8 +61,8 @@ public class CommandTestUtil {
     public static final String TAG_DESC_HUSBAND = " " + PREFIX_MODULE + VALID_MODULE_CS2103T;
     public static final String ALIAS_DESC_AMY = " " + PREFIX_ALIAS + VALID_ALIAS_AMY;
     public static final String ALIAS_DESC_BOB = " " + PREFIX_ALIAS + VALID_ALIAS_BOB;
-    public static final String COURSE_DESC_AMY = " " + PREFIX_COURSE + VALID_COURSE_AMY;
-    public static final String COURSE_DESC_BOB = " " + PREFIX_COURSE + VALID_COURSE_BOB;
+    public static final String MAJOR_DESC_ANY = " " + PREFIX_MAJOR + VALID_MAJOR_ANY;
+    public static final String MAJOR_DESC_BOB = " " + PREFIX_MAJOR + VALID_MAJOR_BOB;
     public static final String NOTE_DESC_AMY = " " + PREFIX_NOTE + VALID_NOTE_AMY;
     public static final String NOTE_DESC_BOB = " " + PREFIX_NOTE + VALID_NOTE_BOB;
     public static final String TELEGRAM_DESC_AMY = " " + PREFIX_TELEGRAM + VALID_TELEGRAM_AMY;
@@ -76,7 +76,7 @@ public class CommandTestUtil {
     public static final String INVALID_EMAIL_DESC = " " + PREFIX_EMAIL + "bob!yahoo"; // missing '@' symbol
     public static final String INVALID_TAG_DESC = " " + PREFIX_MODULE + "hubby*"; // '*' not allowed in Modules
     public static final String INVALID_ALIAS_DESC = " " + PREFIX_ALIAS + "&"; // Only alphanumeric
-    public static final String INVALID_COURSE_DESC = " " + PREFIX_COURSE + "1"; //Only alphabet and spaces
+    public static final String INVALID_MAJOR_DESC = " " + PREFIX_MAJOR + "1"; //Only alphabet and spaces
     public static final String INVALID_WEBSITE_DESC = " " + PREFIX_WEBSITE + "website"; // Not a url
     public static final String PREAMBLE_WHITESPACE = "\t  \r  \n";
     public static final String PREAMBLE_NON_EMPTY = "NonEmptyPreamble";
@@ -89,7 +89,7 @@ public class CommandTestUtil {
                 .withPhone(VALID_PHONE_AMY)
                 .withEmail(VALID_EMAIL_AMY)
                 .withAlias(VALID_ALIAS_AMY)
-                .withCourse(VALID_COURSE_AMY)
+                .withMajor(VALID_MAJOR_ANY)
                 .withNote(VALID_NOTE_AMY)
                 .withTelegram(VALID_TELEGRAM_AMY)
                 .withWebsite(VALID_WEBSITE_AMY)
@@ -99,7 +99,7 @@ public class CommandTestUtil {
                 .withPhone(VALID_PHONE_BOB)
                 .withEmail(VALID_EMAIL_BOB)
                 .withAlias(VALID_ALIAS_BOB)
-                .withCourse(VALID_COURSE_BOB)
+                .withMajor(VALID_MAJOR_BOB)
                 .withNote(VALID_NOTE_BOB)
                 .withTelegram(VALID_TELEGRAM_BOB)
                 .withWebsite(VALID_WEBSITE_BOB)

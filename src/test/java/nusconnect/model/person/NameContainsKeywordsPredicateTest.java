@@ -75,7 +75,7 @@ public class NameContainsKeywordsPredicateTest {
                 .withPhone("12345678")
                 .withEmail("alice@example.com")
                 .withAlias("AliceAlias")
-                .withCourse("Engineering")
+                .withMajor("Engineering")
                 .withNote("Loves coding")
                 .withTelegram("@alice")
                 .withWebsite("https://alice.example.com")

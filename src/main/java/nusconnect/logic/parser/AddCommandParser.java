@@ -2,7 +2,7 @@ package nusconnect.logic.parser;
 
 import static nusconnect.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static nusconnect.logic.parser.CliSyntax.PREFIX_ALIAS;
-import static nusconnect.logic.parser.CliSyntax.PREFIX_COURSE;
+import static nusconnect.logic.parser.CliSyntax.PREFIX_MAJOR;
 import static nusconnect.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static nusconnect.logic.parser.CliSyntax.PREFIX_MODULE;
 import static nusconnect.logic.parser.CliSyntax.PREFIX_NAME;
@@ -48,7 +48,7 @@ public class AddCommandParser implements Parser<AddCommand> {
     public AddCommand parse(String args) throws ParseException {
         ArgumentMultimap argMultimap =
                 ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_TELEGRAM, PREFIX_PHONE, PREFIX_EMAIL, PREFIX_ALIAS,
-                        PREFIX_COURSE, PREFIX_NOTE, PREFIX_WEBSITE, PREFIX_MODULE);
+                        PREFIX_MAJOR, PREFIX_NOTE, PREFIX_WEBSITE, PREFIX_MODULE);
 
         if (!arePrefixesPresent(argMultimap, PREFIX_NAME, PREFIX_TELEGRAM)
                 || !argMultimap.getPreamble().isEmpty()) {
@@ -56,7 +56,7 @@ public class AddCommandParser implements Parser<AddCommand> {
         }
 
         argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_NAME, PREFIX_TELEGRAM, PREFIX_PHONE, PREFIX_EMAIL, PREFIX_ALIAS,
-                PREFIX_COURSE, PREFIX_NOTE, PREFIX_WEBSITE);
+                PREFIX_MAJOR, PREFIX_NOTE, PREFIX_WEBSITE);
 
         Name name = parseField(argMultimap, PREFIX_NAME, Name::new);
         Telegram telegram = parseField(argMultimap, PREFIX_TELEGRAM, Telegram::new);
@@ -64,7 +64,7 @@ public class AddCommandParser implements Parser<AddCommand> {
         Phone phone = parseField(argMultimap, PREFIX_PHONE, Phone::new);
         Email email = parseField(argMultimap, PREFIX_EMAIL, Email::new);
         Alias alias = parseField(argMultimap, PREFIX_ALIAS, Alias::new);
-        Major course = parseField(argMultimap, PREFIX_COURSE, Major::new);
+        Major course = parseField(argMultimap, PREFIX_MAJOR, Major::new);
         Note note = parseField(argMultimap, PREFIX_NOTE, Note::new);
         Website website = parseField(argMultimap, PREFIX_WEBSITE, Website::new);
 

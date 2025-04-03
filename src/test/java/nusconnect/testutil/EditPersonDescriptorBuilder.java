@@ -41,7 +41,7 @@ public class EditPersonDescriptorBuilder {
         descriptor.setPhone(person.getPhone().orElse(null));
         descriptor.setEmail(person.getEmail().orElse(null));
         descriptor.setAlias(person.getAlias().orElse(null));
-        descriptor.setCourse(person.getCourse().orElse(null));
+        descriptor.setMajor(person.getMajor().orElse(null));
         descriptor.setNote(person.getNote().orElse(null));
         descriptor.setWebsite(person.getWebsite().orElse(null));
         descriptor.setModules(person.getModules());
@@ -50,7 +50,7 @@ public class EditPersonDescriptorBuilder {
         descriptor.setIsPhoneEdited(true);
         descriptor.setIsEmailEdited(true);
         descriptor.setIsAliasEdited(true);
-        descriptor.setIsCourseEdited(true);
+        descriptor.setIsMajorEdited(true);
         descriptor.setIsNoteEdited(true);
         descriptor.setIsWebsiteEdited(true);
     }
@@ -94,9 +94,9 @@ public class EditPersonDescriptorBuilder {
     /**
      * Sets the {@code Major} of the {@code EditPersonDescriptor} that we are building.
      */
-    public EditPersonDescriptorBuilder withCourse(String course) {
-        descriptor.setCourse(new Major(course));
-        descriptor.setIsCourseEdited(true);
+    public EditPersonDescriptorBuilder withMajor(String course) {
+        descriptor.setMajor(new Major(course));
+        descriptor.setIsMajorEdited(true);
         return this;
     }
 

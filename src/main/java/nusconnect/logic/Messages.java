@@ -61,7 +61,7 @@ public class Messages {
                 Email.MESSAGE_CONSTRAINTS)));
         person.getAlias().map(alias -> warnings.append(checkArgument(Alias.isValidAlias(alias),
                 Alias.MESSAGE_CONSTRAINTS)));
-        person.getCourse().map(course -> warnings.append(checkArgument(Major.isValidMajor(course),
+        person.getMajor().map(course -> warnings.append(checkArgument(Major.isValidMajor(course),
                 Major.MESSAGE_CONSTRAINTS)));
         person.getNote().map(note -> warnings.append(checkArgument(Note.isValidNote(note),
                 Note.MESSAGE_CONSTRAINTS)));
@@ -85,7 +85,7 @@ public class Messages {
         person.getPhone().ifPresent(phone -> builder.append("; Phone: ").append(phone));
         person.getEmail().ifPresent(email -> builder.append("; Email: ").append(email));
         person.getAlias().ifPresent(alias -> builder.append("; Alias: ").append(alias));
-        person.getCourse().ifPresent(course -> builder.append("; Major: ").append(course));
+        person.getMajor().ifPresent(course -> builder.append("; Major: ").append(course));
         person.getNote().ifPresent(note -> builder.append("; Note: ").append(note));
         person.getWebsite().ifPresent(website -> builder.append("; Website: ").append(website));
         if (!person.getModules().isEmpty()) {

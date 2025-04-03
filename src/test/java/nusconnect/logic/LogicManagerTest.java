@@ -3,7 +3,7 @@ package nusconnect.logic;
 import static nusconnect.logic.Messages.MESSAGE_INVALID_PERSON_TO_DELETE_INDEX;
 import static nusconnect.logic.Messages.MESSAGE_UNKNOWN_COMMAND;
 import static nusconnect.logic.commands.CommandTestUtil.ALIAS_DESC_AMY;
-import static nusconnect.logic.commands.CommandTestUtil.COURSE_DESC_AMY;
+import static nusconnect.logic.commands.CommandTestUtil.MAJOR_DESC_ANY;
 import static nusconnect.logic.commands.CommandTestUtil.EMAIL_DESC_AMY;
 import static nusconnect.logic.commands.CommandTestUtil.NAME_DESC_AMY;
 import static nusconnect.logic.commands.CommandTestUtil.NOTE_DESC_AMY;
@@ -170,7 +170,7 @@ public class LogicManagerTest {
 
         // Triggers the saveAddressBook method by executing an add command
         String addCommand = AddCommand.COMMAND_WORD + NAME_DESC_AMY + PHONE_DESC_AMY
-                + EMAIL_DESC_AMY + ALIAS_DESC_AMY + COURSE_DESC_AMY + NOTE_DESC_AMY
+                + EMAIL_DESC_AMY + ALIAS_DESC_AMY + MAJOR_DESC_ANY + NOTE_DESC_AMY
                 + TELEGRAM_DESC_AMY + WEBSITE_DESC_AMY;
         Person expectedPerson = new PersonBuilder(AMY).withModules().build();
         ModelManager expectedModel = new ModelManager();

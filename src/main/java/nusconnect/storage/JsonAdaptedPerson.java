@@ -70,7 +70,7 @@ class JsonAdaptedPerson {
         phone = source.getPhone().map(p -> p.value).orElse(null);
         email = source.getEmail().map(e -> e.value).orElse(null);
         alias = source.getAlias().map(a -> a.value).orElse(null);
-        course = source.getCourse().map(c -> c.value).orElse(null);
+        course = source.getMajor().map(c -> c.value).orElse(null);
         note = source.getNote().map(n -> n.value).orElse(null);
         website = source.getWebsite().map(w -> w.value).orElse(null);
 

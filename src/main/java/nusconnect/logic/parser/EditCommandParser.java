@@ -3,7 +3,7 @@ package nusconnect.logic.parser;
 import static java.util.Objects.requireNonNull;
 import static nusconnect.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static nusconnect.logic.parser.CliSyntax.PREFIX_ALIAS;
-import static nusconnect.logic.parser.CliSyntax.PREFIX_COURSE;
+import static nusconnect.logic.parser.CliSyntax.PREFIX_MAJOR;
 import static nusconnect.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static nusconnect.logic.parser.CliSyntax.PREFIX_MODULE;
 import static nusconnect.logic.parser.CliSyntax.PREFIX_NAME;
@@ -45,7 +45,7 @@ public class EditCommandParser implements Parser<EditCommand> {
         requireNonNull(args);
         ArgumentMultimap argMultimap =
                 ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_TELEGRAM,
-                        PREFIX_PHONE, PREFIX_EMAIL, PREFIX_ALIAS, PREFIX_COURSE,
+                        PREFIX_PHONE, PREFIX_EMAIL, PREFIX_ALIAS, PREFIX_MAJOR,
                         PREFIX_NOTE, PREFIX_WEBSITE, PREFIX_MODULE);
 
         Index index;
@@ -57,7 +57,7 @@ public class EditCommandParser implements Parser<EditCommand> {
         }
 
         argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_NAME, PREFIX_TELEGRAM,
-                PREFIX_PHONE, PREFIX_EMAIL, PREFIX_ALIAS, PREFIX_COURSE,
+                PREFIX_PHONE, PREFIX_EMAIL, PREFIX_ALIAS, PREFIX_MAJOR,
                 PREFIX_NOTE, PREFIX_WEBSITE);
 
         EditPersonDescriptor editPersonDescriptor = new EditPersonDescriptor();
@@ -87,9 +87,9 @@ public class EditCommandParser implements Parser<EditCommand> {
             editPersonDescriptor.setAlias(new Alias(argMultimap.getValue(PREFIX_ALIAS).get()));
         }
 
-        if (argMultimap.getValue(PREFIX_COURSE).isPresent()) {
-            editPersonDescriptor.setIsCourseEdited(true);
-            editPersonDescriptor.setCourse(new Major(argMultimap.getValue(PREFIX_COURSE).get()));
+        if (argMultimap.getValue(PREFIX_MAJOR).isPresent()) {
+            editPersonDescriptor.setIsMajorEdited(true);
+            editPersonDescriptor.setMajor(new Major(argMultimap.getValue(PREFIX_MAJOR).get()));
         }
 
         if (argMultimap.getValue(PREFIX_NOTE).isPresent()) {

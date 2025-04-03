@@ -25,7 +25,7 @@ public class PersonBuilder {
     public static final String DEFAULT_PHONE = "85355255";
     public static final String DEFAULT_EMAIL = "amy@gmail.com";
     public static final String DEFAULT_ALIAS = "Amee";
-    public static final String DEFAULT_COURSE = "Computer Science";
+    public static final String DEFAULT_MAJOR = "Computer Science";
     public static final String DEFAULT_NOTE = "Bestie!";
     public static final String DEFAULT_WEBSITE = "aimee.com";
 
@@ -34,7 +34,7 @@ public class PersonBuilder {
     private Phone phone;
     private Email email;
     private Alias alias;
-    private Major course;
+    private Major major;
     private Note note;
 
     private Website website;
@@ -49,7 +49,7 @@ public class PersonBuilder {
         phone = new Phone(DEFAULT_PHONE);
         email = new Email(DEFAULT_EMAIL);
         alias = new Alias(DEFAULT_ALIAS);
-        course = new Major(DEFAULT_COURSE);
+        major = new Major(DEFAULT_MAJOR);
         note = new Note(DEFAULT_NOTE);
         website = new Website(DEFAULT_WEBSITE);
         modules = new HashSet<>();
@@ -64,7 +64,7 @@ public class PersonBuilder {
         phone = personToCopy.getPhone().orElse(null);
         email = personToCopy.getEmail().orElse(null);
         alias = personToCopy.getAlias().orElse(null);
-        course = personToCopy.getCourse().orElse(null);
+        major = personToCopy.getMajor().orElse(null);
         note = personToCopy.getNote().orElse(null);
         website = personToCopy.getWebsite().orElse(null);
         modules = new HashSet<>(personToCopy.getModules());
@@ -113,8 +113,8 @@ public class PersonBuilder {
     /**
      * Sets the {@code Major} of the {@code Person} that we are building.
      */
-    public PersonBuilder withCourse(String course) {
-        this.course = new Major(course);
+    public PersonBuilder withMajor(String course) {
+        this.major = new Major(course);
         return this;
     }
 
@@ -143,7 +143,7 @@ public class PersonBuilder {
     }
 
     public Person build() {
-        return new Person(name, telegram, phone, email, alias, course, note, website, modules);
+        return new Person(name, telegram, phone, email, alias, major, note, website, modules);
     }
 
 }

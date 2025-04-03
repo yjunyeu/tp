@@ -1,7 +1,7 @@
 package nusconnect.storage;
 
 import static nusconnect.logic.parser.CliSyntax.PREFIX_ALIAS;
-import static nusconnect.logic.parser.CliSyntax.PREFIX_COURSE;
+import static nusconnect.logic.parser.CliSyntax.PREFIX_MAJOR;
 import static nusconnect.logic.parser.CliSyntax.PREFIX_NOTE;
 import static nusconnect.logic.parser.CliSyntax.PREFIX_TELEGRAM;
 import static nusconnect.logic.parser.CliSyntax.PREFIX_WEBSITE;
@@ -33,7 +33,7 @@ public class JsonAdaptedPersonTest {
     private static final String INVALID_EMAIL = "example.com";
     private static final String INVALID_TAG = "#friend";
     private static final String INVALID_ALIAS = " " + PREFIX_ALIAS;
-    private static final String INVALID_COURSE = " " + PREFIX_COURSE;
+    private static final String INVALID_COURSE = " " + PREFIX_MAJOR;
     private static final String INVALID_NOTE = " " + PREFIX_NOTE;
     private static final String INVALID_TELEGRAM = " " + PREFIX_TELEGRAM;
     private static final String INVALID_WEBSITE = " " + PREFIX_WEBSITE;
@@ -43,7 +43,7 @@ public class JsonAdaptedPersonTest {
     private static final String VALID_PHONE = BENSON.getPhone().map(Phone::toString).orElse(null);
     private static final String VALID_EMAIL = BENSON.getEmail().map(Email::toString).orElse(null);
     private static final String VALID_ALIAS = BENSON.getAlias().map(Alias::toString).orElse(null);
-    private static final String VALID_COURSE = BENSON.getCourse().map(Major::toString).orElse(null);
+    private static final String VALID_COURSE = BENSON.getMajor().map(Major::toString).orElse(null);
     private static final String VALID_NOTE = BENSON.getNote().map(Note::toString).orElse(null);
     private static final String VALID_WEBSITE = BENSON.getWebsite().map(Website::toString).orElse(null);
 
@@ -65,7 +65,7 @@ public class JsonAdaptedPersonTest {
                 .withPhone(VALID_PHONE)
                 .withEmail(VALID_EMAIL)
                 .withAlias(VALID_ALIAS)
-                .withCourse(VALID_COURSE)
+                .withMajor(VALID_COURSE)
                 .withNote(VALID_NOTE)
                 .withWebsite(VALID_WEBSITE)
                 .build();
@@ -91,7 +91,7 @@ public class JsonAdaptedPersonTest {
                 .withPhone(INVALID_PHONE)
                 .withEmail(VALID_EMAIL)
                 .withAlias(VALID_ALIAS)
-                .withCourse(VALID_COURSE)
+                .withMajor(VALID_COURSE)
                 .withNote(VALID_NOTE)
                 .withWebsite(VALID_WEBSITE)
                 .build();
@@ -107,7 +107,7 @@ public class JsonAdaptedPersonTest {
                 .withPhone(VALID_PHONE)
                 .withEmail(INVALID_EMAIL)
                 .withAlias(VALID_ALIAS)
-                .withCourse(VALID_COURSE)
+                .withMajor(VALID_COURSE)
                 .withNote(VALID_NOTE)
                 .withWebsite(VALID_WEBSITE)
                 .build();
@@ -123,7 +123,7 @@ public class JsonAdaptedPersonTest {
                 .withPhone(VALID_PHONE)
                 .withEmail(VALID_EMAIL)
                 .withAlias(INVALID_ALIAS)
-                .withCourse(VALID_COURSE)
+                .withMajor(VALID_COURSE)
                 .withNote(VALID_NOTE)
                 .withWebsite(VALID_WEBSITE)
                 .build();
@@ -140,7 +140,7 @@ public class JsonAdaptedPersonTest {
                 .withPhone(VALID_PHONE)
                 .withEmail(VALID_EMAIL)
                 .withAlias(VALID_ALIAS)
-                .withCourse(INVALID_COURSE)
+                .withMajor(INVALID_COURSE)
                 .withNote(VALID_NOTE)
                 .withWebsite(VALID_WEBSITE)
                 .build();
@@ -156,7 +156,7 @@ public class JsonAdaptedPersonTest {
                 .withPhone(VALID_PHONE)
                 .withEmail(VALID_EMAIL)
                 .withAlias(VALID_ALIAS)
-                .withCourse(VALID_COURSE)
+                .withMajor(VALID_COURSE)
                 .withNote(VALID_NOTE)
                 .withWebsite(VALID_WEBSITE)
                 .build();
@@ -182,7 +182,7 @@ public class JsonAdaptedPersonTest {
                 .withPhone(VALID_PHONE)
                 .withEmail(VALID_EMAIL)
                 .withAlias(VALID_ALIAS)
-                .withCourse(VALID_COURSE)
+                .withMajor(VALID_COURSE)
                 .withNote(VALID_NOTE)
                 .withWebsite(INVALID_WEBSITE)
                 .build();
