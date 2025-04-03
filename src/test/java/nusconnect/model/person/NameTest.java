@@ -1,7 +1,6 @@
 package nusconnect.model.person;
 
 import static nusconnect.testutil.Assert.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -12,12 +11,6 @@ public class NameTest {
     @Test
     public void constructor_null_throwsNullPointerException() {
         assertThrows(NullPointerException.class, () -> new Name(null));
-    }
-
-    @Test
-    public void blankNameIsChangedToNoName() {
-        Name name = new Name("");
-        assertEquals("<no name>", name.toString());
     }
 
     @Test
