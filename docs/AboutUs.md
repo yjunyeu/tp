@@ -17,18 +17,6 @@ We are a team based in the [School of Computing, National University of Singapor
 * Role: Developer
 * Responsibilities: New Feature Implementation, Refactoring
 
-
-### Yap Jun Yeu
-
-<img src="images/yjunyeu.png" width="200px">
-
-[[github](http://github.com/yjunyeu)]
-[[portfolio](team/yjunyeu.md)]
-
-* Role: Developer
-* Responsibilities: Code quality, Git expert
-
-
 ### Javen Tan Kang Le
 
 <img src="images/javentankangle.png" width="200px">
@@ -39,16 +27,6 @@ We are a team based in the [School of Computing, National University of Singapor
 * Role: Developer
 * Responsibilities: Integration, Refactoring and upgrade of model
 
-### Sim Ray En Ryan
-
-<img src="images/hackari.png" width="200px">
-
-[[github](http://github.com/hackari)]
-[[portfolio](team/hackari.md)]
-
-* Role: Developer
-* Responsibilities: Delegation of tasks, UI color design
-
 ### Lee Jia Wei
 
 <img src="images/leejiawei23.png" width="200px">
@@ -58,3 +36,28 @@ We are a team based in the [School of Computing, National University of Singapor
 
 * Role: Developer
 * Responsibilities: Testing, UI
+
+### Sim Ray En Ryan
+
+<img src="images/hackari.png" width="200px">
+
+[[github](http://github.com/hackari)]
+[[portfolio](team/hackari.md)]
+
+* Role: Developer
+* Responsibilities: Delegation of tasks, UI color design, Testing
+
+### Yap Jun Yeu
+
+<img src="images/yjunyeu.png" width="200px">
+
+[[github](http://github.com/yjunyeu)]
+[[portfolio](team/yjunyeu.md)]
+
+* Role: Developer
+* Responsibilities: Code quality, resident Git expert
+
+
+
+
+
