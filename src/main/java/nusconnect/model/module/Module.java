@@ -1,6 +1,7 @@
 package nusconnect.model.module;
 
 import static java.util.Objects.requireNonNull;
+import static nusconnect.commons.util.AppUtil.checkArgument;
 
 /**
  * Represents a Module in the address book.
@@ -22,14 +23,15 @@ public class Module {
      */
     public Module(String moduleName) {
         requireNonNull(moduleName);
+        checkArgument(isValidModuleName(moduleName), MESSAGE_CONSTRAINTS);
         this.moduleName = moduleName.toUpperCase();
     }
 
     /**
      * Returns true if a given string is a valid module name.
      */
-    public static boolean isValidModuleName(Module test) {
-        return test.moduleName.matches(VALIDATION_REGEX);
+    public static boolean isValidModuleName(String test) {
+        return test.matches(VALIDATION_REGEX);
     }
 
     @Override
