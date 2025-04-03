@@ -8,20 +8,20 @@ import static nusconnect.logic.commands.CommandTestUtil.EMAIL_DESC_BOB;
 import static nusconnect.logic.commands.CommandTestUtil.INVALID_ALIAS_DESC;
 import static nusconnect.logic.commands.CommandTestUtil.INVALID_EMAIL_DESC;
 import static nusconnect.logic.commands.CommandTestUtil.INVALID_MAJOR_DESC;
+import static nusconnect.logic.commands.CommandTestUtil.INVALID_MODULE_DESC;
 import static nusconnect.logic.commands.CommandTestUtil.INVALID_NAME_DESC;
 import static nusconnect.logic.commands.CommandTestUtil.INVALID_PHONE_DESC;
-import static nusconnect.logic.commands.CommandTestUtil.INVALID_TAG_DESC;
 import static nusconnect.logic.commands.CommandTestUtil.INVALID_TELEGRAM_DESC;
 import static nusconnect.logic.commands.CommandTestUtil.INVALID_WEBSITE_DESC;
 import static nusconnect.logic.commands.CommandTestUtil.MAJOR_DESC_ANY;
 import static nusconnect.logic.commands.CommandTestUtil.MAJOR_DESC_BOB;
+import static nusconnect.logic.commands.CommandTestUtil.MODULE_DESC_FRIEND;
+import static nusconnect.logic.commands.CommandTestUtil.MODULE_DESC_HUSBAND;
 import static nusconnect.logic.commands.CommandTestUtil.NAME_DESC_AMY;
 import static nusconnect.logic.commands.CommandTestUtil.NOTE_DESC_AMY;
 import static nusconnect.logic.commands.CommandTestUtil.NOTE_DESC_BOB;
 import static nusconnect.logic.commands.CommandTestUtil.PHONE_DESC_AMY;
 import static nusconnect.logic.commands.CommandTestUtil.PHONE_DESC_BOB;
-import static nusconnect.logic.commands.CommandTestUtil.TAG_DESC_FRIEND;
-import static nusconnect.logic.commands.CommandTestUtil.TAG_DESC_HUSBAND;
 import static nusconnect.logic.commands.CommandTestUtil.TELEGRAM_DESC_AMY;
 import static nusconnect.logic.commands.CommandTestUtil.TELEGRAM_DESC_BOB;
 import static nusconnect.logic.commands.CommandTestUtil.VALID_ALIAS_AMY;
@@ -76,7 +76,7 @@ public class EditCommandParserTest {
     private static final String TELEGRAM_EMPTY = " " + PREFIX_TELEGRAM;
     private static final String PHONE_EMPTY = " " + PREFIX_PHONE;
     private static final String ALIAS_EMPTY = " " + PREFIX_ALIAS;
-    private static final String TAG_EMPTY = " " + PREFIX_MODULE;
+    private static final String MODULE_EMPTY = " " + PREFIX_MODULE;
 
     private static final String MESSAGE_INVALID_FORMAT =
             String.format(MESSAGE_INVALID_COMMAND_FORMAT, EditCommand.MESSAGE_USAGE);
@@ -120,16 +120,19 @@ public class EditCommandParserTest {
         assertParseFailure(parser, "1" + INVALID_TELEGRAM_DESC, Telegram.MESSAGE_CONSTRAINTS); // invalid telegram
         assertParseFailure(parser, "1" + INVALID_WEBSITE_DESC, Website.MESSAGE_CONSTRAINTS); // invalid website
 
-        assertParseFailure(parser, "1" + INVALID_TAG_DESC, Module.MESSAGE_CONSTRAINTS); // invalid module
+        assertParseFailure(parser, "1" + INVALID_MODULE_DESC, Module.MESSAGE_CONSTRAINTS); // invalid module
 
         // invalid phone followed by valid email
         assertParseFailure(parser, "1" + INVALID_PHONE_DESC + EMAIL_DESC_AMY, Phone.MESSAGE_CONSTRAINTS);
 
         // while parsing {@code PREFIX_MODULE} alone will reset the Modules of the {@code Person} being edited,
         // parsing it together with a valid module results in error
-        assertParseFailure(parser, "1" + TAG_DESC_FRIEND + TAG_DESC_HUSBAND + TAG_EMPTY, Module.MESSAGE_CONSTRAINTS);
-        assertParseFailure(parser, "1" + TAG_DESC_FRIEND + TAG_EMPTY + TAG_DESC_HUSBAND, Module.MESSAGE_CONSTRAINTS);
-        assertParseFailure(parser, "1" + TAG_EMPTY + TAG_DESC_FRIEND + TAG_DESC_HUSBAND, Module.MESSAGE_CONSTRAINTS);
+        assertParseFailure(parser, "1" + MODULE_DESC_FRIEND + MODULE_DESC_HUSBAND + MODULE_EMPTY,
+                Module.MESSAGE_CONSTRAINTS);
+        assertParseFailure(parser, "1" + MODULE_DESC_FRIEND + MODULE_EMPTY + MODULE_DESC_HUSBAND,
+                Module.MESSAGE_CONSTRAINTS);
+        assertParseFailure(parser, "1" + MODULE_EMPTY + MODULE_DESC_FRIEND + MODULE_DESC_HUSBAND,
+                Module.MESSAGE_CONSTRAINTS);
 
         // multiple invalid values, but only the first invalid value is captured
         assertParseFailure(parser, "1" + INVALID_NAME_DESC + INVALID_EMAIL_DESC + VALID_PHONE_AMY
@@ -144,7 +147,7 @@ public class EditCommandParserTest {
                 + NAME_DESC_AMY + PHONE_DESC_BOB + EMAIL_DESC_AMY
                 + ALIAS_DESC_BOB + MAJOR_DESC_BOB + NOTE_DESC_BOB
                 + TELEGRAM_DESC_BOB + WEBSITE_DESC_BOB
-                + TAG_DESC_HUSBAND + TAG_DESC_FRIEND;
+                + MODULE_DESC_HUSBAND + MODULE_DESC_FRIEND;
 
 
 
@@ -157,7 +160,7 @@ public class EditCommandParserTest {
                 .withNote(VALID_NOTE_BOB)
                 .withTelegram(VALID_TELEGRAM_BOB)
                 .withWebsite(VALID_WEBSITE_BOB)
-                .withTags(VALID_MODULE_CS2103T, VALID_MODULE_CS2106)
+                .withModules(VALID_MODULE_CS2103T, VALID_MODULE_CS2106)
                 .build();
         EditCommand expectedCommand = new EditCommand(targetIndex, descriptor);
 
@@ -229,8 +232,8 @@ public class EditCommandParserTest {
 
 
         // Modules
-        userInput = targetIndex.getOneBased() + TAG_DESC_FRIEND;
-        descriptor = new EditPersonDescriptorBuilder().withTags(VALID_MODULE_CS2106).build();
+        userInput = targetIndex.getOneBased() + MODULE_DESC_FRIEND;
+        descriptor = new EditPersonDescriptorBuilder().withModules(VALID_MODULE_CS2106).build();
         expectedCommand = new EditCommand(targetIndex, descriptor);
         assertParseSuccess(parser, userInput, expectedCommand);
     }
@@ -238,7 +241,7 @@ public class EditCommandParserTest {
     @Test
     public void parse_multipleRepeatedFields_failure() {
         // More extensive testing of duplicate parameter detections is done in
-        // AddCommandParserTest#parse_repeatedNonTagValue_failure()
+        // AddCommandParserTest#parse_repeatedNonModuleValue_failure()
 
         // valid followed by invalid
         Index targetIndex = INDEX_FIRST;
@@ -270,11 +273,11 @@ public class EditCommandParserTest {
     }
 
     @Test
-    public void parse_resetTags_success() {
+    public void parse_resetModules_success() {
         Index targetIndex = INDEX_THIRD;
-        String userInput = targetIndex.getOneBased() + TAG_EMPTY;
+        String userInput = targetIndex.getOneBased() + MODULE_EMPTY;
 
-        EditPersonDescriptor descriptor = new EditPersonDescriptorBuilder().withTags().build();
+        EditPersonDescriptor descriptor = new EditPersonDescriptorBuilder().withModules().build();
         EditCommand expectedCommand = new EditCommand(targetIndex, descriptor);
 
         assertParseSuccess(parser, userInput, expectedCommand);

@@ -260,21 +260,21 @@ public class ParserUtilTest {
     }
 
     @Test
-    public void parseTag_invalidValue_throwsParseException() {
+    public void parseModule_invalidValue_throwsParseException() {
         assertThrows(ParseException.class, () -> ParserUtil.parseModule(INVALID_MODULE));
     }
 
     @Test
-    public void parseTag_validValueWithoutWhitespace_returnsModule() throws Exception {
+    public void parseModule_validValueWithoutWhitespace_returnsModule() throws Exception {
         Module expectedModule = new Module(VALID_MODULE_1);
         assertEquals(expectedModule, ParserUtil.parseModule(VALID_MODULE_1));
     }
 
     @Test
-    public void parseTag_validValueWithWhitespace_returnsTrimmedModule() throws Exception {
-        String tagWithWhitespace = WHITESPACE + VALID_MODULE_1 + WHITESPACE;
+    public void parseModule_validValueWithWhitespace_returnsTrimmedModule() throws Exception {
+        String moduleWithWhitespace = WHITESPACE + VALID_MODULE_1 + WHITESPACE;
         Module expectedModule = new Module(VALID_MODULE_1);
-        assertEquals(expectedModule, ParserUtil.parseModule(tagWithWhitespace));
+        assertEquals(expectedModule, ParserUtil.parseModule(moduleWithWhitespace));
     }
 
     @Test
@@ -283,7 +283,7 @@ public class ParserUtilTest {
     }
 
     @Test
-    public void parseTags_collectionWithInvalidTags_throwsParseException() {
+    public void parseModules_collectionWithInvalidModules_throwsParseException() {
         assertThrows(
                 ParseException.class, () -> ParserUtil.parseModules(Arrays.asList(VALID_MODULE_1, INVALID_MODULE)));
     }
@@ -294,7 +294,7 @@ public class ParserUtilTest {
     }
 
     @Test
-    public void parseTags_collectionWithValidModules_returnsModuleSet() throws Exception {
+    public void parseModules_collectionWithValidModules_returnsModuleSet() throws Exception {
         Set<Module> actualModuleSet = ParserUtil.parseModules(Arrays.asList(VALID_MODULE_1, VALID_MODULE_2));
         Set<Module> expectedModuleSet = new HashSet<Module>(Arrays.asList(new Module(VALID_MODULE_1),
                 new Module(VALID_MODULE_2)));

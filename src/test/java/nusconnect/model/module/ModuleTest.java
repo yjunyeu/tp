@@ -14,7 +14,7 @@ public class ModuleTest {
     }
 
     @Test
-    public void constructor_invalidTagName_throwsIllegalArgumentException() {
+    public void constructor_invalidModuleName_throwsIllegalArgumentException() {
         String invalidModuleName = "";
         assertThrows(IllegalArgumentException.class, () -> new Module(invalidModuleName));
     }

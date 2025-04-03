@@ -133,7 +133,7 @@ public class EditCommand extends Command {
                 : personToEdit.getNote().orElse(null);
         Website updatedWebsite = editPersonDescriptor.getIsWebsiteEdited() ? editPersonDescriptor.getWebsite()
                 : personToEdit.getWebsite().orElse(null);
-        Set<Module> updatedModules = editPersonDescriptor.getTags().orElse(personToEdit.getModules());
+        Set<Module> updatedModules = editPersonDescriptor.getModules().orElse(personToEdit.getModules());
 
         return new Person(updatedName, updatedTelegram, updatedPhone,
                 updatedEmail, updatedAlias, updatedMajor, updatedNote, updatedWebsite, updatedModules);
@@ -362,7 +362,7 @@ public class EditCommand extends Command {
          * if modification is attempted.
          * Returns {@code Optional#empty()} if {@code modules} is null.
          */
-        public Optional<Set<Module>> getTags() {
+        public Optional<Set<Module>> getModules() {
             return (modules != null) ? Optional.of(Collections.unmodifiableSet(modules)) : Optional.empty();
         }
 

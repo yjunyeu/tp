@@ -8,13 +8,15 @@ import static nusconnect.logic.commands.CommandTestUtil.EMAIL_DESC_BOB;
 import static nusconnect.logic.commands.CommandTestUtil.INVALID_ALIAS_DESC;
 import static nusconnect.logic.commands.CommandTestUtil.INVALID_EMAIL_DESC;
 import static nusconnect.logic.commands.CommandTestUtil.INVALID_MAJOR_DESC;
+import static nusconnect.logic.commands.CommandTestUtil.INVALID_MODULE_DESC;
 import static nusconnect.logic.commands.CommandTestUtil.INVALID_NAME_DESC;
 import static nusconnect.logic.commands.CommandTestUtil.INVALID_PHONE_DESC;
-import static nusconnect.logic.commands.CommandTestUtil.INVALID_TAG_DESC;
 import static nusconnect.logic.commands.CommandTestUtil.INVALID_TELEGRAM_DESC;
 import static nusconnect.logic.commands.CommandTestUtil.INVALID_WEBSITE_DESC;
 import static nusconnect.logic.commands.CommandTestUtil.MAJOR_DESC_ANY;
 import static nusconnect.logic.commands.CommandTestUtil.MAJOR_DESC_BOB;
+import static nusconnect.logic.commands.CommandTestUtil.MODULE_DESC_FRIEND;
+import static nusconnect.logic.commands.CommandTestUtil.MODULE_DESC_HUSBAND;
 import static nusconnect.logic.commands.CommandTestUtil.NAME_DESC_AMY;
 import static nusconnect.logic.commands.CommandTestUtil.NAME_DESC_BOB;
 import static nusconnect.logic.commands.CommandTestUtil.NOTE_DESC_AMY;
@@ -23,8 +25,6 @@ import static nusconnect.logic.commands.CommandTestUtil.PHONE_DESC_AMY;
 import static nusconnect.logic.commands.CommandTestUtil.PHONE_DESC_BOB;
 import static nusconnect.logic.commands.CommandTestUtil.PREAMBLE_NON_EMPTY;
 import static nusconnect.logic.commands.CommandTestUtil.PREAMBLE_WHITESPACE;
-import static nusconnect.logic.commands.CommandTestUtil.TAG_DESC_FRIEND;
-import static nusconnect.logic.commands.CommandTestUtil.TAG_DESC_HUSBAND;
 import static nusconnect.logic.commands.CommandTestUtil.TELEGRAM_DESC_AMY;
 import static nusconnect.logic.commands.CommandTestUtil.TELEGRAM_DESC_BOB;
 import static nusconnect.logic.commands.CommandTestUtil.VALID_ALIAS_BOB;
@@ -77,22 +77,23 @@ public class AddCommandParserTest {
         // whitespace only preamble
         assertParseSuccess(parser, PREAMBLE_WHITESPACE + NAME_DESC_BOB + PHONE_DESC_BOB + EMAIL_DESC_BOB
                 + ALIAS_DESC_BOB + MAJOR_DESC_BOB + NOTE_DESC_BOB + TELEGRAM_DESC_BOB + WEBSITE_DESC_BOB
-                + TAG_DESC_FRIEND, new AddCommand(expectedPerson));
+                + MODULE_DESC_FRIEND, new AddCommand(expectedPerson));
 
 
         // multiple Modules - all accepted
-        Person expectedPersonMultipleTags = new PersonBuilder(BOB).withModules(VALID_MODULE_CS2106,
+        Person expectedPersonMultipleModules = new PersonBuilder(BOB).withModules(VALID_MODULE_CS2106,
                 VALID_MODULE_CS2103T).build();
         assertParseSuccess(parser,
                 NAME_DESC_BOB + PHONE_DESC_BOB + EMAIL_DESC_BOB + ALIAS_DESC_BOB + MAJOR_DESC_BOB
-                        + NOTE_DESC_BOB + TELEGRAM_DESC_BOB + WEBSITE_DESC_BOB + TAG_DESC_HUSBAND + TAG_DESC_FRIEND,
-                new AddCommand(expectedPersonMultipleTags));
+                        + NOTE_DESC_BOB + TELEGRAM_DESC_BOB + WEBSITE_DESC_BOB + MODULE_DESC_HUSBAND
+                        + MODULE_DESC_FRIEND,
+                new AddCommand(expectedPersonMultipleModules));
     }
 
     @Test
-    public void parse_repeatedNonTagValue_failure() {
+    public void parse_repeatedNonModuleValue_failure() {
         String validExpectedPersonString = NAME_DESC_BOB + PHONE_DESC_BOB + EMAIL_DESC_BOB + ALIAS_DESC_BOB
-                + MAJOR_DESC_BOB + NOTE_DESC_BOB + TELEGRAM_DESC_BOB + WEBSITE_DESC_BOB + TAG_DESC_FRIEND;
+                + MAJOR_DESC_BOB + NOTE_DESC_BOB + TELEGRAM_DESC_BOB + WEBSITE_DESC_BOB + MODULE_DESC_FRIEND;
 
         // multiple names
         assertParseFailure(parser, NAME_DESC_AMY + validExpectedPersonString,
@@ -260,53 +261,53 @@ public class AddCommandParserTest {
         // invalid name
         assertParseFailure(parser, INVALID_NAME_DESC + PHONE_DESC_BOB + EMAIL_DESC_BOB
                 + ALIAS_DESC_BOB + MAJOR_DESC_BOB + NOTE_DESC_BOB + TELEGRAM_DESC_BOB
-                + WEBSITE_DESC_BOB + TAG_DESC_HUSBAND + TAG_DESC_FRIEND, Name.MESSAGE_CONSTRAINTS);
+                + WEBSITE_DESC_BOB + MODULE_DESC_HUSBAND + MODULE_DESC_FRIEND, Name.MESSAGE_CONSTRAINTS);
 
         // invalid phone
         assertParseFailure(parser, NAME_DESC_BOB + INVALID_PHONE_DESC + EMAIL_DESC_BOB
                 + ALIAS_DESC_BOB + MAJOR_DESC_BOB + NOTE_DESC_BOB + TELEGRAM_DESC_BOB
-                + WEBSITE_DESC_BOB + TAG_DESC_HUSBAND + TAG_DESC_FRIEND, Phone.MESSAGE_CONSTRAINTS);
+                + WEBSITE_DESC_BOB + MODULE_DESC_HUSBAND + MODULE_DESC_FRIEND, Phone.MESSAGE_CONSTRAINTS);
 
         // invalid email
         assertParseFailure(parser, NAME_DESC_BOB + PHONE_DESC_BOB + INVALID_EMAIL_DESC
                 + ALIAS_DESC_BOB + MAJOR_DESC_BOB + NOTE_DESC_BOB + TELEGRAM_DESC_BOB
-                + WEBSITE_DESC_BOB + TAG_DESC_HUSBAND + TAG_DESC_FRIEND, Email.MESSAGE_CONSTRAINTS);
+                + WEBSITE_DESC_BOB + MODULE_DESC_HUSBAND + MODULE_DESC_FRIEND, Email.MESSAGE_CONSTRAINTS);
 
         // invalid alias
         assertParseFailure(parser, NAME_DESC_BOB + PHONE_DESC_BOB + EMAIL_DESC_BOB
                 + INVALID_ALIAS_DESC + MAJOR_DESC_BOB + NOTE_DESC_BOB + TELEGRAM_DESC_BOB
-                + WEBSITE_DESC_BOB + TAG_DESC_HUSBAND + TAG_DESC_FRIEND, Alias.MESSAGE_CONSTRAINTS);
+                + WEBSITE_DESC_BOB + MODULE_DESC_HUSBAND + MODULE_DESC_FRIEND, Alias.MESSAGE_CONSTRAINTS);
 
         // invalid major
         assertParseFailure(parser, NAME_DESC_BOB + PHONE_DESC_BOB + EMAIL_DESC_BOB
                 + ALIAS_DESC_BOB + INVALID_MAJOR_DESC + NOTE_DESC_BOB + TELEGRAM_DESC_BOB
-                + WEBSITE_DESC_BOB + TAG_DESC_HUSBAND + TAG_DESC_FRIEND, Major.MESSAGE_CONSTRAINTS);
+                + WEBSITE_DESC_BOB + MODULE_DESC_HUSBAND + MODULE_DESC_FRIEND, Major.MESSAGE_CONSTRAINTS);
 
         // invalid telegram
         assertParseFailure(parser, NAME_DESC_BOB + PHONE_DESC_BOB + EMAIL_DESC_BOB
                 + ALIAS_DESC_BOB + MAJOR_DESC_BOB + NOTE_DESC_BOB + INVALID_TELEGRAM_DESC
-                + WEBSITE_DESC_BOB + TAG_DESC_HUSBAND + TAG_DESC_FRIEND, Telegram.MESSAGE_CONSTRAINTS);
+                + WEBSITE_DESC_BOB + MODULE_DESC_HUSBAND + MODULE_DESC_FRIEND, Telegram.MESSAGE_CONSTRAINTS);
 
         // invalid website
         assertParseFailure(parser, NAME_DESC_BOB + PHONE_DESC_BOB + EMAIL_DESC_BOB
                 + ALIAS_DESC_BOB + MAJOR_DESC_BOB + NOTE_DESC_BOB + TELEGRAM_DESC_BOB
-                + INVALID_WEBSITE_DESC + TAG_DESC_HUSBAND + TAG_DESC_FRIEND, Website.MESSAGE_CONSTRAINTS);
+                + INVALID_WEBSITE_DESC + MODULE_DESC_HUSBAND + MODULE_DESC_FRIEND, Website.MESSAGE_CONSTRAINTS);
 
 
         // invalid module
         assertParseFailure(parser, NAME_DESC_BOB + PHONE_DESC_BOB + EMAIL_DESC_BOB
                 + ALIAS_DESC_BOB + MAJOR_DESC_BOB + NOTE_DESC_BOB + TELEGRAM_DESC_BOB
-                + WEBSITE_DESC_BOB + INVALID_TAG_DESC, Module.MESSAGE_CONSTRAINTS);
+                + WEBSITE_DESC_BOB + INVALID_MODULE_DESC, Module.MESSAGE_CONSTRAINTS);
 
         // two invalid values, only first invalid value reported
         assertParseFailure(parser, INVALID_NAME_DESC + INVALID_PHONE_DESC + EMAIL_DESC_BOB
                 + ALIAS_DESC_BOB + MAJOR_DESC_BOB + NOTE_DESC_BOB + TELEGRAM_DESC_BOB
-                + INVALID_WEBSITE_DESC + TAG_DESC_HUSBAND + TAG_DESC_FRIEND, Name.MESSAGE_CONSTRAINTS);
+                + INVALID_WEBSITE_DESC + MODULE_DESC_HUSBAND + MODULE_DESC_FRIEND, Name.MESSAGE_CONSTRAINTS);
 
         // non-empty preamble
         assertParseFailure(parser, PREAMBLE_NON_EMPTY + NAME_DESC_BOB + PHONE_DESC_BOB + EMAIL_DESC_BOB
                 + ALIAS_DESC_BOB + MAJOR_DESC_BOB + NOTE_DESC_BOB + TELEGRAM_DESC_BOB
-                + WEBSITE_DESC_BOB + TAG_DESC_HUSBAND + TAG_DESC_FRIEND,
+                + WEBSITE_DESC_BOB + MODULE_DESC_HUSBAND + MODULE_DESC_FRIEND,
                 String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_USAGE));
     }
 }

@@ -55,7 +55,7 @@ public class PersonCard extends UiPart<Region> {
 
         telegram.setText(person.getTelegram().value);
         person.getModules().stream()
-                .sorted(Comparator.comparing(tag -> tag.moduleName))
+                .sorted(Comparator.comparing(module -> module.moduleName))
                 .forEach(module -> modules.getChildren().add(new Label(module.moduleName)));
     }
 }
