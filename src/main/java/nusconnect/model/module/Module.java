@@ -5,14 +5,14 @@ import static nusconnect.commons.util.AppUtil.checkArgument;
 
 /**
  * Represents a Module in the address book.
- * Guarantees: immutable; name is valid as declared in {@link #isValidModuleName(String)}
+ * Guarantees: immutable; name is valid as declared in {@link #isValidModuleName(Module)}
  */
 public class Module {
 
     public static final String MESSAGE_CONSTRAINTS =
-            "Module names should be alphanumeric, starting with 2~3 alphabets, followed by 4 numeric characters, "
-                    + "and followed by an optional character.";
-    public static final String VALIDATION_REGEX = "^[A-Za-z]{2,3}[0-9]{4}[A-Za-z]?$";
+            "Module names should be alphanumeric, starting with 2~4 alphabets, followed by 4 numeric characters, "
+                    + "and followed by one or two optional characters.";
+    public static final String VALIDATION_REGEX = "^[A-Za-z]{2,4}[0-9]{4}[A-Za-z]{0,2}$";
 
     public final String moduleName;
 
