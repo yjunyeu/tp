@@ -551,3 +551,9 @@ testers are expected to do more *exploratory* testing.
 --------------------------------------------------------------------------------------------------------------------
 
 ## **Appendix: Planned Enhancements**
+
+Team size: 5
+
+1. **Make group delete** more versatile. The current group delete command is only able to delete the entire group. This
+is too restrictive. We plan to make `group delete` be able to delete specific member from a group. Adjust `group delete`
+to accept this format `group delete PERSON_INDEX from GROUP_INDEX`  so that we can remove specific member.
