@@ -159,7 +159,8 @@ public class EditCommand extends Command {
     }
 
     /**
-     * Stores the details to edit the person with. The corresponding booleans indicate if each field should be replaced.
+     * Stores the details to edit the person with. Each non-empty field value will replace the
+     * corresponding field value of the person.
      */
     public static class EditPersonDescriptor {
         private Name name;
@@ -188,22 +189,22 @@ public class EditCommand extends Command {
          */
         public EditPersonDescriptor(EditPersonDescriptor toCopy) {
             setName(toCopy.name);
-            setTelegram(toCopy.telegram);
-            setPhone(toCopy.phone);
-            setEmail(toCopy.email);
-            setAlias(toCopy.alias);
-            setCourse(toCopy.course);
-            setNote(toCopy.note);
-            setWebsite(toCopy.website);
-            setModules(toCopy.modules);
             setIsNameEdited(toCopy.isNameEdited);
+            setTelegram(toCopy.telegram);
             setIsTelegramEdited(toCopy.isTelegramEdited);
+            setPhone(toCopy.phone);
             setIsPhoneEdited(toCopy.isPhoneEdited);
+            setEmail(toCopy.email);
             setIsEmailEdited(toCopy.isEmailEdited);
+            setAlias(toCopy.alias);
             setIsAliasEdited(toCopy.isAliasEdited);
+            setCourse(toCopy.course);
             setIsCourseEdited(toCopy.isCourseEdited);
+            setNote(toCopy.note);
             setIsNoteEdited(toCopy.isNoteEdited);
+            setWebsite(toCopy.website);
             setIsWebsiteEdited(toCopy.isWebsiteEdited);
+            setModules(toCopy.modules);
         }
 
         /**
