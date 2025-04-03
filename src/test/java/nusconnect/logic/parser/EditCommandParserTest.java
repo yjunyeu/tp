@@ -3,7 +3,6 @@ package nusconnect.logic.parser;
 import static nusconnect.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static nusconnect.logic.commands.CommandTestUtil.ALIAS_DESC_AMY;
 import static nusconnect.logic.commands.CommandTestUtil.ALIAS_DESC_BOB;
-import static nusconnect.logic.commands.CommandTestUtil.DESC_AMY;
 import static nusconnect.logic.commands.CommandTestUtil.EMAIL_DESC_AMY;
 import static nusconnect.logic.commands.CommandTestUtil.EMAIL_DESC_BOB;
 import static nusconnect.logic.commands.CommandTestUtil.INVALID_ALIAS_DESC;
