@@ -1,7 +1,6 @@
 package nusconnect.model.group;
 
 import static java.util.Objects.requireNonNull;
-import static nusconnect.commons.util.AppUtil.checkArgument;
 
 import java.util.Collections;
 import java.util.HashSet;
@@ -13,12 +12,9 @@ import nusconnect.model.person.Person;
 
 /**
  * Represents a Group in the address book.
- * Guarantees: immutable; name is valid as declared in {@link #isValidGroupName(String)}
+ * Guarantees: immutable
  */
 public class Group {
-
-    public static final String MESSAGE_CONSTRAINTS = "Group names should be alphanumeric";
-    public static final String VALIDATION_REGEX = "[\\p{Alnum}][\\p{Alnum} ]*";
 
     private final String groupName;
     private final Set<Person> members = new HashSet<>();
@@ -30,15 +26,7 @@ public class Group {
      */
     public Group(String groupName) {
         requireNonNull(groupName);
-        checkArgument(isValidGroupName(groupName), MESSAGE_CONSTRAINTS);
         this.groupName = groupName;
-    }
-
-    /**
-     * Returns true if a given string is a valid group name.
-     */
-    public static boolean isValidGroupName(String test) {
-        return test.matches(VALIDATION_REGEX);
     }
 
     /**

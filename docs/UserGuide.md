@@ -168,7 +168,8 @@ Creates a new group with the specified name.
 
 Format: `group create NAME`
 
-* The group name should be alphanumeric.
+* Creates a group with the specified `NAME`
+* Shown on the group panel UI
 
 Examples:
 * `group create CS2103T Team` Creates a new group named "CS2103T Team"
