@@ -14,18 +14,24 @@ public class ModuleTest {
     }
 
     @Test
+    public void constructor_invalidTagName_throwsIllegalArgumentException() {
+        String invalidModuleName = "";
+        assertThrows(IllegalArgumentException.class, () -> new Module(invalidModuleName));
+    }
+
+    @Test
     public void isValidModuleName() {
         // null module name
         assertThrows(NullPointerException.class, () -> Module.isValidModuleName(null));
 
         // blank module name
-        assertFalse(Module.isValidModuleName(new Module(""))); // empty module name
-        assertFalse(Module.isValidModuleName(new Module(" "))); // spaces only
+        assertFalse(Module.isValidModuleName("")); // empty module name
+        assertFalse(Module.isValidModuleName(" ")); // spaces only
 
         // missing parts
-        assertFalse(Module.isValidModuleName(new Module("2106"))); // missing 1st alphabetic part
-        assertFalse(Module.isValidModuleName(new Module("2103T"))); // missing 1st alphabetic part
-        assertFalse(Module.isValidModuleName(new Module("GEX"))); // missing numeric part
+        assertFalse(Module.isValidModuleName("2106")); // missing 1st alphabetic part
+        assertFalse(Module.isValidModuleName("2103T")); // missing 1st alphabetic part
+        assertFalse(Module.isValidModuleName("GEX")); // missing numeric part
 
         // invalid parts
         assertFalse(Module.isValidModuleName(new Module("C2106"))); // 1st alphabetic part below limit

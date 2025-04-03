@@ -1,6 +1,7 @@
 package nusconnect.model.person;
 
 import static java.util.Objects.requireNonNull;
+import static nusconnect.commons.util.AppUtil.checkArgument;
 
 /**
  * Represents a Person's name in the address book.
@@ -26,18 +27,15 @@ public class Name {
      */
     public Name(String name) {
         requireNonNull(name);
-        if (name.isEmpty()) {
-            fullName = "<no name>";
-        } else {
-            fullName = name;
-        }
+        checkArgument(isValidName(name), MESSAGE_CONSTRAINTS);
+        fullName = name;
     }
 
     /**
      * Returns true if a given string is a valid name.
      */
-    public static boolean isValidName(Name test) {
-        return test.fullName.matches(VALIDATION_REGEX);
+    public static boolean isValidName(String test) {
+        return test.matches(VALIDATION_REGEX);
     }
 
 

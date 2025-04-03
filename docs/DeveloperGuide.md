@@ -314,7 +314,6 @@ NUS students
 NUSConnect helps students quickly add, organise and find contacts with minimal effort.
 
 
-
 ### User Stories
 
 <table>
@@ -390,8 +389,14 @@ NUSConnect helps students quickly add, organise and find contacts with minimal e
         <tr class="low-priority">
             <td>*</td>
             <td>Student</td>
-            <td>View upcoming birthdays of contacts</td>
-            <td>Plan ahead for important dates</td>
+            <td>Export my contact list</td>
+            <td>Share it with others or to save it</td>
+        </tr>
+        <tr class="low-priority">
+            <td>*</td>
+            <td>Student</td>
+            <td>Import a contact list</td>
+            <td>Load previously saved or other's versions of the contact list</td>
         </tr>
     </tbody>
 </table>
@@ -460,7 +465,6 @@ NUSConnect helps students quickly add, organise and find contacts with minimal e
 
 **Use case: Listing directory**
 
-
 **MSS**
 
 1.  User request to list contacts
@@ -482,16 +486,14 @@ NUSConnect helps students quickly add, organise and find contacts with minimal e
 2.  Should be able to hold up to 1000 persons without a noticeable sluggishness in performance for typical usage.
 3.  A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
 4.  Should not require additional installation or system modifications beyond Java.
-5.  There should not be loss of data while using the application
-
-
-*{More to be added}*
+5.  There should not be loss of data while using the application.
 
 ### Glossary
 
 * **Mainstream OS**: Windows, Linux, Unix, MacOS
-* **Private contact detail**: A contact detail that is not meant to be shared with others
-
+* **Private contact detail**: A contact detail that is not meant to be shared with others.
+* **Major**: A primary major of a student, such as Computer Science.
+* **Module**: An NUS Module, such as CS2103T.
 --------------------------------------------------------------------------------------------------------------------
 
 ## **Appendix: Instructions for manual testing**
@@ -547,3 +549,13 @@ testers are expected to do more *exploratory* testing.
    1. _{explain how to simulate a missing/corrupted file, and the expected behavior}_
 
 1. _{ more test cases …​ }_
+
+--------------------------------------------------------------------------------------------------------------------
+
+## **Appendix: Planned Enhancements**
+
+Team size: 5
+
+1. **Make group delete** more versatile. The current group delete command is only able to delete the entire group. This
+is too restrictive. We plan to make `group delete` be able to delete specific member from a group. Adjust `group delete`
+to accept this format `group delete PERSON_INDEX from GROUP_INDEX`  so that we can remove specific member.
