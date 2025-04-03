@@ -311,16 +311,15 @@ Exports the current address book data to a specified file.
 
 format: `export FILE_PATH`
 
-* FILE_PATH refers to the location where the data will be exported.
-* The filename can be empty (i.e., the user only provides a path without a filename).
-* File extension provided by user will be ignored and the default (.json) extension will be used.
+* FILE_PATH refers to the location where the data will be exported. It can be either an absolute or relative path.
+* The filename cannot be empty, the file name should end with .json as file extension. (e.g. addressbook.json)
 * If a file already exists at the specified location, it will be overwritten with the current data.
 * If the file path is invalid or there are issues with writing the file (e.g., insufficient permissions), an error message will be displayed.
 
 Examples:
 
-* export exported_data.txt exports the address book data to the exported_data.txt file in the current directory.
-* export /Users/user/Downloads/addressbook_backup.json exports the address book data to a specific location on your system.
+* export exported_data.json exports the address book data to the ``exported_data.json`` file in the current directory.
+* export C:/Users/user/Downloads/addressbook_backup.json exports ``addressbook_backup.json`` to a ``C:/Users/user/Downloads``
 
 
 
@@ -335,9 +334,9 @@ Format: import FILE_PATH
 
 Examples:
 
-* import data.json imports data from the data.json file.
-* import ./backup/addressbook.json imports data from the addressbook.json file located in the backup folder.
-* import /Users/user/Documents/addressbook_data.txt imports data from the addressbook_data.txt file located in the specified directory.
+* import data.json imports data from the ``data.json`` file.
+* import backup/addressbook.json imports data from the ``addressbook.json`` file located in the backup folder.
+* import C:/Users/user/Documents/addressbook_data.txt imports data from the ``addressbook_data.txt`` file located in the `` C:/Users/user/Documents``
 
 ### Misc:
 
