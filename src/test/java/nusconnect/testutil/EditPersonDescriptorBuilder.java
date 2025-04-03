@@ -131,8 +131,8 @@ public class EditPersonDescriptorBuilder {
      * Parses the {@code Modules} into a {@code Set<Module>} and set it to the {@code EditPersonDescriptor}
      * that we are building.
      */
-    public EditPersonDescriptorBuilder withTags(String... tags) {
-        Set<Module> moduleSet = Stream.of(tags).map(Module::new).collect(Collectors.toSet());
+    public EditPersonDescriptorBuilder withModules(String... modules) {
+        Set<Module> moduleSet = Stream.of(modules).map(Module::new).collect(Collectors.toSet());
         descriptor.setModules(moduleSet);
         return this;
     }

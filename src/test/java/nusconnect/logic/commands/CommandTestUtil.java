@@ -57,8 +57,8 @@ public class CommandTestUtil {
     public static final String PHONE_DESC_BOB = " " + PREFIX_PHONE + VALID_PHONE_BOB;
     public static final String EMAIL_DESC_AMY = " " + PREFIX_EMAIL + VALID_EMAIL_AMY;
     public static final String EMAIL_DESC_BOB = " " + PREFIX_EMAIL + VALID_EMAIL_BOB;
-    public static final String TAG_DESC_FRIEND = " " + PREFIX_MODULE + VALID_MODULE_CS2106;
-    public static final String TAG_DESC_HUSBAND = " " + PREFIX_MODULE + VALID_MODULE_CS2103T;
+    public static final String MODULE_DESC_FRIEND = " " + PREFIX_MODULE + VALID_MODULE_CS2106;
+    public static final String MODULE_DESC_HUSBAND = " " + PREFIX_MODULE + VALID_MODULE_CS2103T;
     public static final String ALIAS_DESC_AMY = " " + PREFIX_ALIAS + VALID_ALIAS_AMY;
     public static final String ALIAS_DESC_BOB = " " + PREFIX_ALIAS + VALID_ALIAS_BOB;
     public static final String MAJOR_DESC_ANY = " " + PREFIX_MAJOR + VALID_MAJOR_ANY;
@@ -74,7 +74,7 @@ public class CommandTestUtil {
     public static final String INVALID_TELEGRAM_DESC = " " + PREFIX_TELEGRAM + "telehandle"; // Must start with @
     public static final String INVALID_PHONE_DESC = " " + PREFIX_PHONE + "911a"; // 'a' not allowed in phones
     public static final String INVALID_EMAIL_DESC = " " + PREFIX_EMAIL + "bob!yahoo"; // missing '@' symbol
-    public static final String INVALID_TAG_DESC = " " + PREFIX_MODULE + "hubby*"; // '*' not allowed in Modules
+    public static final String INVALID_MODULE_DESC = " " + PREFIX_MODULE + "hubby*"; // '*' not allowed in Modules
     public static final String INVALID_ALIAS_DESC = " " + PREFIX_ALIAS + "&"; // Only alphanumeric
     public static final String INVALID_MAJOR_DESC = " " + PREFIX_MAJOR + "1"; //Only alphabet and spaces
     public static final String INVALID_WEBSITE_DESC = " " + PREFIX_WEBSITE + "website"; // Not a url
@@ -93,7 +93,7 @@ public class CommandTestUtil {
                 .withNote(VALID_NOTE_AMY)
                 .withTelegram(VALID_TELEGRAM_AMY)
                 .withWebsite(VALID_WEBSITE_AMY)
-                .withTags(VALID_MODULE_CS2106)
+                .withModules(VALID_MODULE_CS2106)
                 .build();
         DESC_BOB = new EditPersonDescriptorBuilder().withName(VALID_NAME_BOB)
                 .withPhone(VALID_PHONE_BOB)
@@ -103,7 +103,7 @@ public class CommandTestUtil {
                 .withNote(VALID_NOTE_BOB)
                 .withTelegram(VALID_TELEGRAM_BOB)
                 .withWebsite(VALID_WEBSITE_BOB)
-                .withTags(VALID_MODULE_CS2106)
+                .withModules(VALID_MODULE_CS2106)
                 .build();
 
     }

@@ -86,8 +86,8 @@ public class PersonUtil {
             sb.append(PREFIX_WEBSITE).append(descriptor.getWebsite()).append(" ");
         }
 
-        if (descriptor.getTags().isPresent()) {
-            Set<Module> modules = descriptor.getTags().get();
+        if (descriptor.getModules().isPresent()) {
+            Set<Module> modules = descriptor.getModules().get();
             if (modules.isEmpty()) {
                 sb.append(PREFIX_MODULE);
             } else {
