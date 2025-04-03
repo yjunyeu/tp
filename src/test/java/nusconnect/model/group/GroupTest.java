@@ -19,30 +19,6 @@ public class GroupTest {
     }
 
     @Test
-    public void constructor_invalidGroupName_throwsIllegalArgumentException() {
-        String invalidGroupName = "";
-        assertThrows(IllegalArgumentException.class, () -> new Group(invalidGroupName));
-    }
-
-    @Test
-    public void isValidGroupName() {
-        // null group name
-        assertThrows(NullPointerException.class, () -> Group.isValidGroupName(null));
-
-        // invalid group name
-        assertFalse(Group.isValidGroupName("")); // empty string
-        assertFalse(Group.isValidGroupName(" ")); // spaces only
-        assertFalse(Group.isValidGroupName("^")); // only non-alphanumeric characters
-        assertFalse(Group.isValidGroupName("cs*2103")); // contains non-alphanumeric characters
-
-        // valid group name
-        assertTrue(Group.isValidGroupName("CS2103")); // alphabets and numbers only
-        assertTrue(Group.isValidGroupName("CS2103T")); // with uppercase
-        assertTrue(Group.isValidGroupName("Project Group 1")); // with spaces
-        assertTrue(Group.isValidGroupName("Software Engineering")); // with space
-    }
-
-    @Test
     public void getGroupName() {
         Group group = new Group("CS2103T");
         assertEquals("CS2103T", group.getGroupName());

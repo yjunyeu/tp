@@ -16,7 +16,7 @@ public class GroupCreateCommand extends GroupCommand {
 
     public static final String MESSAGE_USAGE = "group " + COMMAND_WORD
             + ": Creates a new group with the specified name.\n"
-            + "Parameters: NAME (must be alphanumeric)\n"
+            + "Parameters: NAME \n"
             + "Example: group " + COMMAND_WORD + " CS2103T";
 
     public static final String MESSAGE_SUCCESS = "New group created: %1$s";

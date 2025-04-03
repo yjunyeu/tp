@@ -478,6 +478,63 @@ NUSConnect helps students quickly add, organise and find contacts with minimal e
 
   Use case ends.
 
+
+**Use case: Creating a group**
+
+**MSS**
+
+1. User requests to create a group
+2. NUSConnect creates the group
+
+    Use case ends.
+
+
+**Use case: Adding a contact to a group**
+
+**MSS**
+
+1. User requests to list contacts
+2. NUSConnect shows a list of contacts
+3. User requests to add a contact to a group
+4. NUSConnect adds the contact to the chosen group
+
+    Use case ends.
+
+**Extensions**
+
+* 2a. The list is empty.
+
+  Use case ends.
+
+* 3a. Either the person index or group index is invalid.
+
+    * 3a1. NUSConnect shows an error message.
+
+      Use case resumes at step 2.
+
+
+**Use case: Deleting a group**
+
+**MSS**
+
+1. NUSConnect shows a list of groups
+2. User requests to delete a specific group in the group list
+3. NUSConnect deletes the group
+
+    Use case ends.
+
+**Extensions**
+
+* 1a. The group list is empty.
+
+  Use case ends.
+
+* 2a. The given group index is invalid.
+
+    * 3a1. NUSConnect shows an error message.
+
+      Use case resumes at step 1.
+
 *{More to be added}*
 
 ### Non-Functional Requirements
@@ -559,3 +616,7 @@ Team size: 5
 1. **Make group delete** more versatile. The current group delete command is only able to delete the entire group. This
 is too restrictive. We plan to make `group delete` be able to delete specific member from a group. Adjust `group delete`
 to accept this format `group delete PERSON_INDEX from GROUP_INDEX`  so that we can remove specific member.
+
+
+2. Currently, every person's details like `telegram`, `email` and others are stored in the group array in `addressbook.json`. Since only `name` is typically used within
+group context, we plan to update the group structure in storage to store only the person name. This keeps the JSON smaller.
