@@ -14,20 +14,26 @@ public class CourseTest {
     }
 
     @Test
+    public void constructor_invalidCourse_throwsIllegalArgumentException() {
+        String invalidCourse = "";
+        assertThrows(IllegalArgumentException.class, () -> new Course(invalidCourse));
+    }
+
+    @Test
     public void isValidCourse() {
         // null course
         assertThrows(NullPointerException.class, () -> Course.isValidCourse(null));
 
         // invalid course
-        assertFalse(Course.isValidCourse(new Course(""))); // empty string
-        assertFalse(Course.isValidCourse(new Course(" "))); // spaces only
-        assertFalse(Course.isValidCourse(new Course("^"))); // only non-alphabets
-        assertFalse(Course.isValidCourse(new Course("Computer*Science"))); // contains non-alphabets
+        assertFalse(Course.isValidCourse("")); // empty string
+        assertFalse(Course.isValidCourse(" ")); // spaces only
+        assertFalse(Course.isValidCourse("^")); // only non-alphabets
+        assertFalse(Course.isValidCourse("Computer*Science")); // contains non-alphanbets
 
         // valid course
-        assertTrue(Course.isValidCourse(new Course("computer science"))); // alphabets only
-        assertTrue(Course.isValidCourse(new Course("Computer Science"))); // with capital letters
-        assertTrue(Course.isValidCourse(new Course("Computer Science with Mathematics"))); // long course name
+        assertTrue(Course.isValidCourse("computer science")); // alphabets only
+        assertTrue(Course.isValidCourse("Computer Science")); // with capital letters
+        assertTrue(Course.isValidCourse("Computer Science with a second major in Mathematics")); // long courses
     }
 
     @Test

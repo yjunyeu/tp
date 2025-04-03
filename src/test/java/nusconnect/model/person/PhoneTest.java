@@ -14,22 +14,28 @@ public class PhoneTest {
     }
 
     @Test
+    public void constructor_invalidPhone_throwsIllegalArgumentException() {
+        String invalidPhone = "";
+        assertThrows(IllegalArgumentException.class, () -> new Phone(invalidPhone));
+    }
+
+    @Test
     public void isValidPhone() {
         // null phone number
         assertThrows(NullPointerException.class, () -> Phone.isValidPhone(null));
 
         // invalid phone numbers
-        assertFalse(Phone.isValidPhone(new Phone(""))); // empty string
-        assertFalse(Phone.isValidPhone(new Phone(" "))); // spaces only
-        assertFalse(Phone.isValidPhone(new Phone("91"))); // not 8 numbers
-        assertFalse(Phone.isValidPhone(new Phone("phone"))); // non-numeric
-        assertFalse(Phone.isValidPhone(new Phone("9011p041"))); // alphabets within digits
-        assertFalse(Phone.isValidPhone(new Phone("9312 1534"))); // spaces within digits
+        assertFalse(Phone.isValidPhone("")); // empty string
+        assertFalse(Phone.isValidPhone(" ")); // spaces only
+        assertFalse(Phone.isValidPhone("91")); // less than 3 numbers
+        assertFalse(Phone.isValidPhone("phone")); // non-numeric
+        assertFalse(Phone.isValidPhone("9011p041")); // alphabets within digits
+        assertFalse(Phone.isValidPhone("9312 1534")); // spaces within digits
 
         // valid phone numbers
-        assertTrue(Phone.isValidPhone(new Phone("12345678"))); // exactly 8 numbers
-        assertTrue(Phone.isValidPhone(new Phone("00000000")));
-        assertTrue(Phone.isValidPhone(new Phone("99999999")));
+        assertTrue(Phone.isValidPhone("12345678")); // exactly 8 numbers
+        assertTrue(Phone.isValidPhone("00000000"));
+        assertTrue(Phone.isValidPhone("99999999"));
     }
 
     @Test

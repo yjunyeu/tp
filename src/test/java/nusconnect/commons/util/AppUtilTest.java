@@ -27,4 +27,10 @@ public class AppUtilTest {
     public void checkArgument_falseWithoutErrorMessage_throwsIllegalArgumentException() {
         assertThrows(IllegalArgumentException.class, () -> AppUtil.checkArgument(false));
     }
+
+    @Test
+    public void checkArgument_falseWithErrorMessage_throwsIllegalArgumentException() {
+        String errorMessage = "error message";
+        assertThrows(IllegalArgumentException.class, errorMessage, () -> AppUtil.checkArgument(false, errorMessage));
+    }
 }

@@ -8,8 +8,13 @@ import static nusconnect.logic.commands.CommandTestUtil.COURSE_DESC_BOB;
 import static nusconnect.logic.commands.CommandTestUtil.EMAIL_DESC_AMY;
 import static nusconnect.logic.commands.CommandTestUtil.EMAIL_DESC_BOB;
 import static nusconnect.logic.commands.CommandTestUtil.INVALID_ALIAS_DESC;
+import static nusconnect.logic.commands.CommandTestUtil.INVALID_COURSE_DESC;
 import static nusconnect.logic.commands.CommandTestUtil.INVALID_EMAIL_DESC;
+import static nusconnect.logic.commands.CommandTestUtil.INVALID_NAME_DESC;
 import static nusconnect.logic.commands.CommandTestUtil.INVALID_PHONE_DESC;
+import static nusconnect.logic.commands.CommandTestUtil.INVALID_TAG_DESC;
+import static nusconnect.logic.commands.CommandTestUtil.INVALID_TELEGRAM_DESC;
+import static nusconnect.logic.commands.CommandTestUtil.INVALID_WEBSITE_DESC;
 import static nusconnect.logic.commands.CommandTestUtil.NAME_DESC_AMY;
 import static nusconnect.logic.commands.CommandTestUtil.NOTE_DESC_AMY;
 import static nusconnect.logic.commands.CommandTestUtil.NOTE_DESC_BOB;
@@ -53,6 +58,14 @@ import nusconnect.commons.core.index.Index;
 import nusconnect.logic.Messages;
 import nusconnect.logic.commands.EditCommand;
 import nusconnect.logic.commands.EditCommand.EditPersonDescriptor;
+import nusconnect.model.module.Module;
+import nusconnect.model.person.Alias;
+import nusconnect.model.person.Course;
+import nusconnect.model.person.Email;
+import nusconnect.model.person.Name;
+import nusconnect.model.person.Phone;
+import nusconnect.model.person.Telegram;
+import nusconnect.model.person.Website;
 import nusconnect.testutil.EditPersonDescriptorBuilder;
 
 public class EditCommandParserTest {
@@ -92,6 +105,33 @@ public class EditCommandParserTest {
     }
 
     @Test
+    public void parse_invalidValue_failure() {
+        assertParseFailure(parser, "1" + INVALID_NAME_DESC, Name.MESSAGE_CONSTRAINTS); // invalid name
+        assertParseFailure(parser, "1" + INVALID_PHONE_DESC, Phone.MESSAGE_CONSTRAINTS); // invalid phone
+        assertParseFailure(parser, "1" + INVALID_EMAIL_DESC, Email.MESSAGE_CONSTRAINTS); // invalid email
+        assertParseFailure(parser, "1" + INVALID_ALIAS_DESC, Alias.MESSAGE_CONSTRAINTS); // invalid alias
+        assertParseFailure(parser, "1" + INVALID_COURSE_DESC, Course.MESSAGE_CONSTRAINTS); // invalid course
+        assertParseFailure(parser, "1" + INVALID_TELEGRAM_DESC, Telegram.MESSAGE_CONSTRAINTS); // invalid telegram
+        assertParseFailure(parser, "1" + INVALID_WEBSITE_DESC, Website.MESSAGE_CONSTRAINTS); // invalid website
+
+        assertParseFailure(parser, "1" + INVALID_TAG_DESC, Module.MESSAGE_CONSTRAINTS); // invalid module
+
+        // invalid phone followed by valid email
+        assertParseFailure(parser, "1" + INVALID_PHONE_DESC + EMAIL_DESC_AMY, Phone.MESSAGE_CONSTRAINTS);
+
+        // while parsing {@code PREFIX_MODULE} alone will reset the Modules of the {@code Person} being edited,
+        // parsing it together with a valid module results in error
+        assertParseFailure(parser, "1" + TAG_DESC_FRIEND + TAG_DESC_HUSBAND + TAG_EMPTY, Module.MESSAGE_CONSTRAINTS);
+        assertParseFailure(parser, "1" + TAG_DESC_FRIEND + TAG_EMPTY + TAG_DESC_HUSBAND, Module.MESSAGE_CONSTRAINTS);
+        assertParseFailure(parser, "1" + TAG_EMPTY + TAG_DESC_FRIEND + TAG_DESC_HUSBAND, Module.MESSAGE_CONSTRAINTS);
+
+        // multiple invalid values, but only the first invalid value is captured
+        assertParseFailure(parser, "1" + INVALID_NAME_DESC + INVALID_EMAIL_DESC + VALID_PHONE_AMY
+                        + VALID_ALIAS_AMY,
+                Name.MESSAGE_CONSTRAINTS);
+    }
+
+    @Test
     public void parse_allFieldsSpecified_success() {
         Index targetIndex = INDEX_SECOND;
         String userInput = targetIndex.getOneBased()
@@ -99,6 +139,8 @@ public class EditCommandParserTest {
                 + ALIAS_DESC_BOB + COURSE_DESC_BOB + NOTE_DESC_BOB
                 + TELEGRAM_DESC_BOB + WEBSITE_DESC_BOB
                 + TAG_DESC_HUSBAND + TAG_DESC_FRIEND;
+
+
 
         EditPersonDescriptor descriptor = new EditPersonDescriptorBuilder()
                 .withName(VALID_NAME_AMY)
