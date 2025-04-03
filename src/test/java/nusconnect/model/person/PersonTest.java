@@ -1,8 +1,8 @@
 package nusconnect.model.person;
 
 import static nusconnect.logic.commands.CommandTestUtil.VALID_ALIAS_BOB;
-import static nusconnect.logic.commands.CommandTestUtil.VALID_COURSE_BOB;
 import static nusconnect.logic.commands.CommandTestUtil.VALID_EMAIL_BOB;
+import static nusconnect.logic.commands.CommandTestUtil.VALID_MAJOR_BOB;
 import static nusconnect.logic.commands.CommandTestUtil.VALID_MODULE_CS2103T;
 import static nusconnect.logic.commands.CommandTestUtil.VALID_MODULE_CS2106;
 import static nusconnect.logic.commands.CommandTestUtil.VALID_NAME_AMY;
@@ -43,7 +43,7 @@ public class PersonTest {
                 .withPhone(VALID_PHONE_BOB)
                 .withEmail(VALID_EMAIL_BOB)
                 .withAlias(VALID_ALIAS_BOB)
-                .withCourse(VALID_COURSE_BOB)
+                .withMajor(VALID_MAJOR_BOB)
                 .withNote(VALID_NOTE_BOB)
                 .withTelegram(VALID_TELEGRAM_BOB)
                 .withWebsite(VALID_WEBSITE_BOB)
@@ -99,8 +99,8 @@ public class PersonTest {
         editedAlice = new PersonBuilder(ALICE).withAlias(VALID_ALIAS_BOB).build();
         assertFalse(ALICE.equals(editedAlice));
 
-        // different course -> returns false
-        editedAlice = new PersonBuilder(ALICE).withCourse(VALID_COURSE_BOB).build();
+        // different major -> returns false
+        editedAlice = new PersonBuilder(ALICE).withMajor(VALID_MAJOR_BOB).build();
         assertFalse(ALICE.equals(editedAlice));
 
         // different note -> returns false
@@ -128,7 +128,7 @@ public class PersonTest {
                 + ", phone=" + ALICE.getPhone().orElse(null)
                 + ", email=" + ALICE.getEmail().orElse(null)
                 + ", alias=" + ALICE.getAlias().orElse(null)
-                + ", course=" + ALICE.getCourse().orElse(null)
+                + ", major=" + ALICE.getMajor().orElse(null)
                 + ", note=" + ALICE.getNote().orElse(null)
                 + ", website=" + ALICE.getWebsite().orElse(null)
                 + ", modules=" + ALICE.getModules() + "}";

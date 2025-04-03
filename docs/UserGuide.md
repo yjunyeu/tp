@@ -80,7 +80,7 @@ traditional address book!
 
 Adds a person to the address book.
 
-Format: `add n/NAME t/TELEGRAM [p/PHONE_NUMBER] [e/EMAIL] [a/ALIAS] [c/COURSE] [no/NOTE] [w/WEBSITE] [m/MODULE]…​`
+Format: `add n/NAME t/TELEGRAM [p/PHONE_NUMBER] [e/EMAIL] [a/ALIAS] [ma/MAJOR] [no/NOTE] [w/WEBSITE] [m/MODULE]…​`
 
 <div markdown="span" class="alert alert-primary">:bulb: **Tip:**
 A person can have any number of modules (including 0)
@@ -91,7 +91,7 @@ Examples:
 After forming a group in CS2103T Software Engineering, you add your two teammates to NUSConnect:
 
 * `add n/John Doe p/98765432 e/john@u.nus.edu a/John no/Enjoys programming t/@johndoe w/https://johndoe.com m/CS2103T`
-* `add n/Betsy Crowe t/@bcrowe c/Information Security no/Group Leader w/https://linkedin.com/betsycrowe m/CS2103T`
+* `add n/Betsy Crowe t/@bcrowe ma/Information Security no/Group Leader w/https://linkedin.com/betsycrowe m/CS2103T`
 
 ![AddExample](images/AddExample.png)
 
@@ -99,7 +99,7 @@ After forming a group in CS2103T Software Engineering, you add your two teammate
 
 Edits an existing person in the address book.
 
-Format: `edit INDEX [n/NAME] [t/TELEGRAM] [p/PHONE] [e/EMAIL] [a/ALIAS] [c/COURSE] [no/NOTE] [w/WEBSITE] [m/MODULE]…​`
+Format: `edit INDEX [n/NAME] [t/TELEGRAM] [p/PHONE] [e/EMAIL] [a/ALIAS] [ma/MAJOR] [no/NOTE] [w/WEBSITE] [m/MODULE]…​`
 
 * Edits the person at the specified `INDEX`. The index refers to the index number shown in the displayed person list. The index **must be a positive integer** 1, 2, 3, …​
 * At least one of the optional fields must be provided.
@@ -389,8 +389,8 @@ Format: `exit`
 
 Action | Format, Examples
 --------|------------------
-**Add** | `add n/NAME t/TELEGRAM [p/PHONE_NUMBER] [e/EMAIL] [a/ALIAS] [c/COURSE] [no/NOTE] [w/WEBSITE] [m/MODULE]…​` <br> e.g., `add n/John Doe t/@johndoe p/98765432 e/johnd@example.com a/alias123 c/CompSci no/Enjoys programming w/https://johndoe.com m/CS2103T`
-**Edit** | `edit INDEX [n/NAME] [t/TELEGRAM] [p/PHONE] [e/EMAIL] [a/ALIAS] [c/COURSE] [no/NOTE] [w/WEBSITE] [m/MODULE]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`
+**Add** | `add n/NAME t/TELEGRAM [p/PHONE_NUMBER] [e/EMAIL] [a/ALIAS] [ma/MAJOR] [no/NOTE] [w/WEBSITE] [m/MODULE]…​` <br> e.g., `add n/John Doe t/@johndoe p/98765432 e/johnd@example.com a/alias123 ma/CompSci no/Enjoys programming w/https://johndoe.com m/CS2103T`
+**Edit** | `edit INDEX [n/NAME] [t/TELEGRAM] [p/PHONE] [e/EMAIL] [a/ALIAS] [ma/MAJOR] [no/NOTE] [w/WEBSITE] [m/MODULE]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`
 **Delete** | `delete INDEX [MORE_INDICES]`<br> e.g., `delete 3` `delete 1 3 5`
 **Clear** | `clear`
 **Group create** | `group create NAME`<br> e.g., `group create CS2103T Team`

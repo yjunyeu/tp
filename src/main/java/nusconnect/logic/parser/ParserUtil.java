@@ -11,8 +11,8 @@ import nusconnect.commons.util.StringUtil;
 import nusconnect.logic.parser.exceptions.ParseException;
 import nusconnect.model.module.Module;
 import nusconnect.model.person.Alias;
-import nusconnect.model.person.Course;
 import nusconnect.model.person.Email;
+import nusconnect.model.person.Major;
 import nusconnect.model.person.Name;
 import nusconnect.model.person.Note;
 import nusconnect.model.person.Phone;
@@ -117,18 +117,18 @@ public class ParserUtil {
 
 
     /**
-     * Parses a {@code String course} into an {@code Course}.
+     * Parses a {@code String major} into an {@code Major}.
      * Leading and trailing whitespaces will be trimmed.
      *
-     * @throws ParseException if the given {@code course} is invalid.
+     * @throws ParseException if the given {@code major} is invalid.
      */
-    public static Course parseCourse(String course) throws ParseException {
-        requireNonNull(course);
-        String trimmedCourse = course.trim();
-        if (!Course.isValidCourse(trimmedCourse)) {
-            throw new ParseException(Course.MESSAGE_CONSTRAINTS);
+    public static Major parseMajor(String major) throws ParseException {
+        requireNonNull(major);
+        String trimmedMajor = major.trim();
+        if (!Major.isValidMajor(trimmedMajor)) {
+            throw new ParseException(Major.MESSAGE_CONSTRAINTS);
         }
-        return new Course(trimmedCourse);
+        return new Major(trimmedMajor);
     }
 
     /**

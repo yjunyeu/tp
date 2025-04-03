@@ -2,8 +2,8 @@ package nusconnect.logic.commands;
 
 import static java.util.Objects.requireNonNull;
 import static nusconnect.logic.parser.CliSyntax.PREFIX_ALIAS;
-import static nusconnect.logic.parser.CliSyntax.PREFIX_COURSE;
 import static nusconnect.logic.parser.CliSyntax.PREFIX_EMAIL;
+import static nusconnect.logic.parser.CliSyntax.PREFIX_MAJOR;
 import static nusconnect.logic.parser.CliSyntax.PREFIX_MODULE;
 import static nusconnect.logic.parser.CliSyntax.PREFIX_NAME;
 import static nusconnect.logic.parser.CliSyntax.PREFIX_NOTE;
@@ -26,8 +26,8 @@ import nusconnect.logic.commands.exceptions.CommandException;
 import nusconnect.model.Model;
 import nusconnect.model.module.Module;
 import nusconnect.model.person.Alias;
-import nusconnect.model.person.Course;
 import nusconnect.model.person.Email;
+import nusconnect.model.person.Major;
 import nusconnect.model.person.Name;
 import nusconnect.model.person.Note;
 import nusconnect.model.person.Person;
@@ -51,7 +51,7 @@ public class EditCommand extends Command {
             + "[" + PREFIX_PHONE + "PHONE] "
             + "[" + PREFIX_EMAIL + "EMAIL] "
             + "[" + PREFIX_ALIAS + "ALIAS] "
-            + "[" + PREFIX_COURSE + "COURSE] "
+            + "[" + PREFIX_MAJOR + "MAJOR] "
             + "[" + PREFIX_NOTE + "NOTE] "
             + "[" + PREFIX_WEBSITE + "WEBSITE] "
             + "[" + PREFIX_MODULE + "MODULE]...\n"
@@ -122,8 +122,8 @@ public class EditCommand extends Command {
                 : personToEdit.getEmail().orElse(null);
         Alias updatedAlias = editPersonDescriptor.getIsAliasEdited() ? editPersonDescriptor.getAlias()
                 : personToEdit.getAlias().orElse(null);
-        Course updatedCourse = editPersonDescriptor.getIsCourseEdited() ? editPersonDescriptor.getCourse()
-                : personToEdit.getCourse().orElse(null);
+        Major updatedMajor = editPersonDescriptor.getIsMajorEdited() ? editPersonDescriptor.getMajor()
+                : personToEdit.getMajor().orElse(null);
         Note updatedNote = editPersonDescriptor.getIsNoteEdited() ? editPersonDescriptor.getNote()
                 : personToEdit.getNote().orElse(null);
         Website updatedWebsite = editPersonDescriptor.getIsWebsiteEdited() ? editPersonDescriptor.getWebsite()
@@ -131,7 +131,7 @@ public class EditCommand extends Command {
         Set<Module> updatedModules = editPersonDescriptor.getTags().orElse(personToEdit.getModules());
 
         return new Person(updatedName, updatedTelegram, updatedPhone,
-                updatedEmail, updatedAlias, updatedCourse, updatedNote, updatedWebsite, updatedModules);
+                updatedEmail, updatedAlias, updatedMajor, updatedNote, updatedWebsite, updatedModules);
     }
 
     @Override
@@ -168,7 +168,7 @@ public class EditCommand extends Command {
         private Phone phone;
         private Email email;
         private Alias alias;
-        private Course course;
+        private Major major;
         private Note note;
         private Website website;
         private Set<Module> modules;
@@ -177,7 +177,7 @@ public class EditCommand extends Command {
         private boolean isPhoneEdited = false;
         private boolean isEmailEdited = false;
         private boolean isAliasEdited = false;
-        private boolean isCourseEdited = false;
+        private boolean isMajorEdited = false;
         private boolean isNoteEdited = false;
         private boolean isWebsiteEdited = false;
         private boolean isModulesEdited = false;
@@ -198,8 +198,8 @@ public class EditCommand extends Command {
             setIsEmailEdited(toCopy.isEmailEdited);
             setAlias(toCopy.alias);
             setIsAliasEdited(toCopy.isAliasEdited);
-            setCourse(toCopy.course);
-            setIsCourseEdited(toCopy.isCourseEdited);
+            setMajor(toCopy.major);
+            setIsMajorEdited(toCopy.isMajorEdited);
             setNote(toCopy.note);
             setIsNoteEdited(toCopy.isNoteEdited);
             setWebsite(toCopy.website);
@@ -212,7 +212,7 @@ public class EditCommand extends Command {
          */
         public boolean isAnyFieldEdited() {
             return isNameEdited || isTelegramEdited || isPhoneEdited || isEmailEdited
-                    || isAliasEdited || isCourseEdited || isNoteEdited || isWebsiteEdited || isModulesEdited;
+                    || isAliasEdited || isMajorEdited || isNoteEdited || isWebsiteEdited || isModulesEdited;
         }
 
         public void setName(Name name) {
@@ -295,20 +295,20 @@ public class EditCommand extends Command {
             return isAliasEdited;
         }
 
-        public void setCourse(Course course) {
-            this.course = course;
+        public void setMajor(Major major) {
+            this.major = major;
         }
 
-        public Course getCourse() {
-            return course;
+        public Major getMajor() {
+            return major;
         }
 
-        public void setIsCourseEdited(boolean isCourseEdited) {
-            this.isCourseEdited = isCourseEdited;
+        public void setIsMajorEdited(boolean isMajorEdited) {
+            this.isMajorEdited = isMajorEdited;
         }
 
-        public Boolean getIsCourseEdited() {
-            return isCourseEdited;
+        public Boolean getIsMajorEdited() {
+            return isMajorEdited;
         }
 
         public void setNote(Note note) {
@@ -378,7 +378,7 @@ public class EditCommand extends Command {
                     && Objects.equals(phone, otherEditPersonDescriptor.phone)
                     && Objects.equals(email, otherEditPersonDescriptor.email)
                     && Objects.equals(alias, otherEditPersonDescriptor.alias)
-                    && Objects.equals(course, otherEditPersonDescriptor.course)
+                    && Objects.equals(major, otherEditPersonDescriptor.major)
                     && Objects.equals(note, otherEditPersonDescriptor.note)
                     && Objects.equals(website, otherEditPersonDescriptor.website)
                     && Objects.equals(modules, otherEditPersonDescriptor.modules);
@@ -392,7 +392,7 @@ public class EditCommand extends Command {
                     .add("phone", phone)
                     .add("email", email)
                     .add("alias", alias)
-                    .add("course", course)
+                    .add("major", major)
                     .add("note", note)
                     .add("website", website)
                     .add("modules", modules)

@@ -49,7 +49,7 @@ public class Messages {
         person.getPhone().ifPresent(phone -> builder.append("; Phone: ").append(phone));
         person.getEmail().ifPresent(email -> builder.append("; Email: ").append(email));
         person.getAlias().ifPresent(alias -> builder.append("; Alias: ").append(alias));
-        person.getCourse().ifPresent(course -> builder.append("; Course: ").append(course));
+        person.getMajor().ifPresent(major -> builder.append("; Major: ").append(major));
         person.getNote().ifPresent(note -> builder.append("; Note: ").append(note));
         person.getWebsite().ifPresent(website -> builder.append("; Website: ").append(website));
         if (!person.getModules().isEmpty()) {

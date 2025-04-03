@@ -2,10 +2,10 @@ package nusconnect.testutil;
 
 import static nusconnect.logic.commands.CommandTestUtil.VALID_ALIAS_AMY;
 import static nusconnect.logic.commands.CommandTestUtil.VALID_ALIAS_BOB;
-import static nusconnect.logic.commands.CommandTestUtil.VALID_COURSE_AMY;
-import static nusconnect.logic.commands.CommandTestUtil.VALID_COURSE_BOB;
 import static nusconnect.logic.commands.CommandTestUtil.VALID_EMAIL_AMY;
 import static nusconnect.logic.commands.CommandTestUtil.VALID_EMAIL_BOB;
+import static nusconnect.logic.commands.CommandTestUtil.VALID_MAJOR_ANY;
+import static nusconnect.logic.commands.CommandTestUtil.VALID_MAJOR_BOB;
 import static nusconnect.logic.commands.CommandTestUtil.VALID_MODULE_CS2103T;
 import static nusconnect.logic.commands.CommandTestUtil.VALID_MODULE_CS2106;
 import static nusconnect.logic.commands.CommandTestUtil.VALID_NAME_AMY;
@@ -35,7 +35,7 @@ public class TypicalPersons {
             .withEmail("alice@example.com")
             .withPhone("94351253")
             .withAlias("AliceAlias")
-            .withCourse("Engineering")
+            .withMajor("Engineering")
             .withNote("Enjoys reading")
             .withTelegram("@alice")
             .withWebsite("https://alicepauline.com")
@@ -45,7 +45,7 @@ public class TypicalPersons {
             .withEmail("johnd@example.com")
             .withPhone("98765432")
             .withAlias("BensonAlias")
-            .withCourse("Comp Science")
+            .withMajor("Comp Science")
             .withNote("Great at teamwork")
             .withTelegram("@benson")
             .withWebsite("https://bensonmeier.com")
@@ -55,7 +55,7 @@ public class TypicalPersons {
             .withPhone("95352563")
             .withEmail("heinz@example.com")
             .withAlias("CarlAlias")
-            .withCourse("Business")
+            .withMajor("Business")
             .withNote("Detail-oriented")
             .withTelegram("@carlkurz")
             .withWebsite("https://carlkurz.com")
@@ -65,7 +65,7 @@ public class TypicalPersons {
             .withPhone("87652533")
             .withEmail("cornelia@example.com")
             .withAlias("DanielAlias")
-            .withCourse("Mech Eng")
+            .withMajor("Mech Eng")
             .withNote("Enthusiastic learner")
             .withTelegram("@daniel")
             .withWebsite("https://danielmeier.com")
@@ -75,7 +75,7 @@ public class TypicalPersons {
             .withPhone("94822242")
             .withEmail("werner@example.com")
             .withAlias("ElleAlias")
-            .withCourse("Comp Science")
+            .withMajor("Comp Science")
             .withNote("Creative thinker")
             .withTelegram("@ellemeyer")
             .withWebsite("https://ellemeyer.com")
@@ -85,7 +85,7 @@ public class TypicalPersons {
             .withPhone("94824272")
             .withEmail("lydia@example.com")
             .withAlias("FionaAlias")
-            .withCourse("Engineering")
+            .withMajor("Engineering")
             .withNote("Tech savvy")
             .withTelegram("@fionakunz")
             .withWebsite("https://fionakunz.com")
@@ -95,7 +95,7 @@ public class TypicalPersons {
             .withPhone("94824422")
             .withEmail("anna@example.com")
             .withAlias("GeorgeAlias")
-            .withCourse("Business")
+            .withMajor("Business")
             .withNote("Sports enthusiast")
             .withTelegram("@georgebest")
             .withWebsite("https://georgebest.com")
@@ -106,7 +106,7 @@ public class TypicalPersons {
             .withPhone("84824242")
             .withEmail("stefan@example.com")
             .withAlias("HoonAlias")
-            .withCourse("Engineering")
+            .withMajor("Engineering")
             .withNote("Friendly")
             .withTelegram("@hoonmeier")
             .withWebsite("https://hoonmeier.com")
@@ -116,7 +116,7 @@ public class TypicalPersons {
             .withPhone("84821312")
             .withEmail("hans@example.com")
             .withAlias("IdaAlias")
-            .withCourse("Comp Science")
+            .withMajor("Comp Science")
             .withNote("Reliable")
             .withTelegram("@idamueller")
             .withWebsite("https://idamueller.com")
@@ -127,7 +127,7 @@ public class TypicalPersons {
             .withPhone(VALID_PHONE_AMY)
             .withEmail(VALID_EMAIL_AMY)
             .withAlias(VALID_ALIAS_AMY)
-            .withCourse(VALID_COURSE_AMY)
+            .withMajor(VALID_MAJOR_ANY)
             .withNote(VALID_NOTE_AMY)
             .withTelegram(VALID_TELEGRAM_AMY)
             .withWebsite(VALID_WEBSITE_AMY)
@@ -138,7 +138,7 @@ public class TypicalPersons {
             .withPhone(VALID_PHONE_BOB)
             .withEmail(VALID_EMAIL_BOB)
             .withAlias(VALID_ALIAS_BOB)
-            .withCourse(VALID_COURSE_BOB)
+            .withMajor(VALID_MAJOR_BOB)
             .withNote(VALID_NOTE_BOB)
             .withTelegram(VALID_TELEGRAM_BOB)
             .withWebsite(VALID_WEBSITE_BOB)

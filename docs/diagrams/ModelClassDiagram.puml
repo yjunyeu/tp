@@ -19,7 +19,7 @@ Class Telegram
 Class Phone
 Class Email
 Class Alias
-Class Course
+Class Major
 Class Note
 Class Website
 Class Module
@@ -46,7 +46,7 @@ Person *--> Telegram
 Person *--> "0..1" Phone
 Person *--> "0..1" Email
 Person *--> "0..1" Alias
-Person *--> "0..1" Course
+Person *--> "0..1" Major
 Person *--> "0..1" Note
 Person *--> "0..1" Website
 Person *--> "*" Module

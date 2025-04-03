@@ -25,7 +25,7 @@ public class Person {
     private final Optional<Phone> phone;
     private final Optional<Email> email;
     private final Optional<Alias> alias;
-    private final Optional<Course> course;
+    private final Optional<Major> major;
     private final Optional<Note> note;
     private final Optional<Website> website;
     private final Set<Module> modules = new HashSet<>();
@@ -38,20 +38,20 @@ public class Person {
      * @param phone the phone number of the person (may be null)
      * @param email the email address of the person (may be null)
      * @param alias the alias of the person (may be null)
-     * @param course the course the person is enrolled in (may be null)
+     * @param major the major the person is enrolled in (may be null)
      * @param note any additional notes about the person (may be null)
      * @param website the website of the person (may be null)
      * @param modules the set of modules the person is enrolled in (must not be null)
      */
-    public Person(Name name, Telegram telegram, Phone phone, Email email, Alias alias, Course course, Note note,
-                   Website website, Set<Module> modules) {
+    public Person(Name name, Telegram telegram, Phone phone, Email email, Alias alias, Major major, Note note,
+                  Website website, Set<Module> modules) {
         requireAllNonNull(name, telegram);
         this.name = name;
         this.telegram = telegram;
         this.phone = Optional.ofNullable(phone);
         this.email = Optional.ofNullable(email);
         this.alias = Optional.ofNullable(alias);
-        this.course = Optional.ofNullable(course);
+        this.major = Optional.ofNullable(major);
         this.note = Optional.ofNullable(note);
         this.website = Optional.ofNullable(website);
         this.modules.addAll(modules);
@@ -77,8 +77,8 @@ public class Person {
         return alias;
     }
 
-    public Optional<Course> getCourse() {
-        return course;
+    public Optional<Major> getMajor() {
+        return major;
     }
 
     public Optional<Note> getNote() {
@@ -131,7 +131,7 @@ public class Person {
                 && phone.equals(otherPerson.phone)
                 && email.equals(otherPerson.email)
                 && alias.equals(otherPerson.alias)
-                && course.equals(otherPerson.course)
+                && major.equals(otherPerson.major)
                 && note.equals(otherPerson.note)
                 && website.equals(otherPerson.website)
                 && modules.equals(otherPerson.modules);
@@ -140,7 +140,7 @@ public class Person {
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(name, telegram, phone, email, alias, course, note, website, modules);
+        return Objects.hash(name, telegram, phone, email, alias, major, note, website, modules);
     }
 
     @Override
@@ -151,7 +151,7 @@ public class Person {
                 .add("phone", phone.orElse(null))
                 .add("email", email.orElse(null))
                 .add("alias", alias.orElse(null))
-                .add("course", course.orElse(null))
+                .add("major", major.orElse(null))
                 .add("note", note.orElse(null))
                 .add("website", website.orElse(null))
                 .add("modules", modules)

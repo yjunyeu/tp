@@ -2,8 +2,8 @@ package nusconnect.logic.commands;
 
 import static java.util.Objects.requireNonNull;
 import static nusconnect.logic.parser.CliSyntax.PREFIX_ALIAS;
-import static nusconnect.logic.parser.CliSyntax.PREFIX_COURSE;
 import static nusconnect.logic.parser.CliSyntax.PREFIX_EMAIL;
+import static nusconnect.logic.parser.CliSyntax.PREFIX_MAJOR;
 import static nusconnect.logic.parser.CliSyntax.PREFIX_MODULE;
 import static nusconnect.logic.parser.CliSyntax.PREFIX_NAME;
 import static nusconnect.logic.parser.CliSyntax.PREFIX_NOTE;
@@ -31,7 +31,7 @@ public class AddCommand extends Command {
             + "[" + PREFIX_PHONE + "PHONE" + "] "
             + "[" + PREFIX_EMAIL + "EMAIL" + "] "
             + "[" + PREFIX_ALIAS + "ALIAS" + "] "
-            + "[" + PREFIX_COURSE + "COURSE" + "] "
+            + "[" + PREFIX_MAJOR + "MAJOR" + "] "
             + "[" + PREFIX_NOTE + "NOTE" + "] "
             + "[" + PREFIX_WEBSITE + "WEBSITE" + "] "
             + "[" + PREFIX_MODULE + "MODULE" + "]...\n"
@@ -41,7 +41,7 @@ public class AddCommand extends Command {
             + PREFIX_PHONE + "98765432 "
             + PREFIX_EMAIL + "johnd@example.com "
             + PREFIX_ALIAS + "alias123 "
-            + PREFIX_COURSE + "CompSci "
+            + PREFIX_MAJOR + "CompSci "
             + PREFIX_NOTE + "Enjoys programming "
             + PREFIX_WEBSITE + "https://johndoe.com "
             + PREFIX_MODULE + "CS2103T";

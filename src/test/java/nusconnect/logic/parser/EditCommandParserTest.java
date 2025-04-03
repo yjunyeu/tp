@@ -3,18 +3,18 @@ package nusconnect.logic.parser;
 import static nusconnect.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static nusconnect.logic.commands.CommandTestUtil.ALIAS_DESC_AMY;
 import static nusconnect.logic.commands.CommandTestUtil.ALIAS_DESC_BOB;
-import static nusconnect.logic.commands.CommandTestUtil.COURSE_DESC_AMY;
-import static nusconnect.logic.commands.CommandTestUtil.COURSE_DESC_BOB;
 import static nusconnect.logic.commands.CommandTestUtil.EMAIL_DESC_AMY;
 import static nusconnect.logic.commands.CommandTestUtil.EMAIL_DESC_BOB;
 import static nusconnect.logic.commands.CommandTestUtil.INVALID_ALIAS_DESC;
-import static nusconnect.logic.commands.CommandTestUtil.INVALID_COURSE_DESC;
 import static nusconnect.logic.commands.CommandTestUtil.INVALID_EMAIL_DESC;
+import static nusconnect.logic.commands.CommandTestUtil.INVALID_MAJOR_DESC;
 import static nusconnect.logic.commands.CommandTestUtil.INVALID_NAME_DESC;
 import static nusconnect.logic.commands.CommandTestUtil.INVALID_PHONE_DESC;
 import static nusconnect.logic.commands.CommandTestUtil.INVALID_TAG_DESC;
 import static nusconnect.logic.commands.CommandTestUtil.INVALID_TELEGRAM_DESC;
 import static nusconnect.logic.commands.CommandTestUtil.INVALID_WEBSITE_DESC;
+import static nusconnect.logic.commands.CommandTestUtil.MAJOR_DESC_ANY;
+import static nusconnect.logic.commands.CommandTestUtil.MAJOR_DESC_BOB;
 import static nusconnect.logic.commands.CommandTestUtil.NAME_DESC_AMY;
 import static nusconnect.logic.commands.CommandTestUtil.NOTE_DESC_AMY;
 import static nusconnect.logic.commands.CommandTestUtil.NOTE_DESC_BOB;
@@ -26,9 +26,9 @@ import static nusconnect.logic.commands.CommandTestUtil.TELEGRAM_DESC_AMY;
 import static nusconnect.logic.commands.CommandTestUtil.TELEGRAM_DESC_BOB;
 import static nusconnect.logic.commands.CommandTestUtil.VALID_ALIAS_AMY;
 import static nusconnect.logic.commands.CommandTestUtil.VALID_ALIAS_BOB;
-import static nusconnect.logic.commands.CommandTestUtil.VALID_COURSE_AMY;
-import static nusconnect.logic.commands.CommandTestUtil.VALID_COURSE_BOB;
 import static nusconnect.logic.commands.CommandTestUtil.VALID_EMAIL_AMY;
+import static nusconnect.logic.commands.CommandTestUtil.VALID_MAJOR_ANY;
+import static nusconnect.logic.commands.CommandTestUtil.VALID_MAJOR_BOB;
 import static nusconnect.logic.commands.CommandTestUtil.VALID_MODULE_CS2103T;
 import static nusconnect.logic.commands.CommandTestUtil.VALID_MODULE_CS2106;
 import static nusconnect.logic.commands.CommandTestUtil.VALID_NAME_AMY;
@@ -60,8 +60,8 @@ import nusconnect.logic.commands.EditCommand;
 import nusconnect.logic.commands.EditCommand.EditPersonDescriptor;
 import nusconnect.model.module.Module;
 import nusconnect.model.person.Alias;
-import nusconnect.model.person.Course;
 import nusconnect.model.person.Email;
+import nusconnect.model.person.Major;
 import nusconnect.model.person.Name;
 import nusconnect.model.person.Phone;
 import nusconnect.model.person.Telegram;
@@ -110,7 +110,7 @@ public class EditCommandParserTest {
         assertParseFailure(parser, "1" + INVALID_PHONE_DESC, Phone.MESSAGE_CONSTRAINTS); // invalid phone
         assertParseFailure(parser, "1" + INVALID_EMAIL_DESC, Email.MESSAGE_CONSTRAINTS); // invalid email
         assertParseFailure(parser, "1" + INVALID_ALIAS_DESC, Alias.MESSAGE_CONSTRAINTS); // invalid alias
-        assertParseFailure(parser, "1" + INVALID_COURSE_DESC, Course.MESSAGE_CONSTRAINTS); // invalid course
+        assertParseFailure(parser, "1" + INVALID_MAJOR_DESC, Major.MESSAGE_CONSTRAINTS); // invalid major
         assertParseFailure(parser, "1" + INVALID_TELEGRAM_DESC, Telegram.MESSAGE_CONSTRAINTS); // invalid telegram
         assertParseFailure(parser, "1" + INVALID_WEBSITE_DESC, Website.MESSAGE_CONSTRAINTS); // invalid website
 
@@ -136,7 +136,7 @@ public class EditCommandParserTest {
         Index targetIndex = INDEX_SECOND;
         String userInput = targetIndex.getOneBased()
                 + NAME_DESC_AMY + PHONE_DESC_BOB + EMAIL_DESC_AMY
-                + ALIAS_DESC_BOB + COURSE_DESC_BOB + NOTE_DESC_BOB
+                + ALIAS_DESC_BOB + MAJOR_DESC_BOB + NOTE_DESC_BOB
                 + TELEGRAM_DESC_BOB + WEBSITE_DESC_BOB
                 + TAG_DESC_HUSBAND + TAG_DESC_FRIEND;
 
@@ -147,7 +147,7 @@ public class EditCommandParserTest {
                 .withPhone(VALID_PHONE_BOB)
                 .withEmail(VALID_EMAIL_AMY)
                 .withAlias(VALID_ALIAS_BOB)
-                .withCourse(VALID_COURSE_BOB)
+                .withMajor(VALID_MAJOR_BOB)
                 .withNote(VALID_NOTE_BOB)
                 .withTelegram(VALID_TELEGRAM_BOB)
                 .withWebsite(VALID_WEBSITE_BOB)
@@ -197,9 +197,9 @@ public class EditCommandParserTest {
         expectedCommand = new EditCommand(targetIndex, descriptor);
         assertParseSuccess(parser, userInput, expectedCommand);
 
-        // course
-        userInput = targetIndex.getOneBased() + COURSE_DESC_AMY;
-        descriptor = new EditPersonDescriptorBuilder().withCourse(VALID_COURSE_AMY).build();
+        // major
+        userInput = targetIndex.getOneBased() + MAJOR_DESC_ANY;
+        descriptor = new EditPersonDescriptorBuilder().withMajor(VALID_MAJOR_ANY).build();
         expectedCommand = new EditCommand(targetIndex, descriptor);
         assertParseSuccess(parser, userInput, expectedCommand);
 
@@ -247,7 +247,7 @@ public class EditCommandParserTest {
 
         // mulltiple valid fields repeated
         userInput = targetIndex.getOneBased()
-                + PHONE_DESC_AMY + EMAIL_DESC_AMY + ALIAS_DESC_AMY + COURSE_DESC_AMY
+                + PHONE_DESC_AMY + EMAIL_DESC_AMY + ALIAS_DESC_AMY + MAJOR_DESC_ANY
                 + NOTE_DESC_AMY + TELEGRAM_DESC_AMY + WEBSITE_DESC_AMY
                 + PHONE_DESC_BOB + EMAIL_DESC_BOB;
 

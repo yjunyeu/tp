@@ -3,8 +3,8 @@ package nusconnect.logic.commands;
 import static nusconnect.logic.commands.CommandTestUtil.DESC_AMY;
 import static nusconnect.logic.commands.CommandTestUtil.DESC_BOB;
 import static nusconnect.logic.commands.CommandTestUtil.VALID_ALIAS_BOB;
-import static nusconnect.logic.commands.CommandTestUtil.VALID_COURSE_BOB;
 import static nusconnect.logic.commands.CommandTestUtil.VALID_EMAIL_BOB;
+import static nusconnect.logic.commands.CommandTestUtil.VALID_MAJOR_BOB;
 import static nusconnect.logic.commands.CommandTestUtil.VALID_MODULE_CS2103T;
 import static nusconnect.logic.commands.CommandTestUtil.VALID_NAME_BOB;
 import static nusconnect.logic.commands.CommandTestUtil.VALID_NOTE_BOB;
@@ -56,8 +56,8 @@ public class EditPersonDescriptorTest {
         editedAmy = new EditPersonDescriptorBuilder(DESC_AMY).withAlias(VALID_ALIAS_BOB).build();
         assertFalse(DESC_AMY.equals(editedAmy));
 
-        // different course -> returns false
-        editedAmy = new EditPersonDescriptorBuilder(DESC_AMY).withCourse(VALID_COURSE_BOB).build();
+        // different major -> returns false
+        editedAmy = new EditPersonDescriptorBuilder(DESC_AMY).withMajor(VALID_MAJOR_BOB).build();
         assertFalse(DESC_AMY.equals(editedAmy));
 
         // different note -> returns false
@@ -85,8 +85,8 @@ public class EditPersonDescriptorTest {
                 + editPersonDescriptor.getName() + ", phone="
                 + editPersonDescriptor.getPhone() + ", email="
                 + editPersonDescriptor.getEmail() + ", alias="
-                + editPersonDescriptor.getAlias() + ", course="
-                + editPersonDescriptor.getCourse() + ", note="
+                + editPersonDescriptor.getAlias() + ", major="
+                + editPersonDescriptor.getMajor() + ", note="
                 + editPersonDescriptor.getTelegram() + ", website="
                 + editPersonDescriptor.getWebsite() + ", modules="
                 + editPersonDescriptor.getTags().orElse(null) + "}";

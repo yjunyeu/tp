@@ -5,7 +5,7 @@
     "email": "alice@example.com",
     "Modules": [ "friends" ],
     "alias": "Alice",
-    "course": "Comp Sci",
+    "major": "Comp Sci",
     "note": "bestie",
     "telegram": "@alice",
     "website": "alice.com"
@@ -14,7 +14,7 @@
     "phone": "94351253",
     "email": "pauline@example.com",
     "alias": "Alice",
-    "course": "Comp Sci",
+    "major": "Comp Sci",
     "note": "bestie",
     "telegram": "@alice",
     "website": "alice.com"

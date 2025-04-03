@@ -2,8 +2,8 @@ package nusconnect.logic.parser;
 
 import static nusconnect.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static nusconnect.logic.parser.CliSyntax.PREFIX_ALIAS;
-import static nusconnect.logic.parser.CliSyntax.PREFIX_COURSE;
 import static nusconnect.logic.parser.CliSyntax.PREFIX_EMAIL;
+import static nusconnect.logic.parser.CliSyntax.PREFIX_MAJOR;
 import static nusconnect.logic.parser.CliSyntax.PREFIX_MODULE;
 import static nusconnect.logic.parser.CliSyntax.PREFIX_NAME;
 import static nusconnect.logic.parser.CliSyntax.PREFIX_NOTE;
@@ -18,8 +18,8 @@ import nusconnect.logic.commands.AddCommand;
 import nusconnect.logic.parser.exceptions.ParseException;
 import nusconnect.model.module.Module;
 import nusconnect.model.person.Alias;
-import nusconnect.model.person.Course;
 import nusconnect.model.person.Email;
+import nusconnect.model.person.Major;
 import nusconnect.model.person.Name;
 import nusconnect.model.person.Note;
 import nusconnect.model.person.Person;
@@ -40,7 +40,7 @@ public class AddCommandParser implements Parser<AddCommand> {
     public AddCommand parse(String args) throws ParseException {
         ArgumentMultimap argMultimap =
                 ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_TELEGRAM, PREFIX_PHONE, PREFIX_EMAIL, PREFIX_ALIAS,
-                        PREFIX_COURSE, PREFIX_NOTE, PREFIX_WEBSITE, PREFIX_MODULE);
+                        PREFIX_MAJOR, PREFIX_NOTE, PREFIX_WEBSITE, PREFIX_MODULE);
 
         if (!arePrefixesPresent(argMultimap, PREFIX_NAME, PREFIX_TELEGRAM)
                 || !argMultimap.getPreamble().isEmpty()) {
@@ -48,7 +48,7 @@ public class AddCommandParser implements Parser<AddCommand> {
         }
 
         argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_NAME, PREFIX_TELEGRAM, PREFIX_PHONE, PREFIX_EMAIL, PREFIX_ALIAS,
-                PREFIX_COURSE, PREFIX_NOTE, PREFIX_WEBSITE);
+                PREFIX_MAJOR, PREFIX_NOTE, PREFIX_WEBSITE);
         Name name = ParserUtil.parseName(argMultimap.getValue(PREFIX_NAME).get());
         Telegram telegram = ParserUtil.parseTelegram(argMultimap.getValue(PREFIX_TELEGRAM).get());
 
@@ -65,9 +65,9 @@ public class AddCommandParser implements Parser<AddCommand> {
             alias = ParserUtil.parseAlias(argMultimap.getValue(PREFIX_ALIAS).get());
         }
 
-        Course course = null;
-        if (argMultimap.getValue(PREFIX_COURSE).isPresent()) {
-            course = ParserUtil.parseCourse(argMultimap.getValue(PREFIX_COURSE).get());
+        Major major = null;
+        if (argMultimap.getValue(PREFIX_MAJOR).isPresent()) {
+            major = ParserUtil.parseMajor(argMultimap.getValue(PREFIX_MAJOR).get());
         }
 
         Note note = null;
@@ -82,7 +82,7 @@ public class AddCommandParser implements Parser<AddCommand> {
 
         Set<Module> moduleList = ParserUtil.parseModules(argMultimap.getAllValues(PREFIX_MODULE));
 
-        Person person = new Person(name, telegram, phone, email, alias, course, note, website, moduleList);
+        Person person = new Person(name, telegram, phone, email, alias, major, note, website, moduleList);
 
         return new AddCommand(person);
     }

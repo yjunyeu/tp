@@ -12,8 +12,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import nusconnect.commons.exceptions.IllegalValueException;
 import nusconnect.model.module.Module;
 import nusconnect.model.person.Alias;
-import nusconnect.model.person.Course;
 import nusconnect.model.person.Email;
+import nusconnect.model.person.Major;
 import nusconnect.model.person.Name;
 import nusconnect.model.person.Note;
 import nusconnect.model.person.Person;
@@ -34,7 +34,7 @@ class JsonAdaptedPerson {
     private final String phone;
     private final String email;
     private final String alias;
-    private final String course;
+    private final String major;
     private final String note;
     private final String website;
     private final List<JsonAdaptedModule> modules = new ArrayList<>();
@@ -45,7 +45,7 @@ class JsonAdaptedPerson {
     @JsonCreator
     public JsonAdaptedPerson(@JsonProperty("name") String name, @JsonProperty("telegram") String telegram,
                              @JsonProperty("phone") String phone, @JsonProperty("email") String email,
-                             @JsonProperty("alias") String alias, @JsonProperty("course") String course,
+                             @JsonProperty("alias") String alias, @JsonProperty("major") String major,
                              @JsonProperty("note") String note, @JsonProperty("website") String website,
                              @JsonProperty("modules") List<JsonAdaptedModule> modules) {
         this.name = name;
@@ -53,7 +53,7 @@ class JsonAdaptedPerson {
         this.phone = phone;
         this.email = email;
         this.alias = alias;
-        this.course = course;
+        this.major = major;
         this.note = note;
         this.website = website;
         if (modules != null) {
@@ -70,7 +70,7 @@ class JsonAdaptedPerson {
         phone = source.getPhone().map(p -> p.value).orElse(null);
         email = source.getEmail().map(e -> e.value).orElse(null);
         alias = source.getAlias().map(a -> a.value).orElse(null);
-        course = source.getCourse().map(c -> c.value).orElse(null);
+        major = source.getMajor().map(c -> c.value).orElse(null);
         note = source.getNote().map(n -> n.value).orElse(null);
         website = source.getWebsite().map(w -> w.value).orElse(null);
 
@@ -123,11 +123,11 @@ class JsonAdaptedPerson {
                 Alias.MESSAGE_CONSTRAINTS
         );
 
-        final Course modelCourse = JsonFieldValidator.validateField(
-                course,
-                Course::isValidCourse,
-                Course::new,
-                Course.MESSAGE_CONSTRAINTS
+        final Major modelMajor = JsonFieldValidator.validateField(
+                major,
+                Major::isValidMajor,
+                Major::new,
+                Major.MESSAGE_CONSTRAINTS
         );
 
         final Note modelNote = JsonFieldValidator.validateField(
@@ -150,7 +150,7 @@ class JsonAdaptedPerson {
         }
 
         final Set<Module> modelModules = new HashSet<>(personModules);
-        return new Person(modelName, modelTelegram, modelPhone, modelEmail, modelAlias, modelCourse, modelNote,
+        return new Person(modelName, modelTelegram, modelPhone, modelEmail, modelAlias, modelMajor, modelNote,
                 modelWebsite, modelModules);
     }
 
