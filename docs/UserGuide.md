@@ -339,7 +339,7 @@ Examples:
 
 * import data.json imports data from the `data.json` file.
 * import backup/addressbook.json imports data from the `addressbook.json` file located in the backup folder.
-* import C:/Users/user/Documents/addressbook_data.txt imports data from the `addressbook_data.txt` file located in the ` C:/Users/user/Documents`
+* import C:/Users/user/Documents/addressbook_data.txt imports data from the `addressbook_data.txt` file located in the `C:/Users/user/Documents`
 
 ### Misc:
 
