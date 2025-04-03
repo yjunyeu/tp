@@ -22,14 +22,6 @@ import nusconnect.logic.commands.EditCommand;
 import nusconnect.logic.commands.EditCommand.EditPersonDescriptor;
 import nusconnect.logic.parser.exceptions.ParseException;
 import nusconnect.model.module.Module;
-import nusconnect.model.person.Alias;
-import nusconnect.model.person.Course;
-import nusconnect.model.person.Email;
-import nusconnect.model.person.Name;
-import nusconnect.model.person.Note;
-import nusconnect.model.person.Phone;
-import nusconnect.model.person.Telegram;
-import nusconnect.model.person.Website;
 
 /**
  * Parses input arguments and creates a new EditCommand object
@@ -64,42 +56,40 @@ public class EditCommandParser implements Parser<EditCommand> {
 
         if (argMultimap.getValue(PREFIX_NAME).isPresent()) {
             editPersonDescriptor.setIsNameEdited(true);
-            editPersonDescriptor.setName(new Name(argMultimap.getValue(PREFIX_NAME).get()));
+            editPersonDescriptor.setName(ParserUtil.parseName(argMultimap.getValue(PREFIX_NAME).get()));
         }
 
         if (argMultimap.getValue(PREFIX_TELEGRAM).isPresent()) {
             editPersonDescriptor.setIsTelegramEdited(true);
-            editPersonDescriptor.setTelegram(new Telegram(argMultimap.getValue(PREFIX_TELEGRAM).get()));
+            editPersonDescriptor.setTelegram(ParserUtil.parseTelegram(argMultimap.getValue(PREFIX_TELEGRAM).get()));
         }
 
         if (argMultimap.getValue(PREFIX_PHONE).isPresent()) {
             editPersonDescriptor.setIsPhoneEdited(true);
-            editPersonDescriptor.setPhone(new Phone(argMultimap.getValue(PREFIX_PHONE).get()));
+            editPersonDescriptor.setPhone(ParserUtil.parsePhone(argMultimap.getValue(PREFIX_PHONE).get()));
         }
-
         if (argMultimap.getValue(PREFIX_EMAIL).isPresent()) {
             editPersonDescriptor.setIsEmailEdited(true);
-            editPersonDescriptor.setEmail(new Email(argMultimap.getValue(PREFIX_EMAIL).get()));
+            editPersonDescriptor.setEmail(ParserUtil.parseEmail(argMultimap.getValue(PREFIX_EMAIL).get()));
         }
-
         if (argMultimap.getValue(PREFIX_ALIAS).isPresent()) {
             editPersonDescriptor.setIsAliasEdited(true);
-            editPersonDescriptor.setAlias(new Alias(argMultimap.getValue(PREFIX_ALIAS).get()));
+            editPersonDescriptor.setAlias(ParserUtil.parseAlias(argMultimap.getValue(PREFIX_ALIAS).get()));
         }
 
         if (argMultimap.getValue(PREFIX_COURSE).isPresent()) {
             editPersonDescriptor.setIsCourseEdited(true);
-            editPersonDescriptor.setCourse(new Course(argMultimap.getValue(PREFIX_COURSE).get()));
+            editPersonDescriptor.setCourse(ParserUtil.parseCourse(argMultimap.getValue(PREFIX_COURSE).get()));
         }
 
         if (argMultimap.getValue(PREFIX_NOTE).isPresent()) {
             editPersonDescriptor.setIsNoteEdited(true);
-            editPersonDescriptor.setNote(new Note(argMultimap.getValue(PREFIX_NOTE).get()));
+            editPersonDescriptor.setNote(ParserUtil.parseNote(argMultimap.getValue(PREFIX_NOTE).get()));
         }
 
         if (argMultimap.getValue(PREFIX_WEBSITE).isPresent()) {
             editPersonDescriptor.setIsWebsiteEdited(true);
-            editPersonDescriptor.setWebsite(new Website(argMultimap.getValue(PREFIX_WEBSITE).get()));
+            editPersonDescriptor.setWebsite(ParserUtil.parseWebsite(argMultimap.getValue(PREFIX_WEBSITE).get()));
         }
 
         parseModulesForEdit(argMultimap.getAllValues(PREFIX_MODULE)).ifPresent(editPersonDescriptor::setModules);

@@ -9,27 +9,33 @@ import org.junit.jupiter.api.Test;
 public class WebsiteTest {
 
     @Test
+    public void constructor_null_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> new Website(null));
+    }
+
+    @Test
+    public void constructor_invalidWebsite_throwsIllegalArgumentException() {
+        String invalidWebsite = "";
+        assertThrows(IllegalArgumentException.class, () -> new Website(invalidWebsite));
+    }
+
+    @Test
     public void isValidWebsite() {
         // null website
         assertThrows(NullPointerException.class, () -> Website.isValidWebsite(null));
 
         // blank website
-        assertFalse(Website.isValidWebsite(new Website(""))); // empty string
-        assertFalse(Website.isValidWebsite(new Website(" "))); // spaces only
+        assertFalse(Website.isValidWebsite("")); // empty string
+        assertFalse(Website.isValidWebsite(" ")); // spaces only
 
         // missing parts
-        assertFalse(Website.isValidWebsite(new Website("invalid"))); // missing local part
+        assertFalse(Website.isValidWebsite("invalid")); // missing local part
 
         // invalid parts
-        assertFalse(Website.isValidWebsite(new Website("invalid.invalidcom"))); // invalid domain name
+        assertFalse(Website.isValidWebsite("invalid.invalidcom")); // invalid domain name
 
         // valid website
-        assertTrue(Website.isValidWebsite(new Website("valid.com"))); // underscore in local part
-    }
-
-    @Test
-    public void constructor_null_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> new Website(null));
+        assertTrue(Website.isValidWebsite("valid.com")); // underscore in local part
     }
 
     @Test

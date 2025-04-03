@@ -1,6 +1,8 @@
 package nusconnect.model.person;
 
 import static java.util.Objects.requireNonNull;
+import static nusconnect.commons.util.AppUtil.checkArgument;
+
 
 /**
  * Represents a Person's website in the address book.
@@ -23,14 +25,15 @@ public class Website {
      */
     public Website(String website) {
         requireNonNull(website, "Website cannot be null");
+        checkArgument(isValidWebsite(website), MESSAGE_CONSTRAINTS);
         value = website;
     }
 
     /**
      * Returns true if a given string is a valid website.
      */
-    public static boolean isValidWebsite(Website test) {
-        return test.value.matches(VALIDATION_REGEX);
+    public static boolean isValidWebsite(String test) {
+        return test.matches(VALIDATION_REGEX);
     }
 
     @Override

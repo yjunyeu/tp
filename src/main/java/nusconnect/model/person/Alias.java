@@ -1,6 +1,7 @@
 package nusconnect.model.person;
 
 import static java.util.Objects.requireNonNull;
+import static nusconnect.commons.util.AppUtil.checkArgument;
 
 /**
  * Represents a Person's alias in the alias book.
@@ -26,14 +27,15 @@ public class Alias {
      */
     public Alias(String alias) {
         requireNonNull(alias);
+        checkArgument(isValidAlias(alias), MESSAGE_CONSTRAINTS);
         value = alias;
     }
 
     /**
-     * Returns true if a given string is a valid alias.
+     * Returns true if a given string is a valid email.
      */
-    public static boolean isValidAlias(Alias test) {
-        return test.value.matches(VALIDATION_REGEX);
+    public static boolean isValidAlias(String test) {
+        return test.matches(VALIDATION_REGEX);
     }
 
     @Override

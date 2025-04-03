@@ -1,7 +1,7 @@
 package nusconnect.commons.util;
 
 import static java.util.Objects.requireNonNull;
-import static nusconnect.commons.util.AppUtil.checkArgumentAndThrow;
+import static nusconnect.commons.util.AppUtil.checkArgument;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;
@@ -28,8 +28,8 @@ public class StringUtil {
         requireNonNull(word);
 
         String preppedWord = word.trim();
-        checkArgumentAndThrow(!preppedWord.isEmpty(), "Word parameter cannot be empty");
-        checkArgumentAndThrow(preppedWord.split("\\s+").length == 1, "Word parameter should be a single word");
+        checkArgument(!preppedWord.isEmpty(), "Word parameter cannot be empty");
+        checkArgument(preppedWord.split("\\s+").length == 1, "Word parameter should be a single word");
 
         String preppedSentence = sentence;
         String[] wordsInPreppedSentence = preppedSentence.split("\\s+");
@@ -54,7 +54,7 @@ public class StringUtil {
         requireNonNull(word);
 
         String preppedWord = word.trim();
-        checkArgumentAndThrow(!preppedWord.isEmpty(), "Word parameter cannot be empty");
+        checkArgument(!preppedWord.isEmpty(), "Word parameter cannot be empty");
 
         String preppedSentence = sentence.toLowerCase();
         String preppedWordLowerCase = preppedWord.toLowerCase();
