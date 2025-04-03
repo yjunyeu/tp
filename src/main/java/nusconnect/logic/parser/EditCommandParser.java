@@ -54,6 +54,11 @@ public class EditCommandParser implements Parser<EditCommand> {
 
         EditPersonDescriptor editPersonDescriptor = new EditPersonDescriptor();
 
+        /*
+         * Due to constraints of exceptions in functional programming, extracting this section of code
+         * will result in a less concise and less clear version of the code. Handle changes with care.
+         */
+
         if (argMultimap.getValue(PREFIX_NAME).isPresent()) {
             editPersonDescriptor.setIsNameEdited(true);
             editPersonDescriptor.setName(ParserUtil.parseName(argMultimap.getValue(PREFIX_NAME).get()));
@@ -91,6 +96,8 @@ public class EditCommandParser implements Parser<EditCommand> {
             editPersonDescriptor.setIsWebsiteEdited(true);
             editPersonDescriptor.setWebsite(ParserUtil.parseWebsite(argMultimap.getValue(PREFIX_WEBSITE).get()));
         }
+
+        // End of repeated code section
 
         parseModulesForEdit(argMultimap.getAllValues(PREFIX_MODULE)).ifPresent(editPersonDescriptor::setModules);
 
