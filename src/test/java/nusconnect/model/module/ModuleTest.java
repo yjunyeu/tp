@@ -34,26 +34,26 @@ public class ModuleTest {
         assertFalse(Module.isValidModuleName("GEX")); // missing numeric part
 
         // invalid parts
-        assertFalse(Module.isValidModuleName(new Module("C2106"))); // 1st alphabetic part below limit
-        assertFalse(Module.isValidModuleName(new Module("COMPS2106"))); // 1st alphabetic part above limit
-        assertFalse(Module.isValidModuleName(new Module("CS2103TEN"))); // 2nd alphabetic part above limit
-        assertFalse(Module.isValidModuleName(new Module("CS424"))); // numeric part below limit
-        assertFalse(Module.isValidModuleName(new Module("CS42488"))); // numeric part above limit
-        assertFalse(Module.isValidModuleName(new Module("CS.2103/T"))); // illegal characters
-        assertFalse(Module.isValidModuleName(new Module("C0MP2106T3"))); // numeric char in alphabetic part
+        assertFalse(Module.isValidModuleName("C2106")); // 1st alphabetic part below limit
+        assertFalse(Module.isValidModuleName("COMPS2106")); // 1st alphabetic part above limit
+        assertFalse(Module.isValidModuleName("CS2103TEN")); // 2nd alphabetic part above limit
+        assertFalse(Module.isValidModuleName("CS424")); // numeric part below limit
+        assertFalse(Module.isValidModuleName("CS42488")); // numeric part above limit
+        assertFalse(Module.isValidModuleName("CS.2103/T")); // illegal characters
+        assertFalse(Module.isValidModuleName("C0MP2106T3")); // numeric char in alphabetic part
 
         // valid module name
-        assertTrue(Module.isValidModuleName(new Module("CS4248"))); // 2A4N
-        assertTrue(Module.isValidModuleName(new Module("CS2103T"))); // 2A4N1A
-        assertTrue(Module.isValidModuleName(new Module("EL4216HM"))); // 2A4N2A
-        assertTrue(Module.isValidModuleName(new Module("GEC1039"))); // 3A4N
-        assertTrue(Module.isValidModuleName(new Module("LSM2191A"))); // 3A4N1A
-        assertTrue(Module.isValidModuleName(new Module("PLS8002GE"))); // 3A4N2A
-        assertTrue(Module.isValidModuleName(new Module("GESS1000"))); // 4A4N
-        assertTrue(Module.isValidModuleName(new Module("GESS1000T"))); // 4A4N1A
-        assertTrue(Module.isValidModuleName(new Module("GESS1000TN"))); // 4A4N2A
-        assertTrue(Module.isValidModuleName(new Module("ma2201"))); // lowercase characters
-        assertTrue(Module.isValidModuleName(new Module("gEx1138f"))); // lowercase characters
+        assertTrue(Module.isValidModuleName("CS4248")); // 2A4N
+        assertTrue(Module.isValidModuleName("CS2103T")); // 2A4N1A
+        assertTrue(Module.isValidModuleName("EL4216HM")); // 2A4N2A
+        assertTrue(Module.isValidModuleName("GEC1039")); // 3A4N
+        assertTrue(Module.isValidModuleName("LSM2191A")); // 3A4N1A
+        assertTrue(Module.isValidModuleName("PLS8002GE")); // 3A4N2A
+        assertTrue(Module.isValidModuleName("GESS1000")); // 4A4N
+        assertTrue(Module.isValidModuleName("GESS1000T")); // 4A4N1A
+        assertTrue(Module.isValidModuleName("GESS1000TN")); // 4A4N2A
+        assertTrue(Module.isValidModuleName("ma2201")); // lowercase characters
+        assertTrue(Module.isValidModuleName("gEx1138f")); // lowercase characters
     }
 
     @Test
