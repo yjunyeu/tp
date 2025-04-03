@@ -3,6 +3,7 @@ package nusconnect.logic.commands;
 
 import java.io.IOError;
 import java.io.IOException;
+import java.nio.file.AccessDeniedException;
 import java.nio.file.InvalidPathException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -49,6 +50,8 @@ public class ExportCommand extends Command {
 
             logicManager.exportAddressBook(filePath);
             return new CommandResult(MESSAGE_SUCCESS + absoluteFilePath);
+        } catch (AccessDeniedException e) {
+            throw new CommandException(MESSAGE_FAILURE + "\nPermission denied! Cannot write to the directory.");
         } catch (InvalidPathException | IOError | IOException e) {
             throw new CommandException(MESSAGE_FAILURE + "\nInvalid file path!");
         }
