@@ -4,7 +4,7 @@ import static java.util.Objects.requireNonNull;
 
 /**
  * Represents a Person's alias in the alias book.
- * Guarantees: immutable; is valid as declared in {@link #isValidAlias(String)}
+ * Guarantees: immutable
  */
 public class Alias {
 
@@ -21,8 +21,6 @@ public class Alias {
 
     /**
      * Constructs an {@code Alias}.
-     *
-     * @param alias A valid alias.
      */
     public Alias(String alias) {
         requireNonNull(alias);
@@ -30,7 +28,7 @@ public class Alias {
     }
 
     /**
-     * Returns true if a given string is a valid alias.
+     * Returns true if a given Alias is a valid alias.
      */
     public static boolean isValidAlias(Alias test) {
         return test.value.matches(VALIDATION_REGEX);

@@ -4,7 +4,7 @@ import static java.util.Objects.requireNonNull;
 
 /**
  * Represents a Person's name in the address book.
- * Guarantees: immutable; is valid as declared in {@link #isValidName(String)}
+ * Guarantees: immutable
  */
 public class Name {
 
@@ -20,9 +20,8 @@ public class Name {
     public final String fullName;
 
     /**
-     * Constructs a {@code Name}.
-     *
-     * @param name A valid name.
+     * Constructs a {@code Name}. Has a special case for when the name given is empty to ensure minumum
+     * understandability of address book.
      */
     public Name(String name) {
         requireNonNull(name);
@@ -34,7 +33,7 @@ public class Name {
     }
 
     /**
-     * Returns true if a given string is a valid name.
+     * Returns true if a given Name is a valid name.
      */
     public static boolean isValidName(Name test) {
         return test.fullName.matches(VALIDATION_REGEX);
