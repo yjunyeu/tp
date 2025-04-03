@@ -30,7 +30,7 @@ public class ParserUtilTest {
     private static final String INVALID_EMAIL = "example.com";
     private static final String INVALID_MODULE = "#CS2103T";
     private static final String INVALID_ALIAS = "";
-    private static final String INVALID_COURSE = "";
+    private static final String INVALID_MAJOR = "";
     private static final String INVALID_NOTE = "";
     private static final String INVALID_TELEGRAM = "";
     private static final String INVALID_WEBSITE = "";
@@ -42,7 +42,7 @@ public class ParserUtilTest {
     private static final String VALID_MODULE_1 = "CS2106";
     private static final String VALID_MODULE_2 = "CS2103T";
     private static final String VALID_ALIAS = "RachelWalker";
-    private static final String VALID_COURSE = "Computer Science";
+    private static final String VALID_MAJOR = "Computer Science";
     private static final String VALID_NOTE = "This is a valid note.";
     private static final String VALID_TELEGRAM = "@rachel123";
     private static final String VALID_WEBSITE = "https://rachel.example.com";
@@ -141,25 +141,25 @@ public class ParserUtilTest {
 
     @Test
     public void parseMajor_null_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> ParserUtil.parseCourse((String) null));
+        assertThrows(NullPointerException.class, () -> ParserUtil.parseMajor((String) null));
     }
 
     @Test
     public void parseMajor_invalidValue_throwsParseException() {
-        assertThrows(ParseException.class, () -> ParserUtil.parseCourse(INVALID_COURSE));
+        assertThrows(ParseException.class, () -> ParserUtil.parseMajor(INVALID_MAJOR));
     }
 
     @Test
-    public void parseMajor_validValueWithoutWhitespace_returnsCourse() throws Exception {
-        Major expectedCourse = new Major(VALID_COURSE);
-        assertEquals(expectedCourse, ParserUtil.parseCourse(VALID_COURSE));
+    public void parseMajor_validValueWithoutWhitespace_returnsMajor() throws Exception {
+        Major expectedMajor = new Major(VALID_MAJOR);
+        assertEquals(expectedMajor, ParserUtil.parseMajor(VALID_MAJOR));
     }
 
     @Test
-    public void parseMajor_validValueWithWhitespace_returnsTrimmedCourse() throws Exception {
-        String courseWithWhitespace = WHITESPACE + VALID_COURSE + WHITESPACE;
-        Major expectedCourse = new Major(VALID_COURSE);
-        assertEquals(expectedCourse, ParserUtil.parseCourse(courseWithWhitespace));
+    public void parseMajor_validValueWithWhitespace_returnsTrimmedMajor() throws Exception {
+        String majorWithWhitespace = WHITESPACE + VALID_MAJOR + WHITESPACE;
+        Major expectedMajor = new Major(VALID_MAJOR);
+        assertEquals(expectedMajor, ParserUtil.parseMajor(majorWithWhitespace));
     }
 
     @Test

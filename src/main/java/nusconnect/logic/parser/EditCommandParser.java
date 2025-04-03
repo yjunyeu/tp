@@ -79,7 +79,7 @@ public class EditCommandParser implements Parser<EditCommand> {
 
         if (argMultimap.getValue(PREFIX_MAJOR).isPresent()) {
             editPersonDescriptor.setIsMajorEdited(true);
-            editPersonDescriptor.setMajor(ParserUtil.parseCourse(argMultimap.getValue(PREFIX_MAJOR).get()));
+            editPersonDescriptor.setMajor(ParserUtil.parseMajor(argMultimap.getValue(PREFIX_MAJOR).get()));
         }
 
         if (argMultimap.getValue(PREFIX_NOTE).isPresent()) {

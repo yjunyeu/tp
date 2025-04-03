@@ -277,7 +277,7 @@ public class AddCommandParserTest {
                 + INVALID_ALIAS_DESC + MAJOR_DESC_BOB + NOTE_DESC_BOB + TELEGRAM_DESC_BOB
                 + WEBSITE_DESC_BOB + TAG_DESC_HUSBAND + TAG_DESC_FRIEND, Alias.MESSAGE_CONSTRAINTS);
 
-        // invalid course
+        // invalid major
         assertParseFailure(parser, NAME_DESC_BOB + PHONE_DESC_BOB + EMAIL_DESC_BOB
                 + ALIAS_DESC_BOB + INVALID_MAJOR_DESC + NOTE_DESC_BOB + TELEGRAM_DESC_BOB
                 + WEBSITE_DESC_BOB + TAG_DESC_HUSBAND + TAG_DESC_FRIEND, Major.MESSAGE_CONSTRAINTS);

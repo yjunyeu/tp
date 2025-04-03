@@ -33,7 +33,7 @@ public class MajorTest {
         // valid major
         assertTrue(Major.isValidMajor("computer science")); // alphabets only
         assertTrue(Major.isValidMajor("Computer Science")); // with capital letters
-        assertTrue(Major.isValidMajor("Computer Science with a second major in Mathematics")); // long courses
+        assertTrue(Major.isValidMajor("Computer Science with a second major in Mathematics")); // long major
     }
 
     @Test

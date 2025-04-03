@@ -117,18 +117,18 @@ public class ParserUtil {
 
 
     /**
-     * Parses a {@code String course} into an {@code Course}.
+     * Parses a {@code String major} into an {@code Major}.
      * Leading and trailing whitespaces will be trimmed.
      *
-     * @throws ParseException if the given {@code course} is invalid.
+     * @throws ParseException if the given {@code major} is invalid.
      */
-    public static Major parseCourse(String course) throws ParseException {
-        requireNonNull(course);
-        String trimmedCourse = course.trim();
-        if (!Major.isValidMajor(trimmedCourse)) {
+    public static Major parseMajor(String major) throws ParseException {
+        requireNonNull(major);
+        String trimmedMajor = major.trim();
+        if (!Major.isValidMajor(trimmedMajor)) {
             throw new ParseException(Major.MESSAGE_CONSTRAINTS);
         }
-        return new Major(trimmedCourse);
+        return new Major(trimmedMajor);
     }
 
     /**

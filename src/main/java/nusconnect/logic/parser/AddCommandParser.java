@@ -67,7 +67,7 @@ public class AddCommandParser implements Parser<AddCommand> {
 
         Major major = null;
         if (argMultimap.getValue(PREFIX_MAJOR).isPresent()) {
-            major = ParserUtil.parseCourse(argMultimap.getValue(PREFIX_MAJOR).get());
+            major = ParserUtil.parseMajor(argMultimap.getValue(PREFIX_MAJOR).get());
         }
 
         Note note = null;

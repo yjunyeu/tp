@@ -107,7 +107,7 @@ public class JsonAdaptedPersonTest {
     }
 
     @Test
-    public void toModelType_invalidCourse_throwsIllegalValueException() {
+    public void toModelType_invalidMajor_throwsIllegalValueException() {
         JsonAdaptedPerson person =
                 new JsonAdaptedPerson(VALID_NAME, VALID_TELEGRAM,
                         VALID_PHONE, VALID_EMAIL, VALID_ALIAS, INVALID_MAJOR, VALID_NOTE,
