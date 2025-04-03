@@ -8,9 +8,9 @@ import static nusconnect.logic.commands.CommandTestUtil.EMAIL_DESC_BOB;
 import static nusconnect.logic.commands.CommandTestUtil.INVALID_ALIAS_DESC;
 import static nusconnect.logic.commands.CommandTestUtil.INVALID_EMAIL_DESC;
 import static nusconnect.logic.commands.CommandTestUtil.INVALID_MAJOR_DESC;
+import static nusconnect.logic.commands.CommandTestUtil.INVALID_MODULE_DESC;
 import static nusconnect.logic.commands.CommandTestUtil.INVALID_NAME_DESC;
 import static nusconnect.logic.commands.CommandTestUtil.INVALID_PHONE_DESC;
-import static nusconnect.logic.commands.CommandTestUtil.INVALID_MODULE_DESC;
 import static nusconnect.logic.commands.CommandTestUtil.INVALID_TELEGRAM_DESC;
 import static nusconnect.logic.commands.CommandTestUtil.INVALID_WEBSITE_DESC;
 import static nusconnect.logic.commands.CommandTestUtil.MAJOR_DESC_ANY;
@@ -85,7 +85,8 @@ public class AddCommandParserTest {
                 VALID_MODULE_CS2103T).build();
         assertParseSuccess(parser,
                 NAME_DESC_BOB + PHONE_DESC_BOB + EMAIL_DESC_BOB + ALIAS_DESC_BOB + MAJOR_DESC_BOB
-                        + NOTE_DESC_BOB + TELEGRAM_DESC_BOB + WEBSITE_DESC_BOB + MODULE_DESC_HUSBAND + MODULE_DESC_FRIEND,
+                        + NOTE_DESC_BOB + TELEGRAM_DESC_BOB + WEBSITE_DESC_BOB + MODULE_DESC_HUSBAND
+                        + MODULE_DESC_FRIEND,
                 new AddCommand(expectedPersonMultipleModules));
     }
 

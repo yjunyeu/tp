@@ -8,9 +8,9 @@ import static nusconnect.logic.commands.CommandTestUtil.EMAIL_DESC_BOB;
 import static nusconnect.logic.commands.CommandTestUtil.INVALID_ALIAS_DESC;
 import static nusconnect.logic.commands.CommandTestUtil.INVALID_EMAIL_DESC;
 import static nusconnect.logic.commands.CommandTestUtil.INVALID_MAJOR_DESC;
+import static nusconnect.logic.commands.CommandTestUtil.INVALID_MODULE_DESC;
 import static nusconnect.logic.commands.CommandTestUtil.INVALID_NAME_DESC;
 import static nusconnect.logic.commands.CommandTestUtil.INVALID_PHONE_DESC;
-import static nusconnect.logic.commands.CommandTestUtil.INVALID_MODULE_DESC;
 import static nusconnect.logic.commands.CommandTestUtil.INVALID_TELEGRAM_DESC;
 import static nusconnect.logic.commands.CommandTestUtil.INVALID_WEBSITE_DESC;
 import static nusconnect.logic.commands.CommandTestUtil.MAJOR_DESC_ANY;
@@ -127,9 +127,12 @@ public class EditCommandParserTest {
 
         // while parsing {@code PREFIX_MODULE} alone will reset the Modules of the {@code Person} being edited,
         // parsing it together with a valid module results in error
-        assertParseFailure(parser, "1" + MODULE_DESC_FRIEND + MODULE_DESC_HUSBAND + MODULE_EMPTY, Module.MESSAGE_CONSTRAINTS);
-        assertParseFailure(parser, "1" + MODULE_DESC_FRIEND + MODULE_EMPTY + MODULE_DESC_HUSBAND, Module.MESSAGE_CONSTRAINTS);
-        assertParseFailure(parser, "1" + MODULE_EMPTY + MODULE_DESC_FRIEND + MODULE_DESC_HUSBAND, Module.MESSAGE_CONSTRAINTS);
+        assertParseFailure(parser, "1" + MODULE_DESC_FRIEND + MODULE_DESC_HUSBAND + MODULE_EMPTY,
+                Module.MESSAGE_CONSTRAINTS);
+        assertParseFailure(parser, "1" + MODULE_DESC_FRIEND + MODULE_EMPTY + MODULE_DESC_HUSBAND,
+                Module.MESSAGE_CONSTRAINTS);
+        assertParseFailure(parser, "1" + MODULE_EMPTY + MODULE_DESC_FRIEND + MODULE_DESC_HUSBAND,
+                Module.MESSAGE_CONSTRAINTS);
 
         // multiple invalid values, but only the first invalid value is captured
         assertParseFailure(parser, "1" + INVALID_NAME_DESC + INVALID_EMAIL_DESC + VALID_PHONE_AMY
