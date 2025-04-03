@@ -1,6 +1,7 @@
 package nusconnect.logic.commands;
 
 
+import java.io.IOError;
 import java.io.IOException;
 import java.nio.file.InvalidPathException;
 import java.nio.file.Path;
@@ -48,7 +49,7 @@ public class ExportCommand extends Command {
 
             logicManager.exportAddressBook(filePath);
             return new CommandResult(MESSAGE_SUCCESS + absoluteFilePath);
-        } catch (InvalidPathException | IOException e) {
+        } catch (InvalidPathException | IOError | IOException e) {
             throw new CommandException(MESSAGE_FAILURE + "\nInvalid file path!");
         }
     }
