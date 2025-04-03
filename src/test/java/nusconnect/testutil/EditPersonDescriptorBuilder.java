@@ -94,8 +94,8 @@ public class EditPersonDescriptorBuilder {
     /**
      * Sets the {@code Major} of the {@code EditPersonDescriptor} that we are building.
      */
-    public EditPersonDescriptorBuilder withMajor(String course) {
-        descriptor.setMajor(new Major(course));
+    public EditPersonDescriptorBuilder withMajor(String major) {
+        descriptor.setMajor(new Major(major));
         descriptor.setIsMajorEdited(true);
         return this;
     }

@@ -102,7 +102,7 @@ public class AddCommandParserTest {
         assertParseFailure(parser, ALIAS_DESC_AMY + validExpectedPersonString,
                 Messages.getErrorMessageForDuplicatePrefixes(PREFIX_ALIAS));
 
-        // multiple course
+        // multiple major
         assertParseFailure(parser, MAJOR_DESC_ANY + validExpectedPersonString,
                 Messages.getErrorMessageForDuplicatePrefixes(PREFIX_MAJOR));
 
@@ -144,7 +144,7 @@ public class AddCommandParserTest {
         assertParseFailure(parser, INVALID_ALIAS_DESC + validExpectedPersonString,
                 Messages.getErrorMessageForDuplicatePrefixes(PREFIX_ALIAS));
 
-        // invalid course
+        // invalid major
         assertParseFailure(parser, INVALID_MAJOR_DESC + validExpectedPersonString,
                 Messages.getErrorMessageForDuplicatePrefixes(PREFIX_MAJOR));
 
@@ -174,7 +174,7 @@ public class AddCommandParserTest {
         assertParseFailure(parser, validExpectedPersonString + INVALID_ALIAS_DESC,
                 Messages.getErrorMessageForDuplicatePrefixes(PREFIX_ALIAS));
 
-        // invalid course
+        // invalid major
         assertParseFailure(parser, validExpectedPersonString + INVALID_MAJOR_DESC,
                 Messages.getErrorMessageForDuplicatePrefixes(PREFIX_MAJOR));
 
@@ -222,7 +222,7 @@ public class AddCommandParserTest {
                         + MAJOR_DESC_BOB + NOTE_DESC_BOB + TELEGRAM_DESC_BOB + WEBSITE_DESC_BOB,
                 expectedMessage);
 
-        // missing course prefix
+        // missing major prefix
         assertParseFailure(parser, VALID_NAME_BOB + PHONE_DESC_BOB + EMAIL_DESC_BOB + ALIAS_DESC_BOB
                         + VALID_MAJOR_BOB + NOTE_DESC_BOB + TELEGRAM_DESC_BOB + WEBSITE_DESC_BOB,
                 expectedMessage);
@@ -285,11 +285,11 @@ public class AddCommandParserTest {
                 + WEBSITE_DESC_BOB + TAG_DESC_HUSBAND + TAG_DESC_FRIEND, new AddCommand(expectedPersonInvalidAlias));
 
 
-        // invalid course
-        Person expectedPersonInvalidCourse = new PersonBuilder(BOB).withMajor("1").build();
+        // invalid major
+        Person expectedPersonInvalidMajor = new PersonBuilder(BOB).withMajor("1").build();
         assertParseSuccess(parser, NAME_DESC_BOB + PHONE_DESC_BOB + EMAIL_DESC_BOB
                 + ALIAS_DESC_BOB + INVALID_MAJOR_DESC + NOTE_DESC_BOB + TELEGRAM_DESC_BOB
-                + WEBSITE_DESC_BOB + TAG_DESC_HUSBAND + TAG_DESC_FRIEND, new AddCommand(expectedPersonInvalidCourse));
+                + WEBSITE_DESC_BOB + TAG_DESC_HUSBAND + TAG_DESC_FRIEND, new AddCommand(expectedPersonInvalidMajor));
 
         // invalid telegram
         Person expectedPersonInvalidTelegram = new PersonBuilder(BOB).withTelegram("telehandle").build();

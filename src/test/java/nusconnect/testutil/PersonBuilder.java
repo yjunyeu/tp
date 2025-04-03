@@ -113,8 +113,8 @@ public class PersonBuilder {
     /**
      * Sets the {@code Major} of the {@code Person} that we are building.
      */
-    public PersonBuilder withMajor(String course) {
-        this.major = new Major(course);
+    public PersonBuilder withMajor(String major) {
+        this.major = new Major(major);
         return this;
     }
 

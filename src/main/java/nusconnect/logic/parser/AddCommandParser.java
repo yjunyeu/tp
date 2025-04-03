@@ -64,13 +64,13 @@ public class AddCommandParser implements Parser<AddCommand> {
         Phone phone = parseField(argMultimap, PREFIX_PHONE, Phone::new);
         Email email = parseField(argMultimap, PREFIX_EMAIL, Email::new);
         Alias alias = parseField(argMultimap, PREFIX_ALIAS, Alias::new);
-        Major course = parseField(argMultimap, PREFIX_MAJOR, Major::new);
+        Major major = parseField(argMultimap, PREFIX_MAJOR, Major::new);
         Note note = parseField(argMultimap, PREFIX_NOTE, Note::new);
         Website website = parseField(argMultimap, PREFIX_WEBSITE, Website::new);
 
         Set<Module> moduleList = ParserUtil.parseModules(argMultimap.getAllValues(PREFIX_MODULE));
 
-        Person person = new Person(name, telegram, phone, email, alias, course, note, website, moduleList);
+        Person person = new Person(name, telegram, phone, email, alias, major, note, website, moduleList);
 
         return new AddCommand(person);
     }

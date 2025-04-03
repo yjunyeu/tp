@@ -51,8 +51,8 @@ public class Major {
             return false;
         }
 
-        Major otherCourse = (Major) other;
-        return value.equals(otherCourse.value);
+        Major otherMajor = (Major) other;
+        return value.equals(otherMajor.value);
     }
 
     @Override

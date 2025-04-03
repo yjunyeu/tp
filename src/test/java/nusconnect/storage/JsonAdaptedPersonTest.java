@@ -133,7 +133,7 @@ public class JsonAdaptedPersonTest {
 
 
     @Test
-    public void invalidCourse_stillReturnsPerson() throws Exception {
+    public void invalidMajor_stillReturnsPerson() throws Exception {
         Person person = new PersonBuilder()
                 .withName(VALID_NAME)
                 .withTelegram(VALID_TELEGRAM)

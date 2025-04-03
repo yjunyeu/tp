@@ -155,7 +155,7 @@ public class EditCommandParserTest {
         expectedCommand = new EditCommand(targetIndex, descriptor);
         assertParseSuccess(parser, userInput, expectedCommand);
 
-        // course
+        // major
         userInput = targetIndex.getOneBased() + MAJOR_DESC_ANY;
         descriptor = new EditPersonDescriptorBuilder().withMajor(VALID_MAJOR_ANY).build();
         expectedCommand = new EditCommand(targetIndex, descriptor);

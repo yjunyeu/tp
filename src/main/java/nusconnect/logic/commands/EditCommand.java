@@ -297,8 +297,8 @@ public class EditCommand extends Command {
             return major;
         }
 
-        public void setIsMajorEdited(boolean isCourseEdited) {
-            this.isMajorEdited = isCourseEdited;
+        public void setIsMajorEdited(boolean isMajorEdited) {
+            this.isMajorEdited = isMajorEdited;
         }
 
         public Boolean getIsMajorEdited() {
