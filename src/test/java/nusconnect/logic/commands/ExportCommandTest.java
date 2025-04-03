@@ -11,7 +11,8 @@ import nusconnect.model.Model;
 
 public class ExportCommandTest {
 
-    private final String testFolder = "src/test/data/JsonAddressBookStorageTest";
+    private final String testFolder = "src/test/data/JsonAddressBookStorageTest/addressbook.json";
+
 
     @Test
     public void execute_validFilePath_exportSuccess() throws Exception {
@@ -27,13 +28,14 @@ public class ExportCommandTest {
         CommandResult result = exportCommand.execute(mockModel);
 
         // Verify that the command returns the expected success message
-        assertEquals(ExportCommand.MESSAGE_SUCCESS, result.getFeedbackToUser());
+        assertEquals(ExportCommand.MESSAGE_SUCCESS +
+                "C:\\tp\\src\\test\\data\\JsonAddressBookStorageTest\\addressbook.json", result.getFeedbackToUser());
     }
 
     @Test
     public void execute_invalidFilePath_exportFailure() throws Exception {
         // Set up mocks
-        String invalidFilePath = "C:/Invalid/Path/addressbook_data.json";
+        String invalidFilePath = "123:/Invalid/Path/addressbook_data.json";
         LogicManager mockLogicManager = mock(LogicManager.class);
         Model mockModel = mock(Model.class);
 
