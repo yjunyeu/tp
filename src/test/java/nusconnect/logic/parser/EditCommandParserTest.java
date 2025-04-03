@@ -3,6 +3,7 @@ package nusconnect.logic.parser;
 import static nusconnect.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static nusconnect.logic.commands.CommandTestUtil.ALIAS_DESC_AMY;
 import static nusconnect.logic.commands.CommandTestUtil.ALIAS_DESC_BOB;
+import static nusconnect.logic.commands.CommandTestUtil.DESC_AMY;
 import static nusconnect.logic.commands.CommandTestUtil.EMAIL_DESC_AMY;
 import static nusconnect.logic.commands.CommandTestUtil.EMAIL_DESC_BOB;
 import static nusconnect.logic.commands.CommandTestUtil.INVALID_ALIAS_DESC;
@@ -45,7 +46,9 @@ import static nusconnect.logic.commands.CommandTestUtil.WEBSITE_DESC_BOB;
 import static nusconnect.logic.parser.CliSyntax.PREFIX_ALIAS;
 import static nusconnect.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static nusconnect.logic.parser.CliSyntax.PREFIX_MODULE;
+import static nusconnect.logic.parser.CliSyntax.PREFIX_NAME;
 import static nusconnect.logic.parser.CliSyntax.PREFIX_PHONE;
+import static nusconnect.logic.parser.CliSyntax.PREFIX_TELEGRAM;
 import static nusconnect.logic.parser.CommandParserTestUtil.assertParseFailure;
 import static nusconnect.logic.parser.CommandParserTestUtil.assertParseSuccess;
 import static nusconnect.testutil.TypicalIndexes.INDEX_FIRST;
@@ -70,6 +73,10 @@ import nusconnect.testutil.EditPersonDescriptorBuilder;
 
 public class EditCommandParserTest {
 
+    private static final String NAME_EMPTY = " " + PREFIX_NAME;
+    private static final String TELEGRAM_EMPTY = " " + PREFIX_TELEGRAM;
+    private static final String PHONE_EMPTY = " " + PREFIX_PHONE;
+    private static final String ALIAS_EMPTY = " " + PREFIX_ALIAS;
     private static final String TAG_EMPTY = " " + PREFIX_MODULE;
 
     private static final String MESSAGE_INVALID_FORMAT =

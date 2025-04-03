@@ -16,6 +16,7 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.Optional;
 import java.util.Set;
+import java.util.function.Consumer;
 
 import nusconnect.commons.core.index.Index;
 import nusconnect.logic.commands.EditCommand;
@@ -27,6 +28,33 @@ import nusconnect.model.module.Module;
  * Parses input arguments and creates a new EditCommand object
  */
 public class EditCommandParser implements Parser<EditCommand> {
+
+    /**
+     * Determines if a field needs to be parsed and updates the corresponding edited flag.
+     * If the field is present, that means the field is being edited and sets the "edited" flag to true.
+     * If the field's value is empty, it sets the field to null and returns false.
+     * If the field's value is present, it returns true and lets the outer function catch any parsing errors.
+     * If the field is not present, it returns false, and the "edited" flag is not set.
+     *
+     * @param prefix The prefix associated with the field to be parsed.
+     * @param argMultimap The map containing the argument values.
+     * @param setter A consumer that sets the parsed value of the field.
+     * @param editedFlagSetter A consumer that sets the "edited" flag to true if the field is present.
+     * @param <T> The type of the field being parsed (e.g., Phone, Email, etc.).
+     * @return {@code true} if the field is present and not empty, {@code false} otherwise.
+     */
+    private <T> boolean determineIfFieldNeedsToBeParsed(Prefix prefix, ArgumentMultimap argMultimap,
+                             Consumer<T> setter, Consumer<Boolean> editedFlagSetter) {
+        return argMultimap.getValue(prefix).map(value -> {
+            editedFlagSetter.accept(true);
+            if (value.isEmpty()) {
+                setter.accept(null);
+                return false;
+            } else {
+                return true;
+            }
+        }).orElse(false);
+    }
 
     /**
      * Parses the given {@code String} of arguments in the context of the EditCommand
@@ -64,31 +92,41 @@ public class EditCommandParser implements Parser<EditCommand> {
             editPersonDescriptor.setTelegram(ParserUtil.parseTelegram(argMultimap.getValue(PREFIX_TELEGRAM).get()));
         }
 
-        if (argMultimap.getValue(PREFIX_PHONE).isPresent()) {
-            editPersonDescriptor.setIsPhoneEdited(true);
+        // For optional fields apart from module, a helper function determines if the field needs to be parsed.
+        // Exceptions are handled by the parser function and not the helper function.
+
+        if (determineIfFieldNeedsToBeParsed(PREFIX_PHONE, argMultimap,
+                editPersonDescriptor::setPhone, editPersonDescriptor::setIsPhoneEdited)) {
             editPersonDescriptor.setPhone(ParserUtil.parsePhone(argMultimap.getValue(PREFIX_PHONE).get()));
         }
-        if (argMultimap.getValue(PREFIX_EMAIL).isPresent()) {
-            editPersonDescriptor.setIsEmailEdited(true);
+
+        if (determineIfFieldNeedsToBeParsed(PREFIX_PHONE, argMultimap,
+                editPersonDescriptor::setPhone, editPersonDescriptor::setIsPhoneEdited)) {
+            editPersonDescriptor.setPhone(ParserUtil.parsePhone(argMultimap.getValue(PREFIX_PHONE).get()));
+        }
+
+        if (determineIfFieldNeedsToBeParsed(PREFIX_EMAIL, argMultimap,
+                editPersonDescriptor::setEmail, editPersonDescriptor::setIsEmailEdited)) {
             editPersonDescriptor.setEmail(ParserUtil.parseEmail(argMultimap.getValue(PREFIX_EMAIL).get()));
         }
-        if (argMultimap.getValue(PREFIX_ALIAS).isPresent()) {
-            editPersonDescriptor.setIsAliasEdited(true);
+
+        if (determineIfFieldNeedsToBeParsed(PREFIX_ALIAS, argMultimap,
+                editPersonDescriptor::setAlias, editPersonDescriptor::setIsAliasEdited)) {
             editPersonDescriptor.setAlias(ParserUtil.parseAlias(argMultimap.getValue(PREFIX_ALIAS).get()));
         }
 
-        if (argMultimap.getValue(PREFIX_MAJOR).isPresent()) {
-            editPersonDescriptor.setIsMajorEdited(true);
+        if (determineIfFieldNeedsToBeParsed(PREFIX_MAJOR, argMultimap,
+                editPersonDescriptor::setMajor, editPersonDescriptor::setIsMajorEdited)) {
             editPersonDescriptor.setMajor(ParserUtil.parseMajor(argMultimap.getValue(PREFIX_MAJOR).get()));
         }
 
-        if (argMultimap.getValue(PREFIX_NOTE).isPresent()) {
-            editPersonDescriptor.setIsNoteEdited(true);
+        if (determineIfFieldNeedsToBeParsed(PREFIX_NOTE, argMultimap,
+                editPersonDescriptor::setNote, editPersonDescriptor::setIsNoteEdited)) {
             editPersonDescriptor.setNote(ParserUtil.parseNote(argMultimap.getValue(PREFIX_NOTE).get()));
         }
 
-        if (argMultimap.getValue(PREFIX_WEBSITE).isPresent()) {
-            editPersonDescriptor.setIsWebsiteEdited(true);
+        if (determineIfFieldNeedsToBeParsed(PREFIX_WEBSITE, argMultimap,
+                editPersonDescriptor::setWebsite, editPersonDescriptor::setIsWebsiteEdited)) {
             editPersonDescriptor.setWebsite(ParserUtil.parseWebsite(argMultimap.getValue(PREFIX_WEBSITE).get()));
         }
 
