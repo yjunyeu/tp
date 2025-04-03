@@ -4,7 +4,7 @@ title: User Guide
 ---
 # NUSConnect
 
-Thank you for using **NUSConnect**! With NUSConnect, you can manage your contacts quickly and efficiently using the 
+Thank you for using **NUSConnect**! With **NUSConnect**, you can manage your contacts quickly and efficiently using the 
 Command Line Interface (CLI), all displayed with our custom-designed Graphical User Interface (GUI) specifically for 
 NUS students! Type fast, and **NUSConnect** lets you breeze through contact management tasks faster than any 
 traditional address book!
@@ -26,7 +26,8 @@ traditional address book!
 1. Now, open up a command terminal, go to the folder where `nusconnect.jar` is, and use the `java -jar nusconnect.jar` command to 
    run the application. You've just taken your first step toward managing contacts quickly! 
    ![Ui](images/Ui.png)
-
+1. You should now see some sample data. This is what NUSConnect will look like! For now, let's clear this data using:
+   * `clear`. NUSConnect should now be empty.
 1. Let's try a few commands! First, let's add your own contact to NUSConnect:
    * `add n/(your name) t/@(your handle)`
 2. Let's also add your phone number, and CS2103T as a course you are taking:
@@ -45,8 +46,7 @@ traditional address book!
    * `exit`. 
 8. For more features, refer to the [Features](#features) below!
 9. Welcome to NUSConnect! We hope you will enjoy managing your contacts effortlessly!
-
-[Back to top](#nusconnect)
+* [Back to top](#nusconnect)
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -56,14 +56,14 @@ traditional address book!
 
 **:information_source: Notes about the command format:**<br>
 
-* Words in `UPPER_CASE` are the parameters to be supplied by the user.<br>
+* Words in `UPPER_CASE` are the parameters to be supplied by the you.<br>
   e.g. in `add n/NAME`, `NAME` is a parameter which can be used as `add n/John Doe`.
 
 * Items in square brackets are optional.<br>
   e.g `n/NAME [t/TAG]` can be used as `n/John Doe t/friend` or as `n/John Doe`.
 
 * Items with `…`​ after them can be used multiple times including zero times.<br>
-  e.g. `[t/TAG]…​` can be used as ` ` (i.e. 0 times), `t/friend`, `t/friend t/family` etc.
+  e.g. `[m/MODULE]…​` can be used as ` ` (i.e. 0 times), `m/CS2103T`, `t/CS2103T t/CS2101` etc.
 
 * Parameters can be in any order.<br>
   e.g. if the command specifies `n/NAME p/PHONE_NUMBER`, `p/PHONE_NUMBER n/NAME` is also acceptable.
@@ -78,13 +78,9 @@ traditional address book!
 
 #### Adding a person: `add`
 
-Adds a person to the address book.
+This command allows you to add a person to the address book.
 
 Format: `add n/NAME t/TELEGRAM [p/PHONE_NUMBER] [e/EMAIL] [a/ALIAS] [ma/MAJOR] [no/NOTE] [w/WEBSITE] [m/MODULE]…​`
-
-<div markdown="span" class="alert alert-primary">:bulb: **Tip:**
-A person can have any number of modules (including 0)
-</div>
 
 Examples:
 
@@ -97,7 +93,7 @@ After forming a group in CS2103T Software Engineering, you add your two teammate
 
 #### Editing a person : `edit`
 
-Edits an existing person in the address book.
+This command allows you to edit an existing person in the address book.
 
 Format: `edit INDEX [n/NAME] [t/TELEGRAM] [p/PHONE] [e/EMAIL] [a/ALIAS] [ma/MAJOR] [no/NOTE] [w/WEBSITE] [m/MODULE]…​`
 
@@ -107,6 +103,14 @@ Format: `edit INDEX [n/NAME] [t/TELEGRAM] [p/PHONE] [e/EMAIL] [a/ALIAS] [ma/MAJO
 * When editing modules, the existing modules of the person will be removed i.e adding of modules is not cumulative.
 * You can remove all the person’s modules by typing `m/` without
   specifying any modules after it.
+
+<div markdown="span" class="alert alert-primary">:bulb: **Note:**
+When you are editing modules, the existing modules of the person will be removed, and replaced with what you have entered! 
+</div>
+
+<div markdown="span" class="alert alert-primary">:bulb: **Tip:**
+Adding the prefixes (e.g. `m/`) without specifying any values will set the field to empty if it is optional!
+</div>
 
 Examples:
 
@@ -119,9 +123,9 @@ You realize that you share an additional module, IS1108 Digital Ethics and Priva
 
 #### Deleting people : `delete`
 
-Deletes the specified person or a list of people from the address book.
+This command allows you to delete the specified person or a list of people from the address book.
 
-Format: `delete INDEX [MORE_INDICES]`
+Format: `delete INDEX [MORE_INDICES]…​`
 
 * Deletes the person at the specified `INDEX`, or all people at the specified `INDICES`
 * The index refers to the index number shown in the displayed person list.
@@ -156,7 +160,7 @@ After `list` again:
 
 #### Clearing all entries : `clear`
 
-Clears all entries from the address book.
+This command allows you to clear all entries from the address book.
 
 Format: `clear`
 
@@ -164,7 +168,7 @@ Format: `clear`
 
 #### Creating a group : `group create`
 
-Creates a new group with the specified name.
+This command allows you to create a new group with the specified name.
 
 Format: `group create NAME`
 
@@ -177,7 +181,7 @@ Examples:
 
 #### Deleting a group : `group delete`
 
-Deletes the group at the specified index.
+This command allows you to delete the group at the specified index.
 
 Format: `group delete INDEX`
 
@@ -190,7 +194,7 @@ Examples:
 
 #### Adding a person to a group : `group add`
 
-Adds a person to a group.
+This command allows you to add a person to a group.
 
 Format: `group add PERSON_INDEX to GROUP_INDEX`
 
@@ -232,19 +236,19 @@ exactly is in which project. To quickly identify and see who is in your team at 
 
 #### Listing all persons : `list`
 
-Shows a list of all persons in the address book.
+This command allows you to show a list of all persons in the address book.
 
 Format: `list`
 
 #### Locating persons by name or modules: `find`
 
-Finds persons whose names or modules contain any of the given keywords.
+This command allows you to find persons whose names or modules contain any of the given keywords.
 
-Format: `find KEYWORD [MORE_KEYWORDS]`
+Format: `find KEYWORD [MORE_KEYWORDS]…​`
 
 * The search is case-insensitive. e.g `hans` will match `Hans`
 * The order of the keywords does not matter. e.g. `Hans Bo` will match `Bo Hans`
-* Both the name and the module are searched.
+* Both the names and the modules are searched.
 * Partial words can be matched e.g. `Han` will match `Hans`
 * Persons matching at least one keyword in either the name or module will be returned (i.e. OR search). e.g. `Hans Bo CS2103T` will return `Hans Gruber` (matching `Hans`), `Bo Yang` (matching `Bo`), and `John Sim` (if module matches).
 
@@ -258,7 +262,7 @@ Examples:
 
 #### Viewing contact details: `view`
 
-Shows the details of the specified person from the address  book.
+This command allows you to view the details of the specified person from the address book.
 
 Format: `view INDEX`
 
@@ -273,21 +277,21 @@ Examples:
 
 #### Sorting the address book: `sort`
 
-Sorts all the persons in the address book by their names in alphabetical order.
+This command allows you to sort all the persons in the address book by their names in alphabetical order. This is useful
+for when you just want to organize and take a look at all your contacts!
 
 Format: `sort`
 
-* The  `sort` command organises all the contacts in the address book by their names in ascending alphabetical order.
+* The `sort` command organises all the contacts in the address book by their names in ascending alphabetical order.
 * If the address book is empty, the command will display the message `The address book is empty!`.
 * If there is only one person in the address book, the list will remain unchanged, and the command will display the message `Sorted one person!`.
 
 Examples:
-* Before sorting:
+* Before sorting: Note that "the three amigos" Grady Booch, James Rumbaugh, and Ivar Jacobson are not in alphabetical order.
 
 ![Before `sort`](images/BeforeSort.png)
 
-
-* After sorting:
+* After sorting: Now, they have moved to the corresponding indices that will make all eight contacts be in alphabetical order!
 
 ![After `sort`](images/AfterSort.png)
 
@@ -295,11 +299,11 @@ Examples:
 
 #### Saving the data
 
-AddressBook data are saved in the hard disk automatically after any command that changes the data. There is no need to save manually.
+AddressBook data are saved in the hard disk automatically after any command that changes the data. There is no need for you to save manually.
 
 #### Editing the data file
 
-AddressBook data are saved automatically as a JSON file `[JAR file location]/data/addressbook.json`. Advanced users are welcome to update data directly by editing that data file.
+AddressBook data are saved automatically as a JSON file `[JAR file location]/data/addressbook.json`. If you are an advanced user, you are welcome to update data directly by editing that data file.
 
 <div markdown="span" class="alert alert-warning">:exclamation: **Caution:**
 If your changes to the data file makes its format invalid, AddressBook will discard all data and start with an empty data file at the next run. Hence, it is recommended to take a backup of the file before editing it.<br>
@@ -308,46 +312,48 @@ Furthermore, certain edits can cause the AddressBook to behave in unexpected way
 
 #### Exporting the current address book: `export`
 
-Exports the current address book data to a specified file.
+This command allows you to export the current address book data to a specified file. This means that you can create local
+backups of your address book, or even share it to your contacts with others!
 
 format: `export FILE_PATH`
 
-* FILE_PATH refers to the location where the data will be exported. It can be either an absolute or relative path.
-* FILE_PATH is normalized. E.g. `C:////////addressbook.json` is the same as `C:/addressbook.json`
-* The filename cannot be empty, the file name should end with .json as file extension. (e.g. addressbook.json)
+* `FILE_PATH` refers to the location where the data will be exported. It can be either a relative or an absolute path. Examples for these paths are given below respectively.
+* The filename (the last part of the `FILE_PATH`) cannot be empty; the file name should end with `.json` as file extension. (e.g. `addressbook.json`)
 * If a file already exists at the specified location, it will be overwritten with the current data.
 * If the file path is invalid or there are issues with writing the file (e.g., insufficient permissions), an error message will be displayed.
 
+<div markdown="span" class="alert alert-primary">:bulb: **Note:**
+`FILE_PATH` is normalized. E.g. `C:////////addressbook.json` is the same as `C:/addressbook.json`
+</div>
+
 Examples:
 
-* export exported_data.json exports the address book data to the `exported_data.json` file in the current directory.
-* export C:/Users/user/Downloads/addressbook_backup.json exports `addressbook_backup.json` to a `C:/Users/user/Downloads`
-
-
+* `export exported_data.json` exports the address book data to the `exported_data.json` file in the current directory.
+* `export C:/Users/user/Downloads/addressbook_backup.json` exports `addressbook_backup.json` to a `C:/Users/user/Downloads`
 
 #### Importing an address book: `import`
 
+This command allows you to import a specified file to the current address book. This means that you can change back to your local
+backups of different address books, or even take a look at other's address books!
+
 Format: `import FILE_PATH`
 
-* FILE_PATH refers to the path of the file from which data will be imported. It can be either an absolute or relative path.
-* FILE_PATH is normalized. E.g. `C:////////addressbook.json` is the same as `C:/addressbook.json`
-* The file must be in the correct format (e.g., .json, .txt), and it must contain data that is compatible with the address book structure.
+* `FILE_PATH` refers to the path of the file from which data will be imported. It can be either an absolute or relative path.
+* The file must be in the correct format (e.g., `.json`, `.txt`), and it must contain data that is compatible with the address book structure.
 * If the file path is invalid, the operation will fail, and an error message will be displayed.
 * If the data in the file is successfully imported, the address book will be updated with the new information.
 
 Examples:
 
-* import data.json imports data from the `data.json` file.
-* import backup/addressbook.json imports data from the `addressbook.json` file located in the backup folder.
-* import C:/Users/user/Documents/addressbook_data.txt imports data from the `addressbook_data.txt` file located in the `C:/Users/user/Documents`
+* `import data.json` imports data from the `data.json` file within the current directory.
+* `import backup/addressbook.json` imports data from the `addressbook.json` file located in the backup folder relative to the current directory.
+* `import C:/Users/user/Documents/addressbook_data.txt` imports data from the `addressbook_data.txt` file located in the `C:/Users/user/Documents`
 
 ### Misc:
 
 #### Viewing help : `help`
 
 Shows a message explaning how to access the help page. This message can also be brought up using `F1`
-
-![help message](images/helpMessage.png)
 
 Format: `help`
 
@@ -356,7 +362,6 @@ Format: `help`
 Exits the program.
 
 Format: `exit`
-
 * [Back to top](#nusconnect)
 --------------------------------------------------------------------------------------------------------------------
 
@@ -373,8 +378,6 @@ Format: `exit`
 
 **Q**: Can I undo a command if I delete or modify the wrong contact?<br>
 **A**: Currently, there is no undo feature in NUSConnect. It is recommended to back up your address book data regularly to prevent accidental data loss.
-
-
 * [Back to top](#nusconnect)
 
 --------------------------------------------------------------------------------------------------------------------
@@ -383,8 +386,16 @@ Format: `exit`
 
 1. **When using multiple screens**, if you move the application to a secondary screen, and later switch to using only the primary screen, the GUI will open off-screen. The remedy is to delete the `preferences.json` file created by the application before running the application again.
 2. **If you minimize the Help Window** and then run the `help` command (or use the `Help` menu, or the keyboard shortcut `F1`) again, the original Help Window will remain minimized, and no new Help Window will appear. The remedy is to manually restore the minimized Help Window.
-
 * [Back to top](#nusconnect)
+
+--------------------------------------------------------------------------------------------------------------------
+
+## Final words
+
+Thank you once again for using **NUSConnect**! We hope that you will find our product beneficial, and that you will
+enjoy managing your contacts seamlessly! We have included a command summary below for your reference. Should you have
+any queries, please do not hesitate to reach out to any of us! Our contact details can be found in our [About Us Page](https://ay2425s2-cs2103t-t16-1.github.io/tp/AboutUs.html).
+
 --------------------------------------------------------------------------------------------------------------------
 
 ## Command summary
@@ -393,18 +404,17 @@ Action | Format, Examples
 --------|------------------
 **Add** | `add n/NAME t/TELEGRAM [p/PHONE_NUMBER] [e/EMAIL] [a/ALIAS] [ma/MAJOR] [no/NOTE] [w/WEBSITE] [m/MODULE]…​` <br> e.g., `add n/John Doe t/@johndoe p/98765432 e/johnd@example.com a/alias123 ma/CompSci no/Enjoys programming w/https://johndoe.com m/CS2103T`
 **Edit** | `edit INDEX [n/NAME] [t/TELEGRAM] [p/PHONE] [e/EMAIL] [a/ALIAS] [ma/MAJOR] [no/NOTE] [w/WEBSITE] [m/MODULE]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`
-**Delete** | `delete INDEX [MORE_INDICES]`<br> e.g., `delete 3` `delete 1 3 5`
+**Delete** | `delete INDEX [MORE_INDICES]…​`<br> e.g., `delete 3` `delete 1 3 5`
 **Clear** | `clear`
 **Group create** | `group create NAME`<br> e.g., `group create CS2103T Team`
 **Group delete** | `group delete INDEX`<br> e.g., `group delete 2`
 **Group add** | `group add PERSON_INDEX to GROUP_INDEX`<br> e.g. `group add 1 to 2`
 **List** | `list`
-**Find** | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`
+**Find** | `find KEYWORD [MORE_KEYWORDS]…​`<br> e.g., `find James Jake`
 **View** | `view INDEX` <br> e.g., `view 1`
 **Sort** | `sort`
-**Export** | `export`
-**Import** | `import`
+**Export** | `export FILE_PATH`<br> e.g., `export exported_data.json`
+**Import** | `import FILE_PATH`<br> e.g., `import exported_data.json`
 **Help** | `help`
 **Exit** | `exit`
-
 * [Back to top](#nusconnect)
