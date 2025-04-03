@@ -33,7 +33,7 @@ public class JsonAdaptedPersonTest {
     private static final String INVALID_EMAIL = "example.com";
     private static final String INVALID_TAG = "#friend";
     private static final String INVALID_ALIAS = " " + PREFIX_ALIAS;
-    private static final String INVALID_COURSE = " " + PREFIX_MAJOR;
+    private static final String INVALID_MAJOR = " " + PREFIX_MAJOR;
     private static final String INVALID_NOTE = " " + PREFIX_NOTE;
     private static final String INVALID_TELEGRAM = " " + PREFIX_TELEGRAM;
     private static final String INVALID_WEBSITE = " " + PREFIX_WEBSITE;
@@ -43,7 +43,7 @@ public class JsonAdaptedPersonTest {
     private static final String VALID_PHONE = BENSON.getPhone().map(Phone::toString).orElse(null);
     private static final String VALID_EMAIL = BENSON.getEmail().map(Email::toString).orElse(null);
     private static final String VALID_ALIAS = BENSON.getAlias().map(Alias::toString).orElse(null);
-    private static final String VALID_COURSE = BENSON.getMajor().map(Major::toString).orElse(null);
+    private static final String VALID_MAJOR = BENSON.getMajor().map(Major::toString).orElse(null);
     private static final String VALID_NOTE = BENSON.getNote().map(Note::toString).orElse(null);
     private static final String VALID_WEBSITE = BENSON.getWebsite().map(Website::toString).orElse(null);
 
@@ -65,7 +65,7 @@ public class JsonAdaptedPersonTest {
                 .withPhone(VALID_PHONE)
                 .withEmail(VALID_EMAIL)
                 .withAlias(VALID_ALIAS)
-                .withMajor(VALID_COURSE)
+                .withMajor(VALID_MAJOR)
                 .withNote(VALID_NOTE)
                 .withWebsite(VALID_WEBSITE)
                 .build();
@@ -77,7 +77,7 @@ public class JsonAdaptedPersonTest {
     public void toModelType_nullName_throwsIllegalValueException() {
         JsonAdaptedPerson person =
                 new JsonAdaptedPerson(null, VALID_TELEGRAM,
-                        VALID_PHONE, VALID_EMAIL, VALID_ALIAS, VALID_COURSE, VALID_NOTE,
+                        VALID_PHONE, VALID_EMAIL, VALID_ALIAS, VALID_MAJOR, VALID_NOTE,
                         VALID_WEBSITE, VALID_TAGS);
         String expectedMessage = String.format(MISSING_FIELD_MESSAGE_FORMAT, Name.class.getSimpleName());
         assertThrows(IllegalValueException.class, expectedMessage, person::toModelType);
@@ -91,7 +91,7 @@ public class JsonAdaptedPersonTest {
                 .withPhone(INVALID_PHONE)
                 .withEmail(VALID_EMAIL)
                 .withAlias(VALID_ALIAS)
-                .withMajor(VALID_COURSE)
+                .withMajor(VALID_MAJOR)
                 .withNote(VALID_NOTE)
                 .withWebsite(VALID_WEBSITE)
                 .build();
@@ -107,7 +107,7 @@ public class JsonAdaptedPersonTest {
                 .withPhone(VALID_PHONE)
                 .withEmail(INVALID_EMAIL)
                 .withAlias(VALID_ALIAS)
-                .withMajor(VALID_COURSE)
+                .withMajor(VALID_MAJOR)
                 .withNote(VALID_NOTE)
                 .withWebsite(VALID_WEBSITE)
                 .build();
@@ -123,7 +123,7 @@ public class JsonAdaptedPersonTest {
                 .withPhone(VALID_PHONE)
                 .withEmail(VALID_EMAIL)
                 .withAlias(INVALID_ALIAS)
-                .withMajor(VALID_COURSE)
+                .withMajor(VALID_MAJOR)
                 .withNote(VALID_NOTE)
                 .withWebsite(VALID_WEBSITE)
                 .build();
@@ -140,7 +140,7 @@ public class JsonAdaptedPersonTest {
                 .withPhone(VALID_PHONE)
                 .withEmail(VALID_EMAIL)
                 .withAlias(VALID_ALIAS)
-                .withMajor(INVALID_COURSE)
+                .withMajor(INVALID_MAJOR)
                 .withNote(VALID_NOTE)
                 .withWebsite(VALID_WEBSITE)
                 .build();
@@ -156,7 +156,7 @@ public class JsonAdaptedPersonTest {
                 .withPhone(VALID_PHONE)
                 .withEmail(VALID_EMAIL)
                 .withAlias(VALID_ALIAS)
-                .withMajor(VALID_COURSE)
+                .withMajor(VALID_MAJOR)
                 .withNote(VALID_NOTE)
                 .withWebsite(VALID_WEBSITE)
                 .build();
@@ -168,7 +168,7 @@ public class JsonAdaptedPersonTest {
     public void toModelType_nullTelegram_throwsIllegalValueException() {
         JsonAdaptedPerson person =
                 new JsonAdaptedPerson(VALID_NAME, null,
-                        VALID_PHONE, VALID_EMAIL, VALID_ALIAS, VALID_COURSE, VALID_NOTE,
+                        VALID_PHONE, VALID_EMAIL, VALID_ALIAS, VALID_MAJOR, VALID_NOTE,
                         VALID_WEBSITE, VALID_TAGS);
         String expectedMessage = String.format(MISSING_FIELD_MESSAGE_FORMAT, Telegram.class.getSimpleName());
         assertThrows(IllegalValueException.class, expectedMessage, person::toModelType);
@@ -182,7 +182,7 @@ public class JsonAdaptedPersonTest {
                 .withPhone(VALID_PHONE)
                 .withEmail(VALID_EMAIL)
                 .withAlias(VALID_ALIAS)
-                .withMajor(VALID_COURSE)
+                .withMajor(VALID_MAJOR)
                 .withNote(VALID_NOTE)
                 .withWebsite(INVALID_WEBSITE)
                 .build();
