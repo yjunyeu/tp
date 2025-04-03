@@ -70,9 +70,9 @@ public class NameContainsKeywordsPredicateTest {
 
         // Keywords match phone, email and alias, but do not match name
         predicate = new NameContainsKeywordsPredicate(
-                Arrays.asList("12345678", "alice@example.com", "AliceAlias"));
+                Arrays.asList("87654321", "alice@example.com", "AliceAlias"));
         assertFalse(predicate.test(new PersonBuilder().withName("Alice")
-                .withPhone("12345678")
+                .withPhone("87654321")
                 .withEmail("alice@example.com")
                 .withAlias("AliceAlias")
                 .withMajor("Engineering")
