@@ -1,8 +1,8 @@
 package nusconnect.model.person;
 
 import static nusconnect.logic.commands.CommandTestUtil.VALID_ALIAS_BOB;
-import static nusconnect.logic.commands.CommandTestUtil.VALID_MAJOR_BOB;
 import static nusconnect.logic.commands.CommandTestUtil.VALID_EMAIL_BOB;
+import static nusconnect.logic.commands.CommandTestUtil.VALID_MAJOR_BOB;
 import static nusconnect.logic.commands.CommandTestUtil.VALID_MODULE_CS2103T;
 import static nusconnect.logic.commands.CommandTestUtil.VALID_MODULE_CS2106;
 import static nusconnect.logic.commands.CommandTestUtil.VALID_NAME_AMY;

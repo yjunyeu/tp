@@ -1,8 +1,8 @@
 package nusconnect.logic.commands;
 
 import static nusconnect.logic.parser.CliSyntax.PREFIX_ALIAS;
-import static nusconnect.logic.parser.CliSyntax.PREFIX_MAJOR;
 import static nusconnect.logic.parser.CliSyntax.PREFIX_EMAIL;
+import static nusconnect.logic.parser.CliSyntax.PREFIX_MAJOR;
 import static nusconnect.logic.parser.CliSyntax.PREFIX_MODULE;
 import static nusconnect.logic.parser.CliSyntax.PREFIX_NAME;
 import static nusconnect.logic.parser.CliSyntax.PREFIX_NOTE;

@@ -18,8 +18,8 @@ import org.junit.jupiter.api.Test;
 
 import nusconnect.commons.exceptions.IllegalValueException;
 import nusconnect.model.person.Alias;
-import nusconnect.model.person.Major;
 import nusconnect.model.person.Email;
+import nusconnect.model.person.Major;
 import nusconnect.model.person.Name;
 import nusconnect.model.person.Note;
 import nusconnect.model.person.Phone;
