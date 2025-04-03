@@ -70,7 +70,11 @@ public class Messages {
         for (Module module : person.getModules()) {
             warnings.append(checkArgument(Module.isValidModuleName(module), Module.MESSAGE_CONSTRAINTS));
         }
-        return warnings.toString();
+        String warningMessage = warnings.toString();
+        if (!warningMessage.isEmpty()) {
+            warningMessage = "\n" + warningMessage;
+        }
+        return warningMessage;
     }
 
     /**
@@ -92,7 +96,6 @@ public class Messages {
             builder.append("; Modules: ");
             person.getModules().forEach(builder::append);
         }
-        builder.append("\n");
         builder.append(generateWarningForPatternMismatch(person));
         return builder.toString();
     }
