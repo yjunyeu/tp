@@ -11,7 +11,7 @@ import static nusconnect.commons.util.AppUtil.checkArgument;
 public class Telegram {
 
     public static final String MESSAGE_CONSTRAINTS =
-            "Telegram handles must start with an @, then must be at least 5 characters long, case-insensitive, \n"
+            "Telegram username must be 5-32 characters long, case-insensitive, with no preceding '@' \n"
                     + "and can only contain letters, numbers, underscores, and it should not be blank!";
 
     /*
