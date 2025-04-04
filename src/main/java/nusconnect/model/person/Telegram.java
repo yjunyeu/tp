@@ -11,14 +11,14 @@ import static nusconnect.commons.util.AppUtil.checkArgument;
 public class Telegram {
 
     public static final String MESSAGE_CONSTRAINTS =
-            "Telegram handles must start with an @, then must be at least 5 characters long, case-insensitive, \n"
+            "Telegram handles must start with an @, then the rest must be 5-32 characters long, case-insensitive, \n"
                     + "and can only contain letters, numbers, underscores, and it should not be blank!";
 
     /*
      * The first character of the telegram must not be a whitespace,
      * otherwise " " (a blank string) becomes a valid input.
      */
-    public static final String VALIDATION_REGEX = "^@[a-zA-Z0-9_]{5,}$";
+    public static final String VALIDATION_REGEX = "^@[a-zA-Z0-9_]{5,32}$";
 
     public final String value;
 
