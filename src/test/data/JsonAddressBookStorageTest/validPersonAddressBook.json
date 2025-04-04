@@ -7,7 +7,7 @@
       "alias": "validP",
       "major": "Software Engineering",
       "note": "This is a valid person entry",
-      "telegram": "@valid_person",
+      "telegram": "valid_person",
       "website": "https://validperson.com"
     }
   ]

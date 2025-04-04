@@ -44,8 +44,8 @@ public class CommandTestUtil {
     public static final String VALID_MAJOR_BOB = "Information Security";
     public static final String VALID_NOTE_AMY = "Likes ice cream.";
     public static final String VALID_NOTE_BOB = "Enjoys long walks.";
-    public static final String VALID_TELEGRAM_AMY = "@amybee";
-    public static final String VALID_TELEGRAM_BOB = "@bobchoo";
+    public static final String VALID_TELEGRAM_AMY = "amybee";
+    public static final String VALID_TELEGRAM_BOB = "bobchoo";
     public static final String VALID_WEBSITE_AMY = "https://amy.example.com";
     public static final String VALID_WEBSITE_BOB = "https://bob.example.com";
     public static final String VALID_GROUP_NAME_CS2100 = "CS2100 Team";
@@ -71,7 +71,7 @@ public class CommandTestUtil {
     public static final String WEBSITE_DESC_BOB = " " + PREFIX_WEBSITE + VALID_WEBSITE_BOB;
 
     public static final String INVALID_NAME_DESC = " " + PREFIX_NAME + "James&"; // '&' not allowed in names
-    public static final String INVALID_TELEGRAM_DESC = " " + PREFIX_TELEGRAM + "telehandle"; // Must start with @
+    public static final String INVALID_TELEGRAM_DESC = " " + PREFIX_TELEGRAM + "@telehandle"; // start with @
     public static final String INVALID_PHONE_DESC = " " + PREFIX_PHONE + "911a"; // 'a' not allowed in phones
     public static final String INVALID_EMAIL_DESC = " " + PREFIX_EMAIL + "bob!yahoo"; // missing '@' symbol
     public static final String INVALID_TAG_DESC = " " + PREFIX_MODULE + "hubby*"; // '*' not allowed in Modules

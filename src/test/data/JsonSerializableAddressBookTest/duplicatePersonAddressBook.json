@@ -7,7 +7,7 @@
     "alias": "Alice",
     "major": "Comp Sci",
     "note": "bestie",
-    "telegram": "@alice",
+    "telegram": "alice",
     "website": "alice.com"
   }, {
     "name": "Alice Pauline",
@@ -16,7 +16,7 @@
     "alias": "Alice",
     "major": "Comp Sci",
     "note": "bestie",
-    "telegram": "@alice",
+    "telegram": "alice",
     "website": "alice.com"
   } ]
 }

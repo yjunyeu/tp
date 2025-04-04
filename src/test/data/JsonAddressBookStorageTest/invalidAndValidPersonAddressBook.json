@@ -7,7 +7,7 @@
       "alias": "validP",
       "major": "Software Engineering",
       "note": "This is a valid person entry",
-      "telegram": "@valid_person",
+      "telegram": "valid_person",
       "website": "https://validperson.com"
     },
     {
@@ -17,7 +17,7 @@
       "alias": "invalidP",
       "major": "Data Science",
       "note": "This person has an invalid phone number",
-      "telegram": "@invalid_person",
+      "telegram": "invalid_person",
       "website": "https://invalidperson.com"
     }
   ]
