@@ -2,6 +2,9 @@ package nusconnect.logic.commands;
 
 import static java.util.Objects.requireNonNull;
 
+import java.util.logging.Logger;
+
+import nusconnect.commons.core.LogsCenter;
 import nusconnect.commons.core.index.Index;
 import nusconnect.commons.util.ToStringBuilder;
 import nusconnect.logic.Messages;
@@ -25,6 +28,8 @@ public class GroupAddCommand extends GroupCommand {
     public static final String MESSAGE_SUCCESS = "Added person %1$s to group %2$s!";
     public static final String MESSAGE_PERSON_ALREADY_IN_GROUP = "This person is already in the group!";
 
+    private static final Logger logger = LogsCenter.getLogger(GroupAddCommand.class);
+
     private final Index personIndex;
     private final Index groupIndex;
 
@@ -37,13 +42,20 @@ public class GroupAddCommand extends GroupCommand {
     public GroupAddCommand(Index personIndex, Index groupIndex) {
         requireNonNull(personIndex);
         requireNonNull(groupIndex);
+        assert personIndex.getOneBased() > 0 : "Person index must be positive";
+        assert groupIndex.getOneBased() > 0 : "Group index must be positive";
         this.personIndex = personIndex;
         this.groupIndex = groupIndex;
+        logger.info("GroupAddCommand created with person index: " + personIndex.getOneBased() + ", group index: "
+            + groupIndex.getOneBased());
     }
 
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
+
+        assert model.getFilteredPersonList() != null : "Filtered person list should not be null";
+        assert model.getFilteredGroupList() != null : "Filtered group list should not be null";
 
         if (personIndex.getZeroBased() >= model.getFilteredPersonList().size()) {
             throw new CommandException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);

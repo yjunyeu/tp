@@ -400,21 +400,22 @@ any queries, please do not hesitate to reach out to any of us! Our contact detai
 
 ## Command summary
 
-Action | Format, Examples
---------|------------------
-**Add** | `add n/NAME t/TELEGRAM [p/PHONE_NUMBER] [e/EMAIL] [a/ALIAS] [ma/MAJOR] [no/NOTE] [w/WEBSITE] [m/MODULE]…​` <br> e.g., `add n/John Doe t/@johndoe p/98765432 e/johnd@example.com a/alias123 ma/CompSci no/Enjoys programming w/https://johndoe.com m/CS2103T`
-**Edit** | `edit INDEX [n/NAME] [t/TELEGRAM] [p/PHONE] [e/EMAIL] [a/ALIAS] [ma/MAJOR] [no/NOTE] [w/WEBSITE] [m/MODULE]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`
-**Delete** | `delete INDEX [MORE_INDICES]…​`<br> e.g., `delete 3` `delete 1 3 5`
-**Clear** | `clear`
-**Group create** | `group create NAME`<br> e.g., `group create CS2103T Team`
-**Group delete** | `group delete INDEX`<br> e.g., `group delete 2`
-**Group add** | `group add PERSON_INDEX to GROUP_INDEX`<br> e.g. `group add 1 to 2`
-**List** | `list`
-**Find** | `find KEYWORD [MORE_KEYWORDS]…​`<br> e.g., `find James Jake`
-**View** | `view INDEX` <br> e.g., `view 1`
-**Sort** | `sort`
-**Export** | `export FILE_PATH`<br> e.g., `export exported_data.json`
-**Import** | `import FILE_PATH`<br> e.g., `import exported_data.json`
-**Help** | `help`
-**Exit** | `exit`
+| Action           | Format, Examples                                                                                                                                                                                                                                             |
+|------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Add**          | `add n/NAME t/TELEGRAM [p/PHONE_NUMBER] [e/EMAIL] [a/ALIAS] [ma/MAJOR] [no/NOTE] [w/WEBSITE] [m/MODULE]…​` <br> e.g., `add n/John Doe t/@johndoe p/98765432 e/johnd@example.com a/alias123 ma/CompSci no/Enjoys programming w/https://johndoe.com m/CS2103T` |
+| **Edit**         | `edit INDEX [n/NAME] [t/TELEGRAM] [p/PHONE] [e/EMAIL] [a/ALIAS] [ma/MAJOR] [no/NOTE] [w/WEBSITE] [m/MODULE]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`                                                                                          |
+| **Delete**       | `delete INDEX [MORE_INDICES]…​`<br> e.g., `delete 3` `delete 1 3 5`                                                                                                                                                                                          |
+| **Clear**        | `clear`                                                                                                                                                                                                                                                      |
+| **Group create** | `group create NAME`<br> e.g., `group create CS2103T Team`                                                                                                                                                                                                    |
+| **Group delete** | `group delete INDEX`<br> e.g., `group delete 2`                                                                                                                                                                                                              |
+| **Group add**    | `group add PERSON_INDEX to GROUP_INDEX`<br> e.g. `group add 1 to 2`                                                                                                                                                                                          |
+| **List**         | `list`                                                                                                                                                                                                                                                       |
+| **Find**         | `find KEYWORD [MORE_KEYWORDS]…​`<br> e.g., `find James Jake`                                                                                                                                                                                                 |
+| **View**         | `view INDEX` <br> e.g., `view 1`                                                                                                                                                                                                                             |
+| **Sort**         | `sort`                                                                                                                                                                                                                                                       |
+| **Export**       | `export FILE_PATH`<br> e.g., `export exported_data.json`                                                                                                                                                                                                     |
+| **Import**       | `import FILE_PATH`<br> e.g., `import exported_data.json`                                                                                                                                                                                                     |
+| **Help**         | `help`                                                                                                                                                                                                                                                       |
+| **Exit**         | `exit`                                                                                                                                                                                                                                                       |
+
 * [Back to top](#nusconnect)

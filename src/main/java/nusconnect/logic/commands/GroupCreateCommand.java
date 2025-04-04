@@ -2,6 +2,9 @@ package nusconnect.logic.commands;
 
 import static java.util.Objects.requireNonNull;
 
+import java.util.logging.Logger;
+
+import nusconnect.commons.core.LogsCenter;
 import nusconnect.commons.util.ToStringBuilder;
 import nusconnect.logic.commands.exceptions.CommandException;
 import nusconnect.model.Model;
@@ -21,6 +24,7 @@ public class GroupCreateCommand extends GroupCommand {
 
     public static final String MESSAGE_SUCCESS = "New group created: %1$s";
     public static final String MESSAGE_DUPLICATE_GROUP = "This group already exists!";
+    private static final Logger logger = LogsCenter.getLogger(GroupCreateCommand.class);
 
     private final String groupName;
 
@@ -29,7 +33,9 @@ public class GroupCreateCommand extends GroupCommand {
      */
     public GroupCreateCommand(String groupName) {
         requireNonNull(groupName);
+        assert !groupName.trim().isEmpty() : "Group name must not be empty";
         this.groupName = groupName;
+        logger.info("GroupCreateCommand created with groupName: " + groupName);
     }
 
     @Override

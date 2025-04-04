@@ -9,7 +9,7 @@ import javafx.scene.layout.VBox;
 import nusconnect.model.group.Group;
 
 /**
- * An UI component that displays information of a {@code Group}.
+ * A UI component that displays information of a {@code Group}.
  */
 public class GroupCard extends UiPart<Region> {
 
