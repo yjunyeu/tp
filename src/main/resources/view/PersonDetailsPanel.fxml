@@ -12,7 +12,7 @@
             <Label fx:id="telegramLabel" styleClass="detail-label" wrapText="true" maxWidth="240"/>
         </HBox>
         <HBox spacing="5">
-            <Label text="Number:" styleClass="detail-label-bold" />
+            <Label text="Phone:" styleClass="detail-label-bold" />
             <Label fx:id="phoneLabel" styleClass="detail-label" wrapText="true" maxWidth="250"/>
         </HBox>
         <HBox spacing="5">
