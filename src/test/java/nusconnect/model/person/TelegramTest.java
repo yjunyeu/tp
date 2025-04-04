@@ -25,6 +25,8 @@ public class TelegramTest {
         assertFalse(Telegram.isValidTelegram("peter*")); // contains non-alphanumeric characters
         assertFalse(Telegram.isValidTelegram("@")); // @ but without names
         assertFalse(Telegram.isValidTelegram("peter"));
+        assertFalse(Telegram.isValidTelegram("@bob")); // not enough characters
+        assertFalse(Telegram.isValidTelegram("@David_Roger_Jackson_Ray_Hamilton_Jr_2nd")); // excess characters
 
         // valid Telegram
         assertTrue(Telegram.isValidTelegram("@peter_jack")); // alphabets only
