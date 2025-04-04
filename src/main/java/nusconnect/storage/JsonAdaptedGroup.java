@@ -37,6 +37,7 @@ class JsonAdaptedGroup {
      * Converts a given {@code Group} into this class for Jackson use.
      */
     public JsonAdaptedGroup(Group source) {
+        assert source.getGroupName() != null : "Source group name should not be null";
         groupName = source.getGroupName();
         members.addAll(source.getMembers().stream()
                 .map(JsonAdaptedPerson::new)

@@ -35,6 +35,7 @@ public class GroupDeleteCommand extends GroupCommand {
      */
     public GroupDeleteCommand(Index targetIndex) {
         requireNonNull(targetIndex);
+        assert targetIndex.getOneBased() > 0 : "Target index must be positive";
         this.targetIndex = targetIndex;
         logger.info("GroupDeleteCommand created with target index: " + targetIndex.getOneBased());
     }
@@ -42,6 +43,8 @@ public class GroupDeleteCommand extends GroupCommand {
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
+
+        assert model.getFilteredGroupList() != null : "Filtered group list should not be null";
 
         if (targetIndex.getZeroBased() >= model.getFilteredGroupList().size()) {
             throw new CommandException(Messages.MESSAGE_INVALID_GROUP_INDEX);

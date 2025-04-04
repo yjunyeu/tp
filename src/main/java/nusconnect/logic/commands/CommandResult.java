@@ -49,7 +49,7 @@ public class CommandResult {
     }
 
     /**
-     * Constructs a {@code CommandResult} for a view command.
+     * Constructs a {@code CommandResult} with the specified {@code feedbackToUser} and {code personToSelect}.
      */
     public CommandResult(String feedbackToUser, Index personToSelect) {
         this(feedbackToUser, false, false, personToSelect);

@@ -38,6 +38,7 @@ public class PersonDetailsPanel extends UiPart<Region> {
      */
     public PersonDetailsPanel() {
         super(FXML);
+        logger.info("PersonDetailsPanel initialised");
         setDefaultDetails();
     }
 
@@ -53,6 +54,7 @@ public class PersonDetailsPanel extends UiPart<Region> {
         majorLabel.setText("");
         noteLabel.setText("");
         websiteLabel.setText("");
+        logger.info("Default details set for PersonDetailsPanel");
     }
 
     /**

@@ -3,7 +3,9 @@ package nusconnect.logic.commands;
 import static java.util.Objects.requireNonNull;
 
 import java.util.List;
+import java.util.logging.Logger;
 
+import nusconnect.commons.core.LogsCenter;
 import nusconnect.commons.core.index.Index;
 import nusconnect.commons.util.ToStringBuilder;
 import nusconnect.logic.Messages;
@@ -25,16 +27,25 @@ public class ViewCommand extends Command {
 
     public static final String MESSAGE_VIEW_PERSON_SUCCESS = "Viewing Person: %1$s";
 
+    private static final Logger logger = LogsCenter.getLogger(ViewCommand.class);
     private final Index targetIndex;
 
+    /**
+     * Creates a ViewCommand to see the detail of the specified person
+     *
+     * @param targetIndex index of the person in the filtered person list
+     */
     public ViewCommand(Index targetIndex) {
+        assert targetIndex.getOneBased() > 0 : "Target index must be positive";
         this.targetIndex = targetIndex;
+        logger.info("ViewCommand created with target index: " + targetIndex.getOneBased());
     }
 
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
         List<Person> lastShownList = model.getFilteredPersonList();
+        assert lastShownList != null : "Filtered person list should not be null";
 
         if (targetIndex.getZeroBased() >= lastShownList.size()) {
             throw new CommandException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
