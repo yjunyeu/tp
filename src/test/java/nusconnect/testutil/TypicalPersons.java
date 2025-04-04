@@ -37,7 +37,7 @@ public class TypicalPersons {
             .withAlias("AliceAlias")
             .withMajor("Engineering")
             .withNote("Enjoys reading")
-            .withTelegram("alice")
+            .withTelegram("@alice")
             .withWebsite("https://alicepauline.com")
             .withModules("CS2103T").build();
 
@@ -47,7 +47,7 @@ public class TypicalPersons {
             .withAlias("BensonAlias")
             .withMajor("Comp Science")
             .withNote("Great at teamwork")
-            .withTelegram("benson")
+            .withTelegram("@benson")
             .withWebsite("https://bensonmeier.com")
             .withModules("CS2106", "CS2107").build();
 
@@ -57,7 +57,7 @@ public class TypicalPersons {
             .withAlias("CarlAlias")
             .withMajor("Business")
             .withNote("Detail-oriented")
-            .withTelegram("carlkurz")
+            .withTelegram("@carlkurz")
             .withWebsite("https://carlkurz.com")
             .build();
 
@@ -67,7 +67,7 @@ public class TypicalPersons {
             .withAlias("DanielAlias")
             .withMajor("Mech Eng")
             .withNote("Enthusiastic learner")
-            .withTelegram("daniel")
+            .withTelegram("@daniel")
             .withWebsite("https://danielmeier.com")
             .withModules("CS2106").build();
 
@@ -77,7 +77,7 @@ public class TypicalPersons {
             .withAlias("ElleAlias")
             .withMajor("Comp Science")
             .withNote("Creative thinker")
-            .withTelegram("ellemeyer")
+            .withTelegram("@ellemeyer")
             .withWebsite("https://ellemeyer.com")
             .build();
 
@@ -87,7 +87,7 @@ public class TypicalPersons {
             .withAlias("FionaAlias")
             .withMajor("Engineering")
             .withNote("Tech savvy")
-            .withTelegram("fionakunz")
+            .withTelegram("@fionakunz")
             .withWebsite("https://fionakunz.com")
             .build();
 
@@ -97,7 +97,7 @@ public class TypicalPersons {
             .withAlias("GeorgeAlias")
             .withMajor("Business")
             .withNote("Sports enthusiast")
-            .withTelegram("georgebest")
+            .withTelegram("@georgebest")
             .withWebsite("https://georgebest.com")
             .withModules("CS2100").build();
 
@@ -108,7 +108,7 @@ public class TypicalPersons {
             .withAlias("HoonAlias")
             .withMajor("Engineering")
             .withNote("Friendly")
-            .withTelegram("hoonmeier")
+            .withTelegram("@hoonmeier")
             .withWebsite("https://hoonmeier.com")
             .build();
 
@@ -118,7 +118,7 @@ public class TypicalPersons {
             .withAlias("IdaAlias")
             .withMajor("Comp Science")
             .withNote("Reliable")
-            .withTelegram("idamueller")
+            .withTelegram("@idamueller")
             .withWebsite("https://idamueller.com")
             .build();
 

@@ -24,24 +24,22 @@ public class TelegramTest {
         assertFalse(Telegram.isValidTelegram("^")); // only non-alphanumeric characters
         assertFalse(Telegram.isValidTelegram("peter*")); // contains non-alphanumeric characters
         assertFalse(Telegram.isValidTelegram("@")); // @ but without names
-        assertFalse(Telegram.isValidTelegram("@peter")); // contains '@'
-        assertFalse(Telegram.isValidTelegram("pet")); // no enough characters
-        assertFalse(Telegram.isValidTelegram("David_Roger_Jackson_Ray_Hamilton_Jr_2nd")); // excess characters
+        assertFalse(Telegram.isValidTelegram("peter"));
 
         // valid Telegram
-        assertTrue(Telegram.isValidTelegram("peter_jack")); // alphabets only
-        assertTrue(Telegram.isValidTelegram("12345")); // numbers only
-        assertTrue(Telegram.isValidTelegram("peter_the_2nd")); // alphanumeric characters
-        assertTrue(Telegram.isValidTelegram("Capital_Tan")); // with capital letters
-        assertTrue(Telegram.isValidTelegram("David_Roger_Jackson_Ray_Jr_2nd")); // long Telegrams
+        assertTrue(Telegram.isValidTelegram("@peter_jack")); // alphabets only
+        assertTrue(Telegram.isValidTelegram("@12345")); // numbers only
+        assertTrue(Telegram.isValidTelegram("@peter_the_2nd")); // alphanumeric characters
+        assertTrue(Telegram.isValidTelegram("@Capital_Tan")); // with capital letters
+        assertTrue(Telegram.isValidTelegram("@David_Roger_Jackson_Ray_Jr_2nd")); // long Telegrams
     }
 
     @Test
     public void equals() {
-        Telegram telegram = new Telegram("validtelegram");
+        Telegram telegram = new Telegram("@validtelegram");
 
         // same values -> returns true
-        assertTrue(telegram.equals(new Telegram("validtelegram")));
+        assertTrue(telegram.equals(new Telegram("@validtelegram")));
 
         // same object -> returns true
         assertTrue(telegram.equals(telegram));
@@ -53,6 +51,6 @@ public class TelegramTest {
         assertFalse(telegram.equals(5.0f));
 
         // different values -> returns false
-        assertFalse(telegram.equals("othervalidtelegram"));
+        assertFalse(telegram.equals("@othervalidtelegram"));
     }
 }

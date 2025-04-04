@@ -8,7 +8,7 @@
       "alias": "AliceAlias",
       "major": "Engineering",
       "note": "Enjoys reading",
-      "telegram": "alice",
+      "telegram": "@alice",
       "website": "https://alicepauline.com",
       "modules": ["CS2103T"]
     },
@@ -19,7 +19,7 @@
       "alias": "BensonAlias",
       "major": "Comp Science",
       "note": "Great at teamwork",
-      "telegram": "benson",
+      "telegram": "@benson",
       "website": "https://bensonmeier.com",
       "modules": ["CS2106", "CS2107"]
     },
@@ -30,7 +30,7 @@
       "alias": "CarlAlias",
       "major": "Business",
       "note": "Detail-oriented",
-      "telegram": "carlkurz",
+      "telegram": "@carlkurz",
       "website": "https://carlkurz.com",
       "modules": []
     },
@@ -41,7 +41,7 @@
       "alias": "DanielAlias",
       "major": "Mech Eng",
       "note": "Enthusiastic learner",
-      "telegram": "daniel",
+      "telegram": "@daniel",
       "website": "https://danielmeier.com",
       "modules": ["CS2106"]
     },
@@ -52,7 +52,7 @@
       "alias": "ElleAlias",
       "major": "Comp Science",
       "note": "Creative thinker",
-      "telegram": "ellemeyer",
+      "telegram": "@ellemeyer",
       "website": "https://ellemeyer.com",
       "modules": []
     },
@@ -63,7 +63,7 @@
       "alias": "FionaAlias",
       "major": "Engineering",
       "note": "Tech savvy",
-      "telegram": "fionakunz",
+      "telegram": "@fionakunz",
       "website": "https://fionakunz.com",
       "modules": []
     },
@@ -74,7 +74,7 @@
       "alias": "GeorgeAlias",
       "major": "Business",
       "note": "Sports enthusiast",
-      "telegram": "georgebest",
+      "telegram": "@georgebest",
       "website": "https://georgebest.com",
       "modules": ["CS2100"]
     }
