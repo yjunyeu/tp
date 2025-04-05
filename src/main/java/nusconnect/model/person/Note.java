@@ -4,12 +4,13 @@ import static java.util.Objects.requireNonNull;
 import static nusconnect.commons.util.AppUtil.checkArgument;
 
 /**
- * Represents a Person's note in the note book.
+ * Represents a Person's note in the address book.
  * Guarantees: immutable; is valid as declared in {@link #isValidNote(String)}
  */
 public class Note {
 
-    public static final String MESSAGE_CONSTRAINTS = "Notes can take any values, and it should not be blank!";
+    public static final String MESSAGE_CONSTRAINTS = "Notes can take any values, "
+            + "and it should not be blank on creation!";
 
     /*
      * The first character of the note must not be a whitespace,

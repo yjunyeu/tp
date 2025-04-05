@@ -24,6 +24,12 @@ public class PhoneTest {
         // null phone number
         assertThrows(NullPointerException.class, () -> Phone.isValidPhone(null));
 
+        // Equivalence partitioning:
+        // [string]
+        // [numbers with length 8] [everything else]
+        // [numbers starting with 6,8,9 and length 8] [strings starting with other numbers (len 8)] [else]
+        // So, 60000000 to 69999999, 80000000 to 99999999
+
         // invalid phone numbers
         assertFalse(Phone.isValidPhone("")); // empty string
         assertFalse(Phone.isValidPhone(" ")); // spaces only
@@ -36,13 +42,26 @@ public class PhoneTest {
         assertFalse(Phone.isValidPhone("889977665544332211")); // excess digits
         assertFalse(Phone.isValidPhone("76543210")); // illegal start digit
         assertFalse(Phone.isValidPhone("01234567")); // illegal start digit
-        assertFalse(Phone.isValidPhone("34567890")); // illegal start digit
+        assertFalse(Phone.isValidPhone("34567890")); // Valid VOIP number: No NUS student would use this
+
+        // boundary values
+
+        assertFalse(Phone.isValidPhone("59999999"));
+        assertFalse(Phone.isValidPhone("70000000"));
+        assertFalse(Phone.isValidPhone("79999999"));
+        assertFalse(Phone.isValidPhone("100000000")); //not correct length as well
 
         // valid phone numbers
-        assertTrue(Phone.isValidPhone("87654321")); // exactly 8 numbers
-        assertTrue(Phone.isValidPhone("98765432")); // start with 8 or 9
+        assertTrue(Phone.isValidPhone("67654321")); // starts with 6, len 8, only numbers
+        assertTrue(Phone.isValidPhone("87654321")); // starts with 8, len 8, only numbers
+        assertTrue(Phone.isValidPhone("97654321")); // starts with 9, len 8, only numbers
+
+        // Boundary Values
+        assertTrue(Phone.isValidPhone("60000000"));
+        assertTrue(Phone.isValidPhone("80000000"));
+
+        assertTrue(Phone.isValidPhone("69999999"));
         assertTrue(Phone.isValidPhone("99999999"));
-        assertTrue(Phone.isValidPhone("82156473"));
     }
 
     @Test

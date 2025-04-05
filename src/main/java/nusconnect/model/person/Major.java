@@ -10,7 +10,7 @@ import static nusconnect.commons.util.AppUtil.checkArgument;
 public class Major {
 
     public static final String MESSAGE_CONSTRAINTS =
-            "Majors can only contain alphabets, spaces, and it should not be blank!";
+            "Majors can only contain alphabets, spaces, and it should not be blank on creation!";
 
     /*
      * The first character of the major must not be a whitespace,
