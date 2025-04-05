@@ -52,16 +52,16 @@ public class PhoneTest {
         assertFalse(Phone.isValidPhone("100000000")); //not correct length as well
 
         // valid phone numbers
-        assertTrue(Phone.isValidPhone("67654321")); // starts with 9, len 8, only numbers
-        assertTrue(Phone.isValidPhone("87654321")); // starts with 9, len 8, only numbers
+        assertTrue(Phone.isValidPhone("67654321")); // starts with 6, len 8, only numbers
+        assertTrue(Phone.isValidPhone("87654321")); // starts with 8, len 8, only numbers
         assertTrue(Phone.isValidPhone("97654321")); // starts with 9, len 8, only numbers
 
         // Boundary Values
-        assertTrue(Phone.isValidPhone("60000000")); // starts with 9, len 8, only numbers
-        assertTrue(Phone.isValidPhone("80000000")); // starts with 9, len 8, only numbers
+        assertTrue(Phone.isValidPhone("60000000"));
+        assertTrue(Phone.isValidPhone("80000000"));
 
-        assertTrue(Phone.isValidPhone("69999999")); // starts with 9, len 8, only numbers
-        assertTrue(Phone.isValidPhone("99999999")); // starts with 9, len 8, only numbers
+        assertTrue(Phone.isValidPhone("69999999"));
+        assertTrue(Phone.isValidPhone("99999999"));
     }
 
     @Test
