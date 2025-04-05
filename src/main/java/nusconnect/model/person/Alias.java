@@ -10,7 +10,7 @@ import static nusconnect.commons.util.AppUtil.checkArgument;
 public class Alias {
 
     public static final String MESSAGE_CONSTRAINTS =
-            "Aliases can only contain alphabets, numbers, underlines, spaces, and it should not be blank!";
+            "Aliases can only contain alphabets, numbers, underlines, spaces, and it should not be blank on creation!";
 
     /*
      * The first character of the alias must not be a whitespace,

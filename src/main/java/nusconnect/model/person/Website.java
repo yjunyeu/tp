@@ -11,7 +11,7 @@ import static nusconnect.commons.util.AppUtil.checkArgument;
 public class Website {
 
     public static final String MESSAGE_CONSTRAINTS =
-            "Websites start with 'http://' or 'https://', followed by a valid domain name!";
+            "Websites may start with 'http://' or 'https://', followed by a valid URL!";
 
     // Regex for validating website format
     public static final String VALIDATION_REGEX = "^(https?://)?([a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}(/[\\w-]*)*$";
