@@ -29,10 +29,10 @@ traditional address book!
 1. You should now see some sample data. This is what NUSConnect will look like! For now, let's clear this data using:
    * `clear`. NUSConnect should now be empty.
 1. Let's try a few commands! First, let's add your own contact to NUSConnect:
-   * `add n/(your name) t/@(your handle)`
+   * `add n/(your name) t/@(your handle)`. Substitute `(your name)` for your own name and `(your handle)` for your own Telgram handle!
 2. Let's also add your phone number, and CS2103T as a course you are taking:
    * `edit 1 p/(your number) m/CS2103T`. We use `1` as that is the number currently written beside your name.
-3. Now, you can extend this to add as many contacts as you want! Let us now add in one command a groupmate John:
+3. Now, you can extend this to add as many contacts as you want! Let us now add a new contact, John, who is your groupmate. To do this in just one command:
    * `add n/John Tan t/@johntan m/CS2103T`
 4. Since you and John are group members, let's create a group and add both contacts to it!
    * `group create CS2103T Group Project`
@@ -50,13 +50,36 @@ traditional address book!
 
 --------------------------------------------------------------------------------------------------------------------
 
+## Command summary
+
+| Action                                                   | Format, Examples                                                                                                                                                                                                                                             |
+|----------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **[Add](#adding-a-person-add)**                          | `add n/NAME t/TELEGRAM [p/PHONE_NUMBER] [e/EMAIL] [a/ALIAS] [ma/MAJOR] [no/NOTE] [w/WEBSITE] [m/MODULE]…​` <br> e.g., `add n/John Doe t/@johndoe p/98765432 e/johnd@example.com a/alias123 ma/CompSci no/Enjoys programming w/https://johndoe.com m/CS2103T` |
+| **[Edit](#editing-a-person-edit)**                       | `edit INDEX [n/NAME] [t/TELEGRAM] [p/PHONE] [e/EMAIL] [a/ALIAS] [ma/MAJOR] [no/NOTE] [w/WEBSITE] [m/MODULE]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`                                                                                          |
+| **[Delete](#deleting-people-delete)**                    | `delete INDEX [MORE_INDICES]…​`<br> e.g., `delete 3` `delete 1 3 5`                                                                                                                                                                                          |
+| **[Clear](#clearing-all-entries-clear)**                 | `clear`                                                                                                                                                                                                                                                      |
+| **[Group create](#creating-a-group-group-create)**       | `group create NAME`<br> e.g., `group create CS2103T Team`                                                                                                                                                                                                    |
+| **[Group delete](#deleting-a-group-group-delete)**       | `group delete INDEX`<br> e.g., `group delete 2`                                                                                                                                                                                                              |
+| **[Group add](#adding-a-person-to-a-group-group-add)**   | `group add PERSON_INDEX to GROUP_INDEX`<br> e.g. `group add 1 to 2`                                                                                                                                                                                          |
+| **[List](#listing-all-persons-list)**                    | `list`                                                                                                                                                                                                                                                       |
+| **[Find](#locating-persons-by-name-or-modules-find)**    | `find KEYWORD [MORE_KEYWORDS]…​`<br> e.g., `find James Jake`                                                                                                                                                                                                 |
+| **[View](#viewing-contact-details-view)**                | `view INDEX` <br> e.g., `view 1`                                                                                                                                                                                                                             |
+| **[Sort](#sorting-the-address-book-sort)**               | `sort`                                                                                                                                                                                                                                                       |
+| **[Export](#exporting-the-current-address-book-export)** | `export FILE_PATH`<br> e.g., `export exported_data.json`                                                                                                                                                                                                     |
+| **[Import](#importing-an-address-book-import)**          | `import FILE_PATH`<br> e.g., `import exported_data.json`                                                                                                                                                                                                     |
+| **[Help](#viewing-help-help)**                           | `help`                                                                                                                                                                                                                                                       |
+| **[Exit](#exiting-the-program-exit)**                    | `exit`                                                                                                                                                                                                                                                       |
+* [Back to top](#nusconnect)
+
+--------------------------------------------------------------------------------------------------------------------
+
 ## Features
 
 <div markdown="block" class="alert alert-info">
 
 **:information_source: Notes about the command format:**<br>
 
-* Words in `UPPER_CASE` are the parameters to be supplied by the you.<br>
+* Words in `UPPER_CASE` are the parameters to be supplied by you.<br>
   e.g. in `add n/NAME`, `NAME` is a parameter which can be used as `add n/John Doe`.
 
 * Items in square brackets are optional.<br>
@@ -66,7 +89,7 @@ traditional address book!
   e.g. `[m/MODULE]…​` can be used as ` ` (i.e. 0 times), `m/CS2103T`, `t/CS2103T t/CS2101` etc.
 
 * Parameters can be in any order.<br>
-  e.g. if the command specifies `n/NAME p/PHONE_NUMBER`, `p/PHONE_NUMBER n/NAME` is also acceptable.
+  e.g. if the command specifies `n/NAME p/PHONE`, `p/PHONE n/NAME` is also acceptable.
 
 * Extraneous parameters for commands that do not take in parameters (such as `help`, `list`, `exit` and `clear`) will be ignored.<br>
   e.g. if the command specifies `help 123`, it will be interpreted as `help`.
@@ -80,18 +103,36 @@ traditional address book!
 
 This command allows you to add a person to the address book.
 
-Format: `add n/NAME t/TELEGRAM [p/PHONE_NUMBER] [e/EMAIL] [a/ALIAS] [ma/MAJOR] [no/NOTE] [w/WEBSITE] [m/MODULE]…​`
+Format: `add n/NAME t/TELEGRAM [p/PHONE] [e/EMAIL] [a/ALIAS] [ma/MAJOR] [no/NOTE] [w/WEBSITE] [m/MODULE]…​`
 
 Examples:
 
 After forming a group in CS2103T Software Engineering, you add your two teammates to NUSConnect:
 
-* `add n/John Doe p/98765432 e/john@u.nus.edu a/John no/Enjoys programming t/@johndoe w/https://johndoe.com m/CS2103T`
+* `add n/John Doe t/@johndoe /98765432 e/john@u.nus.edu a/John no/Enjoys programming w/https://johndoe.com m/CS2103T`
 * `add n/Betsy Crowe t/@bcrowe ma/Information Security no/Group Leader w/https://linkedin.com/betsycrowe m/CS2103T`
+
+<div markdown="span" class="alert alert-primary">:bulb: **Note:**
+NUSConnect will execute some basic parameter checking for you! Here are the minimum requirements for each field:
+
+* Name: Starts with an alphanumeric character, and can contain alphanumeric characters, slashes, apostrophes, dashes, dots, spaces, and should not be blank.
+* Telegram: Starts with an `@`, followed by 5 to 32 alphanumeric characters or underscores, and should not be blank.
+* Phone: Is a number of 8 digits that starts with 9, 8, or 6, and should not be blank if specified on creation.
+* Email: Accepts email addresses that can are usable by all major mail services (e.g., Gmail, Outlook), and should not be blank if specified on creation.
+* Alias: Contains only alphanumeric characters, underscores, spaces, and should not be blank if specified on creation.
+* Major: Contains only alphabets and spaces, and should not be blank if specified on creation.
+* Note: Can take any value, and should not be blank if specified on creation
+* Website: May start with `http://` or `https://`, followed by a valid URL.
+* Module: Starts with 2 to 3 alphabets, followed by 4 numbers, and followed by 0 to 2 alphabets. This covers all standard modules in NUS.
+</div>
+
+<div markdown="span" class="alert alert-primary">:bulb: **For technical users:**
+For "a valid URL", we have limited the Top Level Domain to be from 2 to 6 alphabets only, as this covers most legitimate student websites.
+</div>
 
 ![AddExample](images/AddExample.png)
 
-#### Editing a person : `edit`
+#### Editing a person: `edit`
 
 This command allows you to edit an existing person in the address book.
 
@@ -101,15 +142,13 @@ Format: `edit INDEX [n/NAME] [t/TELEGRAM] [p/PHONE] [e/EMAIL] [a/ALIAS] [ma/MAJO
 * At least one of the optional fields must be provided.
 * Existing values will be updated to the input values.
 * When editing modules, the existing modules of the person will be removed i.e adding of modules is not cumulative.
-* You can remove all the person’s modules by typing `m/` without
-  specifying any modules after it.
 
 <div markdown="span" class="alert alert-primary">:bulb: **Note:**
 When you are editing modules, the existing modules of the person will be removed, and replaced with what you have entered! 
 </div>
 
 <div markdown="span" class="alert alert-primary">:bulb: **Tip:**
-Adding the prefixes (e.g. `m/`) without specifying any values will set the field to empty if it is optional!
+You can delete an optional parameter by specifying their prefixes (e.g., `p/`, `e/`, `a/`, `ma/`, `no/`, `w/`, and `m/`) without specifying any values!
 </div>
 
 Examples:
@@ -121,7 +160,7 @@ You realize that you share an additional module, IS1108 Digital Ethics and Priva
 
 ![EditExample](images/EditExample.png)
 
-#### Deleting people : `delete`
+#### Deleting people: `delete`
 
 This command allows you to delete the specified person or a list of people from the address book.
 
@@ -158,7 +197,7 @@ After `list` again:
 
 ![DeleteExampleTwo](images/DeleteExampleThree.png)
 
-#### Clearing all entries : `clear`
+#### Clearing all entries: `clear`
 
 This command allows you to clear all entries from the address book.
 
@@ -166,7 +205,7 @@ Format: `clear`
 
 ### Group Operations:
 
-#### Creating a group : `group create`
+#### Creating a group: `group create`
 
 This command allows you to create a new group with the specified name.
 
@@ -179,7 +218,7 @@ Examples:
 * `group create CS2103T Team` Creates a new group named "CS2103T Team"
 * `group create Grey Hats` Creates a new group named "Grey Hats"
 
-#### Deleting a group : `group delete`
+#### Deleting a group: `group delete`
 
 This command allows you to delete the group at the specified index.
 
@@ -192,7 +231,7 @@ Format: `group delete INDEX`
 Examples:
 * `group delete 2` Deletes the 2nd group in the group list.
 
-#### Adding a person to a group : `group add`
+#### Adding a person to a group: `group add`
 
 This command allows you to add a person to a group.
 
@@ -234,7 +273,7 @@ exactly is in which project. To quickly identify and see who is in your team at 
 
 ### Address Book Organization:
 
-#### Listing all persons : `list`
+#### Listing all persons: `list`
 
 This command allows you to show a list of all persons in the address book.
 
@@ -351,18 +390,19 @@ Examples:
 
 ### Misc:
 
-#### Viewing help : `help`
+#### Viewing help: `help`
 
 Shows a message explaning how to access the help page. This message can also be brought up using `F1`
 
 Format: `help`
 
-#### Exiting the program : `exit`
+#### Exiting the program: `exit`
 
 Exits the program.
 
 Format: `exit`
 * [Back to top](#nusconnect)
+
 --------------------------------------------------------------------------------------------------------------------
 
 ## FAQ
@@ -395,27 +435,4 @@ Format: `exit`
 Thank you once again for using **NUSConnect**! We hope that you will find our product beneficial, and that you will
 enjoy managing your contacts seamlessly! We have included a command summary below for your reference. Should you have
 any queries, please do not hesitate to reach out to any of us! Our contact details can be found in our [About Us Page](https://ay2425s2-cs2103t-t16-1.github.io/tp/AboutUs.html).
-
---------------------------------------------------------------------------------------------------------------------
-
-## Command summary
-
-| Action           | Format, Examples                                                                                                                                                                                                                                             |
-|------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Add**          | `add n/NAME t/TELEGRAM [p/PHONE_NUMBER] [e/EMAIL] [a/ALIAS] [ma/MAJOR] [no/NOTE] [w/WEBSITE] [m/MODULE]…​` <br> e.g., `add n/John Doe t/@johndoe p/98765432 e/johnd@example.com a/alias123 ma/CompSci no/Enjoys programming w/https://johndoe.com m/CS2103T` |
-| **Edit**         | `edit INDEX [n/NAME] [t/TELEGRAM] [p/PHONE] [e/EMAIL] [a/ALIAS] [ma/MAJOR] [no/NOTE] [w/WEBSITE] [m/MODULE]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`                                                                                          |
-| **Delete**       | `delete INDEX [MORE_INDICES]…​`<br> e.g., `delete 3` `delete 1 3 5`                                                                                                                                                                                          |
-| **Clear**        | `clear`                                                                                                                                                                                                                                                      |
-| **Group create** | `group create NAME`<br> e.g., `group create CS2103T Team`                                                                                                                                                                                                    |
-| **Group delete** | `group delete INDEX`<br> e.g., `group delete 2`                                                                                                                                                                                                              |
-| **Group add**    | `group add PERSON_INDEX to GROUP_INDEX`<br> e.g. `group add 1 to 2`                                                                                                                                                                                          |
-| **List**         | `list`                                                                                                                                                                                                                                                       |
-| **Find**         | `find KEYWORD [MORE_KEYWORDS]…​`<br> e.g., `find James Jake`                                                                                                                                                                                                 |
-| **View**         | `view INDEX` <br> e.g., `view 1`                                                                                                                                                                                                                             |
-| **Sort**         | `sort`                                                                                                                                                                                                                                                       |
-| **Export**       | `export FILE_PATH`<br> e.g., `export exported_data.json`                                                                                                                                                                                                     |
-| **Import**       | `import FILE_PATH`<br> e.g., `import exported_data.json`                                                                                                                                                                                                     |
-| **Help**         | `help`                                                                                                                                                                                                                                                       |
-| **Exit**         | `exit`                                                                                                                                                                                                                                                       |
-
 * [Back to top](#nusconnect)
