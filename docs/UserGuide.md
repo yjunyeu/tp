@@ -2,7 +2,7 @@
 layout: page
 title: NUSConnect User Guide
 ---
-
+<a id="nusconnect"></a>
 Thank you for using **NUSConnect**! With **NUSConnect**, you can manage your contacts quickly and efficiently using the 
 Command Line Interface (CLI), all displayed with our custom-designed Graphical User Interface (GUI) specifically for 
 NUS students! Type fast, and **NUSConnect** lets you breeze through contact management tasks faster than any 
@@ -127,6 +127,11 @@ NUSConnect will execute some basic parameter checking for you! Here are the mini
 * Module: Starts with 2 to 3 alphabets, followed by 4 numbers, and followed by 0 to 2 alphabets. This covers all standard modules in NUS.
 </div>
 
+<div markdown="span" class="alert alert-warning">:exclamation: **Warning:**
+Each person must have a unique <strong>Name</strong>, <strong>Telegram</strong>, and <strong>Phone</strong> (if present).<br>
+  Duplicates in any of these fields are not allowed.
+</div>
+
 <div markdown="span" class="alert alert-primary">:bulb: **For technical users:**
 For "a valid URL", we have limited the Top Level Domain to be from 2 to 6 alphabets only, as this covers most legitimate student websites.
 </div>
@@ -150,6 +155,11 @@ When you are editing modules, the existing modules of the person will be removed
 
 <div markdown="span" class="alert alert-primary">:bulb: **Tip:**
 You can delete an optional parameter by specifying their prefixes (e.g., `p/`, `e/`, `a/`, `ma/`, `no/`, `w/`, and `m/`) without specifying any values!
+</div>
+
+<div markdown="span" class="alert alert-warning">
+  :exclamation: <strong>Warning:</strong><br>
+  Editing a person into an existing person with the same <strong>Name</strong>, <strong>Telegram</strong>, or <strong>Phone</strong> (if present) is not allowed.<br>
 </div>
 
 Examples:
@@ -261,20 +271,23 @@ Format: `list`
 
 #### Locating persons by name or modules: `find`
 
-This command allows you to find persons whose names or modules contain any of the given keywords.
+This command allows you to find persons whose names or modules matches any of the entered keywords.
 
 Format: `find KEYWORD [MORE_KEYWORDS]…​`
 
-* The search is case-insensitive. e.g `hans` will match `Hans`
-* The order of the keywords does not matter. e.g. `Hans Bo` will match `Bo Hans`
-* Both the names and the modules are searched.
-* Partial words can be matched e.g. `Han` will match `Hans`
-* Persons matching at least one keyword in either the name or module will be returned (i.e. OR search). e.g. `Hans Bo CS2103T` will return `Hans Gruber` (matching `Hans`), `Bo Yang` (matching `Bo`), and `John Sim` (if module matches).
+* The search is case-insensitive.
+* Multiple keywords can be entered.
+* The order of the keywords does not matter.
+* Only the names and the modules are searched.
+* Partial names and modules can be matched.
+* Persons matching at least one keyword in either the name or module will be returned (i.e. OR search).
 
 Examples:
 * `find John` returns `john` and `John Doe`
-* `find alex david` returns `Alex Yeoh`, `David Li`<br>
+* `find alex david` returns `Alex Yeoh`, `David Li`
+* `find Tan Henry` returns `Henry Tan`
 * `find tim` returns `Tim Yeoh`, `Timothy Lim`
+* `find CS210` returns `John Doe` (matching `CS2100`), `Jerry Teo` (matching `CS2106`)
 * `find doe CS2106` returns `John Doe` (matching name `Doe`) and `John Sim` (matching module `CS2106`)
   ![result for 'find doe CS2106'](images/findDoeCs2106.png)
 

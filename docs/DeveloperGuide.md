@@ -234,7 +234,7 @@ NUSConnect helps students quickly add, organise and find contacts with minimal e
         <tr class="high-priority">
             <td>***</td>
             <td>Student</td>
-            <td>Link multiple contact methods to a single person (e.g., email, phone)</td>
+            <td>Link multiple contact methods to a single person (e.g., telegram, phone)</td>
             <td>Communicate through multiple channels as needed</td>
         </tr>
         <tr class="high-priority">
