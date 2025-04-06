@@ -19,33 +19,35 @@ traditional address book!
 1. First, make sure you have Java `17` or above installed in your computer!<br>
    **Mac users:** Check out [this guide](https://se-education.org/guides/tutorials/javaInstallationMac.html) to get the exact JDK version you need.
 
-1. Next, download the latest `nusconnect.jar` file from [here](https://github.com/AY2425S2-CS2103T-T16-1/tp/releases).
+2. Next, download the latest `nusconnect.jar` file from [here](https://github.com/AY2425S2-CS2103T-T16-1/tp/releases).
 
-1. Then, move `nusconnect.jar` to the folder where you want to keep your contacts.
+3. Then, move `nusconnect.jar` to the folder where you want to keep your contacts.
 
-1. Now, open up a command terminal, go to the folder where `nusconnect.jar` is, and use the `java -jar nusconnect.jar` command to 
+4. Now, open up a command terminal, go to the folder where `nusconnect.jar` is, and use the `java -jar nusconnect.jar` command to 
    run the application. You've just taken your first step toward managing contacts quickly! 
    ![Ui](images/Ui.png)
-1. You should now see some sample data. This is what NUSConnect will look like! For now, let's clear this data using:
+5. You should now see some sample data. This is what NUSConnect will look like! For now, let's clear this data using:
    * `clear`. NUSConnect should now be empty.
-1. Let's try a few commands! First, let's add your own contact to NUSConnect:
+6. Let's try a few commands! First, let's add your own contact to NUSConnect:
    * `add n/(your name) t/@(your handle)`. Substitute `(your name)` for your own name and `(your handle)` for your own Telgram handle!
-2. Let's also add your phone number, and CS2103T as a course you are taking:
+7. Let's also add your phone number, and CS2103T as a course you are taking:
    * `edit 1 p/(your number) m/CS2103T`. We use `1` as that is the number currently written beside your name.
-3. Now, you can extend this to add as many contacts as you want! Let us now add a new contact, John, who is your groupmate. To do this in just one command:
-   * `add n/John Tan t/@johntan m/CS2103T`
-4. Since you and John are group members, let's create a group and add both contacts to it!
-   * `group create CS2103T Group Project`
+8. Now, you can extend this to add as many contacts as you want! Let us now add a new contact, John, who is your groupmate. To do this in just one command:
+   * `add n/John Tan t/@johntan m/CS2103T`.
+9. Since you and John are group members, let's create a group and add both contacts to it!
+   * `group create CS2103T Group Project`.
    * `group add 1 to 1`. You have now added the first person to the first group.
    * `group add 2 to 1`. You have now added the second person to the first group.
-5. Let's view John's details! Here, you will be able to see what other fields can be added to John.
-   * `view 2`. 
-6. But of course, once NUSConnect has been populated with real data, we do not want a "John" sticking around. Let's remove this using:
-   * `delete 2`
-7. Now that you are done, you may save exit NUSConnect using:
-   * `exit`. 
-8. For more features, refer to the [Features](#features) below!
-9. Welcome to NUSConnect! We hope you will enjoy managing your contacts effortlessly!
+10. Let's view John's details! Here, you will be able to see what other fields can be added to John.
+    * `view 2`.
+11. If you decide that you no longer need the group, you can remove it:
+    * `group delete 1`.
+12. But of course, once NUSConnect has been populated with real data, we do not want a "John" sticking around. Let's remove this using:
+    * `delete 2`.
+13. Now that you are done, you may save exit NUSConnect using:
+    * `exit`. 
+14. For more features, refer to the [Features](#features) below!
+15. Welcome to NUSConnect! We hope you will enjoy managing your contacts effortlessly!
 * [Back to top](#nusconnect)
 
 --------------------------------------------------------------------------------------------------------------------
@@ -215,21 +217,10 @@ Format: `group create NAME`
 * Shown on the group panel UI
 
 Examples:
-* `group create CS2103T Team` Creates a new group named "CS2103T Team"
+* `group create CS2103T Project Team` Creates a new group named "CS2103T Project Team"
 * `group create Grey Hats` Creates a new group named "Grey Hats"
 
-#### Deleting a group: `group delete`
-
-This command allows you to delete the group at the specified index.
-
-Format: `group delete INDEX`
-
-* Deletes the group at the specified `INDEX`.
-* The index refers to the index number shown in the displayed group list.
-* The index **must be a positive integer** 1, 2, 3, ...
-
-Examples:
-* `group delete 2` Deletes the 2nd group in the group list.
+![GroupCreateExample](images/GroupCreateExample.png)
 
 #### Adding a person to a group: `group add`
 
@@ -242,34 +233,24 @@ Format: `group add PERSON_INDEX to GROUP_INDEX`
 * Both indices **must be positive integers** 1, 2, 3, ...
 
 Examples:
-* `group add 1 to 2` Adds the 1st person in the person list to the 2nd group in the group list.
+* `group add 2 to 1` Adds the 2nd person in the person list to the 1st group in the group list.
 
-#### Group Commands: Organizing Your Project Team
-You are working on a group project for CS2103T with your teammates (Betsy Crowe, John Smith and Michael Tan). You have already
-added all of them to NUSConnect. However, with many other contacts in your address book, it is hard to remember who 
-exactly is in which project. To quickly identify and see who is in your team at a glance, you decide to use the group feature.
+![GroupAddExample](images/GroupAddExample.png)
 
-1. Creating the Group
-   ![GroupCreateExample](images/GroupCreateExample.png)
-* `group create CS2103T Project Team` creates a new group.
+#### Deleting a group: `group delete`
 
-2. Adding Teammates to the Group
-   ![GroupAddExample](images/GroupAddExample.png)
-* Suppose in your person list:
-  * Betsy is at index `2`.
-  * John is at index `3`.
-  * Michael is at index `5`.
-* Under group list "CS2103T Project Team" is the first group.
-* `group add 2 to 1` adds Betsy to the group.
-* `group add 3 to 1` adds John to the group.
-* `group add 5 to 1` adds Michael to the group.
+This command allows you to delete the group at the specified index.
 
-3. Cleaning Up the Group
-   ![GroupDeleteExample](images/GroupDeleteExample.png)
-* After the semester ends, you no longer need "CS2103T Project Team".
-* To keep the list organize you decide to delete it.
-* If the group is listed as the first group, `group delete 1` deletes it.
-* Your contacts remain in NUSConnect, but they are no longer grouped under “CS2103T Project Team.”
+Format: `group delete INDEX`
+
+* Deletes the group at the specified `INDEX`.
+* The index refers to the index number shown in the displayed group list.
+* The index **must be a positive integer** 1, 2, 3, ...
+
+Examples:
+* `group delete 1` Deletes the 1st group in the group list.
+
+![GroupDeleteExample](images/GroupDeleteExample.png)
 
 ### Address Book Organization:
 
