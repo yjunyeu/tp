@@ -34,7 +34,7 @@ public class ImportCommandParserTest {
         String validInput = "src/test/data/JsonAddressBookStorageTest/validPersonAddressBook.json";
 
         // Create expected ImportCommand with the correct file path
-        ImportCommand expectedImportCommand = new ImportCommand(validPath, mockLogicManager);
+        ImportCommand expectedImportCommand = new ImportCommand(validInput, mockLogicManager);
 
         // Parse input to get the actual ImportCommand
         ImportCommand actualImportCommand = parser.parse(validInput);

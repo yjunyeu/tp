@@ -2,8 +2,6 @@ package nusconnect.logic.parser;
 
 import static nusconnect.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 
-import java.nio.file.Path;
-
 import nusconnect.logic.LogicManager;
 import nusconnect.logic.commands.ImportCommand;
 import nusconnect.logic.parser.exceptions.ParseException;
@@ -27,11 +25,12 @@ public class ImportCommandParser implements Parser<ImportCommand> {
     @Override
     public ImportCommand parse(String args) throws ParseException {
         String trimmedArgs = args.trim();
+
         if (trimmedArgs.isEmpty()) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, ImportCommand.MESSAGE_USAGE));
         }
-        Path filePath = Path.of(trimmedArgs);
-        return new ImportCommand(filePath, logicManager);
+
+        return new ImportCommand(trimmedArgs, logicManager);
     }
 }
 

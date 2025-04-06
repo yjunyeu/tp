@@ -41,7 +41,7 @@ public class ExportCommand extends Command {
     @Override
     public CommandResult execute(Model model) throws CommandException {
         try {
-            if (!fileString.endsWith(".json")) {
+            if (!fileString.endsWith(".json") | fileString.startsWith(".json")) {
                 throw new CommandException(MESSAGE_FAILURE + "\nInvalid JSON file name!");
             }
 
