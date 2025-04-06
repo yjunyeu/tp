@@ -555,6 +555,7 @@ NUSConnect helps students quickly add, organise and find contacts with minimal e
 * **Major**: A primary major of a student, such as Computer Science.
 * **Module**: An NUS Module, such as CS2103T.
 * **Group**: A group of people in the address book.
+
 --------------------------------------------------------------------------------------------------------------------
 
 ## **Appendix: Instructions for manual testing**
