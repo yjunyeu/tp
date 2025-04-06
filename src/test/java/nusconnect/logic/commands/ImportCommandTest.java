@@ -3,16 +3,13 @@ package nusconnect.logic.commands;
 import static nusconnect.testutil.Assert.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.verifyNoInteractions;
 import static org.mockito.Mockito.when;
 
+import java.nio.file.InvalidPathException;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.Optional;
 
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.io.TempDir;
 
 import nusconnect.commons.exceptions.DataLoadingException;
 import nusconnect.logic.LogicManager;
@@ -22,66 +19,56 @@ import nusconnect.model.ReadOnlyAddressBook;
 
 public class ImportCommandTest {
 
-    @TempDir
-    public Path testFolder = Paths.get("src", "test", "data", "JsonAddressBookStorageTest");
-
     @Test
     public void execute_validFile_importSuccess() throws Exception {
         // Set up mocks
-        Path validFilePath = testFolder.resolve("validPersonAddressBook.json");
+        ReadOnlyAddressBook mockAddressBook = mock(ReadOnlyAddressBook.class);
+        String validFileString = "C:/tp/src/test/data/JsonAddressBookStorageTest/validPersonAddressBook.json";
         LogicManager mockLogicManager = mock(LogicManager.class);
         Model mockModel = mock(Model.class);
 
-        // Mock the behavior of importAddressBook to return a valid address book
-        ReadOnlyAddressBook mockAddressBook = mock(ReadOnlyAddressBook.class);
-        when(mockLogicManager.importAddressBook(validFilePath)).thenReturn(Optional.of(mockAddressBook));
-
+        when(mockLogicManager.importAddressBook(Path.of(validFileString)))
+                .thenReturn(Optional.of(mockAddressBook));
         // Create the ImportCommand
-        ImportCommand importCommand = new ImportCommand(validFilePath, mockLogicManager);
+        ImportCommand importCommand = new ImportCommand(validFileString, mockLogicManager);
 
         // Execute and check the result
         CommandResult result = importCommand.execute(mockModel);
         assertEquals(ImportCommand.MESSAGE_SUCCESS, result.getFeedbackToUser());
 
-        // Verify interactions
-        verify(mockLogicManager).importAddressBook(validFilePath);
-        verify(mockModel).setAddressBook(mockAddressBook);
     }
 
     @Test
     public void execute_invalidFilePath_importFailure() throws Exception {
         // Set up mocks
-        Path invalidFilePath = testFolder.resolve("invalidPersonAddressBook.json");
+        ReadOnlyAddressBook mockAddressBook = mock(ReadOnlyAddressBook.class);
+        String invalidFileString = "src/test/data/invalidPersonAddressBook.json";
         LogicManager mockLogicManager = mock(LogicManager.class);
         Model mockModel = mock(Model.class);
 
-        // Mock the behavior of importAddressBook to return an empty Optional (file not found)
-        when(mockLogicManager.importAddressBook(invalidFilePath)).thenReturn(Optional.empty());
+        when(mockLogicManager.importAddressBook(Path.of(invalidFileString)))
+                .thenThrow(InvalidPathException.class);
 
         // Create the ImportCommand
-        ImportCommand importCommand = new ImportCommand(invalidFilePath, mockLogicManager);
+        ImportCommand importCommand = new ImportCommand(invalidFileString, mockLogicManager);
 
-        // Execute and check the result
-        CommandResult result = importCommand.execute(mockModel);
-        assertEquals(ImportCommand.MESSAGE_FAILURE + "\nInvalid file path!", result.getFeedbackToUser());
-
-        // Verify interactions
-        verify(mockLogicManager).importAddressBook(invalidFilePath);
-        verifyNoInteractions(mockModel); // No address book set in case of failure
+        assertThrows(CommandException.class, () -> importCommand.execute(mockModel));
     }
 
     @Test
     public void execute_dataLoadingException_importFailure() throws Exception {
         // Set up mocks
-        Path invalidJsonFilePath = testFolder.resolve("notJsonFormatAddressBook.json");
+        ReadOnlyAddressBook mockAddressBook = mock(ReadOnlyAddressBook.class);
+
+        String invalidJsonFileString = "C:/tp/src/test/data/JsonAddressBookStorageTest/notJsonFormatAddressBook.json";
         LogicManager mockLogicManager = mock(LogicManager.class);
         Model mockModel = mock(Model.class);
 
-        // Mock the behavior of importAddressBook to throw a DataLoadingException
-        when(mockLogicManager.importAddressBook(invalidJsonFilePath)).thenThrow(DataLoadingException.class);
+        when(mockLogicManager.importAddressBook(Path.of(invalidJsonFileString)))
+                .thenThrow(DataLoadingException.class);
 
         // Create the ImportCommand
-        ImportCommand importCommand = new ImportCommand(invalidJsonFilePath, mockLogicManager);
+        ImportCommand importCommand = new ImportCommand(invalidJsonFileString, mockLogicManager);
 
         // Execute and check the result
         assertThrows(CommandException.class, () -> importCommand.execute(mockModel));

@@ -1,5 +1,7 @@
 package nusconnect.logic.commands;
 
+import java.io.IOError;
+import java.nio.file.InvalidPathException;
 import java.nio.file.Path;
 import java.util.Optional;
 
@@ -24,21 +26,22 @@ public class ImportCommand extends Command {
     public static final String MESSAGE_SUCCESS = "Successfully imported address book data.";
     public static final String MESSAGE_FAILURE = "Failed to import address book data.";
 
-    private final Path filePath;
+    private final String fileString;
     private final LogicManager logicManager;
 
     /**
-     * @param filePath JSON file path
+     * @param fileString JSON file path
      * @param logicManager used for accessing of storage
      */
-    public ImportCommand(Path filePath, LogicManager logicManager) {
-        this.filePath = filePath;
+    public ImportCommand(String fileString, LogicManager logicManager) {
+        this.fileString = fileString;
         this.logicManager = logicManager;
     }
 
     @Override
     public CommandResult execute(Model model) throws CommandException {
         try {
+            Path filePath = Path.of(fileString);
             Optional<ReadOnlyAddressBook> addressBookOptional = logicManager.importAddressBook(filePath);
 
             if (addressBookOptional.isPresent()) {
@@ -46,10 +49,12 @@ public class ImportCommand extends Command {
                 model.setAddressBook(addressBook);
                 return new CommandResult(MESSAGE_SUCCESS);
             } else {
-                return new CommandResult(MESSAGE_FAILURE + "\nInvalid file path!");
+                throw new CommandException(MESSAGE_FAILURE + "\nInvalid file path!");
             }
         } catch (DataLoadingException e) {
             throw new CommandException(MESSAGE_FAILURE + "\nInvalid JSON file!");
+        } catch (InvalidPathException | IOError e) {
+            throw new CommandException(MESSAGE_FAILURE + "\nInvalid file path!");
         }
     }
 
@@ -64,6 +69,6 @@ public class ImportCommand extends Command {
         }
 
         ImportCommand otherImportCommand = (ImportCommand) other;
-        return filePath.equals(otherImportCommand.filePath);
+        return fileString.equals(otherImportCommand.fileString);
     }
 }
