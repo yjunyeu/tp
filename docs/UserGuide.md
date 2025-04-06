@@ -368,7 +368,7 @@ format: `export FILE_PATH`
 Examples:
 
 * `export exported_data.json` exports the address book data to the `exported_data.json` file in the current directory.
-* `export C:/Users/user/Downloads/addressbook_backup.json` exports `addressbook_backup.json` to a `C:/Users/user/Downloads`
+* `export C:/Users/user/Downloads/addressbook_backup.json` exports `addressbook_backup.json` to `C:/Users/user/Downloads`
 
 #### Importing an address book: `import`
 
@@ -378,12 +378,13 @@ backups of different address books, or even take a look at other's address books
 Format: `import FILE_PATH`
 
 * `FILE_PATH` refers to the path of the file from which data will be imported. It can be either an absolute or relative path.
-* The file must be in the correct format (e.g., `.json`, `.txt`), and it must contain data that is compatible with the address book structure.
+* The file name can be anything (e.g. `.json`) but file data must be in the correct format (`.json`), and it must contain data that is compatible with the address book structure.
 * If the file path is invalid, the operation will fail, and an error message will be displayed.
 * If the data in the file is successfully imported, the address book will be updated with the new information.
 
 Examples:
 
+* `import .json` imports data from the `.json` file within the current directory.
 * `import data.json` imports data from the `data.json` file within the current directory.
 * `import backup/addressbook.json` imports data from the `addressbook.json` file located in the backup folder relative to the current directory.
 * `import C:/Users/user/Documents/addressbook_data.txt` imports data from the `addressbook_data.txt` file located in the `C:/Users/user/Documents`
