@@ -71,14 +71,19 @@ public class PersonTest {
                 .withTelegram(VALID_TELEGRAM_BOB)
                 .withPhone(VALID_PHONE_BOB)
                 .build();
-        assertTrue(ALICE.isSamePerson(editedAlice)); // Same name, different telegram and phone
+        assertTrue(ALICE.isSamePerson(editedAlice));
 
+        // different name, different telegram handle, different phone -> returns false
         editedAlice = new PersonBuilder(ALICE)
-                .withName(VALID_NAME_BOB) // Different name
-                .withPhone(VALID_PHONE_BOB) // Different phone
-                .withTelegram(VALID_TELEGRAM_BOB) // Different telegram
+                .withName(VALID_NAME_BOB)
+                .withPhone(VALID_PHONE_BOB)
+                .withTelegram(VALID_TELEGRAM_BOB)
                 .build();
-        assertFalse(ALICE.isSamePerson(editedAlice)); // Should return false as all identifiers are different
+        assertFalse(ALICE.isSamePerson(editedAlice));
+
+        // different name, different telegram handle, no phone -> returns false
+        editedAlice = new PersonBuilder(BOB).withTelegram(VALID_TELEGRAM_BOB).build();
+        assertFalse(ALICE.isSamePerson(editedAlice));
     }
 
     @Test

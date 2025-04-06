@@ -4,6 +4,7 @@ import static nusconnect.model.Model.PREDICATE_SHOW_ALL_PERSONS;
 import static nusconnect.testutil.Assert.assertThrows;
 import static nusconnect.testutil.TypicalPersons.ALICE;
 import static nusconnect.testutil.TypicalPersons.BENSON;
+import static nusconnect.testutil.TypicalPersons.BOB;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -86,6 +87,24 @@ public class ModelManagerTest {
     public void hasPerson_personInAddressBook_returnsTrue() {
         modelManager.addPerson(ALICE);
         assertTrue(modelManager.hasPerson(ALICE));
+    }
+
+    @Test
+    public void hasPersonExcludes_nullPerson_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> modelManager.hasPersonExcludes(null, null));
+    }
+
+    @Test
+    public void excludesSamePerson_returnsFalse() {
+        modelManager.addPerson(ALICE);
+        assertFalse(modelManager.hasPersonExcludes(ALICE, ALICE));
+    }
+
+    @Test
+    public void excludesDifferentPerson_returnsTrue() {
+        modelManager.addPerson(ALICE);
+        modelManager.addPerson(BOB);
+        assertTrue(modelManager.hasPersonExcludes(ALICE, BOB));
     }
 
     @Test
