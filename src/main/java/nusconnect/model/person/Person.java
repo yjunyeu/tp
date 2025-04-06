@@ -106,10 +106,19 @@ public class Person {
             return true;
         }
 
-        return otherPerson != null
-                && (otherPerson.getName().equals(getName())
-                || otherPerson.getPhone().equals(getPhone())
-                || otherPerson.getTelegram().equals(getTelegram()));
+        if (otherPerson == null) {
+            return false; // Null check
+        }
+
+        // Check if name or telegram is the same
+        boolean isNameEqual = otherPerson.getName().equals(this.getName());
+        boolean isTelegramEqual = otherPerson.getTelegram().equals(this.getTelegram());
+
+        // Check phone equality only if at least one phone is not null
+        boolean isPhoneEqual = (this.getPhone().isPresent() && otherPerson.getPhone().isPresent())
+                && this.getPhone().get().equals(otherPerson.getPhone().get());
+
+        return isNameEqual || isTelegramEqual || isPhoneEqual;
     }
 
     /**
