@@ -1,6 +1,7 @@
 package nusconnect.model;
 
 import static java.util.Objects.requireNonNull;
+import static nusconnect.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.util.HashSet;
 import java.util.List;
@@ -80,6 +81,15 @@ public class AddressBook implements ReadOnlyAddressBook {
     public boolean hasPerson(Person person) {
         requireNonNull(person);
         return persons.contains(person);
+    }
+
+    /**
+     * Returns true if a person with the same identity as {@code person} exists in the address book
+     * excluding {@code excludedPerson}.
+     */
+    public boolean hasPersonExcludes(Person excludedPerson, Person person) {
+        requireAllNonNull(excludedPerson, person);
+        return persons.containsExclude(excludedPerson, person);
     }
 
     /**

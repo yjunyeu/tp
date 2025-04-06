@@ -1,5 +1,6 @@
 package nusconnect.model;
 
+
 import java.nio.file.Path;
 import java.util.function.Predicate;
 
@@ -60,6 +61,12 @@ public interface Model {
      * Returns true if a person with the same identity as {@code person} exists in the address book.
      */
     boolean hasPerson(Person person);
+
+    /**
+     * Returns true if a person with the same identity as {@code person} exists in the address book
+     * excluding {@code excludedPerson}.
+     */
+    boolean hasPersonExcludes(Person excludedPerson, Person person);
 
     /**
      * Deletes the given person.
