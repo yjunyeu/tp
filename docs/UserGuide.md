@@ -1,8 +1,7 @@
 ---
 layout: page
-title: User Guide
+title: NUSConnect User Guide
 ---
-# NUSConnect
 
 Thank you for using **NUSConnect**! With **NUSConnect**, you can manage your contacts quickly and efficiently using the 
 Command Line Interface (CLI), all displayed with our custom-designed Graphical User Interface (GUI) specifically for 
