@@ -148,7 +148,7 @@ public class MainWindow extends UiPart<Stage> {
     private void setWindowDefaultSize(GuiSettings guiSettings) {
         primaryStage.setHeight(guiSettings.getWindowHeight());
         primaryStage.setWidth(guiSettings.getWindowWidth());
-        primaryStage.setMinWidth(700);
+        primaryStage.setMinWidth(710);
         primaryStage.setMinHeight(600);
         if (guiSettings.getWindowCoordinates() != null) {
             primaryStage.setX(guiSettings.getWindowCoordinates().getX());
@@ -193,6 +193,7 @@ public class MainWindow extends UiPart<Stage> {
         int index = targetIndex.getZeroBased();
         if (index < personListPanel.getPersonListView().getItems().size()) {
             personListPanel.getPersonListView().getSelectionModel().select(index);
+            personListPanel.getPersonListView().scrollTo(index);
         }
     }
 
