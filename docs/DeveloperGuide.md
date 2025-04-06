@@ -734,3 +734,7 @@ We plan to extend the command syntax (e.g. `group add 1 2 3 to 2`) so multiple c
 
 5. Users currently have to run individual `edit` commands to add a module to each contact. We plan to allow users to 
 add a single module to multiple contacts simultaneously using `edit 1 2 3 4 m/CS2103T`.
+
+
+6. Enhance `find` with a flag for exact string matches. Currently, find only supports partial string matches for both names and modules which may lead to unwanted results. 
+This enhancement allow users to find contacts more accurately when some names or module codes contain similar substrings (eg `CS2103T` and `CS2103`).
