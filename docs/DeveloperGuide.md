@@ -525,9 +525,21 @@ testers are expected to do more *exploratory* testing.
 Team size: 5
 
 1. **Make group delete** more versatile. The current group delete command is only able to delete the entire group. This
-is too restrictive. We plan to make `group delete` be able to delete specific member from a group. Adjust `group delete`
-to accept this format `group delete PERSON_INDEX from GROUP_INDEX`  so that we can remove specific member.
+is too restrictive. We plan to make `group delete` be able to delete specific contact from a group. Adjust `group delete`
+to accept this format `group delete PERSON_INDEX from GROUP_INDEX`  so that we can remove specific contact.
 
 
-2. Currently, every person's details like `telegram`, `email` and others are stored in the group array in `addressbook.json`. Since only `name` is typically used within
-group context, we plan to update the group structure in storage to store only the person name. This keeps the JSON smaller.
+2. Currently, every contact's details like `telegram`, `email` and others are stored in the group array in `addressbook.json`. Since only `name` is typically used within
+group context, we plan to update the group structure in storage to store only the contact's name. This keeps the JSON smaller.
+
+
+3. Enhance `group add` to check if a contact is taking this module before adding to a group that is from another module. Currently, no such checks are done.
+We plan to implement a check like if a group is associated with a specific module, only contacts who are enrolled in that module can be added.
+
+
+4. Allow multiple contacts to be added in one `group add` command. Currently, it only supports adding one contact at a time.
+We plan to extend the command syntax (e.g. `group add 1 2 3 to 2`) so multiple contacts can be added to a group in a single command.
+
+
+5. Users currently have to run individual `edit` commands to add a module to each contact. We plan to allow users to 
+add a single module to multiple contacts simultaneously using `edit 1 2 3 4 m/CS2103T`.
