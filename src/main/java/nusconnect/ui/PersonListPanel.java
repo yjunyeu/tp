@@ -2,6 +2,7 @@ package nusconnect.ui;
 
 import java.util.logging.Logger;
 
+import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListCell;
@@ -27,6 +28,13 @@ public class PersonListPanel extends UiPart<Region> {
         super(FXML);
         personListView.setItems(personList);
         personListView.setCellFactory(listView -> new PersonListViewCell());
+        personListView.getItems().addListener((ListChangeListener<Person>) change -> {
+            while (change.next()) {
+                if (change.wasAdded()) {
+                    personListView.scrollTo(personListView.getItems().size());
+                }
+            }
+        });
     }
 
     /**

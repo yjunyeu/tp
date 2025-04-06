@@ -193,6 +193,7 @@ public class MainWindow extends UiPart<Stage> {
         int index = targetIndex.getZeroBased();
         if (index < personListPanel.getPersonListView().getItems().size()) {
             personListPanel.getPersonListView().getSelectionModel().select(index);
+            personListPanel.getPersonListView().scrollTo(index);
         }
     }
 
