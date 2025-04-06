@@ -107,14 +107,11 @@ public class Person {
         }
 
         if (otherPerson == null) {
-            return false; // Null check
+            return false;
         }
 
-        // Check if name or telegram is the same
         boolean isNameEqual = otherPerson.getName().equals(this.getName());
         boolean isTelegramEqual = otherPerson.getTelegram().equals(this.getTelegram());
-
-        // Check phone equality only if at least one phone is not null
         boolean isPhoneEqual = (this.getPhone().isPresent() && otherPerson.getPhone().isPresent())
                 && this.getPhone().get().equals(otherPerson.getPhone().get());
 
