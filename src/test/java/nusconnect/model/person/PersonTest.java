@@ -5,7 +5,6 @@ import static nusconnect.logic.commands.CommandTestUtil.VALID_EMAIL_BOB;
 import static nusconnect.logic.commands.CommandTestUtil.VALID_MAJOR_BOB;
 import static nusconnect.logic.commands.CommandTestUtil.VALID_MODULE_CS2103T;
 import static nusconnect.logic.commands.CommandTestUtil.VALID_MODULE_CS2106;
-import static nusconnect.logic.commands.CommandTestUtil.VALID_NAME_AMY;
 import static nusconnect.logic.commands.CommandTestUtil.VALID_NAME_BOB;
 import static nusconnect.logic.commands.CommandTestUtil.VALID_NOTE_BOB;
 import static nusconnect.logic.commands.CommandTestUtil.VALID_PHONE_BOB;
@@ -51,18 +50,40 @@ public class PersonTest {
                 .build();
         assertTrue(ALICE.isSamePerson(editedAlice));
 
-        // different name, all other attributes same -> returns false
-        editedAlice = new PersonBuilder(ALICE).withName(VALID_NAME_BOB).build();
+        // same phone, all other attributes different -> returns true
+        editedAlice = new PersonBuilder(ALICE).withPhone(VALID_PHONE_BOB).build();
+        assertTrue(ALICE.isSamePerson(editedAlice)); // Same phone, different attributes
+
+        // same telegram, all other attributes different -> returns true
+        editedAlice = new PersonBuilder(ALICE).withTelegram(VALID_TELEGRAM_BOB).build();
+        assertTrue(ALICE.isSamePerson(editedAlice)); // Same telegram, different attributes
+
+        // same name, different telegram handle -> returns true
+        editedAlice = new PersonBuilder(ALICE).withTelegram(VALID_TELEGRAM_BOB).build();
+        assertTrue(ALICE.isSamePerson(editedAlice)); // Same name, different telegram
+
+        // same name, different phone number -> returns true
+        editedAlice = new PersonBuilder(ALICE).withPhone(VALID_PHONE_BOB).build();
+        assertTrue(ALICE.isSamePerson(editedAlice)); // Same name, different phone
+
+        // same name, different telegram handle and phone -> returns true
+        editedAlice = new PersonBuilder(ALICE)
+                .withTelegram(VALID_TELEGRAM_BOB)
+                .withPhone(VALID_PHONE_BOB)
+                .build();
+        assertTrue(ALICE.isSamePerson(editedAlice));
+
+        // different name, different telegram handle, different phone -> returns false
+        editedAlice = new PersonBuilder(ALICE)
+                .withName(VALID_NAME_BOB)
+                .withPhone(VALID_PHONE_BOB)
+                .withTelegram(VALID_TELEGRAM_BOB)
+                .build();
         assertFalse(ALICE.isSamePerson(editedAlice));
 
-        // name differs in case, all other attributes same -> returns false
-        Person editedBob = new PersonBuilder(BOB).withName(VALID_NAME_AMY.toLowerCase()).build();
-        assertFalse(BOB.isSamePerson(editedBob));
-
-        // name has trailing spaces, all other attributes same -> returns false
-        String nameWithTrailingSpaces = VALID_NAME_BOB + " ";
-        editedBob = new PersonBuilder(BOB).withName(nameWithTrailingSpaces).build();
-        assertTrue(BOB.isSamePerson(editedBob));
+        // different name, different telegram handle, no phone -> returns false
+        editedAlice = new PersonBuilder(BOB).withTelegram(VALID_TELEGRAM_BOB).build();
+        assertFalse(ALICE.isSamePerson(editedAlice));
     }
 
     @Test

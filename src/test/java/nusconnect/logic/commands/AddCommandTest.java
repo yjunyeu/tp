@@ -145,6 +145,11 @@ public class AddCommandTest {
         }
 
         @Override
+        public boolean hasPersonExcludes(Person excludedPerson, Person person) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
         public boolean hasGroup(Group group) {
             throw new AssertionError("This method should not be called.");
         }
