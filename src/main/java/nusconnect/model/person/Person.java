@@ -105,6 +105,8 @@ public class Person {
         if (otherPerson == this) {
             return true;
         }
+        System.out.println("This name: " + this.getName());
+        System.out.println("Other name: " + otherPerson.getName());
 
         return otherPerson != null
                 && (otherPerson.getName().equals(getName())
