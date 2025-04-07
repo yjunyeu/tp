@@ -5,13 +5,13 @@ import static java.util.Objects.requireNonNull;
 import nusconnect.model.Model;
 
 /**
- * Sorts all the persons in the address book by name in alphabetical order.
+ * Sorts all the persons in the address book by name in lexicographical order.
  */
 public class SortCommand extends Command {
 
     public static final String COMMAND_WORD = "sort";
 
-    public static final String MESSAGE_SUCCESS = "Sorted all persons by name in alphabetical order!";
+    public static final String MESSAGE_SUCCESS = "Sorted all persons by name in ascending lexicographical order!";
     public static final String MESSAGE_EMPTY_LIST = "The address book is empty!";
     public static final String MESSAGE_ONE_PERSON = "Sorted one person!";
 
