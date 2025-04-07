@@ -536,10 +536,50 @@ NUSConnect helps students quickly add, organise and find contacts with minimal e
 **Use case: UC14 - Exporting the current address book**
 
 **MSS**
+* 1. User requests to export a file
+* 2. NUSConnect exports the file successfully
 
+Use case ends.
+
+**Extensions**
+* 2a File name is invalid
+    * 2a1 NUSConnect fails to export to the file
+
+      Use case ends.
+
+* 2b File path is invalid
+    * 2b1 NUSConnect fails to export to the file
+
+      Use case ends.
+  
+* 2c File path has insufficient write permissions
+    * 2c1 NUSConnect fails to export to the file
+
+      Use case ends.
+  
 **Use case: UC15 - Importing an address book**
 
 **MSS**
+* 1. User requests to import a file
+* 2. NUSConnect imports the file successfully
+
+   Use case ends.
+
+**Extensions**
+* 2a File name is invalid
+  * 2a1 NUSConnect fails to import the file
+
+    Use case ends.
+
+* 2b File path is invalid
+  * 2b1 NUSConnect fails to import the file
+    
+    Use case ends.
+  
+* 2c File data is invalid
+  * 2c1 NUSConnect fails to import the file
+
+    Use case ends.
 
 ### Non-Functional Requirements
 
@@ -742,9 +782,41 @@ testers are expected to do more *exploratory* testing.
 ### Sorting the address book
 
 ### Exporting the current address book
+1. Exporting to a file
+   1. Test case: `export addressbook.json`<br>
+      Expected: Export successful.
+   2. Test case: `export .json`<br>
+      Expected: Export fail. An error message indicate that file name is invalid.
+   3. Test case: `export addressbook.txt`<br>
+      Expected: Export fail. An error message indicate that file name is invalid.
+   4. Test case: `export addressbook.csv`<br>
+      Expected: Export fail. An error message indicate that file name is invalid.
+   5. Test case `export *.json`<br>
+      Expected: Export fail. An error message indicate that file path is invalid.
+   6. Test case `export 123:addressbook.json`<br>
+      Expected: Export fail. An error message indicate that file path is invalid.
+   7. Test case `export C:/Windows/System32/addressbook.json`<br>
+      Expected: Export fail. An error message indicate that permission is denied to write to that file path.
 
 ### Importing an address book
-
+1. Importing a file
+   1. Prerequisites: Manually create `addressbook.json` and `.json` with valid JSON file data, `invalidAddressbook.json` with invalid JSON file data, and `empty.json` with no data in current folder.
+   2. Test case: `import addressbook.json`<br>
+      Expected: Import successful.
+   3. Test case: `import .json`<br>
+      Expected: Import fail. An error message indicate that file name is invalid.
+   4. Test case: `import addressbook.txt`<br>
+      Expected: Import fail. An error message indicate that file name is invalid.
+   5. Test case: `import addressbook.csv`<br>
+      Expected: Import fail. An error message indicate that file name is invalid.
+   6. Test case `import *.json`<br>
+      Expected: Import fail. An error message indicate that file path is invalid.
+   7. Test case `import 123:addressbook.json`<br>
+      Expected: Import fail. An error message indicate that file path is invalid.
+   8. Test case: `import invalidAddressbook.json`
+      Expected: Import fail. An error message indicate that JSON file data is invalid
+   9. Test case: `import empty.json`
+       Expected: Import fail. An error message indicate that JSON file data is invalid
 --------------------------------------------------------------------------------------------------------------------
 
 ## **Appendix: Planned Enhancements**
