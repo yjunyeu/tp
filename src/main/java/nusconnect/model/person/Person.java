@@ -113,8 +113,10 @@ public class Person {
         boolean isTelegramEqual = otherPerson.getTelegram().equals(this.getTelegram());
         boolean isPhoneEqual = (this.getPhone().isPresent() && otherPerson.getPhone().isPresent())
                 && this.getPhone().get().equals(otherPerson.getPhone().get());
+        boolean isEmailEqual = (this.getEmail().isPresent() && otherPerson.getEmail().isPresent())
+                && this.getEmail().get().equals(otherPerson.getEmail().get());
 
-        return isTelegramEqual || isPhoneEqual;
+        return isTelegramEqual || isPhoneEqual || isEmailEqual;
     }
 
     /**
