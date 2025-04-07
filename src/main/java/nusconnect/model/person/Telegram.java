@@ -12,7 +12,8 @@ public class Telegram {
 
     public static final String MESSAGE_CONSTRAINTS =
             "Telegram handles must start with an @, then the rest must be 5-32 characters long, case-insensitive, \n"
-                    + "and can only contain letters, numbers, underscores, and it should not be blank!";
+                    + "and can only contain letters, numbers, underscores. "
+                    + "It should not be blank if specified on creation!";
 
     /*
      * The first character of the telegram must not be a whitespace,
