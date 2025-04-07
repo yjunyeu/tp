@@ -13,14 +13,16 @@ Given below are my contributions to the project.
   * Overhauled theme from base project, AB3, to better fit NUSConnect's aesthetic with the National University of Singapore, with the help of mockup from group member Lee Jia Wei.
 * **Project management**:
   * Compiled tasks that needs to be done for each milestone for everyone to choose from.
+  * Kept track team member's code contributions, and assigned bugs from PE-D to each team member based on what they did.
+  * Created internal deadlines, and tracked team member's progress for each iteration.
 * **Enhancements to existing features**:
   * `Delete`: Added functionality to delete multiple people at once.
   * Regular Expression Matching: Wrote code and tests to test validity of newly added fields apart from Modules.
-  * Data Structure: Changed all fields apart from Name and Telegram to be Optional fields.
-  * Storage: Changed the JSON loader to be able to parse null values that were possible after the above change.
+  * `Edit`: Added functionality to prevent edits if the person being edited is not being changed.
 * **Documentation**:
   * User Guide:
     * Updated the section `help` to reflect the new UI.
+    * Revamped the structure of the User Guide to make it better for readers, and easier for other team members to update.
   *  Developer Guide:
     * Added initial table of User Stories, and updated it in v1.5.
     * Updated UML sequence diagram for Delete to reflect deleting multiple persons.
