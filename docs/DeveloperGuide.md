@@ -303,6 +303,12 @@ NUSConnect helps students quickly add, organise and find contacts with minimal e
             <td>Import a contact list</td>
             <td>Load previously saved or other's versions of the contact list</td>
         </tr>
+        <tr class="low-priority">
+            <td>*</td>
+            <td>Student</td>
+            <td>Sort my contact list</td>
+            <td>Organise my contact lists in lexicographical order</td>
+        </tr>
     </tbody>
 </table>
 
@@ -333,7 +339,7 @@ NUSConnect helps students quickly add, organise and find contacts with minimal e
 
   Use case resumes at step 1.
 
-* 1c. The person already exists.
+* 1c. A person with the same name or telegram or phone (if present) already exists.
 
   1c1. NUSConnect shows an error message.
 
@@ -366,7 +372,7 @@ NUSConnect helps students quickly add, organise and find contacts with minimal e
 
   Use case resumes at step 1.
 
-* 1d. The person is being edited to another contact that already exists.
+* 1d. The person is being edited to another contact that with the same name or telegram or phone (if present).
 
   1d1. NUSConnect shows an error message.
 
@@ -483,11 +489,11 @@ NUSConnect helps students quickly add, organise and find contacts with minimal e
 
       Use case resumes at step 2.
 
-**Use case: UC9 - Listing directory**
+**Use case: UC9 - Listing address book**
 
 **MSS**
 
-1.  User request to list persons
+1.  User requests to list persons
 2.  NUSConnect shows the list of persons
 
     Use case ends.
@@ -504,9 +510,47 @@ NUSConnect helps students quickly add, organise and find contacts with minimal e
 
 **MSS**
 
+1. User requests to find a person by their name
+2. NUSConnect returns a list of persons that match the search keyword(s) partially or fully
+   
+   Use case ends.
+
+**Extensions**
+
+* 1a. No keyword is specified.
+
+  1a1. NUSConnect shows an error message.
+  
+  Use case ends.
+
+* 2a. No matching persons found.
+
+  2a1. NUSConnect shows a message.
+
+  Use case ends.
+
 **Use case: UC11 - Locating persons by module**
 
 **MSS**
+
+1. User requests to find a person by their module
+2. NUSConnect returns a list of persons that match the search keyword(s) partially or fully
+
+   Use case ends.
+
+**Extensions**
+
+* 1a. No keyword is specified.
+
+  1a1. NUSConnect shows an error message.
+
+  Use case ends.
+
+* 2a. No matching persons found.
+
+  2a1. NUSConnect shows a message.
+
+  Use case ends.
 
 **Use case: UC12 - Viewing person details**
 
@@ -532,6 +576,25 @@ NUSConnect helps students quickly add, organise and find contacts with minimal e
 **Use case: UC13 - Sorting the address book**
 
 **MSS**
+
+1. User request to sort the address book.
+2. NUSConnect sorts the address book in ascending lexicographical order.
+   
+   Use case ends.
+
+**Extensions**
+
+* 2a. The address book is empty.
+  
+  2a1. NUSConnect shows a message.
+
+  Use case ends.
+
+* 2b. The address book contains one person.
+  
+  2b1. NUSConnect shows a message.
+
+  Use case ends.
 
 **Use case: UC14 - Exporting the current address book**
 
@@ -777,10 +840,56 @@ testers are expected to do more *exploratory* testing.
    8. Test case: `group add 1 to 1` followed by `group add 1 to 1`<br>
       Expected: No person is added. An error message indicates that the person is already added to the group.
 
-### Locating persons by name or modules
+### Finding persons with name or modules
+
+1. Finding persons with name only.
+   1. Prerequisites: There are three persons in the list (`Aaron`, `Ben`, `Timothy`).
+   1. Test case: `find aaron`<br>
+      Expected: Only Aaron is displayed in the list. A message indicates `1 person listed!`
+   1. Test case: `find aar`<br>
+      Expected: Only Aaron is displayed in the list. A message indicates `1 person listed!`
+   1. Test case: `find aaron ben`<br>
+      Expected: Only Aaron and Ben are displayed in the list. A message indicates `2 persons listed!`
+   1. Test case: `find Sean`<br>
+      Expected: No person is displayed in the list. A message indicates `No results found!`
+
+2. Find persons with module only.
+   1. Prerequisites: There are three persons in the list (`Aaron` taking `CS2100`, `Ben` taking `IS1108`, `Timothy` taking `CS2030`).
+   1. Test case: `find CS2100`<br>
+      Expected: Only Aaron is displayed in the list. A message indicates `1 person listed!`
+   1. Test case: `find CS21`<br>
+      Expected: Only Aaron is displayed in the list. A message indicates `1 person listed!`
+   1. Test case: `find CS2100 IS1108`<br>
+      Expected: Only Aaron and Ben are displayed in the list. A message indicates `2 persons listed!`
+   1. Test case: `find CS2103T`<br>
+      Expected: No person is displayed in the list. A message indicates `No results found!`
+
+3. Find a person with name and module.
+   1. Prerequisites: There are three persons in the list (`Aaron` taking `CS2100`, `Ben` taking `IS1108`, `Timothy` taking `CS2030`).
+   1. Test case: `find Aaron CS2100`<br>
+     Expected: Only Aaron is displayed in the list. A message indicates `1 person listed!`
+   1. Test case: `find Ben CS2100`<br>
+      Expected: Only Aaron and Ben are displayed in the list. A message indicates `2 persons listed!`
+   1. Test case: `find Sean CS2103T`<br>
+      Expected: No person is displayed in the list. A message indicates `No results found!`
 
 ### Sorting the address book
 
+1. Sort address book containing more than 1 contact.
+   1. Prerequisites: There are three persons in the list in this order (`Aaron`, `Timothy`, `Ben`).
+   1. Test case: `sort`<br>
+      Expected: List is displayed in this order (`Aaron`, `Ben`, `Timothy`). A message indicates `Sorted all persons by name in ascending lexicographical order!`.
+
+2. Sort address book containing 1 contact.
+    1. Prerequisites: There are one person in the list (`Aaron`).
+    1. Test case: `sort`<br>
+       Expected: List is displayed in this order (`Aaron`). A message indicates `Sorted one person`.
+
+3. Sort empty address book.
+    1. Prerequisites: The list is empty.
+    1. Test case: `sort`<br>
+       Expected: Empty list is displayed. A message indicates `The address book is empty`.
+   
 ### Exporting the current address book
 1. Exporting to a file
    1. Test case: `export addressbook.json`<br>

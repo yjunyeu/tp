@@ -63,7 +63,7 @@ traditional address book!
 | **[Group delete](#deleting-a-group-group-delete)**       | `group delete INDEX`<br> e.g., `group delete 2`                                                                                                                                                                                                              |
 | **[Group add](#adding-a-person-to-a-group-group-add)**   | `group add PERSON_INDEX to GROUP_INDEX`<br> e.g. `group add 1 to 2`                                                                                                                                                                                          |
 | **[List](#listing-all-persons-list)**                    | `list`                                                                                                                                                                                                                                                       |
-| **[Find](#locating-persons-by-name-or-modules-find)**    | `find KEYWORD [MORE_KEYWORDS]…​`<br> e.g., `find James Jake`                                                                                                                                                                                                 |
+| **[Find](#locating-persons-with-name-or-modules-find)**  | `find KEYWORD [MORE_KEYWORDS]…​`<br> e.g., `find James Jake`                                                                                                                                                                                                 |
 | **[View](#viewing-contact-details-view)**                | `view INDEX` <br> e.g., `view 1`                                                                                                                                                                                                                             |
 | **[Sort](#sorting-the-address-book-sort)**               | `sort`                                                                                                                                                                                                                                                       |
 | **[Export](#exporting-the-current-address-book-export)** | `export FILE_PATH`<br> e.g., `export exported_data.json`                                                                                                                                                                                                     |
@@ -291,7 +291,8 @@ Format: `list`
 
 ![ListExample](images/ListExample.png)
 
-#### Locating persons by name or modules: `find`
+#### Locating persons with name or modules: `find`
+
 
 This command allows you to find persons whose names or modules matches any of the entered keywords.
 
@@ -301,8 +302,16 @@ Format: `find KEYWORD [MORE_KEYWORDS]…​`
 * Multiple keywords can be entered.
 * The order of the keywords does not matter.
 * Only the names and the modules are searched.
-* Partial names and modules can be matched.
+* Partial names and modules are matched.
 * Persons matching at least one keyword in either the name or module will be returned (i.e. OR search).
+
+
+<div markdown="block" class="alert alert-info">:bulb: **Tip:**
+Search is broad and may return results that include partial matches.
+
+* `find CS` may bring up results for `CS2100` or `CS2106` even if they aren't the exact match you are looking for.
+* This helps you find contacts faster without typing out the full keyword!
+</div>
 
 Examples:
 * `find John` returns `john` and `John Doe`
@@ -333,21 +342,28 @@ Examples:
 
 #### Sorting the address book: `sort`
 
-This command allows you to sort all the persons in the address book by their names in alphabetical order. This is useful
-for when you just want to organize and take a look at all your contacts!
+This command allows you to sort all the persons in the address book by their names. This is useful
+for when you want to organize all your contacts neatly!
+
+<div markdown="block" class="alert alert-info">:bulb: **Note:**
+Sorting is performed in lexicographical order.
+
+* Numbers come first (before letters).
+* Words are sorted alphabetically.
+</div>
 
 Format: `sort`
 
-* The `sort` command organises all the contacts in the address book by their names in ascending alphabetical order.
+* The `sort` command organises all the contacts in the address book by their names in ascending lexicographical order.
 * If the address book is empty, the command will display the message `The address book is empty!`.
 * If there is only one person in the address book, the list will remain unchanged, and the command will display the message `Sorted one person!`.
 
 Examples:
-* Before sorting: Note that "the three amigos" Grady Booch, James Rumbaugh, and Ivar Jacobson are not in alphabetical order.
+* Before sorting: Note that "the three amigos" Grady Booch, James Rumbaugh, and Ivar Jacobson are not in lexicographical order.
 
 ![Before `sort`](images/BeforeSort.png)
 
-* After sorting: Now, they have moved to the corresponding indices that will make all eight contacts be in alphabetical order!
+* After sorting: Now, they have moved to the corresponding indices that will make all eight contacts be in lexicographical order!
 
 ![After `sort`](images/AfterSort.png)
 
