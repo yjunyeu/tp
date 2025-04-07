@@ -916,7 +916,4 @@ small features (such as `find` or multiple `delete`) was easy to implement given
 another large group of difficulties was writing the test cases to ensure that the new features work as intended, and fixing the bugs that may have propogated to other parts
 of the codebase.
 
---------------------------------------------------------------------------------------------------------------------
-
-## **Appendix: Requirements**
 
