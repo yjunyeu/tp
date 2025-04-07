@@ -706,9 +706,47 @@ testers are expected to do more *exploratory* testing.
 ### Sorting the address book
 
 ### Exporting the current address book
+1. Exporting with valid file path and file name.
+   1. Test case: `export addressbook.json`<br>
+      Expected: Export successful.
+2. Exporting with invalid file name
+   1. Test case: `export .json`<br>
+      Expected: Export fail. An error message indicate that file name is invalid.
+   2. Test case: `export addressbook.txt`<br>
+      Expected: Export fail. An error message indicate that file name is invalid.
+   3. Test case: `export addressbook.csv`<br>
+      Expected: Export fail. An error message indicate that file name is invalid.
+3. Exporting with invalid file path
+   1. Test case `export *.json`<br>
+      Expected: Export fail. An error message indicate that file path is invalid.
+   2. Test case `export 123:addressbook.json`<br>
+      Expected: Export fail. An error message indicate that file path is invalid.
+   3. Test case `export C:/Windows/System32/addressbook.json`<br>
+      Expected: Export fail. An error message indicate that permission is denied to write to that file path.
 
 ### Importing an address book
-
+1. Importing with valid file path and file name.
+   1. Prerequisites: Manually create `addressbook.json` and `.json` with valid JSON file data in current folder
+   2. Test case: `import addressbook.json`<br>
+      Expected: Import successful.
+2. Importing with invalid file name
+   1. Test case: `import .json`<br>
+      Expected: Import fail. An error message indicate that file name is invalid.
+   2. Test case: `import addressbook.txt`<br>
+      Expected: Import fail. An error message indicate that file name is invalid.
+   3. Test case: `import addressbook.csv`<br>
+      Expected: Import fail. An error message indicate that file name is invalid.
+3. Importing with invalid file path
+    1. Test case `import *.json`<br>
+       Expected: Import fail. An error message indicate that file path is invalid.
+    2. Test case `import 123:addressbook.json`<br>
+       Expected: Import fail. An error message indicate that file path is invalid.
+4. Importing with invalid file data
+    1. Prerequisites: Manually create `addressbook.json` with invalid JSON file data in current folder and `empty.json` with no data in current folder
+    2. Test case: `import addressbook.json`
+       Expected: Import fail. An error message indicate that JSON file data is invalid
+    3. Test case: `import empty.json`
+       Expected: Import fail. An error message indicate that JSON file data is invalid
 --------------------------------------------------------------------------------------------------------------------
 
 ## **Appendix: Planned Enhancements**
