@@ -60,7 +60,8 @@ public class EditCommand extends Command {
             + PREFIX_EMAIL + "johndoe@example.com";
 
     public static final String MESSAGE_EDIT_PERSON_SUCCESS = "Edited Person: %1$s";
-    public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided!";
+    public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided! These are:\n"
+            + "Name: n/, Telegram: t/, Phone: p/, Email: e/, Alias: a/, Major: ma/, Note: no/, Website: w/, Module: m/";
     public static final String MESSAGE_DUPLICATE_PERSON = "This person already exists in the address book!";
     public static final String MESSAGE_EDITED_BUT_NO_CHANGE = "This person already has your desired changes!";
 
