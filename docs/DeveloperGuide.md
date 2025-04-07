@@ -307,7 +307,7 @@ NUSConnect helps students quickly add, organise and find contacts with minimal e
             <td>*</td>
             <td>Student</td>
             <td>Sort my contact list</td>
-            <td>Organise my contact lists in lexicographical order</td>
+            <td>Organise my contact lists in ascending lexicographical order</td>
         </tr>
     </tbody>
 </table>
@@ -576,7 +576,7 @@ NUSConnect helps students quickly add, organise and find contacts with minimal e
 
 **MSS**
 
-1. User request to sort the address book.
+1. User request to sort the address book in ascending lexicographical order.
 2. NUSConnect sorts the address book in ascending lexicographical order.
 
    Use case ends.
@@ -825,7 +825,7 @@ testers are expected to do more *exploratory* testing.
    1. Test case: `find CS2103T`<br>
       Expected: No person is displayed in the list. A message indicates `No results found!`
 
-3. Find a person with name and module.
+3. Find persons with name and module.
    1. Prerequisites: There are three persons in the list (`Aaron` taking `CS2100`, `Ben` taking `IS1108`, `Timothy` taking `CS2030`).
    1. Test case: `find Aaron CS2100`<br>
      Expected: Only Aaron is displayed in the list. A message indicates `1 person listed!`
@@ -903,6 +903,9 @@ add a single module to multiple contacts simultaneously using `edit 1 2 3 4 m/CS
 6. Enhance `find` with a flag for exact string matches. Currently, find only supports partial string matches for both names and modules which may lead to unwanted results.
 This enhancement allow users to find contacts more accurately when some names or module codes contain similar substrings (eg `CS2103T` and `CS2103`).
 
+
+7. Enhance `sort` to support different sorting options. Currently, sort only sorts the address book in ascending lexicographical order by a person's name.
+   This enhancement can allow users to sort in descending order instead or sort by other details of a person.
 --------------------------------------------------------------------------------------------------------------------
 
 ## **Appendix: Effort**
