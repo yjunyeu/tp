@@ -764,7 +764,7 @@ testers are expected to do more *exploratory* testing.
 
 ### Importing an address book
 1. Importing a file
-   1. Prerequisites: Manually create `addressbook.json`, `.json` with valid JSON file data, `invalidAddressbook.json` with invalid JSON file data, and `empty.json` with no data in current folder.
+   1. Prerequisites: Manually create `addressbook.json` and `.json` with valid JSON file data, `invalidAddressbook.json` with invalid JSON file data, and `empty.json` with no data in current folder.
    2. Test case: `import addressbook.json`<br>
       Expected: Import successful.
    3. Test case: `import .json`<br>
