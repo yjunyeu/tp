@@ -20,7 +20,7 @@ Given below are my contributions to the project.
 
 
 * **Implemented sort functionality**:
-  * Added the `sort` command to sort the addressbook in alphabetical order for better usability
+  * Added the `sort` command to sort the address book in ascending lexicographical order for better usability
 
 
 * **Ensured Backward Compatibility**:
@@ -40,3 +40,4 @@ Given below are my contributions to the project.
 
    * Developer guide
      * Updated model's UML class diagrams to reflect updated fields for person
+     * Wrote user stories for find and sort
