@@ -130,7 +130,7 @@ NUSConnect will execute some basic parameter checking for you! Here are the mini
 </div>
 
 <div markdown="span" class="alert alert-warning">:exclamation: **Warning:**
-Each person must have a unique <strong>Telegram</strong>, <strong>Phone</strong>, and <strong>Email</strong> (if present).<br>
+Each person must have a unique <strong>Telegram</strong>, <strong>Phone</strong> (if present), and <strong>Email</strong> (if present).<br>
   Duplicates in any of these fields are not allowed.
 </div>
 

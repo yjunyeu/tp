@@ -1,19 +1,15 @@
----
-layout: page
-title: NUSConnect
----
+# NUSConnect
 
-[![CI Status](https://github.com/AY2425S2-CS2103T-T16-1/tp/workflows/Java%20CI/badge.svg)](https://github.com/AY2425S2-CS2103T-T16-1/tp/actions)
-[![codecov](https://codecov.io/gh/AY2425S2-CS2103T-T16-1/tp/graph/badge.svg?token=J2GKZYHJ0Z)](https://codecov.io/gh/AY2425S2-CS2103T-T16-1/tp)
+[![CI Status](https://github.com/AY2425S2-CS2103T-T16-1/tp/workflows/Java%20CI/badge.svg)](https://github.com/AY2425S2-CS2103T-T16-1/tp/actions) [![codecov](https://codecov.io/gh/AY2425S2-CS2103T-T16-1/tp/graph/badge.svg?token=J2GKZYHJ0Z)](https://codecov.io/gh/AY2425S2-CS2103T-T16-1/tp)
 
 ![Ui](images/Ui.png)
 
-**NUSConnect is a desktop application for managing your contact details.** While it has a GUI, most of the user interactions happen using a CLI (Command Line Interface).
-
-* If you are interested in using NUSConnect, head over to the [_Quick Start_ section of the **User Guide**](UserGuide.html#quick-start).
-* If you are interested about developing NUSConnect, the [**Developer Guide**](DeveloperGuide.html) is a good place to start.
-
-
-**Acknowledgements**
-
-* Libraries used: [JavaFX](https://openjfx.io/), [Jackson](https://github.com/FasterXML/jackson), [JUnit5](https://github.com/junit-team/junit5)
+* NUSConnect is **an address book** developed for NUS students.<br>
+  Example usages:
+    * organise contacts from different modules.
+    * keep track of module-specific project teams and study groups
+* The project provides an application (called _NUSConnect_) designed specifically for NUS students to manage their academic and personal contacts.
+    * It is **written in OOP fashion**. It provides a **reasonably well-written** code base **bigger** (around 6 KLoC) than what students usually write in beginner-level SE modules, without being overwhelmingly big.
+    * It comes with a **reasonable level of user and developer documentation**.
+* For the detailed documentation of this project, see **[NUSConnect Product Website](https://ay2425s2-cs2103t-t16-1.github.io/tp/)**.
+* This project is based on the AddressBook-Level3 project created by the [SE-EDU initiative](https://se-education.org).
