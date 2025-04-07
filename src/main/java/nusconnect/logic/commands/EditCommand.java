@@ -62,8 +62,8 @@ public class EditCommand extends Command {
     public static final String MESSAGE_EDIT_PERSON_SUCCESS = "Edited Person: %1$s";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided! These are:\n"
             + "Name: n/, Telegram: t/, Phone: p/, Email: e/, Alias: a/, Major: ma/, Note: no/, Website: w/, Module: m/";
-    public static final String MESSAGE_DUPLICATE_PERSON = "The Telegram, Phone or Email cannot be modified to " +
-            "be the same as another person in the address book!";
+    public static final String MESSAGE_DUPLICATE_PERSON = "The Telegram, Phone or Email cannot be modified to "
+            + "be the same as another person in the address book!";
     public static final String MESSAGE_EDITED_BUT_NO_CHANGE = "This person already has your desired changes!";
 
     private final Index index;
