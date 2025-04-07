@@ -11,7 +11,6 @@ title: Developer Guide
 
 * AB-3: The codebase NUSConnect is based on.
 * Mockito: Third-party library used to simplify creating mock objects for unit-testing.
-* 
 --------------------------------------------------------------------------------------------------------------------
 
 ## **Setting up, getting started**
@@ -513,7 +512,7 @@ NUSConnect helps students quickly add, organise and find contacts with minimal e
 
 1. User requests to find a person by their name
 2. NUSConnect returns a list of persons that match the search keyword(s) partially or fully
-   
+
    Use case ends.
 
 **Extensions**
@@ -521,7 +520,7 @@ NUSConnect helps students quickly add, organise and find contacts with minimal e
 * 1a. No keyword is specified.
 
   1a1. NUSConnect shows an error message.
-  
+
   Use case ends.
 
 * 2a. No matching persons found.
@@ -580,19 +579,19 @@ NUSConnect helps students quickly add, organise and find contacts with minimal e
 
 1. User request to sort the address book.
 2. NUSConnect sorts the address book in ascending lexicographical order.
-   
+
    Use case ends.
 
 **Extensions**
 
 * 2a. The address book is empty.
-  
+
   2a1. NUSConnect shows a message.
 
   Use case ends.
 
 * 2b. The address book contains one person.
-  
+
   2b1. NUSConnect shows a message.
 
   Use case ends.
@@ -852,7 +851,7 @@ testers are expected to do more *exploratory* testing.
     1. Prerequisites: The list is empty.
     1. Test case: `sort`<br>
        Expected: Empty list is displayed. A message indicates `The address book is empty`.
-   
+
 ### Exporting the current address book
 1. Exporting to a file
    1. Test case: `export addressbook.json`<br>

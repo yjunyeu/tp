@@ -462,15 +462,10 @@ Format: `exit`
 
 --------------------------------------------------------------------------------------------------------------------
 
-## Known issues
+## Known issues and Final words
 
 1. **When using multiple screens**, if you move the application to a secondary screen, and later switch to using only the primary screen, the GUI will open off-screen. The remedy is to delete the `preferences.json` file created by the application before running the application again.
 2. **If you minimize the Help Window** and then run the `help` command (or use the `Help` menu, or the keyboard shortcut `F1`) again, the original Help Window will remain minimized, and no new Help Window will appear. The remedy is to manually restore the minimized Help Window.
-* [Back to top](#nusconnect)
-
---------------------------------------------------------------------------------------------------------------------
-
-## Final words
 
 Thank you once again for using **NUSConnect**! We hope that you will find our product beneficial, and that you will
 enjoy managing your contacts seamlessly! We have included a command summary below for your reference. Should you have
