@@ -3,9 +3,9 @@ layout: page
 title: NUSConnect User Guide
 ---
 <a id="nusconnect"></a>
-Thank you for using **NUSConnect**! With **NUSConnect**, you can manage your contacts quickly and efficiently using the 
-Command Line Interface (CLI), all displayed with our custom-designed Graphical User Interface (GUI) specifically for 
-NUS students! Type fast, and **NUSConnect** lets you breeze through contact management tasks faster than any 
+Thank you for using **NUSConnect**! With **NUSConnect**, you can manage your contacts quickly and efficiently using the
+Command Line Interface (CLI), all displayed with our custom-designed Graphical User Interface (GUI) specifically for
+NUS students! Type fast, and **NUSConnect** lets you breeze through contact management tasks faster than any
 traditional address book!
 
 * Table of Contents
@@ -22,8 +22,8 @@ traditional address book!
 
 3. Then, move `nusconnect.jar` to the folder where you want to keep your contacts.
 
-4. Now, open up a command terminal, go to the folder where `nusconnect.jar` is, and use the `java -jar nusconnect.jar` command to 
-   run the application. You've just taken your first step toward managing contacts quickly! 
+4. Now, open up a command terminal, go to the folder where `nusconnect.jar` is, and use the `java -jar nusconnect.jar` command to
+   run the application. You've just taken your first step toward managing contacts quickly!
    ![Ui](images/Ui.png)
 5. You should now see some sample data. This is what NUSConnect will look like! For now, let's clear this data using:
    * `clear`. NUSConnect should now be empty.
@@ -44,7 +44,7 @@ traditional address book!
 12. But of course, once NUSConnect has been populated with real data, we do not want a "John" sticking around. Let's remove this using:
     * `delete 2`.
 13. Now that you are done, you may save exit NUSConnect using:
-    * `exit`. 
+    * `exit`.
 14. For more features, refer to the [Features](#features) below!
 15. Welcome to NUSConnect! We hope you will enjoy managing your contacts effortlessly!
 * [Back to top](#nusconnect)
@@ -140,7 +140,7 @@ For "a valid URL", we have limited the Top Level Domain to be from 2 to 6 alphab
 
 Common errors you may encounter:
 * The Name and Telegram fields are missing: These are the most basic fields that persons in NUSConnect should have, remember to specify them!
-* Adding an invalid field: NUSConnect will return the desired format that the field should be in. For example: `Telegram handles must start with an @, then the rest must be 5-32 characters long, case-insensitive, 
+* Adding an invalid field: NUSConnect will return the desired format that the field should be in. For example: `Telegram handles must start with an @, then the rest must be 5-32 characters long, case-insensitive,
 and can only contain letters, numbers, underscores, and it should not be blank!`.
 * Adding a duplicate person: Since two people are unlikely to share the same Telegram or Phone, NUSConnect will let you know if you are trying to add the same person! `The Telegram or Phone of the person you are trying to add already exists in the address book!"`.
 
@@ -157,7 +157,7 @@ Format: `edit INDEX [n/NAME] [t/TELEGRAM] [p/PHONE] [e/EMAIL] [a/ALIAS] [ma/MAJO
 * When editing modules, the existing modules of the person will be removed i.e adding of modules is not cumulative.
 
 <div markdown="span" class="alert alert-primary">:bulb: **Note:**
-When you are editing modules, the existing modules of the person will be removed, and replaced with what you have entered! 
+When you are editing modules, the existing modules of the person will be removed, and replaced with what you have entered!
 </div>
 
 <div markdown="span" class="alert alert-primary">:bulb: **Tip:**
@@ -179,7 +179,7 @@ You realize that you share an additional module, IS1108 Digital Ethics and Priva
 ![EditExample](images/EditExample.png)
 
 Common errors you may encounter:
-* Editing a field to be invalid: NUSConnect will return the desired format that the field should be in. For example: `Telegram handles must start with an @, then the rest must be 5-32 characters long, case-insensitive, 
+* Editing a field to be invalid: NUSConnect will return the desired format that the field should be in. For example: `Telegram handles must start with an @, then the rest must be 5-32 characters long, case-insensitive,
 and can only contain letters, numbers, underscores, and it should not be blank!`.
 * Editing to duplicate person: Since two people are unlikely to share the same Telegram or Phone, NUSConnect will let you know if you are trying to edit to a duplicate person! `The Telegram or Phone cannot be modified to be the same as another person in the address book!"`.
 
@@ -397,7 +397,7 @@ backups of different address books, or even take a look at other's address books
 Format: `import FILE_PATH`
 
 * `FILE_PATH` refers to the path of the file from which data will be imported. It can be either an absolute or relative path.
-* The file name (the last part of the `FILE_PATH`) cannot be empty; the file name should end with `.json` as file extension. (e.g. `addressbook.json`) 
+* The file name (the last part of the `FILE_PATH`) cannot be empty; the file name should end with `.json` as file extension. (e.g. `addressbook.json`)
 * The file data must be in the correct format (`.json`), and it must contain data that is compatible with the address book structure.
 * If the file path is invalid (e.g., insufficient permissions, invalid characters), the operation will fail, and an error message will be displayed.
 * If the data in the file is successfully imported, the address book will be updated with the new information.

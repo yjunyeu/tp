@@ -328,15 +328,15 @@ NUSConnect helps students quickly add, organise and find contacts with minimal e
     Use case resumes at step 1.
 
 * 1b. Any of the person's fields that are specified do not match the required pattern.
-  
+
   1b1. NUSConnect shows an error message.
-  
+
   Use case resumes at step 1.
 
 * 1c. The person already exists.
 
   1c1. NUSConnect shows an error message.
- 
+
   Use case resumes at step 1.
 
 **Use case: UC2 - Editing a person**
@@ -356,11 +356,11 @@ NUSConnect helps students quickly add, organise and find contacts with minimal e
 
 * 1b. The given index is invalid.
 
-  1b1. NUSConnect shows an error message. 
+  1b1. NUSConnect shows an error message.
 
   Use case resumes at step 1.
-  
-* 1c. The person's name or Telegram is edited, but an invalid value is given. 
+
+* 1c. The person's name or Telegram is edited, but an invalid value is given.
 
   1c1. NUSConnect shows an error message.
 
@@ -551,12 +551,12 @@ Use case ends.
     * 2b1 NUSConnect fails to export to the file
 
       Use case ends.
-  
+
 * 2c File path has insufficient write permissions
     * 2c1 NUSConnect fails to export to the file
 
       Use case ends.
-  
+
 **Use case: UC15 - Importing an address book**
 
 **MSS**
@@ -573,9 +573,9 @@ Use case ends.
 
 * 2b File path is invalid
   * 2b1 NUSConnect fails to import the file
-    
+
     Use case ends.
-  
+
 * 2c File data is invalid
   * 2c1 NUSConnect fails to import the file
 
@@ -840,11 +840,11 @@ We plan to implement a check like if a group is associated with a specific modul
 We plan to extend the command syntax (e.g. `group add 1 2 3 to 2`) so multiple contacts can be added to a group in a single command.
 
 
-5. Users currently have to run individual `edit` commands to add a module to each contact. We plan to allow users to 
+5. Users currently have to run individual `edit` commands to add a module to each contact. We plan to allow users to
 add a single module to multiple contacts simultaneously using `edit 1 2 3 4 m/CS2103T`.
 
 
-6. Enhance `find` with a flag for exact string matches. Currently, find only supports partial string matches for both names and modules which may lead to unwanted results. 
+6. Enhance `find` with a flag for exact string matches. Currently, find only supports partial string matches for both names and modules which may lead to unwanted results.
 This enhancement allow users to find contacts more accurately when some names or module codes contain similar substrings (eg `CS2103T` and `CS2103`).
 
 --------------------------------------------------------------------------------------------------------------------

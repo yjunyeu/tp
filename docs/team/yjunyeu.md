@@ -21,7 +21,7 @@ Given below are my contributions to the project.
 
 * **Implemented sort functionality**:
   * Added the `sort` command to sort the addressbook in alphabetical order for better usability
-  
+
 
 * **Ensured Backward Compatibility**:
     * Ensure existing functionality and previous data were still compatible with the new changes, ensuring smooth operation without introducing bugs or breaking existing features.
@@ -33,7 +33,7 @@ Given below are my contributions to the project.
 
 
 * **Documentation Updates**:
-    * User guide 
+    * User guide
       * Updated documentation and code comments to reflect changes in the FindCommand.
       * Modified command usage instructions to include module search capability.
       * Wrote documentation and code comments for `sort` command
