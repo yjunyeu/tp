@@ -52,24 +52,166 @@ traditional address book!
 --------------------------------------------------------------------------------------------------------------------
 
 ## Command summary
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Commands Table</title>
+</head>
+<body>
+  <table border="1" cellspacing="0" cellpadding="5">
+    <thead>
+      <tr>
+        <th>Action</th>
+        <th>Format, Examples</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <strong><a href="#adding-a-person-add">Add</a></strong>
+        </td>
+        <td>
+          <code>add n/NAME t/TELEGRAM [p/PHONE_NUMBER] [e/EMAIL] [a/ALIAS] [ma/MAJOR] [no/NOTE] [w/WEBSITE] [m/MODULE]…</code>
+          <br>
+          e.g., <code>add n/John Doe t/@johndoe p/98765432 e/johnd@example.com a/alias123 ma/CompSci no/Enjoys programming w/https://johndoe.com m/CS2103T</code>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <strong><a href="#editing-a-person-edit">Edit</a></strong>
+        </td>
+        <td>
+          <code>edit INDEX [n/NAME] [t/TELEGRAM] [p/PHONE] [e/EMAIL] [a/ALIAS] [ma/MAJOR] [no/NOTE] [w/WEBSITE] [m/MODULE]…</code>
+          <br>
+          e.g., <code>edit 2 n/James Lee e/jameslee@example.com</code>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <strong><a href="#deleting-people-delete">Delete</a></strong>
+        </td>
+        <td>
+          <code>delete INDEX [MORE_INDICES]…</code>
+          <br>
+          e.g., <code>delete 3</code> <code>delete 1 3 5</code>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <strong><a href="#clearing-all-entries-clear">Clear</a></strong>
+        </td>
+        <td>
+          <code>clear</code>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <strong><a href="#creating-a-group-group-create">Group create</a></strong>
+        </td>
+        <td>
+          <code>group create NAME</code>
+          <br>
+          e.g., <code>group create CS2103T Team</code>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <strong><a href="#deleting-a-group-group-delete">Group delete</a></strong>
+        </td>
+        <td>
+          <code>group delete INDEX</code>
+          <br>
+          e.g., <code>group delete 2</code>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <strong><a href="#adding-a-person-to-a-group-group-add">Group add</a></strong>
+        </td>
+        <td>
+          <code>group add PERSON_INDEX to GROUP_INDEX</code>
+          <br>
+          e.g., <code>group add 1 to 2</code>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <strong><a href="#listing-all-persons-list">List</a></strong>
+        </td>
+        <td>
+          <code>list</code>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <strong><a href="#locating-persons-with-name-or-modules-find">Find</a></strong>
+        </td>
+        <td>
+          <code>find KEYWORD [MORE_KEYWORDS]…</code>
+          <br>
+          e.g., <code>find James Jake</code>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <strong><a href="#viewing-contact-details-view">View</a></strong>
+        </td>
+        <td>
+          <code>view INDEX</code>
+          <br>
+          e.g., <code>view 1</code>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <strong><a href="#sorting-the-address-book-sort">Sort</a></strong>
+        </td>
+        <td>
+          <code>sort</code>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <strong><a href="#exporting-the-current-address-book-export">Export</a></strong>
+        </td>
+        <td>
+          <code>export FILE_PATH</code>
+          <br>
+          e.g., <code>export exported_data.json</code>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <strong><a href="#importing-an-address-book-import">Import</a></strong>
+        </td>
+        <td>
+          <code>import FILE_PATH</code>
+          <br>
+          e.g., <code>import exported_data.json</code>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <strong><a href="#viewing-help-help">Help</a></strong>
+        </td>
+        <td>
+          <code>help</code>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <strong><a href="#exiting-the-program-exit">Exit</a></strong>
+        </td>
+        <td>
+          <code>exit</code>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</body>
+</html>
 
-| Action                                                                 | Format, Examples                                                                                                                                                                                                                                             |
-|------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **[Add](#adding-a-person-add)**                                        | `add n/NAME t/TELEGRAM [p/PHONE_NUMBER] [e/EMAIL] [a/ALIAS] [ma/MAJOR] [no/NOTE] [w/WEBSITE] [m/MODULE]…​` <br> e.g., `add n/John Doe t/@johndoe p/98765432 e/johnd@example.com a/alias123 ma/CompSci no/Enjoys programming w/https://johndoe.com m/CS2103T` |
-| **[Edit](#editing-a-person-edit)**                                     | `edit INDEX [n/NAME] [t/TELEGRAM] [p/PHONE] [e/EMAIL] [a/ALIAS] [ma/MAJOR] [no/NOTE] [w/WEBSITE] [m/MODULE]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`                                                                                          |
-| **[Delete](#deleting-people-delete)**                                  | `delete INDEX [MORE_INDICES]…​`<br> e.g., `delete 3` `delete 1 3 5`                                                                                                                                                                                          |
-| **[Clear](#clearing-all-entries-clear)**                               | `clear`                                                                                                                                                                                                                                                      |
-| **[Group create](#creating-a-group-group-create)**                     | `group create NAME`<br> e.g., `group create CS2103T Team`                                                                                                                                                                                                    |
-| **[Group delete](#deleting-a-group-group-delete)**                     | `group delete INDEX`<br> e.g., `group delete 2`                                                                                                                                                                                                              |
-| **[Group add](#adding-a-person-to-a-group-group-add)**                 | `group add PERSON_INDEX to GROUP_INDEX`<br> e.g. `group add 1 to 2`                                                                                                                                                                                          |
-| **[List](#listing-all-persons-list)**                                  | `list`                                                                                                                                                                                                                                                       |
-| **[Find](#locating-persons-with-name-or-modules-find)**                | `find KEYWORD [MORE_KEYWORDS]…​`<br> e.g., `find James Jake`                                                                                                                                                                                                 |
-| **[View](#viewing-contact-details-view)**                              | `view INDEX` <br> e.g., `view 1`                                                                                                                                                                                                                             |
-| **[Sort](#sorting-the-address-book-sort)**                             | `sort`                                                                                                                                                                                                                                                       |
-| **[Export](#exporting-the-current-address-book-export)**               | `export FILE_PATH`<br> e.g., `export exported_data.json`                                                                                                                                                                                                     |
-| **[Import](#importing-an-address-book-import)**                        | `import FILE_PATH`<br> e.g., `import exported_data.json`                                                                                                                                                                                                     |
-| **[Help](#viewing-help-help)**                                         | `help`                                                                                                                                                                                                                                                       |
-| **[Exit](#exiting-the-program-exit)**                                  | `exit`                                                                                                                                                                                                                                                       |
 * [Back to top](#nusconnect)
 
 --------------------------------------------------------------------------------------------------------------------
