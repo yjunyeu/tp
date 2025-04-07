@@ -9,8 +9,9 @@ title: Developer Guide
 
 ## **Acknowledgements**
 
-* {list here sources of all reused/adapted ideas, code, documentation, and third-party libraries -- include links to the original source as well}
-
+* AB-3: The codebase NUSConnect is based on.
+* Mockito: Third-party library used to simplify creating mock objects for unit-testing.
+* 
 --------------------------------------------------------------------------------------------------------------------
 
 ## **Setting up, getting started**
@@ -663,7 +664,7 @@ Use case ends.
 
 ## **Appendix: Instructions for manual testing**
 
-Given below are instructions to test the app manually.
+Given below are instructions to test the app manually. Note that these tests are non-comprehensive, and it is up to testers to adapt from these based on testing principles.
 
 <div markdown="span" class="alert alert-info">:information_source: **Note:** These instructions only provide a starting point for testers to work on;
 testers are expected to do more *exploratory* testing.
@@ -693,12 +694,6 @@ testers are expected to do more *exploratory* testing.
       Expected: This person is added to NUSConnect.
    2. Test case: `add n/John Doe Sr. the 2nd S/O Ah-k'ow t/@johndoe`<br>
       Expected: This person is added to NUSConnect.
-   2. Test case: `add n/1John Doe t/@johndoe`<br>
-      Expected: No person is added. An error message indicates the pattern Name should match.
-   2. Test case: `add n/John Doe* t/@johndoe`<br>
-      Expected: No person is added. An error message indicates the pattern Name should match.
-   2. Test case: `add n/John Doe t/johndoe`<br>
-      Expected: No person is added. An error message indicates the pattern Telegram should match.
    2. Test case: `add n/John Doe t/@john`<br>
       Expected: No person is added. An error message indicates the pattern Telegram should match.
    2. Test case: `add n/1John Doe t/@john`<br>
@@ -709,18 +704,8 @@ testers are expected to do more *exploratory* testing.
       Expected: This person is added to NUSConnect.
    2. Test case: `add n/John Doe t/@johndoe p/12345678`<br>
       Expected: No person is added. An error message indicates the pattern Phone should match.
-   2. Test case: `add n/John Doe t/@johndoe p/+65 9876 5432`<br>
-      Expected: No person is added. An error message indicates the pattern Phone should match.
    2. Test case: `add n/John Doe t/@johndoe m/CS2101`<br>
       Expected: This person is added to NUSConnect.
-   2. Test case: `add n/John Doe t/@johndoe m/CS2101 m/CS2103T m/GESS1006 m/CS2100DE`<br>
-      Expected: This person is added to NUSConnect.
-   2. Test case: `add n/John Doe t/@johndoe m/CS50`<br>
-      Expected: No person is added. An error message indicates the pattern Module should match.
-   2. Test case: `add n/John Doe t/@johndoe m/CS2101 m/CS50`<br>
-      Expected: No person is added. An error message indicates the pattern Module should match.
-   2. Test case: `add n/John Doe t/@johndoe p/12345678 m/CS2101 m/CS50`<br>
-      Expected: No person is added. An error message indicates the pattern Phone should match.
 3. Adding a person without required fields Name and Telegram.
    1. Test case: `add t/@johndoe`<br>
        Expected: No person is added. An error message indicates that the command format is invalid.
@@ -743,30 +728,16 @@ testers are expected to do more *exploratory* testing.
     1. Prerequisites: There is a person to edit, and the test persons below do not already exist.
    1. Test case: `edit 1 t/@johndoe2`<br>
       Expected: The person at index 1 is updated.
-   2. Test case: `edit 1 n/John Doe2`<br>
-      Expected: The person at index 1 is updated.
    1. Test case: `edit 1 p/`<br>
-      Expected: The person at index 1 is updated.
-   2. Test case: `edit 1 m/`<br>
-      Expected: The person at index 1 is updated.
-   1. Test case: `edit 1 p/99998888`<br>
       Expected: The person at index 1 is updated.
    2. Test case: `edit 1 m/CS2101`<br>
       Expected: The person at index 1 is updated.
-   1. Test case: `edit 1 n/`<br>
-      Expected: No person is added. An error message indicates the pattern Telegram should match.
-   2. Test case: `edit 1 t/`<br>
+   2. Test case: `edit 1 n/`<br>
       Expected: No person is added. An error message indicates the pattern Name should match.
 2. Editing a person for multiple fields.
     1. Prerequisites: There is a person to edit, and the test persons below do not already exist.
    1. Test case: `edit 1 n/John Doe2 t/@johndoe2`<br>
       Expected: The person at index 1 is updated.
-   2. Test case: `edit 1 p/99998888 m/CS2101 m/CS2103T`<br>
-      Expected: The person at index 1 is updated.
-   1. Test case: `edit 1 n/John Doe2 t/@johndoe2 p/99998888 m/`<br>
-      Expected: The person at index 1 is updated.
-   2. Test case: `edit 1 n/ t/@johndoe2 p/99998888 m/`<br>
-      Expected: No person is added. An error message indicates the pattern Name should match.
    1. Test case: `edit 1 n/John Doe2 t/ p/99998888 m/`<br>
       Expected: No person is added. An error message indicates the pattern Telegram should match.
    2. Test case: `edit 1 n/John Doe2 t/@johndoe2 p/12345678 m/`<br>
@@ -794,8 +765,6 @@ testers are expected to do more *exploratory* testing.
     1. Test case: `delete 1 2 3 4`<br>
        Expected: No person is deleted. An error message indicates that `4` is an invalid index.
     1. Test case: `delete 0 1 2 3`<br>
-       Expected: No person is deleted. An error message indicates that the command format is invalid.
-    1. Test case: `delete 0 4`<br>
        Expected: No person is deleted. An error message indicates that the command format is invalid.
 
 ### Creating a group
@@ -827,16 +796,10 @@ testers are expected to do more *exploratory* testing.
    1. Prerequisites: List all persons using the `list` command. Two persons in the list. One group exists on the list.
    2. Test case: `group add 1 to 1`<br>
       Expected: Person at index 1 is successfully added to group at index 1.
-   3. Test case: `group add 2 to 1`<br>
-      Expected: Person at index 2 is added to group 1.
    4. Test case: `group add 0 to 1`<br>
-      Expected: No person is added. An error message indicates invalid command format (index must be positive).
-   5. Test case: `group add 1 to 0`<br>
       Expected: No person is added. An error message indicates invalid command format (index must be positive).
    6. Test case: `group add 99 to 1`<br>
       Expected: No person is added. An error message indicates that the person index is invalid.
-   7. Test case: `group add 1 to 99`<br>
-      Expected: No person is added. An error message indicates that the group index is invalid.
    8. Test case: `group add 1 to 1` followed by `group add 1 to 1`<br>
       Expected: No person is added. An error message indicates that the person is already added to the group.
 
@@ -894,16 +857,10 @@ testers are expected to do more *exploratory* testing.
 1. Exporting to a file
    1. Test case: `export addressbook.json`<br>
       Expected: Export successful.
-   2. Test case: `export .json`<br>
-      Expected: Export fail. An error message indicate that file name is invalid.
    3. Test case: `export addressbook.txt`<br>
       Expected: Export fail. An error message indicate that file name is invalid.
    4. Test case: `export addressbook.csv`<br>
       Expected: Export fail. An error message indicate that file name is invalid.
-   5. Test case `export *.json`<br>
-      Expected: Export fail. An error message indicate that file path is invalid.
-   6. Test case `export 123:addressbook.json`<br>
-      Expected: Export fail. An error message indicate that file path is invalid.
    7. Test case `export C:/Windows/System32/addressbook.json`<br>
       Expected: Export fail. An error message indicate that permission is denied to write to that file path.
 
@@ -912,18 +869,10 @@ testers are expected to do more *exploratory* testing.
    1. Prerequisites: Manually create `addressbook.json` and `.json` with valid JSON file data, `invalidAddressbook.json` with invalid JSON file data, and `empty.json` with no data in current folder.
    2. Test case: `import addressbook.json`<br>
       Expected: Import successful.
-   3. Test case: `import .json`<br>
-      Expected: Import fail. An error message indicate that file name is invalid.
    4. Test case: `import addressbook.txt`<br>
       Expected: Import fail. An error message indicate that file name is invalid.
    5. Test case: `import addressbook.csv`<br>
       Expected: Import fail. An error message indicate that file name is invalid.
-   6. Test case `import *.json`<br>
-      Expected: Import fail. An error message indicate that file path is invalid.
-   7. Test case `import 123:addressbook.json`<br>
-      Expected: Import fail. An error message indicate that file path is invalid.
-   8. Test case: `import invalidAddressbook.json`
-      Expected: Import fail. An error message indicate that JSON file data is invalid
    9. Test case: `import empty.json`
        Expected: Import fail. An error message indicate that JSON file data is invalid
 --------------------------------------------------------------------------------------------------------------------
@@ -959,3 +908,12 @@ This enhancement allow users to find contacts more accurately when some names or
 --------------------------------------------------------------------------------------------------------------------
 
 ## **Appendix: Effort**
+
+The largest difficult of adapting the base project, AB-3, to NUSConnect, was changing the data structure. Since we wanted to custom
+fit the fields to NUS students, this involved changing a large amount of code, any may even have been easier done from the ground up.
+Implementing the `group` commands was also challenging as it had to comply with the existing code architectures created by AB-3. Lastly, updating
+small features (such as `find` or multiple `delete`) was easy to implement given our knowledge and background gained in CS2040S and CS2030S, but
+another large group of difficulties was writing the test cases to ensure that the new features work as intended, and fixing the bugs that may have propogated to other parts
+of the codebase.
+
+
