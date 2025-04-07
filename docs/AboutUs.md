@@ -45,7 +45,7 @@ We are a team based in the [School of Computing, National University of Singapor
 [[portfolio](team/hackari.md)]
 
 * Role: Developer
-* Responsibilities: Delegation of tasks, UI color design, Testing
+* Responsibilities: Delegation of tasks, UI color design, Feature enhancement, Testing
 
 ### Yap Jun Yeu
 

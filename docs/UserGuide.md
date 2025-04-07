@@ -474,5 +474,5 @@ Format: `exit`
 
 Thank you once again for using **NUSConnect**! We hope that you will find our product beneficial, and that you will
 enjoy managing your contacts seamlessly! We have included a command summary below for your reference. Should you have
-any queries, please do not hesitate to reach out to any of us! Our contact details can be found in our [About Us Page](https://ay2425s2-cs2103t-t16-1.github.io/tp/AboutUs.html).
+any queries, please do not hesitate to reach out to any of us! Our details can be found in our [About Us Page](https://ay2425s2-cs2103t-t16-1.github.io/tp/AboutUs.html).
 * [Back to top](#nusconnect)
