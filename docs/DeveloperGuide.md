@@ -514,7 +514,6 @@ NUSConnect helps students quickly add, organise and find contacts with minimal e
 
 1.  User request to view a person.
 2.  NUSConnect shows the details of that person.
- 
 
 **Extensions**
 
