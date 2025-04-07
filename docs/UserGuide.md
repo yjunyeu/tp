@@ -365,9 +365,9 @@ backups of your address book, or even share it to your contacts with others!
 format: `export FILE_PATH`
 
 * `FILE_PATH` refers to the location where the data will be exported. It can be either a relative or an absolute path. Examples for these paths are given below respectively.
-* The filename (the last part of the `FILE_PATH`) cannot be empty; the file name should end with `.json` as file extension. (e.g. `addressbook.json`)
+* The file name (the last part of the `FILE_PATH`) cannot be empty; the file name should end with `.json` as file extension. (e.g. `addressbook.json`)
 * If a file already exists at the specified location, it will be overwritten with the current data.
-* If the file path is invalid or there are issues with writing the file (e.g., insufficient permissions), an error message will be displayed.
+* If the file path is invalid or there are issues with writing the file (e.g., insufficient permissions, invalid characters), an error message will be displayed.
 
 <div markdown="span" class="alert alert-primary">:bulb: **Note:**
 `FILE_PATH` is normalized. E.g. `C:////////addressbook.json` is the same as `C:/addressbook.json`
@@ -386,8 +386,9 @@ backups of different address books, or even take a look at other's address books
 Format: `import FILE_PATH`
 
 * `FILE_PATH` refers to the path of the file from which data will be imported. It can be either an absolute or relative path.
-* The file name can be anything (e.g. `.json`) but file data must be in the correct format (`.json`), and it must contain data that is compatible with the address book structure.
-* If the file path is invalid, the operation will fail, and an error message will be displayed.
+* The file name (the last part of the `FILE_PATH`) cannot be empty; the file name should end with `.json` as file extension. (e.g. `addressbook.json`) 
+* The file data must be in the correct format (`.json`), and it must contain data that is compatible with the address book structure.
+* If the file path is invalid (e.g., insufficient permissions, invalid characters), the operation will fail, and an error message will be displayed.
 * If the data in the file is successfully imported, the address book will be updated with the new information.
 
 Examples:

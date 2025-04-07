@@ -41,7 +41,11 @@ public class ImportCommand extends Command {
     @Override
     public CommandResult execute(Model model) throws CommandException {
         try {
+            if (!fileString.endsWith(".json") | fileString.startsWith(".json")) {
+                throw new CommandException(MESSAGE_FAILURE + "\nInvalid JSON file name!");
+            }
             Path filePath = Path.of(fileString);
+
             Optional<ReadOnlyAddressBook> addressBookOptional = logicManager.importAddressBook(filePath);
 
             if (addressBookOptional.isPresent()) {
@@ -52,7 +56,7 @@ public class ImportCommand extends Command {
                 throw new CommandException(MESSAGE_FAILURE + "\nInvalid file path!");
             }
         } catch (DataLoadingException e) {
-            throw new CommandException(MESSAGE_FAILURE + "\nInvalid JSON file!");
+            throw new CommandException(MESSAGE_FAILURE + "\nInvalid JSON file data!");
         } catch (InvalidPathException | IOError e) {
             throw new CommandException(MESSAGE_FAILURE + "\nInvalid file path!");
         }
