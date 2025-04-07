@@ -4,9 +4,9 @@
 
 ![Ui](docs/images/Ui.png)
 
-* This is **an address book** developed for NUS students.<br>
+* NUSConnect is **an address book** developed for NUS students.<br>
   Example usages:
-  * organise contacts from lectures, tutorials, and CCAs
+  * organise contacts from different modules.
   * keep track of module-specific project teams and study groups
 * The project provides an application (called _NUSConnect_) designed specifically for NUS students to manage their academic and personal contacts.
   * It is **written in OOP fashion**. It provides a **reasonably well-written** code base **bigger** (around 6 KLoC) than what students usually write in beginner-level SE modules, without being overwhelmingly big.

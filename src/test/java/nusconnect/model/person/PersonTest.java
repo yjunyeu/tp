@@ -73,7 +73,7 @@ public class PersonTest {
                 .build();
         assertTrue(ALICE.isSamePerson(editedAlice));
 
-        // different telegram handle, differenet email, different phone, different website -> returns false
+        // different telegram handle, different email, different phone, different website -> returns false
         editedAlice = new PersonBuilder(ALICE)
                 .withPhone(VALID_PHONE_BOB)
                 .withTelegram(VALID_TELEGRAM_BOB)
