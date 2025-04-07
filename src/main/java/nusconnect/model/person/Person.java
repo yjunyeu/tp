@@ -110,12 +110,11 @@ public class Person {
             return false;
         }
 
-        boolean isNameEqual = otherPerson.getName().equals(this.getName());
         boolean isTelegramEqual = otherPerson.getTelegram().equals(this.getTelegram());
         boolean isPhoneEqual = (this.getPhone().isPresent() && otherPerson.getPhone().isPresent())
                 && this.getPhone().get().equals(otherPerson.getPhone().get());
 
-        return isNameEqual || isTelegramEqual || isPhoneEqual;
+        return isTelegramEqual || isPhoneEqual;
     }
 
     /**
