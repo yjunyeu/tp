@@ -130,7 +130,7 @@ NUSConnect will execute some basic parameter checking for you! Here are the mini
 </div>
 
 <div markdown="span" class="alert alert-warning">:exclamation: **Warning:**
-Each person must have a unique <strong>Name</strong>, <strong>Telegram</strong>, and <strong>Phone</strong> (if present).<br>
+Each person must have a unique <strong>Telegram</strong>, <strong>Phone</strong>,and <strong>Email</strong> (if present).<br>
   Duplicates in any of these fields are not allowed.
 </div>
 
@@ -142,7 +142,7 @@ Common errors you may encounter:
 * The Name and Telegram fields are missing: These are the most basic fields that persons in NUSConnect should have, remember to specify them!
 * Adding an invalid field: NUSConnect will return the desired format that the field should be in. For example: `Telegram handles must start with an @, then the rest must be 5-32 characters long, case-insensitive,
 and can only contain letters, numbers, underscores, and it should not be blank!`.
-* Adding a duplicate person: Since two people are unlikely to share the same Telegram or Phone, NUSConnect will let you know if you are trying to add the same person! `The Telegram or Phone of the person you are trying to add already exists in the address book!"`.
+* Adding a duplicate person: Since two people are unlikely to share the same Telegram, Phone, or Email, NUSConnect will let you know if you are trying to add the same person! `The Telegram, Phone or Email of the person you are trying to add already exists in the address book!"`.
 
 
 #### Editing a person: `edit`
@@ -166,7 +166,7 @@ You can delete an optional parameter by specifying their prefixes (e.g., `p/`, `
 
 <div markdown="span" class="alert alert-warning">
   :exclamation: <strong>Warning:</strong><br>
-  Editing a person into an existing person with the same <strong>Telegram</strong> or <strong>Phone</strong> (if present) is not allowed.<br>
+  Editing a person into an existing person with the same <strong>Telegram</strong>, <strong>Phone</strong>, or <strong>Email</strong> (if present) is not allowed.<br>
 </div>
 
 Examples:
