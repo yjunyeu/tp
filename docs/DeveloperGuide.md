@@ -329,21 +329,21 @@ NUSConnect helps students quickly add, organise and find contacts with minimal e
 
 * 1a. The person's name or Telegram parameter is not specified.
 
-    1a1. NUSConnect shows an error message.
+    * 1a1. NUSConnect shows an error message.
 
-    Use case resumes at step 1.
+      Use case resumes at step 1.
 
 * 1b. Any of the person's fields that are specified do not match the required pattern.
 
-  1b1. NUSConnect shows an error message.
+  * 1b1. NUSConnect shows an error message.
 
-  Use case resumes at step 1.
+    Use case resumes at step 1.
 
 * 1c. A person with the same name or telegram or phone (if present) already exists.
 
-  1c1. NUSConnect shows an error message.
+  * 1c1. NUSConnect shows an error message.
 
-  Use case resumes at step 1.
+    Use case resumes at step 1.
 
 **Use case: UC2 - Editing a person**
 
@@ -358,31 +358,31 @@ NUSConnect helps students quickly add, organise and find contacts with minimal e
 
 * 1a. The list is empty.
 
-  Use case ends.
+    Use case ends.
 
 * 1b. The given index is invalid.
 
-  1b1. NUSConnect shows an error message.
+  * 1b1. NUSConnect shows an error message.
 
-  Use case resumes at step 1.
+    Use case resumes at step 1.
 
 * 1c. The person's name or Telegram is edited, but an invalid value is given.
 
-  1c1. NUSConnect shows an error message.
+  * 1c1. NUSConnect shows an error message.
 
-  Use case resumes at step 1.
+    Use case resumes at step 1.
 
 * 1d. The person is being edited to another contact that with the same name or telegram or phone (if present).
 
-  1d1. NUSConnect shows an error message.
+  * 1d1. NUSConnect shows an error message.
 
-  Use case resumes at step 1.
+    Use case resumes at step 1.
 
 * 1e. The edits do not change the person.
 
-  1e1. NUSConnect shows an message.
+  * 1e1. NUSConnect shows an message.
 
-  Use case ends.
+    Use case ends.
 
 **Use case: UC3 - Delete a person**
 
@@ -401,9 +401,9 @@ NUSConnect helps students quickly add, organise and find contacts with minimal e
 
 * 1b. The given index is invalid.
 
-  1b1. NUSConnect shows an error message.
+  * 1b1. NUSConnect shows an error message.
 
-  Use case resumes at step 1.
+    Use case resumes at step 1.
 
 **Use case: UC4 - Delete multiple persons**
 
@@ -422,9 +422,9 @@ NUSConnect helps students quickly add, organise and find contacts with minimal e
 
 * 1b. At least one of the given indices is invalid.
 
-  1b1. NUSConnect shows an error message.
+  * 1b1. NUSConnect shows an error message.
 
-  Use case resumes at step 1.
+    Use case resumes at step 1.
 
 **Use case: UC5 - Clearing all entries**
 
@@ -480,7 +480,6 @@ NUSConnect helps students quickly add, organise and find contacts with minimal e
 **Extensions**
 
 * 2a. The list is empty.
-
   Use case ends.
 
 * 3a. Either the person index or group index is invalid.
@@ -502,9 +501,9 @@ NUSConnect helps students quickly add, organise and find contacts with minimal e
 
 * 2a. The list is empty.
 
-  2a1. NUSConnect shows a message.
+  * 2a1. NUSConnect shows a message.
 
-  Use case ends.
+    Use case ends.
 
 **Use case: UC10 - Locating persons by name**
 
@@ -519,15 +518,15 @@ NUSConnect helps students quickly add, organise and find contacts with minimal e
 
 * 1a. No keyword is specified.
 
-  1a1. NUSConnect shows an error message.
+  * 1a1. NUSConnect shows an error message.
 
-  Use case ends.
+    Use case ends.
 
 * 2a. No matching persons found.
 
-  2a1. NUSConnect shows a message.
+  * 2a1. NUSConnect shows a message.
 
-  Use case ends.
+    Use case ends.
 
 **Use case: UC11 - Locating persons by module**
 
@@ -542,15 +541,15 @@ NUSConnect helps students quickly add, organise and find contacts with minimal e
 
 * 1a. No keyword is specified.
 
-  1a1. NUSConnect shows an error message.
+  * 1a1. NUSConnect shows an error message.
 
-  Use case ends.
+    Use case ends.
 
 * 2a. No matching persons found.
 
-  2a1. NUSConnect shows a message.
+  * 2a1. NUSConnect shows a message.
 
-  Use case ends.
+    Use case ends.
 
 **Use case: UC12 - Viewing person details**
 
@@ -586,61 +585,61 @@ NUSConnect helps students quickly add, organise and find contacts with minimal e
 
 * 2a. The address book is empty.
 
-  2a1. NUSConnect shows a message.
+  * 2a1. NUSConnect shows a message.
 
-  Use case ends.
+    Use case ends.
 
 * 2b. The address book contains one person.
 
-  2b1. NUSConnect shows a message.
+  * 2b1. NUSConnect shows a message.
 
-  Use case ends.
+    Use case ends.
 
 **Use case: UC14 - Exporting the current address book**
 
 **MSS**
-* 1. User requests to export a file
-* 2. NUSConnect exports the file successfully
+1. User requests to export a file
+2. NUSConnect exports the file successfully
 
-Use case ends.
+   Use case ends.
 
 **Extensions**
-* 2a File name is invalid
-    * 2a1 NUSConnect fails to export to the file
+* 2a. File name is invalid
+    * 2a1. NUSConnect fails to export to the file
 
       Use case ends.
 
-* 2b File path is invalid
-    * 2b1 NUSConnect fails to export to the file
+* 2b. File path is invalid
+    * 2b1. NUSConnect fails to export to the file
 
       Use case ends.
 
-* 2c File path has insufficient write permissions
-    * 2c1 NUSConnect fails to export to the file
+* 2c. File path has insufficient write permissions
+    * 2c1. NUSConnect fails to export to the file
 
       Use case ends.
 
 **Use case: UC15 - Importing an address book**
 
 **MSS**
-* 1. User requests to import a file
-* 2. NUSConnect imports the file successfully
+1. User requests to import a file
+2. NUSConnect imports the file successfully
 
-   Use case ends.
+     Use case ends.
 
 **Extensions**
-* 2a File name is invalid
-  * 2a1 NUSConnect fails to import the file
+* 2a. File name is invalid
+  * 2a1. NUSConnect fails to import the file
 
     Use case ends.
 
-* 2b File path is invalid
-  * 2b1 NUSConnect fails to import the file
+* 2b. File path is invalid
+  * 2b1. NUSConnect fails to import the file
 
     Use case ends.
 
-* 2c File data is invalid
-  * 2c1 NUSConnect fails to import the file
+* 2c. File data is invalid
+  * 2c1. NUSConnect fails to import the file
 
     Use case ends.
 
