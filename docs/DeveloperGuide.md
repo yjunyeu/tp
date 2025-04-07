@@ -536,10 +536,50 @@ NUSConnect helps students quickly add, organise and find contacts with minimal e
 **Use case: UC14 - Exporting the current address book**
 
 **MSS**
+* 1. User requests to export a file
+* 2. NUSConnect exports the file successfully
 
+Use case ends.
+
+**Extensions**
+* 2a File name is invalid
+    * 2a1 NUSConnect fails to export to the file
+
+      Use case ends.
+
+* 2b File path is invalid
+    * 2b1 NUSConnect fails to export to the file
+
+      Use case ends.
+  
+* 2c File path has insufficient write permissions
+    * 2c1 NUSConnect fails to export to the file
+
+      Use case ends.
+  
 **Use case: UC15 - Importing an address book**
 
 **MSS**
+* 1. User requests to import a file
+* 2. NUSConnect imports the file successfully
+
+   Use case ends.
+
+**Extensions**
+* 2a File name is invalid
+  * 2a1 NUSConnect fails to import the file
+
+    Use case ends.
+
+* 2b File path is invalid
+  * 2b1 NUSConnect fails to import the file
+    
+    Use case ends.
+  
+* 2c File data is invalid
+  * 2c1 NUSConnect fails to import the file
+
+    Use case ends.
 
 ### Non-Functional Requirements
 
