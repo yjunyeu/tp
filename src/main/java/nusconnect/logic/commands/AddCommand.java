@@ -47,7 +47,7 @@ public class AddCommand extends Command {
             + PREFIX_MODULE + "CS2103T";
 
     public static final String MESSAGE_SUCCESS = "New person added: %1$s";
-    public static final String MESSAGE_DUPLICATE_PERSON = "The Telegram or Phone of the person "
+    public static final String MESSAGE_DUPLICATE_PERSON = "The Telegram, Phone or Email of the person "
             + "you are trying to add already exists in the address book!";
 
     private final Person toAdd;
