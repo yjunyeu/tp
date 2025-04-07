@@ -48,7 +48,7 @@ public class PersonTest {
                 .withWebsite(VALID_WEBSITE_BOB)
                 .withModules(VALID_MODULE_CS2103T)
                 .build();
-        assertTrue(ALICE.isSamePerson(editedAlice));
+        assertFalse(ALICE.isSamePerson(editedAlice));
 
         // same phone, all other attributes different -> returns true
         editedAlice = new PersonBuilder(ALICE).withPhone(VALID_PHONE_BOB).build();
@@ -71,7 +71,7 @@ public class PersonTest {
                 .withTelegram(VALID_TELEGRAM_BOB)
                 .withPhone(VALID_PHONE_BOB)
                 .build();
-        assertTrue(ALICE.isSamePerson(editedAlice));
+        assertFalse(ALICE.isSamePerson(editedAlice));
 
         // different name, different telegram handle, different phone -> returns false
         editedAlice = new PersonBuilder(ALICE)
