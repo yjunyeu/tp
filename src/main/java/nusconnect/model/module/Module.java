@@ -11,7 +11,7 @@ public class Module {
 
     public static final String MESSAGE_CONSTRAINTS =
             "Module names should be alphanumeric, starting with 2-4 alphabets, followed by 4 numeric characters, "
-                    + "and followed by 0-2 optional alphabets. It should not be blank on creation!";
+                    + "and followed by 0-2 optional alphabets. It should not be blank if specified on creation!";
     public static final String VALIDATION_REGEX = "^[A-Za-z]{2,4}[0-9]{4}[A-Za-z]{0,2}$";
 
     public final String moduleName;

@@ -110,8 +110,10 @@ Examples:
 
 After forming a group in CS2103T Software Engineering, you add your two teammates to NUSConnect:
 
-* `add n/John Doe t/@johndoe /98765432 e/john@u.nus.edu a/John no/Enjoys programming w/https://johndoe.com m/CS2103T`
+* `add n/John Doe t/@johndoe p/98765432 e/john@u.nus.edu a/John no/Enjoys programming w/https://johndoe.com m/CS2103T`
 * `add n/Betsy Crowe t/@bcrowe ma/Information Security no/Group Leader w/https://linkedin.com/betsycrowe m/CS2103T`
+
+![AddExample](images/AddExample.png)
 
 <div markdown="block" class="alert alert-info">:bulb: **Note:**
 NUSConnect will execute some basic parameter checking for you! Here are the minimum requirements for each field:
@@ -136,7 +138,12 @@ Each person must have a unique <strong>Name</strong>, <strong>Telegram</strong>,
 For "a valid URL", we have limited the Top Level Domain to be from 2 to 6 alphabets only, as this covers most legitimate student websites.
 </div>
 
-![AddExample](images/AddExample.png)
+Common errors you may encounter:
+* The Name and Telegram fields are missing: These are the most basic fields that persons in NUSConnect should have, remember to specify them!
+* Adding an invalid field: NUSConnect will return the desired format that the field should be in. For example: `Telegram handles must start with an @, then the rest must be 5-32 characters long, case-insensitive, 
+and can only contain letters, numbers, underscores, and it should not be blank!`.
+* Adding a duplicate person: Since two people are unlikely to share the same Telegram or Phone, NUSConnect will let you know if you are trying to add the same person! `The Telegram or Phone of the person you are trying to add already exists in the address book!"`.
+
 
 #### Editing a person: `edit`
 
@@ -159,7 +166,7 @@ You can delete an optional parameter by specifying their prefixes (e.g., `p/`, `
 
 <div markdown="span" class="alert alert-warning">
   :exclamation: <strong>Warning:</strong><br>
-  Editing a person into an existing person with the same <strong>Name</strong>, <strong>Telegram</strong>, or <strong>Phone</strong> (if present) is not allowed.<br>
+  Editing a person into an existing person with the same <strong>Telegram</strong> or <strong>Phone</strong> (if present) is not allowed.<br>
 </div>
 
 Examples:
@@ -170,6 +177,12 @@ You realize that you share an additional module, IS1108 Digital Ethics and Priva
 *  `edit 2 n/Betsy Crower no/ m/` Edits the name of the 2nd person to be `Betsy Crower`, clears the note, and clears all existing modules.
 
 ![EditExample](images/EditExample.png)
+
+Common errors you may encounter:
+* Editing a field to be invalid: NUSConnect will return the desired format that the field should be in. For example: `Telegram handles must start with an @, then the rest must be 5-32 characters long, case-insensitive, 
+and can only contain letters, numbers, underscores, and it should not be blank!`.
+* Editing to duplicate person: Since two people are unlikely to share the same Telegram or Phone, NUSConnect will let you know if you are trying to edit to a duplicate person! `The Telegram or Phone cannot be modified to be the same as another person in the address book!"`.
+
 
 #### Deleting people: `delete`
 
@@ -206,13 +219,18 @@ After `list` again:
 
 * `list` followed by `delete 2 4 3` deletes the 2nd, the 3rd, and the 4th person in the address book.
 
-![DeleteExampleTwo](images/DeleteExampleThree.png)
+![DeleteExampleThree](images/DeleteExampleThree.png)
+
+Common errors you may encounter:
+* Invalid Indices: If you attempt to delete at an index which is higher than the number of people in the current list, NUSConnect will warn you about it! For example: `The following person index provided is invalid: 3`.
 
 #### Clearing all entries: `clear`
 
 This command allows you to clear all entries from the address book.
 
 Format: `clear`
+
+![Clear Example](images/ClearExample.png)
 
 ### Group Operations:
 
@@ -243,6 +261,8 @@ Format: `group add PERSON_INDEX to GROUP_INDEX`
 
 Examples:
 * `group add 2 to 1` Adds the 2nd person in the person list to the 1st group in the group list.
+* `group add 2 to 2` Adds the 2nd person in the person list to the 2nd group in the group list.
+* `group add 3 to 2` Adds the 3rd person in the person list to the 1st group in the group list.
 
 ![GroupAddExample](images/GroupAddExample.png)
 
@@ -265,9 +285,11 @@ Examples:
 
 #### Listing all persons: `list`
 
-This command allows you to show a list of all persons in the address book.
+This command allows you to show a list of all persons in the address book. This is useful to see all contacts again after filtering with another command, `find`.
 
 Format: `list`
+
+![ListExample](images/ListExample.png)
 
 #### Locating persons by name or modules: `find`
 
@@ -306,6 +328,8 @@ Format: `view INDEX`
 Examples:
 * `list` followed by `view 2` shows the full details of the 2nd person in the address book.
 * `find Betsy` followed by `view 1` shows the full details of the 1st person in the results of the `find` command.
+  ![ViewExample](images/ViewExample.png)
+
 
 #### Sorting the address book: `sort`
 
@@ -360,8 +384,10 @@ format: `export FILE_PATH`
 
 Examples:
 
-* `export exported_data.json` exports the address book data to the `exported_data.json` file in the current directory.
 * `export C:/Users/user/Downloads/addressbook_backup.json` exports `addressbook_backup.json` to `C:/Users/user/Downloads`
+* `export exported_data.json` exports the address book data to the `exported_data.json` file in the current directory.
+
+![ExportExample](images/ExportExample.png)
 
 #### Importing an address book: `import`
 
@@ -379,9 +405,12 @@ Format: `import FILE_PATH`
 Examples:
 
 * `import .json` imports data from the `.json` file within the current directory.
-* `import data.json` imports data from the `data.json` file within the current directory.
 * `import backup/addressbook.json` imports data from the `addressbook.json` file located in the backup folder relative to the current directory.
 * `import C:/Users/user/Documents/addressbook_data.txt` imports data from the `addressbook_data.txt` file located in the `C:/Users/user/Documents`
+* `import exported_data.json` imports data from the `exported_data.json` file within the current directory.
+
+
+![ImportExample](images/ImportExample.png)
 
 ### Misc:
 

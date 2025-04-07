@@ -9,8 +9,8 @@ import static nusconnect.commons.util.AppUtil.checkArgument;
  */
 public class Note {
 
-    public static final String MESSAGE_CONSTRAINTS = "Notes can take any values, "
-            + "and it should not be blank on creation!";
+    public static final String MESSAGE_CONSTRAINTS = "Notes can take any values. "
+            + "It should not be blank if specified on creation!";
 
     /*
      * The first character of the note must not be a whitespace,

@@ -1,0 +1,84 @@
+{
+  "persons" : [ {
+    "name" : "Grady Booch",
+    "telegram" : "@gradybooch",
+    "phone" : "88889999",
+    "email" : null,
+    "alias" : null,
+    "major" : null,
+    "note" : null,
+    "website" : null,
+    "modules" : [ "IS1108" ]
+  }, {
+    "name" : "He Haorui",
+    "telegram" : "@haorui",
+    "phone" : "99999999",
+    "email" : "e0000000@u.nus.edu",
+    "alias" : null,
+    "major" : null,
+    "note" : null,
+    "website" : null,
+    "modules" : [ "CS2103T" ]
+  }, {
+    "name" : "Ivar Jacobson",
+    "telegram" : "@ivarjacobson",
+    "phone" : "89898989",
+    "email" : null,
+    "alias" : null,
+    "major" : null,
+    "note" : null,
+    "website" : null,
+    "modules" : [ "IS1108" ]
+  }, {
+    "name" : "James Rumbaugh",
+    "telegram" : "@jamesrumbaugh",
+    "phone" : "98989898",
+    "email" : null,
+    "alias" : null,
+    "major" : null,
+    "note" : null,
+    "website" : null,
+    "modules" : [ "IS1108" ]
+  }, {
+    "name" : "Javen Tan Kang Le",
+    "telegram" : "@javentan",
+    "phone" : "88888888",
+    "email" : null,
+    "alias" : null,
+    "major" : null,
+    "note" : null,
+    "website" : null,
+    "modules" : [ "CS2103T" ]
+  }, {
+    "name" : "Lee Jia Wei",
+    "telegram" : "@jiawei",
+    "phone" : "98765432",
+    "email" : "e0000000@u.nus.edu",
+    "alias" : "Mike",
+    "major" : null,
+    "note" : "Is great at UI design",
+    "website" : "www.mike.com",
+    "modules" : [ "IS1108", "CS2103T" ]
+  }, {
+    "name" : "Sim Ray En Ryan",
+    "telegram" : "@ryansim",
+    "phone" : "87654321",
+    "email" : null,
+    "alias" : null,
+    "major" : null,
+    "note" : null,
+    "website" : null,
+    "modules" : [ "CS2103T" ]
+  }, {
+    "name" : "Yap Jun Yeu",
+    "telegram" : "@junyeu",
+    "phone" : "99998888",
+    "email" : null,
+    "alias" : null,
+    "major" : null,
+    "note" : null,
+    "website" : null,
+    "modules" : [ "CS2103T" ]
+  } ],
+  "groups" : [ ]
+}
