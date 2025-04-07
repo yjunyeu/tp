@@ -514,8 +514,7 @@ NUSConnect helps students quickly add, organise and find contacts with minimal e
 
 1.  User request to view a person.
 2.  NUSConnect shows the details of that person.
-
-    Use case ends.
+ 
 
 **Extensions**
 
@@ -697,9 +696,45 @@ testers are expected to do more *exploratory* testing.
 
 ### Creating a group
 
+1. Creating a group
+   1. Test case: `group create CS2103T Group Project`<br>
+      Expected: Group named "CS2103T Group Project" is created and visible in the group panel.
+   2. Test case: `group create !@#Team_123$%^`<br>
+      Expected: Group named "!@#Team_123$%^" is created. Special characters are accepted.
+   3. Test case: `group create 空手道`<br>
+      Expected: Group named "空手道" is created. Unicode characters are accepted.
+   4. Test case: `group create`<br>
+      Expected: No group is created. An error message indicates that the group name cannot be empty.
+
 ### Deleting a group
 
+1. Deleting a group
+   1. Prerequisites: One group exists on the list.
+   2. Test case: `group delete 1`<br>
+      Expected: Group at index 1 is deleted. It disappears from the group panel.
+   3. Test case: `group delete 0`<br>
+      Expected: No group is deleted. An error message indicates invalid command format (index must be positive).
+   4. Test case: `group delete 99`<br>
+      Expected: No group is deleted. An error message indicates that the group index is invalid.
+
 ### Adding a person to a group
+
+1. Adding a person to a group
+   1. Prerequisites: List all persons using the `list` command. Two persons in the list. One group exists on the list.
+   2. Test case: `group add 1 to 1`<br>
+      Expected: Person at index 1 is successfully added to group at index 1.
+   3. Test case: `group add 2 to 1`<br>
+      Expected: Person at index 2 is added to group 1.
+   4. Test case: `group add 0 to 1`<br>
+      Expected: No person is added. An error message indicates invalid command format (index must be positive).
+   5. Test case: `group add 1 to 0`<br>
+      Expected: No person is added. An error message indicates invalid command format (index must be positive).
+   6. Test case: `group add 99 to 1`<br>
+      Expected: No person is added. An error message indicates that the person index is invalid.
+   7. Test case: `group add 1 to 99`<br>
+      Expected: No person is added. An error message indicates that the group index is invalid.
+   8. Test case: `group add 1 to 1` followed by `group add 1 to 1`<br>
+      Expected: No person is added. An error message indicates that the person is already added to the group.
 
 ### Locating persons by name or modules
 
@@ -734,3 +769,7 @@ We plan to extend the command syntax (e.g. `group add 1 2 3 to 2`) so multiple c
 
 5. Users currently have to run individual `edit` commands to add a module to each contact. We plan to allow users to 
 add a single module to multiple contacts simultaneously using `edit 1 2 3 4 m/CS2103T`.
+
+--------------------------------------------------------------------------------------------------------------------
+
+## **Appendix: Effort**
