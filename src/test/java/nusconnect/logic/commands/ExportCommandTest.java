@@ -38,7 +38,7 @@ public class ExportCommandTest {
     @Test
     public void execute_invalidFileName_exportFailure() throws Exception {
 
-        String invalidFilePath = "f:test";
+        String invalidFilePath = "C:test";
         LogicManager mockLogicManager = mock(LogicManager.class);
         Model mockModel = mock(Model.class);
 
@@ -57,7 +57,7 @@ public class ExportCommandTest {
     @Test
     public void execute_invalidFilePath_exportFailure() throws Exception {
 
-        String invalidFilePath = "f:test.json";
+        String invalidFilePath = "f:test.address_book.json";
         LogicManager mockLogicManager = mock(LogicManager.class);
         Model mockModel = mock(Model.class);
 
@@ -68,7 +68,7 @@ public class ExportCommandTest {
         try {
             exportCommand.execute(mockModel);
         } catch (CommandException e) {
-            assertEquals(ExportCommand.MESSAGE_FAILURE + "\nFile name not provided!", e.getMessage());
+            assertEquals(ExportCommand.MESSAGE_FAILURE + "\nInvalid file path!", e.getMessage());
         }
 
     }
