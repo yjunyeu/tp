@@ -872,8 +872,8 @@ testers are expected to do more *exploratory* testing.
       Expected: Import fail. An error message indicate that file name is invalid.
    5. Test case: `import addressbook.csv`<br>
       Expected: Import fail. An error message indicate that file name is invalid.
-   9. Test case: `import empty.json`
-       Expected: Import fail. An error message indicate that JSON file data is invalid
+   9. Test case: `import empty.json`<br>
+      Expected: Import fail. An error message indicate that JSON file data is invalid.
 --------------------------------------------------------------------------------------------------------------------
 
 ## **Appendix: Planned Enhancements**
