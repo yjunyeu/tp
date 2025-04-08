@@ -11,6 +11,7 @@ title: Developer Guide
 
 * AB-3: The codebase NUSConnect is based on.
 * Mockito: Third-party library used to simplify creating mock objects for unit-testing.
+
 --------------------------------------------------------------------------------------------------------------------
 
 ## **Setting up, getting started**
