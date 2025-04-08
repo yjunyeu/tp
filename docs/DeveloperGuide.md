@@ -11,6 +11,7 @@ title: Developer Guide
 
 * AB-3: The codebase NUSConnect is based on.
 * Mockito: Third-party library used to simplify creating mock objects for unit-testing.
+
 --------------------------------------------------------------------------------------------------------------------
 
 ## **Setting up, getting started**
@@ -871,8 +872,8 @@ testers are expected to do more *exploratory* testing.
       Expected: Import fail. An error message indicate that file name is invalid.
    5. Test case: `import addressbook.csv`<br>
       Expected: Import fail. An error message indicate that file name is invalid.
-   9. Test case: `import empty.json`
-       Expected: Import fail. An error message indicate that JSON file data is invalid
+   9. Test case: `import empty.json`<br>
+      Expected: Import fail. An error message indicate that JSON file data is invalid.
 --------------------------------------------------------------------------------------------------------------------
 
 ## **Appendix: Planned Enhancements**

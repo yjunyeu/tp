@@ -397,7 +397,7 @@ Format: `group add PERSON_INDEX to GROUP_INDEX`
 Examples:
 * `group add 2 to 1` Adds the 2nd person in the person list to the 1st group in the group list.
 * `group add 2 to 2` Adds the 2nd person in the person list to the 2nd group in the group list.
-* `group add 3 to 2` Adds the 3rd person in the person list to the 1st group in the group list.
+* `group add 3 to 2` Adds the 3rd person in the person list to the 2nd group in the group list.
 
 ![GroupAddExample](images/GroupAddExample.png)
 
