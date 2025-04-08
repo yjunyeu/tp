@@ -36,7 +36,7 @@ import nusconnect.ui.UiManager;
  */
 public class MainApp extends Application {
 
-    public static final Version VERSION = new Version(1, 5, 2, true);
+    public static final Version VERSION = new Version(1, 6, 0, true);
 
     private static final Logger logger = LogsCenter.getLogger(MainApp.class);
 
